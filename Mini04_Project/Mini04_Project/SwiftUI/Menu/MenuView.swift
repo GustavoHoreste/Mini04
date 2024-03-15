@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MenuView: View {
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -15,12 +15,12 @@ struct ContentView: View {
                 .foregroundStyle(.tint)
             Text("Hello, world!")
             //Teste Familia
-            Text("Como vai")?
+            Text("Como vai")
         }
         .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    MenuView()
 }

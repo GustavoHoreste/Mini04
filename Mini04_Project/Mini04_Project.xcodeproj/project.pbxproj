@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D92885B42B9668D100C73B6E /* Mini04_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92885B32B9668D100C73B6E /* Mini04_ProjectApp.swift */; };
-		D92885B62B9668D100C73B6E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92885B52B9668D100C73B6E /* ContentView.swift */; };
+		D92885B62B9668D100C73B6E /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92885B52B9668D100C73B6E /* MenuView.swift */; };
 		D92885B82B9668D200C73B6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D92885B72B9668D200C73B6E /* Assets.xcassets */; };
 		D92885BC2B9668D200C73B6E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D92885BB2B9668D200C73B6E /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +16,7 @@
 /* Begin PBXFileReference section */
 		D92885B02B9668D100C73B6E /* Mini04_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini04_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D92885B32B9668D100C73B6E /* Mini04_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini04_ProjectApp.swift; sourceTree = "<group>"; };
-		D92885B52B9668D100C73B6E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D92885B52B9668D100C73B6E /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		D92885B72B9668D200C73B6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D92885B92B9668D200C73B6E /* Mini04_Project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mini04_Project.entitlements; sourceTree = "<group>"; };
 		D92885BB2B9668D200C73B6E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -52,8 +52,12 @@
 		D92885B22B9668D100C73B6E /* Mini04_Project */ = {
 			isa = PBXGroup;
 			children = (
+				E087829E2BA4D06E00FB5ABC /* Utilities */,
+				E087829D2BA4D06400FB5ABC /* Coordinator */,
+				E08782992BA4D00200FB5ABC /* Services */,
+				E05410B42BA4CE1500046661 /* UIKit */,
+				E05410B32BA4CE0300046661 /* SwiftUI */,
 				D92885B32B9668D100C73B6E /* Mini04_ProjectApp.swift */,
-				D92885B52B9668D100C73B6E /* ContentView.swift */,
 				D92885B72B9668D200C73B6E /* Assets.xcassets */,
 				D92885B92B9668D200C73B6E /* Mini04_Project.entitlements */,
 				D92885BA2B9668D200C73B6E /* Preview Content */,
@@ -67,6 +71,106 @@
 				D92885BB2B9668D200C73B6E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E05410B22BA4CDEF00046661 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				D92885B52B9668D100C73B6E /* MenuView.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		E05410B32BA4CE0300046661 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				E08782982BA4CFF700FB5ABC /* FinalRank */,
+				E08782972BA4CFE700FB5ABC /* Lobby */,
+				E05410B22BA4CDEF00046661 /* Menu */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		E05410B42BA4CE1500046661 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				E05410B62BA4CE4600046661 /* PartialResult */,
+				E05410B52BA4CE1E00046661 /* Gameplay */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		E05410B52BA4CE1E00046661 /* Gameplay */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Gameplay;
+			sourceTree = "<group>";
+		};
+		E05410B62BA4CE4600046661 /* PartialResult */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PartialResult;
+			sourceTree = "<group>";
+		};
+		E08782972BA4CFE700FB5ABC /* Lobby */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Lobby;
+			sourceTree = "<group>";
+		};
+		E08782982BA4CFF700FB5ABC /* FinalRank */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FinalRank;
+			sourceTree = "<group>";
+		};
+		E08782992BA4D00200FB5ABC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E087829C2BA4D03800FB5ABC /* Camera */,
+				E087829B2BA4D02000FB5ABC /* SharePlay */,
+				E087829A2BA4D00A00FB5ABC /* MachineLearning */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E087829A2BA4D00A00FB5ABC /* MachineLearning */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MachineLearning;
+			sourceTree = "<group>";
+		};
+		E087829B2BA4D02000FB5ABC /* SharePlay */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SharePlay;
+			sourceTree = "<group>";
+		};
+		E087829C2BA4D03800FB5ABC /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		E087829D2BA4D06400FB5ABC /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		E087829E2BA4D06E00FB5ABC /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -97,7 +201,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1520;
-				LastUpgradeCheck = 1520;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					D92885AF2B9668D100C73B6E = {
 						CreatedOnToolsVersion = 15.2;
@@ -139,7 +243,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D92885B62B9668D100C73B6E /* ContentView.swift in Sources */,
+				D92885B62B9668D100C73B6E /* MenuView.swift in Sources */,
 				D92885B42B9668D100C73B6E /* Mini04_ProjectApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,6 +285,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -242,6 +347,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -269,11 +375,13 @@
 				CODE_SIGN_ENTITLEMENTS = Mini04_Project/Mini04_Project.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = 335BRL9A43;
+				DEVELOPMENT_TEAM = SRXHT55569;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This apps needs camera usage to work";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -283,7 +391,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -292,7 +400,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "group07.Mini04-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -307,11 +416,13 @@
 				CODE_SIGN_ENTITLEMENTS = Mini04_Project/Mini04_Project.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = 335BRL9A43;
+				DEVELOPMENT_TEAM = SRXHT55569;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This apps needs camera usage to work";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -321,7 +432,7 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
@@ -330,7 +441,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "group07.Mini04-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
