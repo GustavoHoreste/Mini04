@@ -8,16 +8,30 @@
 import SwiftUI
 
 struct MenuView: View {
+    
+    @EnvironmentObject private var navigationCoordinator: Coordinator
+    
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-            //Teste Familia
-            Text("Como vai")
+            List {
+                Button("Config") {
+                    navigationCoordinator.present(sheet: .config)
+                }
+                
+                Button("Lobby") {
+                    navigationCoordinator.push(.lobby)
+                }
+                
+                Button("Gameplay") {
+                    navigationCoordinator.push(.gameplay)
+                }
+                
+                Button("Final Rank") {
+                    navigationCoordinator.push(.finalRank)
+                    print("funcionou")
+                }
+            }
         }
-        .padding()
     }
 }
 
