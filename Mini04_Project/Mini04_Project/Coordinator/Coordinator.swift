@@ -9,7 +9,6 @@ import SwiftUI
 
 enum Page: String, Identifiable {
     case menu,
-
          lobby,
          gameplay,
          finalRank
