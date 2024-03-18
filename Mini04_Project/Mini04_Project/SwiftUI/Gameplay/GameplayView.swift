@@ -1,13 +1,13 @@
 //
-//  FinalResultView.swift
+//  GameplayView.swift
 //  Mini04_Project
 //
-//  Created by Luca Lacerda on 15/03/24.
+//  Created by GABRIEL Ferreira Cardoso on 15/03/24.
 //
 
 import SwiftUI
 
-struct FinalResultView: View {
+struct GameplayView: View {
     
     @EnvironmentObject private var navigationCoordinator: Coordinator
     
@@ -17,5 +17,5 @@ struct FinalResultView: View {
 }
 
 #Preview {
-    FinalResultView()
+    GameplayView()
 }

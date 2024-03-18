@@ -8,8 +8,13 @@
 import SwiftUI
 
 struct LobbyView: View {
+    
+    @EnvironmentObject private var navigationCoordinator: Coordinator
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button("push") {
+            navigationCoordinator.push(.gameplay)
+        }
     }
 }
 
