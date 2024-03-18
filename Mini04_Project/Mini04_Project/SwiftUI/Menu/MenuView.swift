@@ -13,24 +13,44 @@ struct MenuView: View {
     
     var body: some View {
         VStack {
-            List {
-                Button("Config") {
-                    navigationCoordinator.present(sheet: .config)
-                }
+            HStack {
                 
-                Button("Lobby") {
-                    navigationCoordinator.push(.lobby)
-                }
+                Spacer()
                 
-                Button("Gameplay") {
-                    navigationCoordinator.push(.gameplay)
-                }
+                Button(action: {navigationCoordinator.present(sheet: .config)}, label: {
+                    Image(systemName: "gearshape.circle.fill")
+                        .resizable()
+                        .frame(width: 35, height: 35)
+                    
+                })
                 
-                Button("Final Rank") {
-                    navigationCoordinator.push(.finalRank)
-                    print("funcionou")
-                }
+                Button(action: {navigationCoordinator.present(sheet: .profile)}, label: {
+                    Image(systemName: "person.crop.circle.fill")
+                        .resizable()
+                        .frame(width: 35, height: 35)
+                    
+                })
             }
+            .padding()
+            .foregroundStyle(.gray)
+            
+            Spacer()
+            
+            Button(action: {navigationCoordinator.push(.gameplay)}, label: {
+                Text("Multi")
+                    .padding()
+                    .foregroundStyle(.white)
+                    .background(.gray)
+            })
+            
+            Button(action: {navigationCoordinator.push(.gameplay)}, label: {
+                Text("Single")
+                    .padding()
+                    .foregroundStyle(.white)
+                    .background(.gray)
+            })
+            
+            Spacer()
         }
     }
 }

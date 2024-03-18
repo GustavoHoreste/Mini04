@@ -8,7 +8,8 @@
 import SwiftUI
 
 enum Page: String, Identifiable {
-    case menu, 
+    case menu,
+
          lobby,
          gameplay,
          finalRank
@@ -19,7 +20,7 @@ enum Page: String, Identifiable {
 }
 
 enum Sheet: String, Identifiable {
-    case config
+    case config, profile
     
     var id: String {
         self.rawValue
@@ -89,6 +90,10 @@ class Coordinator: ObservableObject {
         case .config:
             NavigationStack {
                 ConfigView()
+            }
+        case .profile:
+            NavigationStack {
+                ProfileView()
             }
         }
     }
