@@ -7,6 +7,7 @@
 
 import Foundation
 
+//Enum para erros que podem ocorrer com o coreML
 enum MLErrors: Error {
     case failToPredict
     case failToConvertImageToBuffer

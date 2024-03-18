@@ -65,8 +65,8 @@ class MlModel {
     
     //funcao que deve ser chamada para receber a string da cor classificado, essa recebe uma UIImage
     func verifyColor(image:UIImage) async throws -> String {
-        let croppedImage = image.cropCenterOfImage(viewWidth: 299, viewHeight: 299)
-        guard let buffer = image.toCVPixelBuffer() else {throw MLErrors.failToConvertImageToBuffer}
+        guard let croppedImage = image.cropCenterOfImage(viewWidth: 299, viewHeight: 299) else {throw MLErrors.failToConvertImageToBuffer}
+        guard let buffer = croppedImage.toCVPixelBuffer() else {throw MLErrors.failToConvertImageToBuffer}
         let prediction = colorVerify(image: buffer)
         if prediction.target == ""{
             throw MLErrors.failToPredict
