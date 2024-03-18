@@ -29,6 +29,7 @@
 		E08782B12BA4D4A600FB5ABC /* LobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B02BA4D4A600FB5ABC /* LobbyView.swift */; };
 		E08782B32BA4ED1600FB5ABC /* CameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B22BA4ED1600FB5ABC /* CameraDelegate.swift */; };
 		E08782B52BA8C31400FB5ABC /* CoreMlErrorsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B42BA8C31400FB5ABC /* CoreMlErrorsEnum.swift */; };
+		E08782B82BA8C44000FB5ABC /* PlayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B72BA8C44000FB5ABC /* PlayerData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		E08782B02BA4D4A600FB5ABC /* LobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyView.swift; sourceTree = "<group>"; };
 		E08782B22BA4ED1600FB5ABC /* CameraDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDelegate.swift; sourceTree = "<group>"; };
 		E08782B42BA8C31400FB5ABC /* CoreMlErrorsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMlErrorsEnum.swift; sourceTree = "<group>"; };
+		E08782B72BA8C44000FB5ABC /* PlayerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 		E087829B2BA4D02000FB5ABC /* SharePlay */ = {
 			isa = PBXGroup;
 			children = (
+				E08782B62BA8C42500FB5ABC /* Model */,
 				E08782A52BA4D43300FB5ABC /* SharePlayModel.swift */,
 			);
 			path = SharePlay;
@@ -257,6 +260,14 @@
 				E087829F2BA4D41400FB5ABC /* UIImageExtension.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		E08782B62BA8C42500FB5ABC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E08782B72BA8C44000FB5ABC /* PlayerData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -344,6 +355,7 @@
 				2E81140D2BA4E3C2009CCC77 /* CoordinatorView.swift in Sources */,
 				E08782B52BA8C31400FB5ABC /* CoreMlErrorsEnum.swift in Sources */,
 				C0A8B2932BA8A1970048AC08 /* NewHomeObjects.mlmodel in Sources */,
+				E08782B82BA8C44000FB5ABC /* PlayerData.swift in Sources */,
 				2E8114112BA4EA16009CCC77 /* GameplayView.swift in Sources */,
 				E08782AA2BA4D46900FB5ABC /* PartialResultViewController.swift in Sources */,
 				D92885B42B9668D100C73B6E /* Mini04_ProjectApp.swift in Sources */,
