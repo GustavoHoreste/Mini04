@@ -6,8 +6,30 @@
 //
 
 import Foundation
+import UIKit
+import CoreImage
 
-class GameplayViewModel: ObservableObject {
+class GameplayViewModel: NSObject {
     
-    @Published var timeRemaing = 120
+    var camera:CameraModel!
+    var items = ItemsToFindModel()
+    
+    lazy var objectName = ObjectName()
+    lazy var changeButton = ChangeButton()
+    lazy var photoButton = PhotoButton()
+    lazy var cameraImage = CameraImageView()
+    
+    var context:CIContext = CIContext()
+    
+    var timeRemaing = 120
+    
+    override init() {
+        super.init()
+        setupDelegate()
+        
+        objectName.text = items.toFindObject
+    }
+    
 }
+
+
