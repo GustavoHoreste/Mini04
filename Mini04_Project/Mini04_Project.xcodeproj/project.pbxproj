@@ -11,6 +11,7 @@
 		2E81140D2BA4E3C2009CCC77 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E81140C2BA4E3C2009CCC77 /* CoordinatorView.swift */; };
 		2E8114112BA4EA16009CCC77 /* GameplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8114102BA4EA16009CCC77 /* GameplayView.swift */; };
 		2EC1BA742BA8737100E1E410 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1BA732BA8737100E1E410 /* ProfileView.swift */; };
+		2EC1BA772BA8B5F600E1E410 /* GameplayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1BA762BA8B5F600E1E410 /* GameplayViewModel.swift */; };
 		C0A8B2932BA8A1970048AC08 /* NewHomeObjects.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B2912BA8A1970048AC08 /* NewHomeObjects.mlmodel */; };
 		C0A8B2942BA8A1970048AC08 /* Color7Classifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B2922BA8A1970048AC08 /* Color7Classifier.mlmodel */; };
 		D92885B42B9668D100C73B6E /* Mini04_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92885B32B9668D100C73B6E /* Mini04_ProjectApp.swift */; };
@@ -35,6 +36,7 @@
 		2E81140C2BA4E3C2009CCC77 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
 		2E8114102BA4EA16009CCC77 /* GameplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayView.swift; sourceTree = "<group>"; };
 		2EC1BA732BA8737100E1E410 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		2EC1BA762BA8B5F600E1E410 /* GameplayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayViewModel.swift; sourceTree = "<group>"; };
 		C0A8B2912BA8A1970048AC08 /* NewHomeObjects.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = NewHomeObjects.mlmodel; sourceTree = "<group>"; };
 		C0A8B2922BA8A1970048AC08 /* Color7Classifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Color7Classifier.mlmodel; sourceTree = "<group>"; };
 		D92885B02B9668D100C73B6E /* Mini04_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini04_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				E08782AB2BA4D47F00FB5ABC /* GameplayViewController.swift */,
+				2EC1BA762BA8B5F600E1E410 /* GameplayViewModel.swift */,
 			);
 			path = Gameplay;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				2E8114112BA4EA16009CCC77 /* GameplayView.swift in Sources */,
 				E08782AA2BA4D46900FB5ABC /* PartialResultViewController.swift in Sources */,
 				D92885B42B9668D100C73B6E /* Mini04_ProjectApp.swift in Sources */,
+				2EC1BA772BA8B5F600E1E410 /* GameplayViewModel.swift in Sources */,
 				E08782A62BA4D43300FB5ABC /* SharePlayModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

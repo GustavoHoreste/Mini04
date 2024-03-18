@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct GameplayView: View {
-    
+    @StateObject var model = GameplayViewModel()
     @EnvironmentObject private var navigationCoordinator: Coordinator
+    let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("\(model.timeRemaing)")
     }
 }
 
