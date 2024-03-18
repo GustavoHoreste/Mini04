@@ -11,7 +11,8 @@ import AVFoundation
 import SwiftUI
 
 class CameraModel: NSObject, ObservableObject {
-    //Frame atual da camera
+    
+    //Armazena o frame atual da camera
     @Published var frame:UIImage!
     
     //Armazena os ultimos 8 frames
@@ -35,11 +36,19 @@ class CameraModel: NSObject, ObservableObject {
     //Verifica se o usuario permitio o uso da camera
     var permission:Bool = true
     
+    //Contexto para converter a imagem
     var context:CIContext = CIContext()
+    
+    var delegate: AVCaptureVideoDataOutputSampleBufferDelegate!
     
     override init() {
         super.init()
         self.setupAndStartSession()
+    }
+    
+    convenience init(delegate: AVCaptureVideoDataOutputSampleBufferDelegate) {
+        self.init()
+        self.delegate = delegate
     }
     
     //MARK: - Camera session setup
@@ -75,7 +84,11 @@ class CameraModel: NSObject, ObservableObject {
     func setupOutputs() {
         videoOutput = AVCaptureVideoDataOutput()
         let videoQueue = DispatchQueue(label: "videoQueue", qos: .userInitiated)
-        videoOutput.setSampleBufferDelegate(self, queue: videoQueue)
+        if let delegate = self.delegate {
+            videoOutput.setSampleBufferDelegate(delegate, queue: videoQueue)
+        } else {
+            videoOutput.setSampleBufferDelegate(self, queue: videoQueue)
+        }
         
         if captureSession.canAddOutput(videoOutput) {
             captureSession.addOutput(videoOutput)
