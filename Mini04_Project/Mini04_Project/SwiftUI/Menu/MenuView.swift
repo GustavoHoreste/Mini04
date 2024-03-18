@@ -41,6 +41,7 @@ struct MenuView: View {
                     .padding()
                     .foregroundStyle(.white)
                     .background(.gray)
+                    .clipShape(.capsule)
             })
             
             Button(action: {navigationCoordinator.push(.gameplay)}, label: {
@@ -48,6 +49,7 @@ struct MenuView: View {
                     .padding()
                     .foregroundStyle(.white)
                     .background(.gray)
+                    .clipShape(.capsule)
             })
             
             Spacer()
