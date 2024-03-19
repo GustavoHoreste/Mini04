@@ -11,7 +11,7 @@ import CoreImage
 
 class GameplayViewModel: NSObject {
     
-    var camera:CameraModel!
+    var camera: CameraModel!
     var items = ItemsToFindModel()
     
     lazy var objectName = ObjectName()

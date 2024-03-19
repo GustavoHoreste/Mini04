@@ -39,8 +39,6 @@ extension GameplayViewModel: ItemsDelegate {
     func findedObjectAction() {
         pontos.number += 1
     }
-    
-    
 }
 
 extension GameplayViewModel: AVCaptureVideoDataOutputSampleBufferDelegate {
