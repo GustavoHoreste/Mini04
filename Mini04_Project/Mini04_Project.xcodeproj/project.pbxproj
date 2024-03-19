@@ -251,8 +251,8 @@
 			isa = PBXGroup;
 			children = (
 				E08782AB2BA4D47F00FB5ABC /* GameplayViewController.swift */,
-				C0A8B29D2BA8C1320048AC08 /* ConstraintsVC.swift */,
 				2EC1BA762BA8B5F600E1E410 /* GameplayViewModel.swift */,
+				C0A8B29D2BA8C1320048AC08 /* ConstraintsVC.swift */,
 				C0A8B2A52BA8CE260048AC08 /* Delegates */,
 				C0A8B29C2BA8BEFD0048AC08 /* Models */,
 				C0A8B2952BA8B3EB0048AC08 /* Components */,
@@ -426,7 +426,7 @@
 				E08782B12BA4D4A600FB5ABC /* LobbyView.swift in Sources */,
 				E08782A22BA4D42000FB5ABC /* Coordinator.swift in Sources */,
 				C09106FA2BA8DECB00037EAB /* CameraImageView.swift in Sources */,
-				E08782A02BA4D41500FB5ABC /* Utilitie.swift in Sources */,
+				E08782A02BA4D41500FB5ABC /* UIImageExtension.swift in Sources */,
 				E08782A02BA4D41500FB5ABC /* UIImageExtension.swift in Sources */,
 				E08782AC2BA4D47F00FB5ABC /* GameplayViewController.swift in Sources */,
 				C0A8B29E2BA8C1320048AC08 /* ConstraintsVC.swift in Sources */,
@@ -455,7 +455,6 @@
 				C0A8B2A02BA8C7690048AC08 /* ChangeButton.swift in Sources */,
 				D92885B42B9668D100C73B6E /* Mini04_ProjectApp.swift in Sources */,
 				2EC1BA772BA8B5F600E1E410 /* GameplayViewModel.swift in Sources */,
-				E08782A62BA4D43300FB5ABC /* SharePlayModel.swift in Sources */,
 				C0A8B2992BA8B6A80048AC08 /* ObjectName.swift in Sources */,
 				C09106FE2BA8FD7800037EAB /* RoundLabel.swift in Sources */,
 				C09107002BA8FF0800037EAB /* SpecialObjectLabel.swift in Sources */,
@@ -591,7 +590,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = 335BRL9A43;
+				DEVELOPMENT_TEAM = SRXHT55569;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -632,7 +631,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = 335BRL9A43;
+				DEVELOPMENT_TEAM = SRXHT55569;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

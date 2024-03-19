@@ -13,6 +13,7 @@ class GameplayViewModel: NSObject {
     
     var camera: CameraModel!
     var items = ItemsToFindModel()
+    var model = MlModel()
     
     lazy var objectName = ObjectName()
     lazy var changeButton = ChangeButton()

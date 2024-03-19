@@ -29,8 +29,22 @@ extension GameplayViewModel: ChangeButtonDelegate {
 
 extension GameplayViewModel: PhotoButtonDelegate {
     func photoButtonAction() {
-        items.findedObject()
-        objectName.text = items.toFindObject
+        Task{
+            do{
+                let returnedTargetObject = try await model.verifyObject(image: cameraImage.image!)
+                let returnedTargetColor = try await model.verifyColor(image: cameraImage.image!)
+                print(returnedTargetObject)
+                print(returnedTargetColor)
+                if returnedTargetObject == items.toFindObject || returnedTargetColor == items.toFindObject{
+                    items.findedObject()
+                    DispatchQueue.main.async{
+                        self.objectName.text = self.items.toFindObject
+                    }
+                }
+            }catch {
+                print(error)
+            }
+        }
         print("Photo Touched")
     }
 }
