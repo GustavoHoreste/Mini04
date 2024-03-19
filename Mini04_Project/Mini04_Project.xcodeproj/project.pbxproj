@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E3A74392BAA126A0026BE07 /* TimerRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A74382BAA126A0026BE07 /* TimerRound.swift */; };
 		2E81140A2BA4E263009CCC77 /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8114092BA4E263009CCC77 /* ConfigView.swift */; };
 		2E81140D2BA4E3C2009CCC77 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E81140C2BA4E3C2009CCC77 /* CoordinatorView.swift */; };
 		2E8114112BA4EA16009CCC77 /* GameplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8114102BA4EA16009CCC77 /* GameplayView.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E3A74382BAA126A0026BE07 /* TimerRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerRound.swift; sourceTree = "<group>"; };
 		2E8114092BA4E263009CCC77 /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
 		2E81140C2BA4E3C2009CCC77 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
 		2E8114102BA4EA16009CCC77 /* GameplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayView.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				C09106FD2BA8FD7800037EAB /* RoundLabel.swift */,
 				C09106FF2BA8FF0800037EAB /* SpecialObjectLabel.swift */,
 				C09107032BA90D3400037EAB /* ProfileImage.swift */,
+				2E3A74382BAA126A0026BE07 /* TimerRound.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				2E81140D2BA4E3C2009CCC77 /* CoordinatorView.swift in Sources */,
 				D9CD14272BA8FB11003CB0B6 /* SharePlayPresenter.swift in Sources */,
 				E08782B52BA8C31400FB5ABC /* CoreMlErrorsEnum.swift in Sources */,
+				2E3A74392BAA126A0026BE07 /* TimerRound.swift in Sources */,
 				D9CD14252BA8FAFC003CB0B6 /* SharePlayInteractor.swift in Sources */,
 				C0A8B2932BA8A1970048AC08 /* NewHomeObjects.mlmodel in Sources */,
 				D9CD14232BA8FAE5003CB0B6 /* SharePlayWorker.swift in Sources */,
@@ -590,7 +594,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = SRXHT55569;
+				DEVELOPMENT_TEAM = J7Y95G67T3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -631,7 +635,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = SRXHT55569;
+				DEVELOPMENT_TEAM = J7Y95G67T3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
