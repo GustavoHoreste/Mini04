@@ -13,8 +13,12 @@
 		2EC1BA742BA8737100E1E410 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1BA732BA8737100E1E410 /* ProfileView.swift */; };
 		2EC1BA772BA8B5F600E1E410 /* GameplayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1BA762BA8B5F600E1E410 /* GameplayViewModel.swift */; };
 		C09106FA2BA8DECB00037EAB /* CameraImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09106F92BA8DECB00037EAB /* CameraImageView.swift */; };
+		C09106FC2BA8F96A00037EAB /* PontosLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09106FB2BA8F96A00037EAB /* PontosLabel.swift */; };
+		C09106FE2BA8FD7800037EAB /* RoundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09106FD2BA8FD7800037EAB /* RoundLabel.swift */; };
+		C09107002BA8FF0800037EAB /* SpecialObjectLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09106FF2BA8FF0800037EAB /* SpecialObjectLabel.swift */; };
+		C09107022BA9058200037EAB /* ColorClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C09107012BA9058200037EAB /* ColorClassifier.mlmodel */; };
+		C09107042BA90D3400037EAB /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09107032BA90D3400037EAB /* ProfileImage.swift */; };
 		C0A8B2932BA8A1970048AC08 /* NewHomeObjects.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B2912BA8A1970048AC08 /* NewHomeObjects.mlmodel */; };
-		C0A8B2942BA8A1970048AC08 /* Color7Classifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B2922BA8A1970048AC08 /* Color7Classifier.mlmodel */; };
 		C0A8B2992BA8B6A80048AC08 /* ObjectName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B2982BA8B6A80048AC08 /* ObjectName.swift */; };
 		C0A8B29B2BA8BA450048AC08 /* ItemsToFindModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B29A2BA8BA450048AC08 /* ItemsToFindModel.swift */; };
 		C0A8B29E2BA8C1320048AC08 /* ConstraintsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B29D2BA8C1320048AC08 /* ConstraintsVC.swift */; };
@@ -44,8 +48,12 @@
 		2EC1BA732BA8737100E1E410 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2EC1BA762BA8B5F600E1E410 /* GameplayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayViewModel.swift; sourceTree = "<group>"; };
 		C09106F92BA8DECB00037EAB /* CameraImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImageView.swift; sourceTree = "<group>"; };
+		C09106FB2BA8F96A00037EAB /* PontosLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PontosLabel.swift; sourceTree = "<group>"; };
+		C09106FD2BA8FD7800037EAB /* RoundLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundLabel.swift; sourceTree = "<group>"; };
+		C09106FF2BA8FF0800037EAB /* SpecialObjectLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialObjectLabel.swift; sourceTree = "<group>"; };
+		C09107012BA9058200037EAB /* ColorClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = ColorClassifier.mlmodel; sourceTree = "<group>"; };
+		C09107032BA90D3400037EAB /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
 		C0A8B2912BA8A1970048AC08 /* NewHomeObjects.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = NewHomeObjects.mlmodel; sourceTree = "<group>"; };
-		C0A8B2922BA8A1970048AC08 /* Color7Classifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Color7Classifier.mlmodel; sourceTree = "<group>"; };
 		C0A8B2982BA8B6A80048AC08 /* ObjectName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectName.swift; sourceTree = "<group>"; };
 		C0A8B29A2BA8BA450048AC08 /* ItemsToFindModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsToFindModel.swift; sourceTree = "<group>"; };
 		C0A8B29D2BA8C1320048AC08 /* ConstraintsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsVC.swift; sourceTree = "<group>"; };
@@ -108,7 +116,7 @@
 		C0A8B2902BA8A1460048AC08 /* CoreMLModels */ = {
 			isa = PBXGroup;
 			children = (
-				C0A8B2922BA8A1970048AC08 /* Color7Classifier.mlmodel */,
+				C09107012BA9058200037EAB /* ColorClassifier.mlmodel */,
 				C0A8B2912BA8A1970048AC08 /* NewHomeObjects.mlmodel */,
 			);
 			path = CoreMLModels;
@@ -121,6 +129,10 @@
 				C0A8B29F2BA8C7690048AC08 /* ChangeButton.swift */,
 				C0A8B2A12BA8CD5B0048AC08 /* PhotoButton.swift */,
 				C09106F92BA8DECB00037EAB /* CameraImageView.swift */,
+				C09106FB2BA8F96A00037EAB /* PontosLabel.swift */,
+				C09106FD2BA8FD7800037EAB /* RoundLabel.swift */,
+				C09106FF2BA8FF0800037EAB /* SpecialObjectLabel.swift */,
+				C09107032BA90D3400037EAB /* ProfileImage.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -374,7 +386,6 @@
 				C0A8B29B2BA8BA450048AC08 /* ItemsToFindModel.swift in Sources */,
 				2E81140A2BA4E263009CCC77 /* ConfigView.swift in Sources */,
 				E08782B12BA4D4A600FB5ABC /* LobbyView.swift in Sources */,
-				C0A8B2942BA8A1970048AC08 /* Color7Classifier.mlmodel in Sources */,
 				E08782A22BA4D42000FB5ABC /* Coordinator.swift in Sources */,
 				C09106FA2BA8DECB00037EAB /* CameraImageView.swift in Sources */,
 				E08782A02BA4D41500FB5ABC /* Utilitie.swift in Sources */,
@@ -382,12 +393,15 @@
 				C0A8B29E2BA8C1320048AC08 /* ConstraintsVC.swift in Sources */,
 				E08782A42BA4D42800FB5ABC /* CameraModel.swift in Sources */,
 				D92885B62B9668D100C73B6E /* MenuView.swift in Sources */,
+				C09106FC2BA8F96A00037EAB /* PontosLabel.swift in Sources */,
 				C0A8B2A22BA8CD5B0048AC08 /* PhotoButton.swift in Sources */,
 				C0A8B2A42BA8CE190048AC08 /* Delegates.swift in Sources */,
+				C09107042BA90D3400037EAB /* ProfileImage.swift in Sources */,
 				2EC1BA742BA8737100E1E410 /* ProfileView.swift in Sources */,
 				E08782A82BA4D44200FB5ABC /* MachineLearning.swift in Sources */,
 				E08782B32BA4ED1600FB5ABC /* CameraDelegate.swift in Sources */,
 				E08782AF2BA4D49E00FB5ABC /* FinalResultView.swift in Sources */,
+				C09107022BA9058200037EAB /* ColorClassifier.mlmodel in Sources */,
 				2E81140D2BA4E3C2009CCC77 /* CoordinatorView.swift in Sources */,
 				C0A8B2932BA8A1970048AC08 /* NewHomeObjects.mlmodel in Sources */,
 				2E8114112BA4EA16009CCC77 /* GameplayView.swift in Sources */,
@@ -397,6 +411,8 @@
 				2EC1BA772BA8B5F600E1E410 /* GameplayViewModel.swift in Sources */,
 				E08782A62BA4D43300FB5ABC /* SharePlayModel.swift in Sources */,
 				C0A8B2992BA8B6A80048AC08 /* ObjectName.swift in Sources */,
+				C09106FE2BA8FD7800037EAB /* RoundLabel.swift in Sources */,
+				C09107002BA8FF0800037EAB /* SpecialObjectLabel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -15,6 +15,7 @@ extension GameplayViewModel {
         self.camera = CameraModel(delegate: self)
         changeButton.delegate = self
         photoButton.delegate = self
+        items.delegate = self
     }
 }
 
@@ -32,6 +33,14 @@ extension GameplayViewModel: PhotoButtonDelegate {
         objectName.text = items.toFindObject
         print("Photo Touched")
     }
+}
+
+extension GameplayViewModel: ItemsDelegate {
+    func findedObjectAction() {
+        pontos.number += 1
+    }
+    
+    
 }
 
 extension GameplayViewModel: AVCaptureVideoDataOutputSampleBufferDelegate {

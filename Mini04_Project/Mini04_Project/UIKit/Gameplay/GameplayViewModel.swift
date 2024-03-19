@@ -18,8 +18,12 @@ class GameplayViewModel: NSObject {
     lazy var changeButton = ChangeButton()
     lazy var photoButton = PhotoButton()
     lazy var cameraImage = CameraImageView()
+    lazy var pontos = PontosLabel()
+    lazy var profile = ProfileImage()
+    lazy var round = RoundLabel()
+    lazy var special = SpecialObjectLabel()
     
-    var context:CIContext = CIContext()
+    var context: CIContext = CIContext()
     
     var timeRemaing = 120
     
@@ -28,6 +32,7 @@ class GameplayViewModel: NSObject {
         setupDelegate()
         
         objectName.text = items.toFindObject
+        special.text = items.specialObject
     }
     
 }
