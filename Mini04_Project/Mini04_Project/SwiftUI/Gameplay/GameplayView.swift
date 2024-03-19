@@ -7,10 +7,23 @@
 
 import SwiftUI
 
+// Criar uma classe que conforma ao protocolo UIViewControllerRepresentable
+struct MyUIViewControllerRepresentable: UIViewControllerRepresentable {
+    
+    // Definir o UIViewController que você deseja mostrar
+    func makeUIViewController(context: Context) -> UIViewController {
+        return GameplayViewController()
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+        // do nothing
+    }
+}
+
 struct GameplayView: View {
-    @StateObject var model = GameplayViewModel()
+//    @StateObject var model = GameplayViewModel()
     @EnvironmentObject private var navigationCoordinator: Coordinator
-    let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
+//    let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
     
     var body: some View {
         VStack {
@@ -19,6 +32,8 @@ struct GameplayView: View {
             Button("View Lobby") {
                 navigationCoordinator.push(.lobby)
             }
+
+            MyUIViewControllerRepresentable()
         }
     }
 }
