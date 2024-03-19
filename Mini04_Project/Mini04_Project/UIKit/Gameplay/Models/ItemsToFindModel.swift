@@ -54,14 +54,12 @@ class ItemsToFindModel {
     }
     
     func chooseSpecialObject() {
-        
         let item = objects.randomElement()
         
         if let item = item {
             specialObject = item
             objects.removeAll(where: {$0 == item})
         }
-        
     }
     
     func findedObject() {

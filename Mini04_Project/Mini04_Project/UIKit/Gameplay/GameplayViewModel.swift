@@ -23,6 +23,8 @@ class GameplayViewModel: NSObject {
     lazy var profile = ProfileImage()
     lazy var round = RoundLabel()
     lazy var special = SpecialObjectLabel()
+    lazy var timerRound = TimerRound(minutos: 2, segundos: 0)
+    lazy var timerObject = TimerObject(minutos: 0, segundos: 15)
     
     var context: CIContext = CIContext()
     
