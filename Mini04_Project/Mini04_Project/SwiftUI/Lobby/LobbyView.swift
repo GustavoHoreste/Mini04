@@ -8,16 +8,23 @@
 import SwiftUI
 
 struct LobbyView: View {
-    
     @EnvironmentObject private var navigationCoordinator: Coordinator
+    @StateObject private var presenter = SharePlayPresenter()
     
     var body: some View {
-        Button("push") {
-            navigationCoordinator.push(.gameplay)
+        VStack {
+            Button("push") {
+                navigationCoordinator.push(.gameplay)
+            }
+            
+            Button("Adicione seu amigo") {
+                navigationCoordinator.present(sheet: .shareplay)
+            }
         }
     }
 }
 
 #Preview {
     LobbyView()
+        .environmentObject(Coordinator())
 }

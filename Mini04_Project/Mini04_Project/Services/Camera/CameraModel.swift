@@ -102,7 +102,7 @@ class CameraModel: NSObject, ObservableObject {
         
         videoOutput.connections.first?.videoRotationAngle = 90
         
-        videoOutput.connections.first?.isVideoMirrored = true
+//        videoOutput.connections.first?.isVideoMirrored = true
     }
     
     func setupInputs() {

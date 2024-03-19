@@ -8,12 +8,17 @@
 import SwiftUI
 
 struct MenuView: View {
-    
     @EnvironmentObject private var navigationCoordinator: Coordinator
     
     var body: some View {
         VStack {
             HStack {
+                
+                Button{navigationCoordinator.present(sheet: .credits)}label: {
+                    Image(systemName: "info.circle.fill")
+                        .resizable()
+                        .frame(width: 35, height: 35)
+                }
                 
                 Spacer()
                 
@@ -59,4 +64,5 @@ struct MenuView: View {
 
 #Preview {
     MenuView()
+        .environmentObject(Coordinator())
 }

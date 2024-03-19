@@ -13,8 +13,8 @@ import CoreML
 class MlModel {
     
     //Variaveis que vao receber os modelos
-    private var colorModel:Color7Classifier!
-    private var objectsModel:NewHomeObjects!
+    private var colorModel: ColorClassifier!
+    private var objectsModel: NewHomeObjects!
     
     //MARK: - Funcoes internas para uso dos modelos
     //funcao que utiliza o modelo para classificar o objeto
@@ -30,15 +30,15 @@ class MlModel {
     }
     
     //funcao que utiliza o modelo para classificar a cor
-    private func colorVerify(image:CVPixelBuffer) -> Color7ClassifierOutput {
+    private func colorVerify(image:CVPixelBuffer) -> ColorClassifierOutput {
         do{
-            self.colorModel = try Color7Classifier(configuration: MLModelConfiguration())
+            self.colorModel = try ColorClassifier(configuration: MLModelConfiguration())
             let prediction = try colorModel.prediction(image: image)
             return prediction
         }catch {
             print(error)
         }
-        return Color7ClassifierOutput(target: "", targetProbability: ["": 0.0])
+        return ColorClassifierOutput(target: "", targetProbability: ["": 0.0])
     }
     
     //MARK: - Funcoes publicas que retornam a classificacao
