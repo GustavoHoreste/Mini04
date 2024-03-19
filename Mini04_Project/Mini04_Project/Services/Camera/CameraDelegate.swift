@@ -10,7 +10,7 @@ import AVFoundation
 import CoreImage
 import SwiftUI
 
-//Delegate para receber a imagem da camera
+//Delegate para receber a imagem da camera, caso a view utilizada nao seja o delegate
 extension CameraModel: AVCaptureVideoDataOutputSampleBufferDelegate {
     
     //Captura o buffer da imagem e armazena a UIimage dele na variavel frames

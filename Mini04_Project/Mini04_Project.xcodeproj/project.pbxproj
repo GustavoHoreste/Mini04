@@ -29,16 +29,22 @@
 		D92885B62B9668D100C73B6E /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92885B52B9668D100C73B6E /* MenuView.swift */; };
 		D92885B82B9668D200C73B6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D92885B72B9668D200C73B6E /* Assets.xcassets */; };
 		D92885BC2B9668D200C73B6E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D92885BB2B9668D200C73B6E /* Preview Assets.xcassets */; };
-		E08782A02BA4D41500FB5ABC /* Utilitie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E087829F2BA4D41400FB5ABC /* Utilitie.swift */; };
+		D9CD141F2BA8FA49003CB0B6 /* WhereWhereActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CD141E2BA8FA49003CB0B6 /* WhereWhereActivity.swift */; };
+		D9CD14212BA8FABB003CB0B6 /* ShareInviteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CD14202BA8FABB003CB0B6 /* ShareInviteSheet.swift */; };
+		D9CD14232BA8FAE5003CB0B6 /* SharePlayWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CD14222BA8FAE5003CB0B6 /* SharePlayWorker.swift */; };
+		D9CD14252BA8FAFC003CB0B6 /* SharePlayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CD14242BA8FAFC003CB0B6 /* SharePlayInteractor.swift */; };
+		D9CD14272BA8FB11003CB0B6 /* SharePlayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CD14262BA8FB11003CB0B6 /* SharePlayPresenter.swift */; };
+		E08782A02BA4D41500FB5ABC /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E087829F2BA4D41400FB5ABC /* UIImageExtension.swift */; };
 		E08782A22BA4D42000FB5ABC /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782A12BA4D42000FB5ABC /* Coordinator.swift */; };
 		E08782A42BA4D42800FB5ABC /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782A32BA4D42800FB5ABC /* CameraModel.swift */; };
-		E08782A62BA4D43300FB5ABC /* SharePlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782A52BA4D43300FB5ABC /* SharePlayModel.swift */; };
-		E08782A82BA4D44200FB5ABC /* MachineLearning.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782A72BA4D44200FB5ABC /* MachineLearning.swift */; };
+		E08782A82BA4D44200FB5ABC /* MLModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782A72BA4D44200FB5ABC /* MLModel.swift */; };
 		E08782AA2BA4D46900FB5ABC /* PartialResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782A92BA4D46900FB5ABC /* PartialResultViewController.swift */; };
 		E08782AC2BA4D47F00FB5ABC /* GameplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782AB2BA4D47F00FB5ABC /* GameplayViewController.swift */; };
 		E08782AF2BA4D49E00FB5ABC /* FinalResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782AE2BA4D49E00FB5ABC /* FinalResultView.swift */; };
 		E08782B12BA4D4A600FB5ABC /* LobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B02BA4D4A600FB5ABC /* LobbyView.swift */; };
 		E08782B32BA4ED1600FB5ABC /* CameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B22BA4ED1600FB5ABC /* CameraDelegate.swift */; };
+		E08782B52BA8C31400FB5ABC /* CoreMlErrorsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B42BA8C31400FB5ABC /* CoreMlErrorsEnum.swift */; };
+		E08782B82BA8C44000FB5ABC /* PlayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B72BA8C44000FB5ABC /* PlayerData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,16 +72,22 @@
 		D92885B72B9668D200C73B6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D92885B92B9668D200C73B6E /* Mini04_Project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mini04_Project.entitlements; sourceTree = "<group>"; };
 		D92885BB2B9668D200C73B6E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E087829F2BA4D41400FB5ABC /* Utilitie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilitie.swift; sourceTree = "<group>"; };
+		D9CD141E2BA8FA49003CB0B6 /* WhereWhereActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereWhereActivity.swift; sourceTree = "<group>"; };
+		D9CD14202BA8FABB003CB0B6 /* ShareInviteSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInviteSheet.swift; sourceTree = "<group>"; };
+		D9CD14222BA8FAE5003CB0B6 /* SharePlayWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayWorker.swift; sourceTree = "<group>"; };
+		D9CD14242BA8FAFC003CB0B6 /* SharePlayInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayInteractor.swift; sourceTree = "<group>"; };
+		D9CD14262BA8FB11003CB0B6 /* SharePlayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayPresenter.swift; sourceTree = "<group>"; };
+		E087829F2BA4D41400FB5ABC /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		E08782A12BA4D42000FB5ABC /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E08782A32BA4D42800FB5ABC /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
-		E08782A52BA4D43300FB5ABC /* SharePlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayModel.swift; sourceTree = "<group>"; };
-		E08782A72BA4D44200FB5ABC /* MachineLearning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineLearning.swift; sourceTree = "<group>"; };
+		E08782A72BA4D44200FB5ABC /* MLModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLModel.swift; sourceTree = "<group>"; };
 		E08782A92BA4D46900FB5ABC /* PartialResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialResultViewController.swift; sourceTree = "<group>"; };
 		E08782AB2BA4D47F00FB5ABC /* GameplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayViewController.swift; sourceTree = "<group>"; };
 		E08782AE2BA4D49E00FB5ABC /* FinalResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalResultView.swift; sourceTree = "<group>"; };
 		E08782B02BA4D4A600FB5ABC /* LobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyView.swift; sourceTree = "<group>"; };
 		E08782B22BA4ED1600FB5ABC /* CameraDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDelegate.swift; sourceTree = "<group>"; };
+		E08782B42BA8C31400FB5ABC /* CoreMlErrorsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMlErrorsEnum.swift; sourceTree = "<group>"; };
+		E08782B72BA8C44000FB5ABC /* PlayerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -274,7 +286,8 @@
 		E087829A2BA4D00A00FB5ABC /* MachineLearning */ = {
 			isa = PBXGroup;
 			children = (
-				E08782A72BA4D44200FB5ABC /* MachineLearning.swift */,
+				E08782A72BA4D44200FB5ABC /* MLModel.swift */,
+				E08782B42BA8C31400FB5ABC /* CoreMlErrorsEnum.swift */,
 			);
 			path = MachineLearning;
 			sourceTree = "<group>";
@@ -282,7 +295,10 @@
 		E087829B2BA4D02000FB5ABC /* SharePlay */ = {
 			isa = PBXGroup;
 			children = (
-				E08782A52BA4D43300FB5ABC /* SharePlayModel.swift */,
+				E08782B62BA8C42500FB5ABC /* Model */,
+				D9CD14222BA8FAE5003CB0B6 /* SharePlayWorker.swift */,
+				D9CD14242BA8FAFC003CB0B6 /* SharePlayInteractor.swift */,
+				D9CD14262BA8FB11003CB0B6 /* SharePlayPresenter.swift */,
 			);
 			path = SharePlay;
 			sourceTree = "<group>";
@@ -308,9 +324,19 @@
 		E087829E2BA4D06E00FB5ABC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				E087829F2BA4D41400FB5ABC /* Utilitie.swift */,
+				E087829F2BA4D41400FB5ABC /* UIImageExtension.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		E08782B62BA8C42500FB5ABC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E08782B72BA8C44000FB5ABC /* PlayerData.swift */,
+				D9CD141E2BA8FA49003CB0B6 /* WhereWhereActivity.swift */,
+				D9CD14202BA8FABB003CB0B6 /* ShareInviteSheet.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,11 +410,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0A8B29B2BA8BA450048AC08 /* ItemsToFindModel.swift in Sources */,
+				D9CD14212BA8FABB003CB0B6 /* ShareInviteSheet.swift in Sources */,
 				2E81140A2BA4E263009CCC77 /* ConfigView.swift in Sources */,
 				E08782B12BA4D4A600FB5ABC /* LobbyView.swift in Sources */,
 				E08782A22BA4D42000FB5ABC /* Coordinator.swift in Sources */,
 				C09106FA2BA8DECB00037EAB /* CameraImageView.swift in Sources */,
 				E08782A02BA4D41500FB5ABC /* Utilitie.swift in Sources */,
+				E08782A02BA4D41500FB5ABC /* UIImageExtension.swift in Sources */,
 				E08782AC2BA4D47F00FB5ABC /* GameplayViewController.swift in Sources */,
 				C0A8B29E2BA8C1320048AC08 /* ConstraintsVC.swift in Sources */,
 				E08782A42BA4D42800FB5ABC /* CameraModel.swift in Sources */,
@@ -397,13 +425,19 @@
 				C0A8B2A22BA8CD5B0048AC08 /* PhotoButton.swift in Sources */,
 				C0A8B2A42BA8CE190048AC08 /* Delegates.swift in Sources */,
 				C09107042BA90D3400037EAB /* ProfileImage.swift in Sources */,
+				D9CD141F2BA8FA49003CB0B6 /* WhereWhereActivity.swift in Sources */,
 				2EC1BA742BA8737100E1E410 /* ProfileView.swift in Sources */,
-				E08782A82BA4D44200FB5ABC /* MachineLearning.swift in Sources */,
+				E08782A82BA4D44200FB5ABC /* MLModel.swift in Sources */,
 				E08782B32BA4ED1600FB5ABC /* CameraDelegate.swift in Sources */,
 				E08782AF2BA4D49E00FB5ABC /* FinalResultView.swift in Sources */,
 				C09107022BA9058200037EAB /* ColorClassifier.mlmodel in Sources */,
 				2E81140D2BA4E3C2009CCC77 /* CoordinatorView.swift in Sources */,
+				D9CD14272BA8FB11003CB0B6 /* SharePlayPresenter.swift in Sources */,
+				E08782B52BA8C31400FB5ABC /* CoreMlErrorsEnum.swift in Sources */,
+				D9CD14252BA8FAFC003CB0B6 /* SharePlayInteractor.swift in Sources */,
 				C0A8B2932BA8A1970048AC08 /* NewHomeObjects.mlmodel in Sources */,
+				D9CD14232BA8FAE5003CB0B6 /* SharePlayWorker.swift in Sources */,
+				E08782B82BA8C44000FB5ABC /* PlayerData.swift in Sources */,
 				2E8114112BA4EA16009CCC77 /* GameplayView.swift in Sources */,
 				E08782AA2BA4D46900FB5ABC /* PartialResultViewController.swift in Sources */,
 				C0A8B2A02BA8C7690048AC08 /* ChangeButton.swift in Sources */,
@@ -545,7 +579,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = SJYF62B3PZ;
+				DEVELOPMENT_TEAM = 335BRL9A43;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -586,7 +620,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = SJYF62B3PZ;
+				DEVELOPMENT_TEAM = 335BRL9A43;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

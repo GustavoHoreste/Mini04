@@ -8,12 +8,22 @@
 import SwiftUI
 
 struct LobbyView: View {
-    
     @EnvironmentObject private var navigationCoordinator: Coordinator
+    @State private var isSheetOpen: Bool = false
     
     var body: some View {
-        Button("push") {
-            navigationCoordinator.push(.gameplay)
+        NavigationStack {
+            VStack {
+                Button("push") {
+                    navigationCoordinator.push(.gameplay)
+                }
+                
+                Button("Adicione seu amigo") {
+                    isSheetOpen = true
+                }
+            }.sheet(isPresented: $isSheetOpen){
+                let _ = print("salve")
+            }
         }
     }
 }

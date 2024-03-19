@@ -41,11 +41,14 @@ class CameraModel: NSObject, ObservableObject {
     
     var delegate: AVCaptureVideoDataOutputSampleBufferDelegate!
     
+    //MARK: - Inicializadores
+    //Init para swiftUI
     override init() {
         super.init()
         self.setupAndStartSession()
     }
     
+    //Init para UIkit
     convenience init(delegate: AVCaptureVideoDataOutputSampleBufferDelegate) {
         self.init()
         self.delegate = delegate
@@ -158,7 +161,7 @@ class CameraModel: NSObject, ObservableObject {
             self.permission = permission
         }
     }
-    
+    //MARK: - Funcoes extras
     //Função para armazenar os ultimos 8 frames da camera
     func lastFramesControl(uiImage:UIImage) {
         if lastFrames.count < 8 {
