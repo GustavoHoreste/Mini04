@@ -87,6 +87,7 @@ class CameraModel: NSObject, ObservableObject {
     func setupOutputs() {
         videoOutput = AVCaptureVideoDataOutput()
         let videoQueue = DispatchQueue(label: "videoQueue", qos: .userInitiated)
+        
         if let delegate = self.delegate {
             videoOutput.setSampleBufferDelegate(delegate, queue: videoQueue)
         } else {
