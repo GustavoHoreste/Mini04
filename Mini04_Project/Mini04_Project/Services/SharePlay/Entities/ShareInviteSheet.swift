@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 struct ShareInviteSheet: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIActivityViewController {
         let itemProvider = NSItemProvider()

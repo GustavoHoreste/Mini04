@@ -6,10 +6,14 @@
 //
 
 import SwiftUI
+import GroupActivities
+
 
 struct LobbyView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
-    @StateObject private var presenter = SharePlayPresenter()
+    @EnvironmentObject private var sharePlayVM: ShaPlayViewModel
+    @StateObject var groupStateObserver = GroupStateObserver()
+    @State var isOpen = false
     
     var body: some View {
         VStack {
@@ -18,9 +22,24 @@ struct LobbyView: View {
             }
             
             Button("Adicione seu amigo") {
-                navigationCoordinator.present(sheet: .shareplay)
+                verifyStausSession()
+//                navigationCoordinator.present(sheet: .shareplay)
+            }
+        }.task {
+            for await session in WhereWhereActivity.sessions(){
+                sharePlayVM.configurationSessin(session)
             }
         }
+    }
+    
+    
+   ///funcao que verifica o estado da session - se for desativada inicia a session
+   private func verifyStausSession(){
+        if groupStateObserver.isEligibleForGroupSession{
+            sharePlayVM.startSession()
+            return
+        }
+        navigationCoordinator.present(sheet: .shareplay)
     }
 }
 

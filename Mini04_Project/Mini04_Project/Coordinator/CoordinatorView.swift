@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CoordinatorView: View {
-    
     @StateObject private var navigationCoordinator = Coordinator()
     
     var body: some View {
