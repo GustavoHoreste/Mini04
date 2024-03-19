@@ -51,6 +51,7 @@
 		E08782B32BA4ED1600FB5ABC /* CameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B22BA4ED1600FB5ABC /* CameraDelegate.swift */; };
 		E08782B52BA8C31400FB5ABC /* CoreMlErrorsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B42BA8C31400FB5ABC /* CoreMlErrorsEnum.swift */; };
 		E08782B82BA8C44000FB5ABC /* PlayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B72BA8C44000FB5ABC /* PlayerData.swift */; };
+		E08782BA2BAA177600FB5ABC /* ProfileViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B92BAA177500FB5ABC /* ProfileViewViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +101,7 @@
 		E08782B22BA4ED1600FB5ABC /* CameraDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDelegate.swift; sourceTree = "<group>"; };
 		E08782B42BA8C31400FB5ABC /* CoreMlErrorsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMlErrorsEnum.swift; sourceTree = "<group>"; };
 		E08782B72BA8C44000FB5ABC /* PlayerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerData.swift; sourceTree = "<group>"; };
+		E08782B92BAA177500FB5ABC /* ProfileViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				2EC1BA732BA8737100E1E410 /* ProfileView.swift */,
+				E08782B92BAA177500FB5ABC /* ProfileViewViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -476,6 +479,7 @@
 				C0A8B2932BA8A1970048AC08 /* NewHomeObjects.mlmodel in Sources */,
 				D9CD14232BA8FAE5003CB0B6 /* SharePlayService.swift in Sources */,
 				E08782B82BA8C44000FB5ABC /* PlayerData.swift in Sources */,
+				E08782BA2BAA177600FB5ABC /* ProfileViewViewModel.swift in Sources */,
 				D9CD142A2BA9D84A003CB0B6 /* CreditsView.swift in Sources */,
 				2E8114112BA4EA16009CCC77 /* GameplayView.swift in Sources */,
 				C09107062BAA056300037EAB /* PowersStackView.swift in Sources */,
