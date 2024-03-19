@@ -13,7 +13,13 @@ struct GameplayView: View {
     let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        Text("\(model.timeRemaing)")
+        VStack {
+            Text("\(model.timeRemaing)")
+            
+            Button("View Lobby") {
+                navigationCoordinator.push(.lobby)
+            }
+        }
     }
 }
 

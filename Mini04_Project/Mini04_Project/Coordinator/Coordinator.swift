@@ -19,7 +19,7 @@ enum Page: String, Identifiable {
 }
 
 enum Sheet: String, Identifiable {
-    case config, profile, credits
+    case config, profile, credits, shareplay
     
     var id: String {
         self.rawValue
@@ -83,6 +83,7 @@ class Coordinator: ObservableObject {
         }
     }
     
+//    @MainActor
     @ViewBuilder
     func build(sheet: Sheet) -> some View {
         switch sheet {
@@ -97,6 +98,10 @@ class Coordinator: ObservableObject {
         case .credits:
             NavigationStack{
                 CreditsView()
+            }
+        case .shareplay:
+            NavigationStack{
+                ShareInviteSheet()
             }
         }
     }

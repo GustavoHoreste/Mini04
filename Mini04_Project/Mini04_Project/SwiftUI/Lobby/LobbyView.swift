@@ -9,20 +9,16 @@ import SwiftUI
 
 struct LobbyView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
-    @State private var isSheetOpen: Bool = false
+    @StateObject private var presenter = SharePlayPresenter()
     
     var body: some View {
-        NavigationStack {
-            VStack {
-                Button("push") {
-                    navigationCoordinator.push(.gameplay)
-                }
-                
-                Button("Adicione seu amigo") {
-                    isSheetOpen = true
-                }
-            }.sheet(isPresented: $isSheetOpen){
-                let _ = print("salve")
+        VStack {
+            Button("push") {
+                navigationCoordinator.push(.gameplay)
+            }
+            
+            Button("Adicione seu amigo") {
+                navigationCoordinator.present(sheet: .shareplay)
             }
         }
     }
@@ -30,4 +26,5 @@ struct LobbyView: View {
 
 #Preview {
     LobbyView()
+        .environmentObject(Coordinator())
 }
