@@ -11,7 +11,9 @@ class PontosLabel: UILabel {
 
     var number = 0 {
         didSet {
-            text = "\(number)"
+            DispatchQueue.main.async {
+                self.text = "\(self.number)"
+            }
         }
     }
     
