@@ -16,6 +16,8 @@ extension GameplayViewModel {
         changeButton.delegate = self
         photoButton.delegate = self
         items.delegate = self
+        timerRound.delegate = self
+        timerObject.delegate = self
     }
 }
 
@@ -23,6 +25,7 @@ extension GameplayViewModel: ChangeButtonDelegate {
     func changeButtonAction() {
         items.chooseObject()
         objectName.text = items.toFindObject
+        timerObject.resetTimerObject()
         print("Change Touched")
     }
 }
@@ -39,6 +42,7 @@ extension GameplayViewModel: PhotoButtonDelegate {
                     items.findedObject()
                     DispatchQueue.main.async{
                         self.objectName.text = self.items.toFindObject
+                        self.timerObject.resetTimerObject()
                     }
                 }
             }catch {
@@ -52,6 +56,18 @@ extension GameplayViewModel: PhotoButtonDelegate {
 extension GameplayViewModel: ItemsDelegate {
     func findedObjectAction() {
         pontos.number += 1
+    }
+}
+
+extension GameplayViewModel: TimerRoundDelegate {
+    func timerRoundOver() {
+        print("Tempo da rodada acabou")
+    }
+}
+
+extension GameplayViewModel: TimerObjectDelegate {
+    func timerObjectOver() {
+        changeButtonAction()
     }
 }
 

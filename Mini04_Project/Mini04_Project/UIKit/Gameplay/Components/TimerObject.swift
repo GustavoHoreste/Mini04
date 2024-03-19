@@ -1,19 +1,19 @@
 //
-//  TimerRound.swift
+//  TimerObject.swift
 //  Mini04_Project
 //
-//  Created by GABRIEL Ferreira Cardoso on 19/03/24.
+//  Created by André Felipe Chinen on 19/03/24.
 //
 
 import UIKit
 
-protocol TimerRoundDelegate {
-    func timerRoundOver()
+protocol TimerObjectDelegate {
+    func timerObjectOver()
 }
 
-class TimerRound: UILabel {
-    
-    var delegate: TimerRoundDelegate?
+class TimerObject: UILabel {
+
+    var delegate: TimerObjectDelegate?
     
     var minutos: Int = 10
     var segundos: Int = 0
@@ -30,7 +30,7 @@ class TimerRound: UILabel {
         self.segundos = segundos
         
         translatesAutoresizingMaskIntoConstraints = false
-        font = .systemFont(ofSize: 15)
+        font = .systemFont(ofSize: 20)
         textColor = .label
         
         showText()
@@ -47,6 +47,10 @@ class TimerRound: UILabel {
     
     func pauseTimer() {
         timer.invalidate()
+    }
+    func resetTimerObject() {
+        segundos = 15
+        showText()
     }
     
     @objc func step() {
@@ -68,7 +72,8 @@ class TimerRound: UILabel {
         }
         
         if minutos == 0 && segundos == 0 {
-            delegate?.timerRoundOver()
+            resetTimerObject()
+            delegate?.timerObjectOver()
         }
     }
     
@@ -79,5 +84,5 @@ class TimerRound: UILabel {
             text = "\(minutos):\(segundos)"
         }
     }
-    
+
 }

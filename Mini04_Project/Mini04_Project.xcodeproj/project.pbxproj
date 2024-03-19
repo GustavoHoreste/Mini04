@@ -22,6 +22,7 @@
 		C09107062BAA056300037EAB /* PowersStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09107052BAA056300037EAB /* PowersStackView.swift */; };
 		C09107092BAA066900037EAB /* PowersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09107082BAA066900037EAB /* PowersButton.swift */; };
 		C091070B2BAA085900037EAB /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = C091070A2BAA085900037EAB /* Enums.swift */; };
+		C091070D2BAA243D00037EAB /* TimerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C091070C2BAA243D00037EAB /* TimerObject.swift */; };
 		C0A8B2932BA8A1970048AC08 /* NewHomeObjects.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B2912BA8A1970048AC08 /* NewHomeObjects.mlmodel */; };
 		C0A8B2992BA8B6A80048AC08 /* ObjectName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B2982BA8B6A80048AC08 /* ObjectName.swift */; };
 		C0A8B29B2BA8BA450048AC08 /* ItemsToFindModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B29A2BA8BA450048AC08 /* ItemsToFindModel.swift */; };
@@ -68,6 +69,7 @@
 		C09107052BAA056300037EAB /* PowersStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowersStackView.swift; sourceTree = "<group>"; };
 		C09107082BAA066900037EAB /* PowersButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowersButton.swift; sourceTree = "<group>"; };
 		C091070A2BAA085900037EAB /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		C091070C2BAA243D00037EAB /* TimerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerObject.swift; sourceTree = "<group>"; };
 		C0A8B2912BA8A1970048AC08 /* NewHomeObjects.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = NewHomeObjects.mlmodel; sourceTree = "<group>"; };
 		C0A8B2982BA8B6A80048AC08 /* ObjectName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectName.swift; sourceTree = "<group>"; };
 		C0A8B29A2BA8BA450048AC08 /* ItemsToFindModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsToFindModel.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				C09106FF2BA8FF0800037EAB /* SpecialObjectLabel.swift */,
 				C09107032BA90D3400037EAB /* ProfileImage.swift */,
 				2E3A74382BAA126A0026BE07 /* TimerRound.swift */,
+				C091070C2BAA243D00037EAB /* TimerObject.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				C09106FC2BA8F96A00037EAB /* PontosLabel.swift in Sources */,
 				C0A8B2A22BA8CD5B0048AC08 /* PhotoButton.swift in Sources */,
 				C0A8B2A42BA8CE190048AC08 /* Delegates.swift in Sources */,
+				C091070D2BAA243D00037EAB /* TimerObject.swift in Sources */,
 				C09107042BA90D3400037EAB /* ProfileImage.swift in Sources */,
 				D9CD141F2BA8FA49003CB0B6 /* WhereWhereActivity.swift in Sources */,
 				2EC1BA742BA8737100E1E410 /* ProfileView.swift in Sources */,
@@ -614,7 +618,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = J7Y95G67T3;
+				DEVELOPMENT_TEAM = SJYF62B3PZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -655,7 +659,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = J7Y95G67T3;
+				DEVELOPMENT_TEAM = SJYF62B3PZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
