@@ -19,7 +19,7 @@ enum Page: String, Identifiable {
 }
 
 enum Sheet: String, Identifiable {
-    case config, profile
+    case config, profile, credits
     
     var id: String {
         self.rawValue
@@ -93,6 +93,10 @@ class Coordinator: ObservableObject {
         case .profile:
             NavigationStack {
                 ProfileView()
+            }
+        case .credits:
+            NavigationStack{
+                CreditsView()
             }
         }
     }

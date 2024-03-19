@@ -23,6 +23,7 @@
 		D9CD14232BA8FAE5003CB0B6 /* SharePlayWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CD14222BA8FAE5003CB0B6 /* SharePlayWorker.swift */; };
 		D9CD14252BA8FAFC003CB0B6 /* SharePlayInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CD14242BA8FAFC003CB0B6 /* SharePlayInteractor.swift */; };
 		D9CD14272BA8FB11003CB0B6 /* SharePlayPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CD14262BA8FB11003CB0B6 /* SharePlayPresenter.swift */; };
+		D9CD142A2BA9D84A003CB0B6 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CD14292BA9D84A003CB0B6 /* CreditsView.swift */; };
 		E08782A02BA4D41500FB5ABC /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E087829F2BA4D41400FB5ABC /* UIImageExtension.swift */; };
 		E08782A22BA4D42000FB5ABC /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782A12BA4D42000FB5ABC /* Coordinator.swift */; };
 		E08782A42BA4D42800FB5ABC /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782A32BA4D42800FB5ABC /* CameraModel.swift */; };
@@ -55,6 +56,7 @@
 		D9CD14222BA8FAE5003CB0B6 /* SharePlayWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayWorker.swift; sourceTree = "<group>"; };
 		D9CD14242BA8FAFC003CB0B6 /* SharePlayInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayInteractor.swift; sourceTree = "<group>"; };
 		D9CD14262BA8FB11003CB0B6 /* SharePlayPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayPresenter.swift; sourceTree = "<group>"; };
+		D9CD14292BA9D84A003CB0B6 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		E087829F2BA4D41400FB5ABC /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		E08782A12BA4D42000FB5ABC /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E08782A32BA4D42800FB5ABC /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
@@ -153,6 +155,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		D9CD14282BA9D825003CB0B6 /* Credits */ = {
+			isa = PBXGroup;
+			children = (
+				D9CD14292BA9D84A003CB0B6 /* CreditsView.swift */,
+			);
+			path = Credits;
+			sourceTree = "<group>";
+		};
 		E05410B22BA4CDEF00046661 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +174,7 @@
 		E05410B32BA4CE0300046661 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				D9CD14282BA9D825003CB0B6 /* Credits */,
 				E08782982BA4CFF700FB5ABC /* FinalRank */,
 				2E8114122BA4EA1B009CCC77 /* Gameplay */,
 				E08782972BA4CFE700FB5ABC /* Lobby */,
@@ -373,6 +384,7 @@
 				C0A8B2932BA8A1970048AC08 /* NewHomeObjects.mlmodel in Sources */,
 				D9CD14232BA8FAE5003CB0B6 /* SharePlayWorker.swift in Sources */,
 				E08782B82BA8C44000FB5ABC /* PlayerData.swift in Sources */,
+				D9CD142A2BA9D84A003CB0B6 /* CreditsView.swift in Sources */,
 				2E8114112BA4EA16009CCC77 /* GameplayView.swift in Sources */,
 				E08782AA2BA4D46900FB5ABC /* PartialResultViewController.swift in Sources */,
 				D92885B42B9668D100C73B6E /* Mini04_ProjectApp.swift in Sources */,
