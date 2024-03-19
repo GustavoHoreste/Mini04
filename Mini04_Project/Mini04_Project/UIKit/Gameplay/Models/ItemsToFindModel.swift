@@ -17,7 +17,6 @@ class ItemsToFindModel {
     
     var objects: [String] = ["Armario", "Bicicleta", "Bone", "Cadeira", "Calçados", "Cama", "Camisa", "Caneca", "Caneta", "Chave de fenda", "Chuveiro", "Clipe de papel", "Cola Bastao", "Colher", "Cortina","Espatula", "Flauta", "Frigideira", "Geladeira", "Impressora", "Livro:Caderno", "Lixeira", "Martelo", "Mesa", "Mochila", "Oculos", "Papel higienico", "Parafusadeira", "Pente", "Pilha", "Porta", "Regua", "Shorts:Calca", "Sofa", "TV", "Teclado", "Tesoura", "Toalha", "Vaso sanitario", "Ventilador"]
     
-    var timeRemaining = 120
     var toFindObject: String = ""
     var specialObject: String = ""
     var numberOfObjects: Int = 0
@@ -55,14 +54,12 @@ class ItemsToFindModel {
     }
     
     func chooseSpecialObject() {
-        
         let item = objects.randomElement()
         
         if let item = item {
             specialObject = item
             objects.removeAll(where: {$0 == item})
         }
-        
     }
     
     func findedObject() {

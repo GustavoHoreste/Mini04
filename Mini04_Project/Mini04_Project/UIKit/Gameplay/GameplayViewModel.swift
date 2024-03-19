@@ -13,6 +13,7 @@ class GameplayViewModel: NSObject {
     
     var camera: CameraModel!
     var items = ItemsToFindModel()
+    var model = MlModel()
     
     lazy var objectName = ObjectName()
     lazy var changeButton = ChangeButton()
@@ -22,10 +23,10 @@ class GameplayViewModel: NSObject {
     lazy var profile = ProfileImage()
     lazy var round = RoundLabel()
     lazy var special = SpecialObjectLabel()
+    lazy var timerRound = TimerRound(minutos: 2, segundos: 0)
+    lazy var timerObject = TimerObject(minutos: 0, segundos: 15)
     
     var context: CIContext = CIContext()
-    
-    var timeRemaing = 120
     
     override init() {
         super.init()

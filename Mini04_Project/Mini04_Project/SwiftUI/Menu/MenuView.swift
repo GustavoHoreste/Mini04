@@ -17,7 +17,7 @@ struct MenuView: View {
                 Button{navigationCoordinator.present(sheet: .credits)}label: {
                     Image(systemName: "info.circle.fill")
                         .resizable()
-                        .frame(width: 35, height: 35)
+                        .frame(width: 70, height: 70)
                 }
                 
                 Spacer()
@@ -25,14 +25,14 @@ struct MenuView: View {
                 Button(action: {navigationCoordinator.present(sheet: .config)}, label: {
                     Image(systemName: "gearshape.circle.fill")
                         .resizable()
-                        .frame(width: 35, height: 35)
+                        .frame(width: 70, height: 70)
                     
                 })
                 
                 Button(action: {navigationCoordinator.present(sheet: .profile)}, label: {
                     Image(systemName: "person.crop.circle.fill")
                         .resizable()
-                        .frame(width: 35, height: 35)
+                        .frame(width: 70, height: 70)
                     
                 })
             }
@@ -41,12 +41,20 @@ struct MenuView: View {
             
             Spacer()
             
+            Circle()
+                .foregroundStyle(.gray)
+                .frame(width: 310, height: 310)
+            
+            Spacer()
+            
+            
             Button(action: {navigationCoordinator.push(.gameplay)}, label: {
                 Text("Multi")
                     .padding()
                     .foregroundStyle(.white)
                     .background(.gray)
                     .clipShape(.capsule)
+                    .font(.title)
             })
             
             Button(action: {navigationCoordinator.push(.gameplay)}, label: {
@@ -55,6 +63,7 @@ struct MenuView: View {
                     .foregroundStyle(.white)
                     .background(.gray)
                     .clipShape(.capsule)
+                    .font(.title)
             })
             
             Spacer()
