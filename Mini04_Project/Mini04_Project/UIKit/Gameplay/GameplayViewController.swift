@@ -8,7 +8,7 @@
 import UIKit
 
 class GameplayViewController: UIViewController {
-
+    
     var gameplayVM = GameplayViewModel()
     
     override func viewDidLoad() {
@@ -17,5 +17,4 @@ class GameplayViewController: UIViewController {
         setupView()
     }
     
-
 }

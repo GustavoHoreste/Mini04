@@ -19,6 +19,9 @@ extension GameplayViewController {
         view.addSubview(gameplayVM.pontos)
         view.addSubview(gameplayVM.round)
         view.addSubview(gameplayVM.special)
+        view.addSubview(gameplayVM.timerRound)
+        view.addSubview(gameplayVM.timerObject)
+
         
         NSLayoutConstraint.activate([
             gameplayVM.objectName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -45,8 +48,13 @@ extension GameplayViewController {
             gameplayVM.round.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
             
             gameplayVM.special.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameplayVM.special.bottomAnchor.constraint(equalTo: gameplayVM.photoButton.topAnchor, constant: -10)
+            gameplayVM.special.bottomAnchor.constraint(equalTo: gameplayVM.photoButton.topAnchor, constant: -10),
 
+            gameplayVM.timerRound.centerXAnchor.constraint(equalTo: gameplayVM.round.centerXAnchor),
+            gameplayVM.timerRound.topAnchor.constraint(equalTo: gameplayVM.round.bottomAnchor, constant: 5),
+            
+            gameplayVM.timerObject.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            gameplayVM.timerObject.bottomAnchor.constraint(equalTo: gameplayVM.objectName.topAnchor, constant: -10)
         ])
     }
     
