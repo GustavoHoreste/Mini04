@@ -25,8 +25,6 @@ class GameplayViewModel: NSObject {
     
     var context: CIContext = CIContext()
     
-    var timeRemaing = 120
-    
     override init() {
         super.init()
         setupDelegate()
