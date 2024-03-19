@@ -46,6 +46,7 @@ final class SharePlayWorker{
     ///func que confgura shareplay e recebe o dado do shareplay
     
     
+    
     ///func que verifica estado da sesssion
     private func verifyStatusSession(){
         

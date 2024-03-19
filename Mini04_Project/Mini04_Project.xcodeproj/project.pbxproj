@@ -238,7 +238,7 @@
 		E087829B2BA4D02000FB5ABC /* SharePlay */ = {
 			isa = PBXGroup;
 			children = (
-				E08782B62BA8C42500FB5ABC /* Model */,
+				E08782B62BA8C42500FB5ABC /* Entities */,
 				D9CD14222BA8FAE5003CB0B6 /* SharePlayWorker.swift */,
 				D9CD14242BA8FAFC003CB0B6 /* SharePlayInteractor.swift */,
 				D9CD14262BA8FB11003CB0B6 /* SharePlayPresenter.swift */,
@@ -272,14 +272,14 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		E08782B62BA8C42500FB5ABC /* Model */ = {
+		E08782B62BA8C42500FB5ABC /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				E08782B72BA8C44000FB5ABC /* PlayerData.swift */,
 				D9CD141E2BA8FA49003CB0B6 /* WhereWhereActivity.swift */,
 				D9CD14202BA8FABB003CB0B6 /* ShareInviteSheet.swift */,
 			);
-			path = Model;
+			path = Entities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
