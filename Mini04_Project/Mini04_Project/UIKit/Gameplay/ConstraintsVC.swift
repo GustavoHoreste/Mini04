@@ -19,12 +19,10 @@ extension GameplayViewController {
         view.addSubview(gameplayVM.pontos)
         view.addSubview(gameplayVM.round)
         view.addSubview(gameplayVM.special)
-        view.addSubview(label)
+
         
         NSLayoutConstraint.activate([
-            
-            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            label.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+
             
             gameplayVM.objectName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.objectName.topAnchor.constraint(equalTo: view.topAnchor, constant: 50),
