@@ -30,7 +30,7 @@
 		C0A8B2A02BA8C7690048AC08 /* ChangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B29F2BA8C7690048AC08 /* ChangeButton.swift */; };
 		C0A8B2A22BA8CD5B0048AC08 /* PhotoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B2A12BA8CD5B0048AC08 /* PhotoButton.swift */; };
 		C0A8B2A42BA8CE190048AC08 /* Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B2A32BA8CE190048AC08 /* Delegates.swift */; };
-		D91D65102BAA1074003D7DBA /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91D650F2BAA1074003D7DBA /* Player.swift */; };
+		D91D65102BAA1074003D7DBA /* SharePlayAllModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91D650F2BAA1074003D7DBA /* SharePlayAllModels.swift */; };
 		D92885B42B9668D100C73B6E /* Mini04_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92885B32B9668D100C73B6E /* Mini04_ProjectApp.swift */; };
 		D92885B62B9668D100C73B6E /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92885B52B9668D100C73B6E /* MenuView.swift */; };
 		D92885B82B9668D200C73B6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D92885B72B9668D200C73B6E /* Assets.xcassets */; };
@@ -77,7 +77,7 @@
 		C0A8B29F2BA8C7690048AC08 /* ChangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeButton.swift; sourceTree = "<group>"; };
 		C0A8B2A12BA8CD5B0048AC08 /* PhotoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoButton.swift; sourceTree = "<group>"; };
 		C0A8B2A32BA8CE190048AC08 /* Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegates.swift; sourceTree = "<group>"; };
-		D91D650F2BAA1074003D7DBA /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		D91D650F2BAA1074003D7DBA /* SharePlayAllModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayAllModels.swift; sourceTree = "<group>"; };
 		D92885B02B9668D100C73B6E /* Mini04_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini04_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D92885B32B9668D100C73B6E /* Mini04_ProjectApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mini04_ProjectApp.swift; sourceTree = "<group>"; };
 		D92885B52B9668D100C73B6E /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -368,7 +368,7 @@
 				E08782B72BA8C44000FB5ABC /* PlayerData.swift */,
 				D9CD141E2BA8FA49003CB0B6 /* WhereWhereActivity.swift */,
 				D9CD14202BA8FABB003CB0B6 /* ShareInviteSheet.swift */,
-				D91D650F2BAA1074003D7DBA /* Player.swift */,
+				D91D650F2BAA1074003D7DBA /* SharePlayAllModels.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -461,7 +461,7 @@
 				C0A8B2A42BA8CE190048AC08 /* Delegates.swift in Sources */,
 				C091070D2BAA243D00037EAB /* TimerObject.swift in Sources */,
 				C09107042BA90D3400037EAB /* ProfileImage.swift in Sources */,
-				D91D65102BAA1074003D7DBA /* Player.swift in Sources */,
+				D91D65102BAA1074003D7DBA /* SharePlayAllModels.swift in Sources */,
 				D9CD141F2BA8FA49003CB0B6 /* WhereWhereActivity.swift in Sources */,
 				2EC1BA742BA8737100E1E410 /* ProfileView.swift in Sources */,
 				E08782A82BA4D44200FB5ABC /* MLModel.swift in Sources */,

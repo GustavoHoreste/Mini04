@@ -28,11 +28,7 @@ struct GameplayView: View {
     var body: some View {
         VStack {
 //            Text("\(model.timeRemaing)")
-            
-            Button("View Lobby") {
-                navigationCoordinator.push(.lobby)
-            }
-
+        
             MyUIViewControllerRepresentable()
         }
     }

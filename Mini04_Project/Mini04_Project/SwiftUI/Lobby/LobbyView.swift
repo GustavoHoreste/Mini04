@@ -19,7 +19,7 @@ struct LobbyView: View {
         VStack {
             Button("push") {
                 navigationCoordinator.push(.gameplay)
-            }
+            }.buttonStyle(.borderedProminent)
             
             Button("Adicione seu amigo") {
                 verifyStausSession()
