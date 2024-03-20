@@ -17,6 +17,7 @@ struct ConfigView: View {
                 navigationCoordinator.dismissSheet()
             }
         }
+        .navigationBarBackButtonHidden()
     }
 }
 

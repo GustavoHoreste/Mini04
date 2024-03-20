@@ -68,7 +68,9 @@ struct MenuView: View {
             
             Spacer()
         }
+        .navigationBarBackButtonHidden()
     }
+        
 }
 
 #Preview {

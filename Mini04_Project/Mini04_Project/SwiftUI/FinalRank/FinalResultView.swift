@@ -11,8 +11,99 @@ struct FinalResultView: View {
     
     @EnvironmentObject private var navigationCoordinator: Coordinator
     
+    var data: [Int] = Array(1...3)
+    let colors: [Color] = [.red, .green, .blue, .yellow]
+    let columnss = [
+        GridItem(.fixed(1))
+    ]
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Cade Cade Tops")
+                .font(.title)
+                .bold()
+                .padding()
+            
+            //Podium
+            VStack {
+                
+                //First Place
+                VStack {
+                    Text("#1")
+                        .bold()
+                    Image(systemName: "person.crop.circle")
+                        .resizable()
+                        .frame(width: 94, height: 95)
+                    HStack {
+                        Text("Gabriel")
+                        Text("8")
+                    }
+                }
+                
+                //Second and third
+                HStack {
+                    
+                    Spacer()
+                    
+                    //second
+                    VStack {
+                        Text("#2")
+                            .bold()
+                        Image(systemName: "person.crop.circle")
+                            .resizable()
+                            .frame(width: 94, height: 95)
+                        HStack {
+                            Text("Gabriel")
+                            Text("8")
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    //third
+                    VStack {
+                        Text("#3")
+                            .bold()
+                        Image(systemName: "person.crop.circle")
+                            .resizable()
+                            .frame(width: 94, height: 95)
+                        HStack {
+                            Text("Gabriel")
+                            Text("8")
+                        }
+                    }
+                    
+                    Spacer()
+                }
+            }
+            
+            //Rest of ranking
+            ScrollView {
+                LazyVGrid(columns: columnss, spacing: 20) {
+                    ForEach(data, id: \.self) { number in
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 20)
+                                .frame(width: 329, height: 49)
+                                .foregroundStyle(.gray)
+                        }
+                    }
+                }
+            }
+            .padding()
+            
+            Spacer()
+            
+            Button(action: {navigationCoordinator.push(.menu)}, label: {
+                Text("Menu")
+                    .padding()
+                    .foregroundStyle(.white)
+                    .background(.gray)
+                    .clipShape(.capsule)
+                    .font(.title)
+            })
+        }
+        .navigationBarBackButtonHidden()
+        .padding()
     }
 }
 
