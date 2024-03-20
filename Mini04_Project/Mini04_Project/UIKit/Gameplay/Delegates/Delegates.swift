@@ -27,8 +27,9 @@ extension GameplayViewModel {
 extension GameplayViewModel: ChangeButtonDelegate {
     func changeButtonAction() {
         items.chooseObject()
-        objectName.text = items.toFindObject
+        objectName.text = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
         timerObject.resetTimerObject()
+        items.shuffleIsOn = false
         print("Change Touched")
     }
 }
@@ -44,8 +45,9 @@ extension GameplayViewModel: PhotoButtonDelegate {
                 if returnedTargetObject == items.toFindObject || returnedTargetColor == items.toFindObject{
                     items.findedObject()
                     DispatchQueue.main.async{
-                        self.objectName.text = self.items.toFindObject
+                        self.objectName.text = self.items.shuffleIsOn ? self.items.toFindShuffled : self.items.toFindObject
                         self.timerObject.resetTimerObject()
+                        self.items.shuffleIsOn = false
                     }
                 }
                 if await special.specialIsOn && (items.specialObject == returnedTargetObject){
@@ -93,9 +95,7 @@ extension GameplayViewModel: PowersButtonDelegate {
         case .switchWord:
             print("")
             //Função de trocar objeto
-            items.chooseObject()
-            objectName.text = items.toFindObject
-            timerObject.resetTimerObject()
+            changeButtonAction()
         case .subtrac:
             print("")
             //Função de subtrair os pontos
