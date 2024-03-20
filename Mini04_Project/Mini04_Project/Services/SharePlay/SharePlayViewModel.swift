@@ -9,11 +9,14 @@ import SwiftUI
 import Combine
 import GroupActivities
 
-@MainActor
-final class ShaPlayViewModel: ObservableObject{
+
+final class SharePlayViewModel{
     @Published var players: [Player] = []
+    @Published private(set) var newPlayer: Player?
+    @Published private(set) var sessionState: Bool = false
+    
     private var groupSession: GroupSession<WhereWhereActivity>?
-    private var mesager: GroupSessionMessenger?
+    private var messenger: GroupSessionMessenger?
     private var subscriptions = Set<AnyCancellable>()
     private var tasks = Set<Task<Void, Never>>()
     
@@ -31,8 +34,9 @@ final class ShaPlayViewModel: ObservableObject{
     
     
     /// Função que envia os dados do jogador local.
-    public func sendPlayerData(_ player: Player) {
+    public func sendPlayerData(_ player: Player?) {
         // Implementação para enviar os dados do jogador local.
+        
     }
 
     /// Função que envia os pontos.
@@ -56,10 +60,20 @@ final class ShaPlayViewModel: ObservableObject{
     }
 
     
-    private func sendData<T: Codable>(_ model: T) {
+    public func sendData<T: Codable>(_ model: T) {
         Task {
             do {
-                try await mesager?.send(model)
+                try await messenger?.send(model)
+            } catch {
+                print("Error in send model session [SharePlayViewModel.sendData] - ", error.localizedDescription)
+            }
+        }
+    }
+    
+    public func sendData(_ model: Player) {
+        Task {
+            do {
+                try await messenger?.send(model)
             } catch {
                 print("Error in send model session [SharePlayViewModel.sendData] - ", error.localizedDescription)
             }
@@ -68,20 +82,24 @@ final class ShaPlayViewModel: ObservableObject{
     
     
     ///func que confgura shareplay e recebe o dado do shareplay
-    public func configurationSessin(_ session: GroupSession<WhereWhereActivity>){
-        let messager = GroupSessionMessenger(session: session)
-        self.mesager = messager
-        self.groupSession = session
+    public func configurationSessin(_ groupSession: GroupSession<WhereWhereActivity>){
+        let messenger = GroupSessionMessenger(session: groupSession)
+        self.messenger = messenger
+        self.groupSession = groupSession
         
-        groupSession?.$activeParticipants
-            .sink{ newParticipant in
-                print(newParticipant.count, " - ",newParticipant)
+        groupSession.$activeParticipants
+            .sink{ activityParticipant in
+                print(activityParticipant.count, " - ", activityParticipant)
+                let newParticipants = activityParticipant.subtracting(groupSession.activeParticipants)
+                
+                Task {
+                    try? await messenger.send(Players(players: self.players), to: .only(activityParticipant))
+                }
             }
             .store(in: &subscriptions)
-        
-        setupMessageTasks(messager)
-        
-        groupSession?.join()
+    
+        setupMessageTasks(messenger)
+        groupSession.join()
     }
     
     
@@ -129,8 +147,22 @@ final class ShaPlayViewModel: ObservableObject{
         )
     }
     
+    
+    ///funcao que verifica o estado da session: False = nao particioa de nunhma session
+    /////_ groupSession: GroupSession<WhereWhereActivity>
+    public func statusSession(){
+        groupSession?.$state
+            .sink{ state in
+                if case .invalidated = state{
+                    self.sessionState = true
+                }
+            }
+            .store(in: &subscriptions)
+    }
+    
+    
     private func handle(_ model: Player) {
-        print("Player: \(model)")
+        self.players.append(model)
     }
 
     private func handle(_ model: SendHindrances) {

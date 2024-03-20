@@ -9,6 +9,7 @@ import Foundation
 
 enum UserDefaultKey: String{
     case userName = "UserName"
+    case indexImage = "IndexImage"
 }
 
 class ProfileViewViewModel: ObservableObject {
@@ -16,12 +17,14 @@ class ProfileViewViewModel: ObservableObject {
     @Published var textField: String = "ApplyUserName"
     let userDefault = UserDefaults.standard
     
-    func addUserName() {
+    public func addUserName() {
         userDefault.setValue(textField, forKey: UserDefaultKey.userName.rawValue)
     }
     
+    
     init() {
         textField = userDefault.string(forKey: UserDefaultKey.userName.rawValue) ?? "Could not find"
+        
     }
     
 }

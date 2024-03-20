@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MenuView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
+    @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
     
     var body: some View {
         VStack {
@@ -67,6 +68,9 @@ struct MenuView: View {
             })
             
             Spacer()
+        }
+        .onAppear{
+            multiplayerVM.creatLocalUser()
         }
         .navigationBarBackButtonHidden()
     }
