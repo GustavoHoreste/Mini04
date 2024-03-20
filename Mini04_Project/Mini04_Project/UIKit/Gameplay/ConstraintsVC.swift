@@ -23,7 +23,7 @@ extension GameplayViewController {
         view.addSubview(gameplayVM.timerObject)
         view.addSubview(gameplayVM.powers)
         
-//        view.addSubview(addButton)
+        view.addSubview(addButton)
         
         NSLayoutConstraint.activate([
             gameplayVM.objectName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -61,8 +61,8 @@ extension GameplayViewController {
             gameplayVM.powers.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.powers.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-//            addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            addButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            addButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
     

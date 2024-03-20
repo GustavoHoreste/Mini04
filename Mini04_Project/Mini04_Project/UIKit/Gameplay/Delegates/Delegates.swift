@@ -82,20 +82,32 @@ extension GameplayViewModel: TimerObjectDelegate {
 }
 
 extension GameplayViewModel: PowersButtonDelegate {
-    func powerButtonAction(powerType: PowersTypes) {
+    func powerButtonAction(powerType: PowerUps) {
         powers.removePower(powerType: powerType)
         print(powerType)
         switch powerType{
         case .freeze:
             print("")
-        case .change:
+            //Função de congelar a câmera
+            powers.freezePower()
+        case .switchWord:
             print("")
-        case .subtract:
+            //Função de trocar objeto
+            items.chooseObject()
+            objectName.text = items.toFindObject
+            timerObject.resetTimerObject()
+        case .subtrac:
             print("")
-        case .switcher:
+            //Função de subtrair os pontos
+            pontos.subtractPower()
+        case .changeCamera:
             print("")
-        case .shuffle:
+            //Função que troca a câmera
+            camera.changeCamera()
+        case .shuffleWord:
             print("")
+            //Função que embaralha o nome do objeto
+            items.shufflePower()
         }
     }
 }
@@ -111,8 +123,10 @@ extension GameplayViewModel: AVCaptureVideoDataOutputSampleBufferDelegate {
     //Captura o buffer da imagem e armazena a UIimage dele na variavel frames
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let uiImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }
-        DispatchQueue.main.async { [unowned self] in
-            self.cameraImage.image = uiImage
+        if !powers.freezeIsOn {
+            DispatchQueue.main.async { [unowned self] in
+                self.cameraImage.image = uiImage
+            }
         }
     }
     

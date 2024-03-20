@@ -26,6 +26,7 @@ class ItemsToFindModel {
         }
     }
     var withColors = true
+    var shuffleIsOn = false
     
     init() {
         setColors()
@@ -48,6 +49,10 @@ class ItemsToFindModel {
             while(actualObject == toFindObject){
                 toFindObject = objects.filter{!findedObjects.contains($0)}.randomElement()!
             }
+            if shuffleIsOn {
+                toFindObject = toFindObject.shuffled()
+                shuffleIsOn = false
+            }
         }else {
             toFindObject = "Nenhum"
         }
@@ -66,5 +71,9 @@ class ItemsToFindModel {
         findedObjects.append(toFindObject)
         chooseObject()
         delegate?.findedObjectAction()
+    }
+    
+    func shufflePower() {
+        shuffleIsOn = true
     }
 }

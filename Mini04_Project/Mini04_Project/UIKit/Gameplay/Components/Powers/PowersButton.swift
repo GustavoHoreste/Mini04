@@ -8,16 +8,16 @@
 import UIKit
 
 protocol PowersButtonDelegate: AnyObject {
-    func powerButtonAction(powerType: PowersTypes)
+    func powerButtonAction(powerType: PowerUps)
 }
 
 class PowersButton: UIButton {
 
     weak var delegate: PowersButtonDelegate?
     
-    var powerType: PowersTypes?
+    var powerType: PowerUps?
     
-    init(imagem: UIImage, power: PowersTypes) {
+    init(imagem: UIImage, power: PowerUps) {
         super.init(frame: .zero)
         
         self.powerType = power
