@@ -48,6 +48,13 @@ extension GameplayViewModel: PhotoButtonDelegate {
                         self.timerObject.resetTimerObject()
                     }
                 }
+                if await special.specialIsOn && (items.specialObject == returnedTargetObject){
+                    items.specialObject = ""
+                    DispatchQueue.main.async {
+                        self.special.specialFinded()
+                        self.pontos.number += 1
+                    }
+                }
             }catch {
                 print(error)
             }
@@ -78,6 +85,24 @@ extension GameplayViewModel: PowersButtonDelegate {
     func powerButtonAction(powerType: PowersTypes) {
         powers.removePower(powerType: powerType)
         print(powerType)
+        switch powerType{
+        case .freeze:
+            print("")
+        case .change:
+            print("")
+        case .subtract:
+            print("")
+        case .switcher:
+            print("")
+        case .shuffle:
+            print("")
+        }
+    }
+}
+
+extension GameplayViewModel: SpecialObjectImageDelegate {
+    func specialAppeared() {
+        //Precisar fazer algo quando o Objeto Especial aparecer
     }
 }
 

@@ -8,7 +8,7 @@
 import UIKit
 
 class SpecialObjectLabel: UILabel {
-
+    
     init() {
         super.init(frame: .zero)
         
@@ -16,7 +16,6 @@ class SpecialObjectLabel: UILabel {
         font = .systemFont(ofSize: 20, weight: .bold)
         text = "Nenhum"
         textColor = .label
-        isHidden = true
         
     }
     
