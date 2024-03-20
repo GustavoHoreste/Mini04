@@ -62,6 +62,7 @@ struct ProfileView: View {
                 navigationCoordinator.dismissSheet()
             }
         }
+        .navigationBarBackButtonHidden()
     }
 }
 

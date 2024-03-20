@@ -8,28 +8,31 @@
 import UIKit
 
 protocol PowersButtonDelegate: AnyObject {
-    func powerButtonAction()
+    func powerButtonAction(powerType: PowersTypes)
 }
 
 class PowersButton: UIButton {
 
     weak var delegate: PowersButtonDelegate?
     
-    var power: PowersTypes?
+    var powerType: PowersTypes?
     
     init(imagem: UIImage, power: PowersTypes) {
         super.init(frame: .zero)
         
-        self.power = power
+        self.powerType = power
         
         translatesAutoresizingMaskIntoConstraints = false
         
         setBackgroundImage(imagem, for: .normal)
         addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        
+        widthAnchor.constraint(equalToConstant: 50).isActive = true
+        heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     @objc func buttonAction() {
-        delegate?.powerButtonAction()
+        delegate?.powerButtonAction(powerType: powerType!)
     }
     
     required init?(coder: NSCoder) {

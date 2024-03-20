@@ -21,7 +21,9 @@ extension GameplayViewController {
         view.addSubview(gameplayVM.special)
         view.addSubview(gameplayVM.timerRound)
         view.addSubview(gameplayVM.timerObject)
-
+        view.addSubview(gameplayVM.powers)
+        
+//        view.addSubview(addButton)
         
         NSLayoutConstraint.activate([
             gameplayVM.objectName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -31,7 +33,7 @@ extension GameplayViewController {
             gameplayVM.changeButton.topAnchor.constraint(equalTo: gameplayVM.objectName.bottomAnchor, constant: 10),
             
             gameplayVM.photoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameplayVM.photoButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            gameplayVM.photoButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
             
             gameplayVM.cameraImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.cameraImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -54,7 +56,13 @@ extension GameplayViewController {
             gameplayVM.timerRound.topAnchor.constraint(equalTo: gameplayVM.round.bottomAnchor, constant: 5),
             
             gameplayVM.timerObject.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameplayVM.timerObject.bottomAnchor.constraint(equalTo: gameplayVM.objectName.topAnchor, constant: -10)
+            gameplayVM.timerObject.bottomAnchor.constraint(equalTo: gameplayVM.objectName.topAnchor, constant: -10),
+            
+            gameplayVM.powers.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            gameplayVM.powers.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            
+//            addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            addButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
     

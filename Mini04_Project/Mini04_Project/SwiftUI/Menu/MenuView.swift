@@ -48,7 +48,7 @@ struct MenuView: View {
             Spacer()
             
             
-            Button(action: {navigationCoordinator.push(.gameplay)}, label: {
+            Button(action: {navigationCoordinator.push(.lobby)}, label: {
                 Text("Multi")
                     .padding()
                     .foregroundStyle(.white)
@@ -68,7 +68,9 @@ struct MenuView: View {
             
             Spacer()
         }
+        .navigationBarBackButtonHidden()
     }
+        
 }
 
 #Preview {

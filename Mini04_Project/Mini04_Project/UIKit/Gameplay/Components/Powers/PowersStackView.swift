@@ -17,6 +17,12 @@ class PowersStackView: UIStackView {
     
     lazy var allPowers: [PowersButton] = [freeze, change, subtract, switcher, shuffle]
     
+    var usersPowers: [PowersButton] = [] {
+        didSet {
+            numberOfPowers = usersPowers.count
+        }
+    }
+    
     var numberOfPowers = 0
     
     init() {
@@ -25,9 +31,27 @@ class PowersStackView: UIStackView {
         translatesAutoresizingMaskIntoConstraints = false
         
         axis = .horizontal
+        alignment = .center
+        spacing = 10
     }
     
-//    func addPowers
+    func addPowers() {
+        if numberOfPowers < 2 {
+            let power = allPowers.filter{!usersPowers.contains($0)}.randomElement()!
+            usersPowers.append(power)
+            addArrangedSubview(power)
+        }
+    }
+    
+    func removePower(powerType: PowersTypes) {
+        for power in usersPowers {
+            if power.powerType == powerType {
+                usersPowers.removeAll(where: {$0 == power})
+                removeArrangedSubview(power)
+                power.removeFromSuperview()
+            }
+        }
+    }
     
     required init(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

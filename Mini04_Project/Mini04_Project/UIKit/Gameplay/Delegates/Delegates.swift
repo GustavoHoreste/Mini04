@@ -18,6 +18,9 @@ extension GameplayViewModel {
         items.delegate = self
         timerRound.delegate = self
         timerObject.delegate = self
+        for power in powers.allPowers {
+            power.delegate = self
+        }
     }
 }
 
@@ -68,6 +71,13 @@ extension GameplayViewModel: TimerRoundDelegate {
 extension GameplayViewModel: TimerObjectDelegate {
     func timerObjectOver() {
         changeButtonAction()
+    }
+}
+
+extension GameplayViewModel: PowersButtonDelegate {
+    func powerButtonAction(powerType: PowersTypes) {
+        powers.removePower(powerType: powerType)
+        print(powerType)
     }
 }
 
