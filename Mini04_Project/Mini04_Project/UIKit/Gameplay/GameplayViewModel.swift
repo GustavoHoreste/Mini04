@@ -36,7 +36,6 @@ class GameplayViewModel: NSObject {
         objectName.text = items.toFindObject
         special.text = items.specialObject
     }
-    
 }
 
 
