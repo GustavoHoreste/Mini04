@@ -9,8 +9,12 @@ import SwiftUI
 
 struct CreditsView: View {
     var body: some View {
-        Text("Creditos aqui")
+        VStack {
+            Text("Creditos aqui")
+        }
+        .navigationBarBackButtonHidden()
     }
+    
 }
 
 #Preview {

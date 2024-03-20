@@ -28,6 +28,7 @@ struct GameplayView: View {
         
             MyUIViewControllerRepresentable()
         }
+        .navigationBarBackButtonHidden()
     }
 }
 //
