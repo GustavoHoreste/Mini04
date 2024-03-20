@@ -23,7 +23,6 @@ struct LobbyView: View {
             
             Button("Adicione seu amigo") {
                 verifyStausSession()
-//                navigationCoordinator.present(sheet: .shareplay)
             }
         }.task {
             for await session in WhereWhereActivity.sessions(){

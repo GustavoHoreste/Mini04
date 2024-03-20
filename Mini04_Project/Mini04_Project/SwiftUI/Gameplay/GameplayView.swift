@@ -7,18 +7,14 @@
 
 import SwiftUI
 
-// Criar uma classe que conforma ao protocolo UIViewControllerRepresentable
-//
+
 struct MyUIViewControllerRepresentable: UIViewControllerRepresentable {
     
-    // Definir o UIViewController que você deseja mostrar
     func makeUIViewController(context: Context) -> UIViewController {
         return GameplayViewController()
     }
     
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        // do nothing
-    }
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) { }
 }
 
 struct GameplayView: View {
@@ -34,7 +30,7 @@ struct GameplayView: View {
         }
     }
 }
-
-#Preview {
-    GameplayView()
-}
+//
+//#Preview {
+//    GameplayView()
+//}

@@ -7,17 +7,21 @@
 
 import Foundation
 
+enum UserDefaultKey: String{
+    case userName = "UserName"
+}
+
 class ProfileViewViewModel: ObservableObject {
-    @Published var canEdit:Bool = true
-    @Published var textField:String = "ApplyUserName"
+    @Published var canEdit: Bool = true
+    @Published var textField: String = "ApplyUserName"
     let userDefault = UserDefaults.standard
     
     func addUserName() {
-        userDefault.setValue(textField, forKey: "UserName")
+        userDefault.setValue(textField, forKey: UserDefaultKey.userName.rawValue)
     }
     
     init() {
-        textField = userDefault.string(forKey: "UserName") ?? "Could not find"
+        textField = userDefault.string(forKey: UserDefaultKey.userName.rawValue) ?? "Could not find"
     }
     
 }
