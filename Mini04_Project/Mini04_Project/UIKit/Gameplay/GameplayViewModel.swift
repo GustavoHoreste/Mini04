@@ -22,9 +22,10 @@ class GameplayViewModel: NSObject {
     lazy var pontos = PontosLabel()
     lazy var profile = ProfileImage()
     lazy var round = RoundLabel()
-    lazy var special = SpecialObjectLabel()
+    lazy var special = SpecialObjectImage()
     lazy var timerRound = TimerRound(minutos: 2, segundos: 0)
     lazy var timerObject = TimerObject(minutos: 0, segundos: 15)
+    lazy var powers = PowersStackView()
     
     var context: CIContext = CIContext()
     
@@ -33,7 +34,7 @@ class GameplayViewModel: NSObject {
         setupDelegate()
         
         objectName.text = items.toFindObject
-        special.text = items.specialObject
+        special.specialName.text = items.specialObject
     }
 }
 

@@ -30,5 +30,9 @@ class PontosLabel: UILabel {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func subtractPower() {
+        number -= 1
+    }
 
 }

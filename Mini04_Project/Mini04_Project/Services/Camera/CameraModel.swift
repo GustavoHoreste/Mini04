@@ -39,6 +39,9 @@ class CameraModel: NSObject, ObservableObject {
     //Contexto para converter a imagem
     var context:CIContext = CIContext()
     
+    //Verifica qual camera esta sendo usada
+    var backCameraOn:Bool = true
+    
     var delegate: AVCaptureVideoDataOutputSampleBufferDelegate!
     
     //MARK: - Inicializadores
@@ -55,7 +58,7 @@ class CameraModel: NSObject, ObservableObject {
     }
     
     //MARK: - Camera session setup
-    func setupAndStartSession() {
+    private func setupAndStartSession() {
         self.checkPermission()
         sessionQueue.async { [unowned self] in
             DispatchQueue.global(qos: .userInitiated).async {
@@ -84,7 +87,7 @@ class CameraModel: NSObject, ObservableObject {
     }
     
     //Configura o output da camera
-    func setupOutputs() {
+    private func setupOutputs() {
         videoOutput = AVCaptureVideoDataOutput()
         let videoQueue = DispatchQueue(label: "videoQueue", qos: .userInitiated)
         
@@ -105,7 +108,7 @@ class CameraModel: NSObject, ObservableObject {
 //        videoOutput.connections.first?.isVideoMirrored = true
     }
     
-    func setupInputs() {
+    private func setupInputs() {
         //Back camera setup
         if let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) {
             self.backCamera = device
@@ -143,7 +146,7 @@ class CameraModel: NSObject, ObservableObject {
     
     //MARK: - CAmera Permission
     //Verifica o acesso a camera do dispositivo
-    func checkPermission() {
+    private func checkPermission() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
         case .authorized:
             self.permission = true
@@ -157,7 +160,7 @@ class CameraModel: NSObject, ObservableObject {
     }
     
     //Pede acesso a camera do dispositivo
-    func requestPermission() {
+    private func requestPermission() {
         AVCaptureDevice.requestAccess(for: .video) { [unowned self] permission in
             self.permission = permission
         }
@@ -170,6 +173,44 @@ class CameraModel: NSObject, ObservableObject {
         } else if lastFrames.count == 8 {
             lastFrames.removeFirst()
             lastFrames.append(uiImage)
+        }
+    }
+    
+    func changeCamera() {
+        //Reconfigura o input
+//        captureSession.beginConfiguration()
+//        if backCameraOn {
+//            captureSession.removeInput(backCameraInput)
+//            captureSession.addInput(frontCameraInput)
+//            backCameraOn = false
+//        } else {
+//            captureSession.removeInput(frontCameraInput)
+//            captureSession.addInput(backCameraInput)
+//            backCameraOn = true
+//        }
+        
+        //Ajeita o angula da imgem para o frame
+//        videoOutput.connections.first?.videoRotationAngle = 90
+        
+//        //mirror the video stream for front camera
+//        videoOutput.connections.first?.isVideoMirrored = !backCameraOn
+        
+        //Faz o commit das configurcoes
+//        captureSession.commitConfiguration()
+        
+        captureSession.beginConfiguration()
+        captureSession.removeInput(backCameraInput)
+        captureSession.addInput(frontCameraInput)
+        videoOutput.connections.first?.videoRotationAngle = 90
+        captureSession.commitConfiguration()
+//        backCameraOn = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
+            self.captureSession.beginConfiguration()
+            self.captureSession.removeInput(self.frontCameraInput)
+            self.captureSession.addInput(self.backCameraInput)
+            self.backCameraOn = true
+            self.videoOutput.connections.first?.videoRotationAngle = 90
+            self.captureSession.commitConfiguration()
         }
     }
 }
