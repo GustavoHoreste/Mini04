@@ -31,6 +31,8 @@ class GameplayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        gameplayVM.controller = self
+        
         setupView()
     }
     

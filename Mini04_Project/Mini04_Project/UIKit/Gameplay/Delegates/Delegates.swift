@@ -73,12 +73,10 @@ extension GameplayViewModel: ItemsDelegate {
 }
 
 extension GameplayViewModel: TimerRoundDelegate {
+    
     func timerRoundOver() {
-        let nextScreen = GameplayViewController() //View do result parcial aqui
-        
-        if let navigationController = controller?.navigationController {
-            navigationController.setViewControllers([nextScreen], animated: true)
-        }
+        let nextScreen = PartialResultViewController(data: [])
+        controller?.navigationController!.pushViewController(nextScreen, animated: false)
     }
 }
 
