@@ -16,15 +16,15 @@ class ProfileViewViewModel: ObservableObject {
     @Published var canEdit: Bool = true
     @Published var textField: String = "ApplyUserName"
     let userDefault = UserDefaults.standard
+    let nomesPadrao = ["Spectra", "Aether", "Nimbus", "Phoenix", "Astra"]
+
+    
+    init() {
+        textField = userDefault.string(forKey: UserDefaultKey.userName.rawValue) ?? nomesPadrao.randomElement()!
+        addUserName()
+    }
     
     public func addUserName() {
         userDefault.setValue(textField, forKey: UserDefaultKey.userName.rawValue)
     }
-    
-    
-    init() {
-        textField = userDefault.string(forKey: UserDefaultKey.userName.rawValue) ?? "Could not find"
-        
-    }
-    
 }

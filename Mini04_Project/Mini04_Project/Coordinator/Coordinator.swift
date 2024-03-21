@@ -11,7 +11,8 @@ enum Page: String, Identifiable {
     case menu,
          lobby,
          gameplay,
-         finalRank
+         finalRank,
+         multiplayerHub
     
     var id: String {
         self.rawValue
@@ -80,6 +81,8 @@ class Coordinator: ObservableObject {
             FinalResultView()
         case .gameplay:
             GameplayView()
+        case .multiplayerHub:
+            MultiplayerHubView()
         }
     }
     

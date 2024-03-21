@@ -10,6 +10,8 @@ import SwiftUI
 @main
 struct Mini04_ProjectApp: App {
     @StateObject private var multiplayerVM: MultiplayerManagerViewModel
+    @StateObject var profileViewViewModel: ProfileViewViewModel = ProfileViewViewModel()
+
 
     init() {
         let sharePlayVM = SharePlayViewModel()
@@ -19,6 +21,7 @@ struct Mini04_ProjectApp: App {
         WindowGroup {
             CoordinatorView()
                 .environmentObject(multiplayerVM)
+                .environmentObject(profileViewViewModel)
         }
     }
 }

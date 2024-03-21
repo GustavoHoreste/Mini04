@@ -16,7 +16,7 @@ import Foundation
 /// Estrutura que representa um jogador
 struct Player: Codable {
     let id: UUID
-    let userName: String
+    var userName: String
     let playerImage: Int
     var isHost: Bool
     let participantType: ParticipantType

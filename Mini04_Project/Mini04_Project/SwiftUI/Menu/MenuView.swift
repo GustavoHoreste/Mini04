@@ -49,14 +49,17 @@ struct MenuView: View {
             Spacer()
             
             
-            Button(action: {navigationCoordinator.push(.lobby)}, label: {
+            Button{
+                multiplayerVM.creatLocalUser()
+                navigationCoordinator.push(.multiplayerHub)
+            } label: {
                 Text("Multi")
                     .padding()
                     .foregroundStyle(.white)
                     .background(.gray)
                     .clipShape(.capsule)
                     .font(.title)
-            })
+            }
             
             Button(action: {navigationCoordinator.push(.gameplay)}, label: {
                 Text("Single")
@@ -68,9 +71,6 @@ struct MenuView: View {
             })
             
             Spacer()
-        }
-        .onAppear{
-            multiplayerVM.creatLocalUser()
         }
         .navigationBarBackButtonHidden()
     }

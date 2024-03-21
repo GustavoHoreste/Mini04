@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     
     @EnvironmentObject private var navigationCoordinator: Coordinator
-    @StateObject var vm: ProfileViewViewModel = ProfileViewViewModel()
+    @EnvironmentObject private var vm: ProfileViewViewModel 
     
     var body: some View {
         VStack {

@@ -56,12 +56,14 @@ struct LobbyView: View {
                         .font(.headline)
                         .foregroundStyle(Color.red)
                     
-                    ForEach(multiplayerVM.adversaryPlayer, id: \.id) { player in
-                        ZStack(alignment: .center) {
-                            Text(player.userName)
+                    ForEach(multiplayerVM.adversaryPlayers, id: \.id) { player in
+                        ZStack {
                             RoundedRectangle(cornerRadius: 52.5)
                                 .frame(width: 156, height: 65)
                                 .foregroundStyle(colors.randomElement()!)
+                            Text(player.userName)
+                                .font(.headline)
+                                .foregroundStyle(Color.black)
                         }
                     }
                 }
@@ -72,16 +74,6 @@ struct LobbyView: View {
             
             
             //Buttons
-            Button(action: {multiplayerVM.sendLocalPlayerData()}, label: {
-                Text("Enviar dado player ")
-                    .padding()
-                    .foregroundStyle(.white)
-                    .background(.gray)
-                    .font(.title)
-                    .clipShape(.capsule)
-                
-            })
-            
             Button(action: {verifyStausSession()}, label: {
                 Text("Adicione seu amigo")
             })

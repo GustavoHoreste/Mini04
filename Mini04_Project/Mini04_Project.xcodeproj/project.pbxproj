@@ -37,6 +37,7 @@
 		D92885B62B9668D100C73B6E /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92885B52B9668D100C73B6E /* MenuView.swift */; };
 		D92885B82B9668D200C73B6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D92885B72B9668D200C73B6E /* Assets.xcassets */; };
 		D92885BC2B9668D200C73B6E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D92885BB2B9668D200C73B6E /* Preview Assets.xcassets */; };
+		D95398532BACCDA90022F444 /* MultiplayerHubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95398522BACCDA90022F444 /* MultiplayerHubView.swift */; };
 		D9CD141F2BA8FA49003CB0B6 /* WhereWhereActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CD141E2BA8FA49003CB0B6 /* WhereWhereActivity.swift */; };
 		D9CD14212BA8FABB003CB0B6 /* ShareInviteSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CD14202BA8FABB003CB0B6 /* ShareInviteSheet.swift */; };
 		D9CD14272BA8FB11003CB0B6 /* SharePlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CD14262BA8FB11003CB0B6 /* SharePlayViewModel.swift */; };
@@ -88,6 +89,7 @@
 		D92885B72B9668D200C73B6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D92885B92B9668D200C73B6E /* Mini04_Project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mini04_Project.entitlements; sourceTree = "<group>"; };
 		D92885BB2B9668D200C73B6E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D95398522BACCDA90022F444 /* MultiplayerHubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerHubView.swift; sourceTree = "<group>"; };
 		D9CD141E2BA8FA49003CB0B6 /* WhereWhereActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereWhereActivity.swift; sourceTree = "<group>"; };
 		D9CD14202BA8FABB003CB0B6 /* ShareInviteSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInviteSheet.swift; sourceTree = "<group>"; };
 		D9CD14262BA8FB11003CB0B6 /* SharePlayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayViewModel.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				E08782B02BA4D4A600FB5ABC /* LobbyView.swift */,
+				D95398522BACCDA90022F444 /* MultiplayerHubView.swift */,
 			);
 			path = Lobby;
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 				2E81140A2BA4E263009CCC77 /* ConfigView.swift in Sources */,
 				E08782B12BA4D4A600FB5ABC /* LobbyView.swift in Sources */,
 				E08782A22BA4D42000FB5ABC /* Coordinator.swift in Sources */,
+				D95398532BACCDA90022F444 /* MultiplayerHubView.swift in Sources */,
 				C09106FA2BA8DECB00037EAB /* CameraImageView.swift in Sources */,
 				E08782A02BA4D41500FB5ABC /* UIImageExtension.swift in Sources */,
 				E08782A02BA4D41500FB5ABC /* UIImageExtension.swift in Sources */,
@@ -626,7 +630,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = SJYF62B3PZ;
+				DEVELOPMENT_TEAM = 335BRL9A43;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -646,7 +650,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "group07.Mini04-Project0";
+				PRODUCT_BUNDLE_IDENTIFIER = "group07.Mini04-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -667,7 +671,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = SJYF62B3PZ;
+				DEVELOPMENT_TEAM = 335BRL9A43;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -687,7 +691,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "group07.Mini04-Project0";
+				PRODUCT_BUNDLE_IDENTIFIER = "group07.Mini04-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

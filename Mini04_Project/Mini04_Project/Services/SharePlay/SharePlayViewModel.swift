@@ -12,7 +12,7 @@ import GroupActivities
 
 final class SharePlayViewModel{
     @Published var players: [Player] = []
-    @Published private(set) var newPlayer: Player?
+    @Published var newPlayer: Player?
     @Published private(set) var sessionState: Bool = false
     
     private var groupSession: GroupSession<WhereWhereActivity>?
@@ -34,9 +34,14 @@ final class SharePlayViewModel{
     
     
     /// Função que envia os dados do jogador local.
-    public func sendPlayerData(_ player: Player?) {
-        // Implementação para enviar os dados do jogador local.
-        
+    public func sendPlayerData(_ model: Player) {
+        Task {
+            do {
+                try await messenger?.send(model)
+            } catch {
+                print("Error in send model session [SharePlayViewModel.sendData] - ", error.localizedDescription)
+            }
+        }
     }
 
     /// Função que envia os pontos.
@@ -58,28 +63,6 @@ final class SharePlayViewModel{
     public func sendConfigMatch(_ config: MatchConfig) {
         // Implementação para enviar os dados de configuração da partida para os outros participantes.
     }
-
-    
-    public func sendData<T: Codable>(_ model: T) {
-        Task {
-            do {
-                try await messenger?.send(model)
-            } catch {
-                print("Error in send model session [SharePlayViewModel.sendData] - ", error.localizedDescription)
-            }
-        }
-    }
-    
-    public func sendData(_ model: Player) {
-        Task {
-            do {
-                try await messenger?.send(model)
-            } catch {
-                print("Error in send model session [SharePlayViewModel.sendData] - ", error.localizedDescription)
-            }
-        }
-    }
-    
     
     ///func que confgura shareplay e recebe o dado do shareplay
     public func configurationSessin(_ groupSession: GroupSession<WhereWhereActivity>){
@@ -87,16 +70,8 @@ final class SharePlayViewModel{
         self.messenger = messenger
         self.groupSession = groupSession
         
-        groupSession.$activeParticipants
-            .sink{ activityParticipant in
-                print(activityParticipant.count, " - ", activityParticipant)
-                let newParticipants = activityParticipant.subtracting(groupSession.activeParticipants)
-                
-                Task {
-                    try? await messenger.send(Players(players: self.players), to: .only(activityParticipant))
-                }
-            }
-            .store(in: &subscriptions)
+        self.statusSession(groupSession)
+        self.userActivity(groupSession, messenger)
     
         setupMessageTasks(messenger)
         groupSession.join()
@@ -148,21 +123,57 @@ final class SharePlayViewModel{
     }
     
     
-    ///funcao que verifica o estado da session: False = nao particioa de nunhma session
-    /////_ groupSession: GroupSession<WhereWhereActivity>
-    public func statusSession(){
-        groupSession?.$state
+    ///funcao que verifica o estado da session: False = nao participa de nunhma session
+    public func statusSession(_ groupSession: GroupSession<WhereWhereActivity>){
+        groupSession.$state
             .sink{ state in
+                
                 if case .invalidated = state{
-                    self.sessionState = true
+                    self.reset()
+                }
+                
+            }
+            .store(in: &subscriptions)
+        
+        if groupSession.state == .waiting{
+            print("entrei no joined")
+            self.sessionState = true
+        }
+    }
+    
+    
+    private func userActivity(_ groupSession: GroupSession<WhereWhereActivity>, _ messenger: GroupSessionMessenger){
+        groupSession.$activeParticipants
+            .sink{ [self] activityParticipant in
+                print(activityParticipant.count, " - ", activityParticipant)
+                
+                let newParticipants = activityParticipant.subtracting(groupSession.activeParticipants)
+                
+                Task {
+                    try? await messenger.send(Players(players: self.players), to: .only(newParticipants))
                 }
             }
             .store(in: &subscriptions)
     }
+
     
+    private func reset(){
+        players = []
+        newPlayer = nil
+//        self.sessionState = false
+        messenger = nil
+        subscriptions = []
+        tasks.forEach {$0.cancel()}
+        if groupSession != nil{
+            groupSession?.leave()
+            groupSession = nil
+            self.startSession()
+        }
+        
+    }
     
     private func handle(_ model: Player) {
-        self.players.append(model)
+        self.newPlayer = model
     }
 
     private func handle(_ model: SendHindrances) {
