@@ -8,7 +8,10 @@
 import Foundation
 
 class PartialResultViewModel {
+    
     lazy var endGameButton = EndGameButton()
+    lazy var partialResultsTitle = PartialResultTitle()
+    lazy var readyButton = ReadyButton()
     
     init() {
         setupDelegates()

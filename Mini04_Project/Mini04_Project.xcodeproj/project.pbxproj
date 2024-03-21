@@ -71,6 +71,8 @@
 		E0AF6F042BACA948008BE255 /* PartialResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AF6F032BACA948008BE255 /* PartialResultViewModel.swift */; };
 		E0AF6F082BACAB67008BE255 /* EndGameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AF6F072BACAB67008BE255 /* EndGameButton.swift */; };
 		E0AF6F0A2BACAEA9008BE255 /* PartialResultsDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AF6F092BACAEA9008BE255 /* PartialResultsDelegates.swift */; };
+		E0AF6F0C2BACBC63008BE255 /* PartialResultTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AF6F0B2BACBC63008BE255 /* PartialResultTitle.swift */; };
+		E0AF6F0E2BACC6B1008BE255 /* ReadyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AF6F0D2BACC6B1008BE255 /* ReadyButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +142,8 @@
 		E0AF6F032BACA948008BE255 /* PartialResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialResultViewModel.swift; sourceTree = "<group>"; };
 		E0AF6F072BACAB67008BE255 /* EndGameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameButton.swift; sourceTree = "<group>"; };
 		E0AF6F092BACAEA9008BE255 /* PartialResultsDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialResultsDelegates.swift; sourceTree = "<group>"; };
+		E0AF6F0B2BACBC63008BE255 /* PartialResultTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialResultTitle.swift; sourceTree = "<group>"; };
+		E0AF6F0D2BACC6B1008BE255 /* ReadyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -333,6 +337,8 @@
 			children = (
 				E009867E2BAB626500E586C6 /* PartialResultCell.swift */,
 				E0AF6F072BACAB67008BE255 /* EndGameButton.swift */,
+				E0AF6F0B2BACBC63008BE255 /* PartialResultTitle.swift */,
+				E0AF6F0D2BACC6B1008BE255 /* ReadyButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -560,6 +566,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0A8B29B2BA8BA450048AC08 /* ItemsToFindModel.swift in Sources */,
+				E0AF6F0C2BACBC63008BE255 /* PartialResultTitle.swift in Sources */,
 				D9CD14212BA8FABB003CB0B6 /* ShareInviteSheet.swift in Sources */,
 				2E81140A2BA4E263009CCC77 /* ConfigView.swift in Sources */,
 				E08782B12BA4D4A600FB5ABC /* LobbyView.swift in Sources */,
@@ -578,6 +585,7 @@
 				C0A8B2A22BA8CD5B0048AC08 /* PhotoButton.swift in Sources */,
 				C0A8B2A42BA8CE190048AC08 /* Delegates.swift in Sources */,
 				C091070D2BAA243D00037EAB /* TimerObject.swift in Sources */,
+				E0AF6F0E2BACC6B1008BE255 /* ReadyButton.swift in Sources */,
 				C09107042BA90D3400037EAB /* ProfileImage.swift in Sources */,
 				D91D65102BAA1074003D7DBA /* SharePlayAllModels.swift in Sources */,
 				D9CD141F2BA8FA49003CB0B6 /* WhereWhereActivity.swift in Sources */,

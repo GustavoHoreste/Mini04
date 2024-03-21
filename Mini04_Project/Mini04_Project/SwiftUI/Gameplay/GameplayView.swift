@@ -11,7 +11,7 @@ import SwiftUI
 struct MyUIViewControllerRepresentable: UIViewControllerRepresentable {
     
     func makeUIViewController(context: Context) -> UIViewController {
-        return PartialResultViewController()
+        return GameplayViewController()
     }
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) { }

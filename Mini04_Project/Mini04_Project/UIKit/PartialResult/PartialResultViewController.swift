@@ -17,18 +17,22 @@ class PartialResultViewController: UIViewController {
         tableView.register(PartialResultCell.self, forCellReuseIdentifier:PartialResultCell.identifier)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.separatorColor = .clear
-        tableView.rowHeight = 110
-        tableView.estimatedRowHeight = 110
+        tableView.rowHeight = 90
+        tableView.estimatedRowHeight = 90
         return tableView
     }()
     
-    var testdata = [
-        player(playerName: "teste", playerScore: 2000),
-        player(playerName: "teste2", playerScore: 2100),
-        player(playerName: "teste3", playerScore: 2200),
-        player(playerName: "teste4", playerScore: 2300),
-    ]
-
+    var data:[Player]!
+    
+    init(data: [Player]) {
+        self.data = data
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
