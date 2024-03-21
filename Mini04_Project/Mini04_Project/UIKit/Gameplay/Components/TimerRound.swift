@@ -15,19 +15,16 @@ class TimerRound: UILabel {
     
     var delegate: TimerRoundDelegate?
     
-    var minutos: Int = 10
-    var segundos: Int = 0
+    var minutos: Int = 0
+    var segundos: Int = 10
     
     lazy var timer: Timer = {
         let t = Timer()
         return t
     }()
     
-    init(minutos: Int, segundos: Int) {
+    init() {
         super.init(frame: .zero)
-        
-        self.minutos = minutos
-        self.segundos = segundos
         
         translatesAutoresizingMaskIntoConstraints = false
         font = .systemFont(ofSize: 15)

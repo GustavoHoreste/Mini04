@@ -54,7 +54,8 @@ extension GameplayViewModel: PhotoButtonDelegate {
                     items.specialObject = ""
                     DispatchQueue.main.async {
                         self.special.specialFinded()
-                        self.pontos.number += 1
+                        self.pontos.number += 2
+                        self.powers.addPowers()
                     }
                 }
             }catch {
@@ -73,7 +74,11 @@ extension GameplayViewModel: ItemsDelegate {
 
 extension GameplayViewModel: TimerRoundDelegate {
     func timerRoundOver() {
-        print("Tempo da rodada acabou")
+        let nextScreen = GameplayViewController() //View do result parcial aqui
+        
+        if let navigationController = controller?.navigationController {
+            navigationController.setViewControllers([nextScreen], animated: true)
+        }
     }
 }
 

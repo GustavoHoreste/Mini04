@@ -26,6 +26,7 @@
 		2E8114112BA4EA16009CCC77 /* GameplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8114102BA4EA16009CCC77 /* GameplayView.swift */; };
 		2EC1BA742BA8737100E1E410 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1BA732BA8737100E1E410 /* ProfileView.swift */; };
 		2EC1BA772BA8B5F600E1E410 /* GameplayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1BA762BA8B5F600E1E410 /* GameplayViewModel.swift */; };
+		C0393D5C2BACC9FA00E97810 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0393D5B2BACC9FA00E97810 /* AudioManager.swift */; };
 		C09106FA2BA8DECB00037EAB /* CameraImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09106F92BA8DECB00037EAB /* CameraImageView.swift */; };
 		C09106FC2BA8F96A00037EAB /* PontosLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09106FB2BA8F96A00037EAB /* PontosLabel.swift */; };
 		C09106FE2BA8FD7800037EAB /* RoundLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09106FD2BA8FD7800037EAB /* RoundLabel.swift */; };
@@ -87,6 +88,7 @@
 		2E8114102BA4EA16009CCC77 /* GameplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayView.swift; sourceTree = "<group>"; };
 		2EC1BA732BA8737100E1E410 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2EC1BA762BA8B5F600E1E410 /* GameplayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayViewModel.swift; sourceTree = "<group>"; };
+		C0393D5B2BACC9FA00E97810 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		C09106F92BA8DECB00037EAB /* CameraImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraImageView.swift; sourceTree = "<group>"; };
 		C09106FB2BA8F96A00037EAB /* PontosLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PontosLabel.swift; sourceTree = "<group>"; };
 		C09106FD2BA8FD7800037EAB /* RoundLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundLabel.swift; sourceTree = "<group>"; };
@@ -212,6 +214,14 @@
 				E08782B92BAA177500FB5ABC /* ProfileViewViewModel.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		C0393D5A2BACC9D100E97810 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				C0393D5B2BACC9FA00E97810 /* AudioManager.swift */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 		C09107072BAA05F800037EAB /* Powers */ = {
@@ -392,6 +402,7 @@
 		E08782992BA4D00200FB5ABC /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				C0393D5A2BACC9D100E97810 /* Audio */,
 				E087829C2BA4D03800FB5ABC /* Camera */,
 				E087829B2BA4D02000FB5ABC /* SharePlay */,
 				E087829A2BA4D00A00FB5ABC /* MachineLearning */,
@@ -539,6 +550,7 @@
 				D92885B62B9668D100C73B6E /* MenuView.swift in Sources */,
 				2E3A743E2BAB58F30026BE07 /* ConfigButton.swift in Sources */,
 				C09106FC2BA8F96A00037EAB /* PontosLabel.swift in Sources */,
+				C0393D5C2BACC9FA00E97810 /* AudioManager.swift in Sources */,
 				C0A8B2A22BA8CD5B0048AC08 /* PhotoButton.swift in Sources */,
 				C0A8B2A42BA8CE190048AC08 /* Delegates.swift in Sources */,
 				C091070D2BAA243D00037EAB /* TimerObject.swift in Sources */,
@@ -734,7 +746,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini04-Project";
+				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini04-Project0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -775,7 +787,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini04-Project";
+				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini04-Project0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
