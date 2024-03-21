@@ -8,22 +8,36 @@
 import UIKit
 
 class PartialResultViewController: UIViewController {
+    
+    var partialResultVM = PartialResultViewModel()
+    
+    lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.allowsSelection = false
+        tableView.register(PartialResultCell.self, forCellReuseIdentifier:PartialResultCell.identifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.separatorColor = .clear
+        tableView.rowHeight = 110
+        tableView.estimatedRowHeight = 110
+        return tableView
+    }()
+    
+    var testdata = [
+        player(playerName: "teste", playerScore: 2000),
+        player(playerName: "teste2", playerScore: 2100),
+        player(playerName: "teste3", playerScore: 2200),
+        player(playerName: "teste4", playerScore: 2300),
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setupView()
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
+struct player{
+    var playerName:String
+    var playerScore:Int
 }

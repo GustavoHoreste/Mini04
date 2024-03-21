@@ -192,9 +192,6 @@ class CameraModel: NSObject, ObservableObject {
         //Ajeita o angula da imgem para o frame
         videoOutput.connections.first?.videoRotationAngle = 90
         
-//        //mirror the video stream for front camera
-//        videoOutput.connections.first?.isVideoMirrored = !backCameraOn
-        
         //Faz o commit das configurcoes
         captureSession.commitConfiguration()
     }
