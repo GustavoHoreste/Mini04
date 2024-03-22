@@ -10,9 +10,12 @@ import UIKit
 extension PartialResultViewController {
     
     func setupView() {
-        view.addSubview(tableView)
-        tableView.dataSource = self
-        tableView.delegate = self
+//        view.addSubview(tableView)
+//        tableView.dataSource = self
+//        tableView.delegate = self
+        
+        view.addSubview(collection)
+        collection.delegate = self
         
         view.addSubview(partialResultVM.endGameButton)
         view.addSubview(partialResultVM.partialResultsTitle)
@@ -28,10 +31,10 @@ extension PartialResultViewController {
             partialResultVM.partialResultsTitle.topAnchor.constraint(equalTo: partialResultVM.endGameButton.bottomAnchor),
             partialResultVM.partialResultsTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             
-            tableView.topAnchor.constraint(equalTo: partialResultVM.partialResultsTitle.bottomAnchor),
-            tableView.bottomAnchor.constraint(equalTo: partialResultVM.readyButton.topAnchor),
-            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            collection.topAnchor.constraint(equalTo: partialResultVM.partialResultsTitle.bottomAnchor),
+            collection.bottomAnchor.constraint(equalTo: partialResultVM.readyButton.topAnchor),
+            collection.leftAnchor.constraint(equalTo: view.leftAnchor),
+            collection.rightAnchor.constraint(equalTo: view.rightAnchor),
             
             partialResultVM.readyButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
             partialResultVM.readyButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),
