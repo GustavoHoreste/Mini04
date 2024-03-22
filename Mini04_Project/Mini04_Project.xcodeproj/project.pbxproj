@@ -48,6 +48,10 @@
 		C0A8B2A02BA8C7690048AC08 /* ChangeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B29F2BA8C7690048AC08 /* ChangeButton.swift */; };
 		C0A8B2A22BA8CD5B0048AC08 /* PhotoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B2A12BA8CD5B0048AC08 /* PhotoButton.swift */; };
 		C0A8B2A42BA8CE190048AC08 /* Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B2A32BA8CE190048AC08 /* Delegates.swift */; };
+		C0CBCB362BAE138C0020E594 /* SingleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB352BAE138C0020E594 /* SingleViewController.swift */; };
+		C0CBCB382BAE142B0020E594 /* SingleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB372BAE142B0020E594 /* SingleViewModel.swift */; };
+		C0CBCB3A2BAE14520020E594 /* ConstraintsSP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB392BAE14520020E594 /* ConstraintsSP.swift */; };
+		C0CBCB3C2BAE14870020E594 /* DelegatesSP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB3B2BAE14870020E594 /* DelegatesSP.swift */; };
 		D91D65102BAA1074003D7DBA /* SharePlayAllModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91D650F2BAA1074003D7DBA /* SharePlayAllModels.swift */; };
 		D91D65132BAB2871003D7DBA /* MultiplayerManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91D65122BAB2871003D7DBA /* MultiplayerManagerViewModel.swift */; };
 		D92885B42B9668D100C73B6E /* Mini04_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92885B32B9668D100C73B6E /* Mini04_ProjectApp.swift */; };
@@ -125,6 +129,10 @@
 		C0A8B29F2BA8C7690048AC08 /* ChangeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeButton.swift; sourceTree = "<group>"; };
 		C0A8B2A12BA8CD5B0048AC08 /* PhotoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoButton.swift; sourceTree = "<group>"; };
 		C0A8B2A32BA8CE190048AC08 /* Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegates.swift; sourceTree = "<group>"; };
+		C0CBCB352BAE138C0020E594 /* SingleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleViewController.swift; sourceTree = "<group>"; };
+		C0CBCB372BAE142B0020E594 /* SingleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleViewModel.swift; sourceTree = "<group>"; };
+		C0CBCB392BAE14520020E594 /* ConstraintsSP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsSP.swift; sourceTree = "<group>"; };
+		C0CBCB3B2BAE14870020E594 /* DelegatesSP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegatesSP.swift; sourceTree = "<group>"; };
 		D91D650F2BAA1074003D7DBA /* SharePlayAllModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayAllModels.swift; sourceTree = "<group>"; };
 		D91D65122BAB2871003D7DBA /* MultiplayerManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerManagerViewModel.swift; sourceTree = "<group>"; };
 		D92885B02B9668D100C73B6E /* Mini04_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini04_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -310,6 +318,29 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		C0CBCB332BAE12D50020E594 /* Multiplayer */ = {
+			isa = PBXGroup;
+			children = (
+				C0393D832BAD23FB00E97810 /* PreViewController.swift */,
+				E08782AB2BA4D47F00FB5ABC /* GameplayViewController.swift */,
+				2EC1BA762BA8B5F600E1E410 /* GameplayViewModel.swift */,
+				C0A8B29D2BA8C1320048AC08 /* ConstraintsVC.swift */,
+				C0A8B2A52BA8CE260048AC08 /* Delegates */,
+			);
+			path = Multiplayer;
+			sourceTree = "<group>";
+		};
+		C0CBCB342BAE12F80020E594 /* Singleplayer */ = {
+			isa = PBXGroup;
+			children = (
+				C0CBCB352BAE138C0020E594 /* SingleViewController.swift */,
+				C0CBCB372BAE142B0020E594 /* SingleViewModel.swift */,
+				C0CBCB392BAE14520020E594 /* ConstraintsSP.swift */,
+				C0CBCB3B2BAE14870020E594 /* DelegatesSP.swift */,
+			);
+			path = Singleplayer;
+			sourceTree = "<group>";
+		};
 		D92885A72B9668D100C73B6E = {
 			isa = PBXGroup;
 			children = (
@@ -424,11 +455,8 @@
 		E05410B52BA4CE1E00046661 /* Gameplay */ = {
 			isa = PBXGroup;
 			children = (
-				C0393D832BAD23FB00E97810 /* PreViewController.swift */,
-				E08782AB2BA4D47F00FB5ABC /* GameplayViewController.swift */,
-				2EC1BA762BA8B5F600E1E410 /* GameplayViewModel.swift */,
-				C0A8B29D2BA8C1320048AC08 /* ConstraintsVC.swift */,
-				C0A8B2A52BA8CE260048AC08 /* Delegates */,
+				C0CBCB342BAE12F80020E594 /* Singleplayer */,
+				C0CBCB332BAE12D50020E594 /* Multiplayer */,
 				C0A8B29C2BA8BEFD0048AC08 /* Models */,
 				C0A8B2952BA8B3EB0048AC08 /* Components */,
 			);
@@ -630,6 +658,7 @@
 				C091070D2BAA243D00037EAB /* TimerObject.swift in Sources */,
 				E0AF6F0E2BACC6B1008BE255 /* ReadyButton.swift in Sources */,
 				C09107042BA90D3400037EAB /* ProfileImage.swift in Sources */,
+				C0CBCB3A2BAE14520020E594 /* ConstraintsSP.swift in Sources */,
 				D9AAE1902BAD24A5009C1A90 /* SharePlayViewModel.swift in Sources */,
 				D92D6BA52BAD2C03006B7E87 /* MatchConfigView.swift in Sources */,
 				D91D65102BAA1074003D7DBA /* SharePlayAllModels.swift in Sources */,
@@ -650,6 +679,7 @@
 				2E81140D2BA4E3C2009CCC77 /* CoordinatorView.swift in Sources */,
 				E00986822BAB681200E586C6 /* TableDelegate.swift in Sources */,
 				E08782B52BA8C31400FB5ABC /* CoreMlErrorsEnum.swift in Sources */,
+				C0CBCB3C2BAE14870020E594 /* DelegatesSP.swift in Sources */,
 				2E3A74472BAB62410026BE07 /* FirstPlaceLabel.swift in Sources */,
 				C09107092BAA066900037EAB /* PowersButton.swift in Sources */,
 				2E3A74392BAA126A0026BE07 /* TimerRound.swift in Sources */,
@@ -665,6 +695,7 @@
 				2E3A74422BAB5FDB0026BE07 /* InviteButton.swift in Sources */,
 				E08782AA2BA4D46900FB5ABC /* PartialResultViewController.swift in Sources */,
 				2E3A74532BAB7ED90026BE07 /* SingleButton.swift in Sources */,
+				C0CBCB362BAE138C0020E594 /* SingleViewController.swift in Sources */,
 				C0A8B2A02BA8C7690048AC08 /* ChangeButton.swift in Sources */,
 				D92885B42B9668D100C73B6E /* Mini04_ProjectApp.swift in Sources */,
 				E0AF6F0A2BACAEA9008BE255 /* PartialResultsDelegates.swift in Sources */,
@@ -675,6 +706,7 @@
 				C0393D5E2BACEDBC00E97810 /* CrosshairImage.swift in Sources */,
 				2E3A744F2BAB733D0026BE07 /* InfoButton.swift in Sources */,
 				C09106FE2BA8FD7800037EAB /* RoundLabel.swift in Sources */,
+				C0CBCB382BAE142B0020E594 /* SingleViewModel.swift in Sources */,
 				2E3A74402BAB5DDF0026BE07 /* StartButton.swift in Sources */,
 				C0393D602BACF05900E97810 /* LogoImage.swift in Sources */,
 				C09107002BA8FF0800037EAB /* SpecialObjectLabel.swift in Sources */,

@@ -34,7 +34,7 @@ class LogoImage: UIImageView {
     }
     
     func sizeDecrease() {
-        UIView.animate(withDuration: 3.0, animations: {
+        UIView.animate(withDuration: 2.0, animations: {
             self.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
         }, completion: { _ in
             self.removeFromSuperview()
