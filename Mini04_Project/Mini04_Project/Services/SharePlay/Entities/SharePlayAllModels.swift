@@ -10,9 +10,6 @@ import GroupActivities
 import Foundation
 
 
-
-
-
 /// Estrutura que representa um jogador
 struct Player: Codable {
     let id: UUID

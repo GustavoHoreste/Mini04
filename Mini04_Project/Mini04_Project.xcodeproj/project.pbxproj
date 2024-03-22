@@ -51,6 +51,8 @@
 		D92885B62B9668D100C73B6E /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92885B52B9668D100C73B6E /* MenuView.swift */; };
 		D92885B82B9668D200C73B6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D92885B72B9668D200C73B6E /* Assets.xcassets */; };
 		D92885BC2B9668D200C73B6E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D92885BB2B9668D200C73B6E /* Preview Assets.xcassets */; };
+		D92D6BA52BAD2C03006B7E87 /* MatchConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92D6BA42BAD2C03006B7E87 /* MatchConfigView.swift */; };
+		D92D6BA82BAD30D0006B7E87 /* ToggleConfigComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92D6BA62BAD2CE5006B7E87 /* ToggleConfigComponent.swift */; };
 		D95398532BACCDA90022F444 /* MultiplayerHubView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95398522BACCDA90022F444 /* MultiplayerHubView.swift */; };
 		D9AAE1902BAD24A5009C1A90 /* SharePlayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CD14262BA8FB11003CB0B6 /* SharePlayViewModel.swift */; };
 		D9CD141F2BA8FA49003CB0B6 /* WhereWhereActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CD141E2BA8FA49003CB0B6 /* WhereWhereActivity.swift */; };
@@ -125,6 +127,8 @@
 		D92885B72B9668D200C73B6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D92885B92B9668D200C73B6E /* Mini04_Project.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mini04_Project.entitlements; sourceTree = "<group>"; };
 		D92885BB2B9668D200C73B6E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D92D6BA42BAD2C03006B7E87 /* MatchConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchConfigView.swift; sourceTree = "<group>"; };
+		D92D6BA62BAD2CE5006B7E87 /* ToggleConfigComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleConfigComponent.swift; sourceTree = "<group>"; };
 		D95398522BACCDA90022F444 /* MultiplayerHubView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerHubView.swift; sourceTree = "<group>"; };
 		D9CD141E2BA8FA49003CB0B6 /* WhereWhereActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereWhereActivity.swift; sourceTree = "<group>"; };
 		D9CD14202BA8FABB003CB0B6 /* ShareInviteSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInviteSheet.swift; sourceTree = "<group>"; };
@@ -339,6 +343,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		D92D6BA92BAD3485006B7E87 /* CofigMatch */ = {
+			isa = PBXGroup;
+			children = (
+				D92D6BA42BAD2C03006B7E87 /* MatchConfigView.swift */,
+				D92D6BA62BAD2CE5006B7E87 /* ToggleConfigComponent.swift */,
+			);
+			path = CofigMatch;
+			sourceTree = "<group>";
+		};
 		D9CD14282BA9D825003CB0B6 /* Credits */ = {
 			isa = PBXGroup;
 			children = (
@@ -432,6 +445,7 @@
 				2E3A74572BACA9F80026BE07 /* Buttons */,
 				E08782B02BA4D4A600FB5ABC /* LobbyView.swift */,
 				D95398522BACCDA90022F444 /* MultiplayerHubView.swift */,
+				D92D6BA92BAD3485006B7E87 /* CofigMatch */,
 			);
 			path = Lobby;
 			sourceTree = "<group>";
@@ -590,6 +604,7 @@
 				E08782A22BA4D42000FB5ABC /* Coordinator.swift in Sources */,
 				D95398532BACCDA90022F444 /* MultiplayerHubView.swift in Sources */,
 				C09106FA2BA8DECB00037EAB /* CameraImageView.swift in Sources */,
+				D92D6BA82BAD30D0006B7E87 /* ToggleConfigComponent.swift in Sources */,
 				E08782BC2BAB565900FB5ABC /* ConstraintsPR.swift in Sources */,
 				E009867F2BAB626500E586C6 /* PartialResultCell.swift in Sources */,
 				E08782A02BA4D41500FB5ABC /* UIImageExtension.swift in Sources */,
@@ -607,6 +622,7 @@
 				E0AF6F0E2BACC6B1008BE255 /* ReadyButton.swift in Sources */,
 				C09107042BA90D3400037EAB /* ProfileImage.swift in Sources */,
 				D9AAE1902BAD24A5009C1A90 /* SharePlayViewModel.swift in Sources */,
+				D92D6BA52BAD2C03006B7E87 /* MatchConfigView.swift in Sources */,
 				D91D65102BAA1074003D7DBA /* SharePlayAllModels.swift in Sources */,
 				D9CD141F2BA8FA49003CB0B6 /* WhereWhereActivity.swift in Sources */,
 				2E3A74512BAB73A10026BE07 /* ProfileButton.swift in Sources */,

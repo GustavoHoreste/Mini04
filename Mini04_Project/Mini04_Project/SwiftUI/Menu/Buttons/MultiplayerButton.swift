@@ -8,8 +8,21 @@
 import SwiftUI
 
 struct MultiplayerButton: View {
+    @EnvironmentObject private var navigationCoordinator: Coordinator
+    @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Button{
+            multiplayerVM.creatLocalUser()
+            navigationCoordinator.push(.multiplayerHub)
+        } label: {
+            Text("MultiPlayer")
+                .padding()
+                .foregroundStyle(.white)
+                .background(.gray)
+                .clipShape(.capsule)
+                .font(.title)
+        }
     }
 }
 
