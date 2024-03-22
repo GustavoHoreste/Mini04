@@ -14,28 +14,13 @@ struct MenuView: View {
     var body: some View {
         VStack {
             HStack {
-                
-                Button{navigationCoordinator.present(sheet: .credits)}label: {
-                    Image(systemName: "info.circle.fill")
-                        .resizable()
-                        .frame(width: 70, height: 70)
-                }
+                InfoButton()
                 
                 Spacer()
                 
-                Button(action: {navigationCoordinator.present(sheet: .config)}, label: {
-                    Image(systemName: "gearshape.circle.fill")
-                        .resizable()
-                        .frame(width: 70, height: 70)
-                    
-                })
+                ConfigButton()
                 
-                Button(action: {navigationCoordinator.present(sheet: .profile)}, label: {
-                    Image(systemName: "person.crop.circle.fill")
-                        .resizable()
-                        .frame(width: 70, height: 70)
-                    
-                })
+                ProfileButton()
             }
             .padding()
             .foregroundStyle(.gray)
@@ -48,20 +33,11 @@ struct MenuView: View {
             
             Spacer()
             
+            MultiplayerButton()
             
-            Button{
-                multiplayerVM.creatLocalUser()
-                navigationCoordinator.push(.multiplayerHub)
-            } label: {
-                Text("Multi")
-                    .padding()
-                    .foregroundStyle(.white)
-                    .background(.gray)
-                    .clipShape(.capsule)
-                    .font(.title)
-            }
+            SingleButton()
             
-            Button(action: {navigationCoordinator.push(.gameplay)}, label: {
+            Button(action: {navigationCoordinator.push(.finalRank)}, label: {
                 Text("Single")
                     .padding()
                     .foregroundStyle(.white)
@@ -74,7 +50,7 @@ struct MenuView: View {
         }
         .navigationBarBackButtonHidden()
     }
-        
+    
 }
 
 #Preview {

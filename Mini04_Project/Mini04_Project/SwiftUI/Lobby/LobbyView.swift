@@ -24,30 +24,18 @@ struct LobbyView: View {
         VStack {
             //Menu
             HStack {
-                Button{navigationCoordinator.pop()}label: {
-                    Image(systemName: "chevron.left.circle.fill")
-                        .resizable()
-                        .frame(width: 70, height: 70)
-                }
+                BackButton()
                 
                 Spacer()
                 
-                Button(action: {navigationCoordinator.present(sheet: .config)}, label: {
-                    Image(systemName: "gearshape.circle.fill")
-                        .resizable()
-                        .frame(width: 70, height: 70)
-                    
-                })
+                ConfigButton()
                 
             }
             .foregroundStyle(.gray)
             .padding()
             
             //Title
-            Text("Sala de espera")
-                .font(.title)
-                .bold()
-
+            LobbyTitle()
             
             //Grid
             ScrollView {
@@ -78,18 +66,13 @@ struct LobbyView: View {
                 Text("Adicione seu amigo")
             })
             
-            Button(action: {navigationCoordinator.push(.gameplay)}, label: {
-                Text("Começar")
-                    .padding()
-                    .foregroundStyle(.white)
-                    .background(.gray)
-                    .font(.title)
-                    .clipShape(.capsule)
-                
-            })
+        StartButton()
+
+
+            
         }.task {
             for await session in WhereWhereActivity.sessions(){
-                multiplayerVM.sharePlayVM.configurationSessin(session)
+                sharePlayVM.configurationSessin(session)
             }
         }
         .navigationBarBackButtonHidden()

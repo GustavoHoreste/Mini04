@@ -11,6 +11,8 @@ import CoreImage
 
 class GameplayViewModel: NSObject {
     
+    var controller: GameplayViewController?
+    
     var camera: CameraModel!
     var items = ItemsToFindModel()
     var model = MlModel()
@@ -23,8 +25,8 @@ class GameplayViewModel: NSObject {
     lazy var profile = ProfileImage()
     lazy var round = RoundLabel()
     lazy var special = SpecialObjectImage()
-    lazy var timerRound = TimerRound(minutos: 2, segundos: 0)
-    lazy var timerObject = TimerObject(minutos: 0, segundos: 15)
+    lazy var timerRound = TimerRound()
+    lazy var timerObject = TimerObject()
     lazy var powers = PowersStackView()
     
     var context: CIContext = CIContext()
@@ -36,6 +38,9 @@ class GameplayViewModel: NSObject {
         objectName.text = items.toFindObject
         special.specialName.text = items.specialObject
     }
+    
+    
+    
 }
 
 

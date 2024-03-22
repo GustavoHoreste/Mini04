@@ -26,52 +26,17 @@ struct FinalResultView: View {
             
             //Podium
             VStack {
-                
-                //First Place
-                VStack {
-                    Text("#1")
-                        .bold()
-                    Image(systemName: "person.crop.circle")
-                        .resizable()
-                        .frame(width: 94, height: 95)
-                    HStack {
-                        Text("Gabriel")
-                        Text("8")
-                    }
-                }
+                FirstPlaceLabel()
                 
                 //Second and third
                 HStack {
                     
                     Spacer()
-                    
-                    //second
-                    VStack {
-                        Text("#2")
-                            .bold()
-                        Image(systemName: "person.crop.circle")
-                            .resizable()
-                            .frame(width: 94, height: 95)
-                        HStack {
-                            Text("Gabriel")
-                            Text("8")
-                        }
-                    }
+                    SecondPlaceLabel()
                     
                     Spacer()
-                    
                     //third
-                    VStack {
-                        Text("#3")
-                            .bold()
-                        Image(systemName: "person.crop.circle")
-                            .resizable()
-                            .frame(width: 94, height: 95)
-                        HStack {
-                            Text("Gabriel")
-                            Text("8")
-                        }
-                    }
+                    ThirdPlaceLabel()
                     
                     Spacer()
                 }
@@ -93,14 +58,8 @@ struct FinalResultView: View {
             
             Spacer()
             
-            Button(action: {navigationCoordinator.push(.menu)}, label: {
-                Text("Menu")
-                    .padding()
-                    .foregroundStyle(.white)
-                    .background(.gray)
-                    .clipShape(.capsule)
-                    .font(.title)
-            })
+            MenuButtonLabel()
+            
         }
         .navigationBarBackButtonHidden()
         .padding()
