@@ -44,6 +44,8 @@ struct MultiplayerHubView: View {
                     .clipShape(.capsule)
             }.navigationBarBackButtonHidden()
                 .disabled(!multiplayerVM.sessionActivityIsWaiting)
+//                .disabled(multiplayerVM.localPlayer?.isHost ?? false)
+            
         }.task {
             for await session in WhereWhereActivity.sessions(){
                 multiplayerVM.sharePlayVM.configurationSessin(session)

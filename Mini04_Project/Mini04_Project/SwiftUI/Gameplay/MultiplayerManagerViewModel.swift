@@ -62,13 +62,13 @@ class MultiplayerManagerViewModel: ObservableObject{
     
     public func creatLocalUser(){
         guard let name = userDefults.string(forKey: UserDefaultKey.userName.rawValue) else {return}
-        //chamar userdefult com index
-        let indexImage = 1
+        guard let idString = userDefults.string(forKey: UserDefaultKey.userID.rawValue) else {return}
+        guard let id = UUID(uuidString: idString) else {return}
         
         if localPlayer == nil{
-            let localUser = Player(id: UUID(),
+            let localUser = Player(id: id,
                                    userName: name,
-                                   playerImage: indexImage,
+                                   playerImage: 1,
                                    isHost: false,
                                    participantType: .player,
                                    points: 0,

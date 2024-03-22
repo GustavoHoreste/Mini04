@@ -10,6 +10,7 @@ import Foundation
 enum UserDefaultKey: String{
     case userName = "UserName"
     case indexImage = "IndexImage"
+    case userID = "userID"
 }
 
 class ProfileViewViewModel: ObservableObject {
@@ -22,9 +23,15 @@ class ProfileViewViewModel: ObservableObject {
     init() {
         textField = userDefault.string(forKey: UserDefaultKey.userName.rawValue) ?? nomesPadrao.randomElement()!
         addUserName()
+        creatID()
     }
     
     public func addUserName() {
         userDefault.setValue(textField, forKey: UserDefaultKey.userName.rawValue)
+    }
+    
+    private func creatID(){
+        let id = UUID()
+        userDefault.setValue(id.uuidString, forKey:  UserDefaultKey.userID.rawValue)
     }
 }

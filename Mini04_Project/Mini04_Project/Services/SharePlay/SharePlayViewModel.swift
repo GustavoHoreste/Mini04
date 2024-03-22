@@ -133,22 +133,12 @@ final class SharePlayViewModel{
                     self.reset()
                 }
                 
-                if state == .joined{
-                    print("STATE: joined")
-                    self.sessionActivityIsJoined = true
+                if groupSession.state == .waiting{
+                    print("STATE: waiting")
+                    self.sessionActivityIsWaiting = true
                 }
             }
             .store(in: &subscriptions)
-        
-        if groupSession.state == .waiting{
-            print("STATE: waiting")
-            self.sessionActivityIsWaiting = true
-        }
-        
-//        if groupSession.state == .joined{
-//            print("STATE: joined")
-//            self.sessionActivityIsJoined = true
-//        }
     }
     
     
@@ -159,8 +149,14 @@ final class SharePlayViewModel{
                 
                 let newParticipants = activityParticipant.subtracting(groupSession.activeParticipants)
                 
-                Task {
-                    try? await messenger.send(Players(players: self.players), to: .only(newParticipants))
+                if !players.isEmpty{
+                    Task {
+                        try? await messenger.send(Players(players: self.players), to: .only(newParticipants))
+                    }
+                }
+                
+                if activityParticipant.count > 1{
+                    self.sessionActivityIsJoined = true
                 }
             }
             .store(in: &subscriptions)
