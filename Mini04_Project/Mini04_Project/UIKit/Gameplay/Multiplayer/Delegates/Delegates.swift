@@ -101,23 +101,18 @@ extension GameplayViewModel: PowersButtonDelegate {
         print(powerType)
         switch powerType{
         case .freeze:
-            print("")
             //Função de congelar a câmera
             powers.freezePower()
         case .switchWord:
-            print("")
             //Função de trocar objeto
             changeButtonAction()
         case .subtrac:
-            print("")
             //Função de subtrair os pontos
             pontos.subtractPower()
         case .changeCamera:
-            print("")
             //Função que troca a câmera
             camera.changeCamera()
         case .shuffleWord:
-            print("")
             //Função que embaralha o nome do objeto
             items.shufflePower()
         }

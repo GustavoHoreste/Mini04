@@ -16,7 +16,7 @@ class GameplayViewController: UIViewController {
         super.viewDidLoad()
 
         gameplayVM.controller = self
-        print(multiVM.adversaryPlayers)
+        gameplayVM.multiVM = multiVM
         
         setupView()
     }

@@ -12,6 +12,7 @@ import CoreImage
 class GameplayViewModel: NSObject {
     
     var controller: GameplayViewController?
+    var multiVM: MultiplayerManagerViewModel?
     
     var camera: CameraModel!
     var items = ItemsToFindModel()
