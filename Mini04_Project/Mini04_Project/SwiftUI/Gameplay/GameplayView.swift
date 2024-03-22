@@ -10,8 +10,10 @@ import SwiftUI
 
 struct MyUIViewControllerRepresentable: UIViewControllerRepresentable {
     
+    var multiVM: MultiplayerManagerViewModel
+    
     func makeUIViewController(context: Context) -> UIViewController {
-        return PreViewController()
+        return PreViewController(multiVM: multiVM)
     }
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) { }
@@ -21,12 +23,13 @@ struct GameplayView: View {
 //    @StateObject var model = GameplayViewModel()
     @EnvironmentObject private var navigationCoordinator: Coordinator
 //    let timer = Timer.publish(every: 1.0, on: .main, in: .common).autoconnect()/////
+    @EnvironmentObject private var multiVM: MultiplayerManagerViewModel
     
     var body: some View {
         VStack {
 //            Text("\(model.timeRemaing)")
         
-            MyUIViewControllerRepresentable()
+            MyUIViewControllerRepresentable(multiVM: multiVM)
         }
         .navigationBarBackButtonHidden()
     }
