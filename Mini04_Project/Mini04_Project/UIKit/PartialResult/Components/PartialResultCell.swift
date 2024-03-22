@@ -31,6 +31,12 @@ class PartialResultCell: UICollectionViewCell {
         setupLabels()
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupBackground()
+        setupLabels()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("not implemented")
     }

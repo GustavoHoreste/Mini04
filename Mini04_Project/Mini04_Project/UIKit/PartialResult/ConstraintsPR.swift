@@ -10,12 +10,13 @@ import UIKit
 extension PartialResultViewController {
     
     func setupView() {
-//        view.addSubview(tableView)
-//        tableView.dataSource = self
-//        tableView.delegate = self
+        //        view.addSubview(tableView)
+        //        tableView.dataSource = self
+        //        tableView.delegate = self
         
-        view.addSubview(collection)
+        collection.dataSource = dataSource
         collection.delegate = self
+        view.addSubview(collection)
         
         view.addSubview(partialResultVM.endGameButton)
         view.addSubview(partialResultVM.partialResultsTitle)

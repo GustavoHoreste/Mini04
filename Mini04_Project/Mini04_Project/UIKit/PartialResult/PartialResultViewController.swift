@@ -15,24 +15,30 @@ class PartialResultViewController: UIViewController {
     
     var partialResultVM = PartialResultViewModel()
     
-    typealias DataSource = UICollectionViewDiffableDataSource<Section, player>
-    typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, player>
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, Player>
+    typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, Player>
     
     
     var collection: UICollectionView = {
-        let collection = UICollectionView()
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: 280, height: 90)
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.showsVerticalScrollIndicator = false
+        collection.backgroundColor = .systemBackground
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.register(PartialResultCell.self, forCellWithReuseIdentifier: PartialResultCell.identifier)
         return collection
     }()
     
-    private var dataSource: DataSource!
-    private var snapshot = DataSourceSnapshot()
+    var dataSource: DataSource!
+    var snapshot = DataSourceSnapshot()
     
     var data:[Player]
     
     init(data: [Player]) {
         self.data = data
+        partialResultVM.data = data
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -44,29 +50,23 @@ class PartialResultViewController: UIViewController {
         super.viewDidLoad()
         partialResultVM.view = self
         configureCollectionViewDataSource()
+        applySnapshot(players: partialResultVM.data)
         setupView()
     }
     
     private func configureCollectionViewDataSource() {
         dataSource = DataSource(collectionView: collection, cellProvider: { (collectionView, indexPath, player) -> PartialResultCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PartialResultCell.identifier, for: indexPath) as! PartialResultCell
-            cell.playerName.text = player.playerName
-            cell.playerScore.text = String(player.playerScore)
+            cell.playerName.text = player.userName
+            cell.playerScore.text = String(player.points)
             return cell
         })
     }
     
-    func applySnapshot(players: [player]) {
+    func applySnapshot(players: [Player]) {
         snapshot = DataSourceSnapshot()
         snapshot.appendSections([Section.main])
         snapshot.appendItems(players)
         dataSource.apply(snapshot,animatingDifferences: true)
     }
-}
-
-
-
-struct player: Hashable{
-    var playerName:String
-    var playerScore:Int
 }

@@ -23,6 +23,6 @@ extension PartialResultViewModel: EndgameButtonDelegate {
 extension PartialResultViewModel: ReadyButtonDelegate {
     func ready() {
         self.readyButton.setTitle("Ready", for: .normal)
-        view.applySnapshot(players: [player(playerName: "teste", playerScore: 2 + Int.random(in: 0...10))])
+        view.applySnapshot(players: self.data.sorted(by: {$0.points > $1.points}))
     }
 }
