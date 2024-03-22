@@ -15,7 +15,7 @@ extension PartialResultViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: PartialResultCell.identifier, for: indexPath) as! PartialResultCell
-        cell.playerName.text = data[indexPath.row].player.userName
+        cell.playerName.text = data[indexPath.row].userName
         cell.playerScore.text = String(data[indexPath.row].points)
         cell.position.text = String(indexPath.row)
         return cell

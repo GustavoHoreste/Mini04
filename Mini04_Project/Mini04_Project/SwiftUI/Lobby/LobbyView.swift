@@ -68,11 +68,10 @@ struct LobbyView: View {
             
         StartButton()
 
-
             
         }.task {
             for await session in WhereWhereActivity.sessions(){
-                sharePlayVM.configurationSessin(session)
+                multiplayerVM.sharePlayVM.configurationSessin(session)
             }
         }
         .navigationBarBackButtonHidden()
