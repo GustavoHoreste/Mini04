@@ -22,7 +22,7 @@ class LogoImage: UIImageView {
         
         if isIncreased {
             isHidden = false
-            transform = CGAffineTransform(scaleX: 100.0, y: 100.0)
+            transform = CGAffineTransform(scaleX: 100.0, y: 100.0).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 6))
         }else {
             isHidden = true
         }
@@ -35,7 +35,7 @@ class LogoImage: UIImageView {
     
     func sizeDecrease() {
         UIView.animate(withDuration: 2.0, animations: {
-            self.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+            self.transform = CGAffineTransform(scaleX: 0.001, y: 0.001).concatenating(CGAffineTransform(rotationAngle: CGFloat.pi / 4))
         }, completion: { _ in
             self.removeFromSuperview()
         })

@@ -24,7 +24,7 @@ extension SingleViewModel {
 extension SingleViewModel: ChangeButtonDelegate {
     func changeButtonAction() {
         items.chooseObject()
-        objectName.text = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
+        objectName.text = items.toFindObject
         timerObject.resetTimerObject()
         changeButton.subtractCount()
         print("Change Touched")
@@ -65,10 +65,10 @@ extension SingleViewModel: TimerRoundDelegate {
     func timerRoundOver() {
         logo.isHidden = false
         UIView.animate(withDuration: 2.0, animations: {
-            self.logo.transform = CGAffineTransform(scaleX: 100.0, y: 100.0)
+            self.logo.transform = CGAffineTransform(scaleX: 100.0, y: 100.0).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 6))
         }, completion: { _ in
-            let nextScreen = PartialResultViewController(data: [])
-            self.controller?.navigationController!.pushViewController(nextScreen, animated: false)
+//            let nextScreen = PartialResultViewController(data: [])
+//            self.controller?.navigationController!.pushViewController(nextScreen, animated: false)
         })
     }
 }

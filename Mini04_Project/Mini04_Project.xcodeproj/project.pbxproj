@@ -52,6 +52,8 @@
 		C0CBCB382BAE142B0020E594 /* SingleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB372BAE142B0020E594 /* SingleViewModel.swift */; };
 		C0CBCB3A2BAE14520020E594 /* ConstraintsSP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB392BAE14520020E594 /* ConstraintsSP.swift */; };
 		C0CBCB3C2BAE14870020E594 /* DelegatesSP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB3B2BAE14870020E594 /* DelegatesSP.swift */; };
+		C0CBCB3E2BAE2A0E0020E594 /* SingleplayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB3D2BAE2A0E0020E594 /* SingleplayerView.swift */; };
+		C0CBCB402BAE2A9B0020E594 /* PreSingleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB3F2BAE2A9B0020E594 /* PreSingleViewController.swift */; };
 		D91D65102BAA1074003D7DBA /* SharePlayAllModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91D650F2BAA1074003D7DBA /* SharePlayAllModels.swift */; };
 		D91D65132BAB2871003D7DBA /* MultiplayerManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91D65122BAB2871003D7DBA /* MultiplayerManagerViewModel.swift */; };
 		D92885B42B9668D100C73B6E /* Mini04_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92885B32B9668D100C73B6E /* Mini04_ProjectApp.swift */; };
@@ -133,6 +135,8 @@
 		C0CBCB372BAE142B0020E594 /* SingleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleViewModel.swift; sourceTree = "<group>"; };
 		C0CBCB392BAE14520020E594 /* ConstraintsSP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsSP.swift; sourceTree = "<group>"; };
 		C0CBCB3B2BAE14870020E594 /* DelegatesSP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegatesSP.swift; sourceTree = "<group>"; };
+		C0CBCB3D2BAE2A0E0020E594 /* SingleplayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleplayerView.swift; sourceTree = "<group>"; };
+		C0CBCB3F2BAE2A9B0020E594 /* PreSingleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreSingleViewController.swift; sourceTree = "<group>"; };
 		D91D650F2BAA1074003D7DBA /* SharePlayAllModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayAllModels.swift; sourceTree = "<group>"; };
 		D91D65122BAB2871003D7DBA /* MultiplayerManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerManagerViewModel.swift; sourceTree = "<group>"; };
 		D92885B02B9668D100C73B6E /* Mini04_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini04_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +246,7 @@
 			children = (
 				2E8114102BA4EA16009CCC77 /* GameplayView.swift */,
 				D91D65122BAB2871003D7DBA /* MultiplayerManagerViewModel.swift */,
+				C0CBCB3D2BAE2A0E0020E594 /* SingleplayerView.swift */,
 			);
 			path = Gameplay;
 			sourceTree = "<group>";
@@ -337,6 +342,7 @@
 				C0CBCB372BAE142B0020E594 /* SingleViewModel.swift */,
 				C0CBCB392BAE14520020E594 /* ConstraintsSP.swift */,
 				C0CBCB3B2BAE14870020E594 /* DelegatesSP.swift */,
+				C0CBCB3F2BAE2A9B0020E594 /* PreSingleViewController.swift */,
 			);
 			path = Singleplayer;
 			sourceTree = "<group>";
@@ -665,6 +671,7 @@
 				D9CD141F2BA8FA49003CB0B6 /* WhereWhereActivity.swift in Sources */,
 				2E3A74512BAB73A10026BE07 /* ProfileButton.swift in Sources */,
 				2E3A74552BAB7F5E0026BE07 /* MultiplayerButton.swift in Sources */,
+				C0CBCB402BAE2A9B0020E594 /* PreSingleViewController.swift in Sources */,
 				2EC1BA742BA8737100E1E410 /* ProfileView.swift in Sources */,
 				E08782A82BA4D44200FB5ABC /* MLModel.swift in Sources */,
 				E0AF6F042BACA948008BE255 /* PartialResultViewModel.swift in Sources */,
@@ -694,6 +701,7 @@
 				2E3A74492BAB62AD0026BE07 /* SecondPlaceLabel.swift in Sources */,
 				2E3A74422BAB5FDB0026BE07 /* InviteButton.swift in Sources */,
 				E08782AA2BA4D46900FB5ABC /* PartialResultViewController.swift in Sources */,
+				C0CBCB3E2BAE2A0E0020E594 /* SingleplayerView.swift in Sources */,
 				2E3A74532BAB7ED90026BE07 /* SingleButton.swift in Sources */,
 				C0CBCB362BAE138C0020E594 /* SingleViewController.swift in Sources */,
 				C0A8B2A02BA8C7690048AC08 /* ChangeButton.swift in Sources */,
@@ -842,7 +850,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = SRXHT55569;
+				DEVELOPMENT_TEAM = SJYF62B3PZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -862,7 +870,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini04-Project";
+				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini04-Project0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -883,7 +891,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = SRXHT55569;
+				DEVELOPMENT_TEAM = SJYF62B3PZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -903,7 +911,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini04-Project";
+				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini04-Project0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

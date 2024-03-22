@@ -23,6 +23,7 @@ class SingleViewModel: NSObject {
     lazy var cameraImage = CameraImageView()
     lazy var pontos = PontosLabel()
     lazy var profile = ProfileImage()
+    lazy var round = RoundLabel()
     lazy var timerRound = TimerRound()
     lazy var timerObject = TimerObject()
     lazy var crosshair = CrosshairImage()
@@ -35,8 +36,6 @@ class SingleViewModel: NSObject {
         setupDelegate()
         
         objectName.text = items.toFindObject
+        round.text = "Round Time"
     }
-    
-    
-    
 }

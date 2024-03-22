@@ -16,6 +16,7 @@ extension SingleViewController {
         view.addSubview(gameplayVM.photoButton)
         view.addSubview(gameplayVM.profile)
         view.addSubview(gameplayVM.pontos)
+        view.addSubview(gameplayVM.round)
         view.addSubview(gameplayVM.timerRound)
         view.addSubview(gameplayVM.timerObject)
         view.addSubview(gameplayVM.crosshair)
@@ -42,8 +43,11 @@ extension SingleViewController {
             gameplayVM.pontos.centerXAnchor.constraint(equalTo: gameplayVM.profile.centerXAnchor),
             gameplayVM.pontos.topAnchor.constraint(equalTo: gameplayVM.profile.bottomAnchor, constant: 5),
             
-            gameplayVM.timerRound.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
-            gameplayVM.timerRound.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            gameplayVM.round.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
+            gameplayVM.round.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            
+            gameplayVM.timerRound.centerXAnchor.constraint(equalTo: gameplayVM.round.centerXAnchor),
+            gameplayVM.timerRound.topAnchor.constraint(equalTo: gameplayVM.round.bottomAnchor, constant: 5),
             
             gameplayVM.timerObject.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.timerObject.bottomAnchor.constraint(equalTo: gameplayVM.objectName.topAnchor, constant: -10),
