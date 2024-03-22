@@ -32,7 +32,9 @@ class PontosLabel: UILabel {
     }
     
     func subtractPower() {
-        number -= 1
+        if number >= 1 {
+            number -= 1
+        }
     }
 
 }

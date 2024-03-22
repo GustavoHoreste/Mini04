@@ -28,6 +28,8 @@ class GameplayViewModel: NSObject {
     lazy var timerRound = TimerRound()
     lazy var timerObject = TimerObject()
     lazy var powers = PowersStackView()
+    lazy var crosshair = CrosshairImage()
+    lazy var logo = LogoImage(isIncreased: false)
     
     var context: CIContext = CIContext()
     

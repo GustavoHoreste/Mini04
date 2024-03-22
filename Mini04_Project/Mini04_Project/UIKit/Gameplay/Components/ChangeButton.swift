@@ -15,6 +15,12 @@ class ChangeButton: UIButton {
 
     weak var delegate: ChangeButtonDelegate?
     
+    lazy var count: PontosLabel = {
+        let pts = PontosLabel()
+        pts.number = 3
+        return pts
+    }()
+    
     init() {
         super.init(frame: .zero)
         
@@ -27,11 +33,31 @@ class ChangeButton: UIButton {
         setImage(resizedImage, for: .normal)
         addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
+        addSubview(count)
+        
+        NSLayoutConstraint.activate([
+            count.trailingAnchor.constraint(equalTo: trailingAnchor),
+            count.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
         
     }
     
     @objc func buttonAction() {
         delegate?.changeButtonAction()
+    }
+    
+    func subtractCount() {
+        if count.number >= 1 {
+            count.number -= 1
+        }
+        verifyCount()
+    }
+    
+    func verifyCount() {
+        if count.number == 0 {
+            alpha = 0.3
+            isUserInteractionEnabled = false
+        }
     }
     
     required init?(coder: NSCoder) {

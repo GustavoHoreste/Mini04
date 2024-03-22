@@ -1,24 +1,26 @@
 //
-//  GameplayViewController.swift
+//  PreViewController.swift
 //  Mini04_Project
 //
-//  Created by Luca Lacerda on 15/03/24.
+//  Created by André Felipe Chinen on 21/03/24.
 //
 
 import UIKit
 
-class GameplayViewController: UIViewController {
+class PreViewController: UIViewController {
     
-    var gameplayVM = GameplayViewModel()
     var multiVM: MultiplayerManagerViewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        gameplayVM.controller = self
-        print(multiVM.adversaryPlayers)
         
-        setupView()
+        Task {
+            let gameplay = GameplayViewController(multiVM: multiVM)
+            
+            if let navigationController = self.navigationController {
+                navigationController.pushViewController(gameplay, animated: false)
+            }
+        }
     }
     
     init(multiVM: MultiplayerManagerViewModel) {

@@ -30,6 +30,7 @@ extension GameplayViewModel: ChangeButtonDelegate {
         objectName.text = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
         timerObject.resetTimerObject()
         items.shuffleIsOn = false
+        changeButton.subtractCount()
         print("Change Touched")
     }
 }
@@ -75,14 +76,22 @@ extension GameplayViewModel: ItemsDelegate {
 extension GameplayViewModel: TimerRoundDelegate {
     
     func timerRoundOver() {
-        let nextScreen = PartialResultViewController(data: [])
-        controller?.navigationController!.pushViewController(nextScreen, animated: false)
+        logo.isHidden = false
+        UIView.animate(withDuration: 3.0, animations: {
+            self.logo.transform = CGAffineTransform(scaleX: 100.0, y: 100.0)
+        }, completion: { _ in
+            let nextScreen = PartialResultViewController(data: [])
+            self.controller?.navigationController!.pushViewController(nextScreen, animated: false)
+        })
     }
 }
 
 extension GameplayViewModel: TimerObjectDelegate {
     func timerObjectOver() {
-        changeButtonAction()
+        items.chooseObject()
+        objectName.text = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
+        timerObject.resetTimerObject()
+        items.shuffleIsOn = false
     }
 }
 

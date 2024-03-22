@@ -20,6 +20,7 @@ extension PartialResultViewController {
         view.addSubview(partialResultVM.endGameButton)
         view.addSubview(partialResultVM.partialResultsTitle)
         view.addSubview(partialResultVM.readyButton)
+        view.addSubview(partialResultVM.logo)
         
         NSLayoutConstraint.activate([
             
@@ -40,6 +41,9 @@ extension PartialResultViewController {
             partialResultVM.readyButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),
             partialResultVM.readyButton.heightAnchor.constraint(equalToConstant: 80),
             partialResultVM.readyButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            
+            partialResultVM.logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            partialResultVM.logo.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
 }
