@@ -11,11 +11,9 @@ import GroupActivities
 
 struct LobbyView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
-    @EnvironmentObject private var sharePlayVM: ShaPlayViewModel
+    @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
     @StateObject var groupStateObserver = GroupStateObserver()
-    @State var isOpen = false
     
-    var data: [Int] = Array(1...5)
     let colors: [Color] = [.red, .green, .blue, .yellow, .purple, .pink, .brown]
     
     let adaptiveColumns = [
@@ -42,11 +40,18 @@ struct LobbyView: View {
             //Grid
             ScrollView {
                 LazyVGrid(columns: adaptiveColumns, alignment: .center, spacing: 20) {
-                    ForEach(data, id: \.self) { number in
+                    Text(multiplayerVM.localPlayer?.userName ?? "Carlos")
+                        .font(.headline)
+                        .foregroundStyle(Color.red)
+                    
+                    ForEach(multiplayerVM.adversaryPlayers, id: \.id) { player in
                         ZStack {
                             RoundedRectangle(cornerRadius: 52.5)
                                 .frame(width: 156, height: 65)
-                                .foregroundStyle(colors[number%7])
+                                .foregroundStyle(colors.randomElement()!)
+                            Text(player.userName)
+                                .font(.headline)
+                                .foregroundStyle(Color.black)
                         }
                     }
                 }
@@ -55,16 +60,18 @@ struct LobbyView: View {
             
             Spacer()
             
+            
             //Buttons
             Button(action: {verifyStausSession()}, label: {
                 Text("Adicione seu amigo")
             })
             
-            StartButton()
+        StartButton()
+
             
         }.task {
             for await session in WhereWhereActivity.sessions(){
-                sharePlayVM.configurationSessin(session)
+                multiplayerVM.sharePlayVM.configurationSessin(session)
             }
         }
         .navigationBarBackButtonHidden()
@@ -73,14 +80,10 @@ struct LobbyView: View {
     ///funcao que verifica o estado da session - se for desativada inicia a session
     private func verifyStausSession(){
         if groupStateObserver.isEligibleForGroupSession{
-            sharePlayVM.startSession()
+            multiplayerVM.sharePlayVM.startSession()
             return
         }
         navigationCoordinator.present(sheet: .shareplay)
     }
 }
 
-#Preview {
-    LobbyView()
-        .environmentObject(Coordinator())
-}

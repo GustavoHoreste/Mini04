@@ -9,15 +9,21 @@ import SwiftUI
 import GroupActivities
 import Foundation
 
+
 /// Estrutura que representa um jogador
 struct Player: Codable {
-    let player: PlayerData
+    let id: UUID
+    var userName: String
+    let playerImage: Int
     var isHost: Bool
     let participantType: ParticipantType
     var points: Int
     var statusUser: Bool
 }
 
+struct Players: Codable{
+    let players: [Player]
+}
 
 /// Estrutura que representa a configuração de uma partida
 struct MatchConfig: Codable {

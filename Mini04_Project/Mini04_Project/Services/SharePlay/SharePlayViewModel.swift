@@ -9,11 +9,15 @@ import SwiftUI
 import Combine
 import GroupActivities
 
-@MainActor
-final class ShaPlayViewModel: ObservableObject{
+
+final class SharePlayViewModel{
     @Published var players: [Player] = []
+    @Published var newPlayer: Player?
+    @Published private(set) var sessionActivityIsWaiting: Bool = false
+    @Published private(set) var sessionActivityIsJoined: Bool = false
+    
     private var groupSession: GroupSession<WhereWhereActivity>?
-    private var mesager: GroupSessionMessenger?
+    private var messenger: GroupSessionMessenger?
     private var subscriptions = Set<AnyCancellable>()
     private var tasks = Set<Task<Void, Never>>()
     
@@ -31,8 +35,15 @@ final class ShaPlayViewModel: ObservableObject{
     
     
     /// Função que envia os dados do jogador local.
-    public func sendPlayerData(_ player: Player) {
-        // Implementação para enviar os dados do jogador local.
+    public func sendPlayerData(_ model: Player) {
+        print("Enviando o localPlayer")
+        Task {
+            do {
+                try await messenger?.send(model)
+            } catch {
+                print("Error in send model session [SharePlayViewModel.sendData] - ")
+            }
+        }
     }
 
     /// Função que envia os pontos.
@@ -54,34 +65,18 @@ final class ShaPlayViewModel: ObservableObject{
     public func sendConfigMatch(_ config: MatchConfig) {
         // Implementação para enviar os dados de configuração da partida para os outros participantes.
     }
-
-    
-    private func sendData<T: Codable>(_ model: T) {
-        Task {
-            do {
-                try await mesager?.send(model)
-            } catch {
-                print("Error in send model session [SharePlayViewModel.sendData] - ", error.localizedDescription)
-            }
-        }
-    }
-    
     
     ///func que confgura shareplay e recebe o dado do shareplay
-    public func configurationSessin(_ session: GroupSession<WhereWhereActivity>){
-        let messager = GroupSessionMessenger(session: session)
-        self.mesager = messager
-        self.groupSession = session
+    public func configurationSessin(_ groupSession: GroupSession<WhereWhereActivity>){
+        let messenger = GroupSessionMessenger(session: groupSession)
+        self.messenger = messenger
+        self.groupSession = groupSession
         
-        groupSession?.$activeParticipants
-            .sink{ newParticipant in
-                print(newParticipant.count, " - ",newParticipant)
-            }
-            .store(in: &subscriptions)
-        
-        setupMessageTasks(messager)
-        
-        groupSession?.join()
+        self.statusSession(groupSession)
+        self.userActivity(groupSession, messenger)
+    
+        setupMessageTasks(messenger)
+        groupSession.join()
     }
     
     
@@ -129,8 +124,62 @@ final class ShaPlayViewModel: ObservableObject{
         )
     }
     
+    
+    ///funcao que verifica o estado da session: False = nao participa de nunhma session
+    public func statusSession(_ groupSession: GroupSession<WhereWhereActivity>){
+        groupSession.$state
+            .sink{ state in
+                if case .invalidated = state{
+                    self.reset()
+                }
+                
+                if groupSession.state == .waiting{
+                    print("STATE: waiting")
+                    self.sessionActivityIsWaiting = true
+                }
+            }
+            .store(in: &subscriptions)
+    }
+    
+    
+    private func userActivity(_ groupSession: GroupSession<WhereWhereActivity>, _ messenger: GroupSessionMessenger){
+        groupSession.$activeParticipants
+            .sink{ [self] activityParticipant in
+                print(activityParticipant.count, " - ", activityParticipant)
+                
+                let newParticipants = activityParticipant.subtracting(groupSession.activeParticipants)
+                
+                if !players.isEmpty{
+                    Task {
+                        try? await messenger.send(Players(players: self.players), to: .only(newParticipants))
+                    }
+                }
+                
+                if activityParticipant.count > 1{
+                    self.sessionActivityIsJoined = true
+                }
+            }
+            .store(in: &subscriptions)
+    }
+
+    
+    private func reset(){
+        players = []
+        newPlayer = nil
+//        self.sessionState = false
+        messenger = nil
+        subscriptions = []
+        tasks.forEach {$0.cancel()}
+        if groupSession != nil{
+            groupSession?.leave()
+            groupSession = nil
+            self.startSession()
+        }
+        
+    }
+    
     private func handle(_ model: Player) {
-        print("Player: \(model)")
+        self.newPlayer = model
     }
 
     private func handle(_ model: SendHindrances) {

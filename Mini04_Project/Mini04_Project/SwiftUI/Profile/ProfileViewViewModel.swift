@@ -9,19 +9,29 @@ import Foundation
 
 enum UserDefaultKey: String{
     case userName = "UserName"
+    case indexImage = "IndexImage"
+    case userID = "userID"
 }
 
 class ProfileViewViewModel: ObservableObject {
     @Published var canEdit: Bool = true
     @Published var textField: String = "ApplyUserName"
     let userDefault = UserDefaults.standard
+    let nomesPadrao = ["Spectra", "Aether", "Nimbus", "Phoenix", "Astra"]
+
     
-    func addUserName() {
+    init() {
+        textField = userDefault.string(forKey: UserDefaultKey.userName.rawValue) ?? nomesPadrao.randomElement()!
+        addUserName()
+        creatID()
+    }
+    
+    public func addUserName() {
         userDefault.setValue(textField, forKey: UserDefaultKey.userName.rawValue)
     }
     
-    init() {
-        textField = userDefault.string(forKey: UserDefaultKey.userName.rawValue) ?? "Could not find"
+    private func creatID(){
+        let id = UUID()
+        userDefault.setValue(id.uuidString, forKey:  UserDefaultKey.userID.rawValue)
     }
-    
 }

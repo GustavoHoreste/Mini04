@@ -11,7 +11,8 @@ enum Page: String, Identifiable {
     case menu,
          lobby,
          gameplay,
-         finalRank
+         finalRank,
+         multiplayerHub
     
     var id: String {
         self.rawValue
@@ -19,7 +20,7 @@ enum Page: String, Identifiable {
 }
 
 enum Sheet: String, Identifiable {
-    case config, profile, credits, shareplay
+    case config, profile, credits, shareplay, matchConfigView
     
     var id: String {
         self.rawValue
@@ -80,6 +81,8 @@ class Coordinator: ObservableObject {
             FinalResultView()
         case .gameplay:
             GameplayView()
+        case .multiplayerHub:
+            MultiplayerHubView()
         }
     }
     
@@ -102,6 +105,10 @@ class Coordinator: ObservableObject {
         case .shareplay:
             NavigationStack{
                 ShareInviteSheet()
+            }
+        case .matchConfigView:
+            NavigationStack{
+                MatchConfigView()
             }
         }
     }

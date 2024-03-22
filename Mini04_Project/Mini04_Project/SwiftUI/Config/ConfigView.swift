@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ConfigView: View {
-    
     @EnvironmentObject private var navigationCoordinator: Coordinator
     
     var body: some View {

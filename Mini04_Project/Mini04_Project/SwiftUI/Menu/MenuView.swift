@@ -9,11 +9,11 @@ import SwiftUI
 
 struct MenuView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
+    @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
     
     var body: some View {
         VStack {
             HStack {
-                
                 InfoButton()
                 
                 Spacer()

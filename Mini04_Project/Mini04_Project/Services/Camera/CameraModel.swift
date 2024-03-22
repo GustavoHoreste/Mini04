@@ -153,7 +153,6 @@ class CameraModel: NSObject, ObservableObject {
             
         case .notDetermined:
             self.requestPermission()
-            
         default:
             self.permission = false
         }
