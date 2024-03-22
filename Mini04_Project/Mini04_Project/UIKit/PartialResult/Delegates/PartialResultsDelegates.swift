@@ -20,6 +20,7 @@ extension PartialResultViewModel: EndgameButtonDelegate {
     }
 }
 
+//MARK: - funcao do butao de ready
 extension PartialResultViewModel: ReadyButtonDelegate {
     func ready() {
         self.readyButton.setTitle("Ready", for: .normal)

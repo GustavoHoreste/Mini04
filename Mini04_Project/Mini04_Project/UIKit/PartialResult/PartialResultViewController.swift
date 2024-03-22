@@ -13,11 +13,12 @@ enum Section {
 
 class PartialResultViewController: UIViewController {
     
+    var multiVM: MultiplayerManagerViewModel
+    
     var partialResultVM = PartialResultViewModel()
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Player>
     typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, Player>
-    
     
     var collection: UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -36,8 +37,10 @@ class PartialResultViewController: UIViewController {
     
     var data:[Player]
     
-    init(data: [Player]) {
-        self.data = data
+    init(multiVM: MultiplayerManagerViewModel) {
+        self.multiVM = multiVM
+        self.data = self.multiVM.adversaryPlayers
+        self.data.append(self.multiVM.localPlayer!)
         partialResultVM.data = data
         super.init(nibName: nil, bundle: nil)
     }

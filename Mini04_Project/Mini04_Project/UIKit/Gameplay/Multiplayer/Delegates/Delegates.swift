@@ -81,7 +81,7 @@ extension GameplayViewModel: TimerRoundDelegate {
         UIView.animate(withDuration: 2.0, animations: {
             self.logo.transform = CGAffineTransform(scaleX: 100.0, y: 100.0)
         }, completion: { _ in
-            let nextScreen = PartialResultViewController(data: [])
+            let nextScreen = PartialResultViewController(multiVM: self.multiVM!)
             self.controller?.navigationController!.pushViewController(nextScreen, animated: false)
         })
     }
