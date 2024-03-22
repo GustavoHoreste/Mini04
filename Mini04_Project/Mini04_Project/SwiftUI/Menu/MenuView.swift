@@ -37,15 +37,6 @@ struct MenuView: View {
             
             SingleButton()
             
-            Button(action: {navigationCoordinator.push(.finalRank)}, label: {
-                Text("Single")
-                    .padding()
-                    .foregroundStyle(.white)
-                    .background(.gray)
-                    .clipShape(.capsule)
-                    .font(.title)
-            })
-            
             Spacer()
         }
         .navigationBarBackButtonHidden()
