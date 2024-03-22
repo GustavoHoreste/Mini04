@@ -9,6 +9,10 @@ import Foundation
 
 class PartialResultViewModel {
     
+    var view:PartialResultViewController!
+    
+    var data:[Player] = []
+    
     lazy var endGameButton = EndGameButton()
     lazy var partialResultsTitle = PartialResultTitle()
     lazy var readyButton = ReadyButton()

@@ -28,7 +28,7 @@ enum Sheet: String, Identifiable {
 }
 
 enum FullScreenCover: String, Identifiable {
-    case config
+    case config, credits
     
     var id: String {
         self.rawValue
@@ -120,6 +120,8 @@ class Coordinator: ObservableObject {
             NavigationStack {
                 ConfigView()
             }
+        case .credits:
+            CreditsView() 
         }
     }
 }
