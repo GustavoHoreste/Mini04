@@ -39,11 +39,11 @@ struct MultiplayerHubView: View {
                 Text("Entrar na partida")
                     .padding()
                     .foregroundStyle(.white)
-                    .background(multiplayerVM.sessionIsActivity ? .gray : .gray.opacity(0.5))
+                    .background(multiplayerVM.sessionActivityIsWaiting ? .gray : .gray.opacity(0.5))
                     .font(.title)
                     .clipShape(.capsule)
             }.navigationBarBackButtonHidden()
-                .disabled(!multiplayerVM.sessionIsActivity)
+                .disabled(!multiplayerVM.sessionActivityIsWaiting)
         }.task {
             for await session in WhereWhereActivity.sessions(){
                 multiplayerVM.sharePlayVM.configurationSessin(session)

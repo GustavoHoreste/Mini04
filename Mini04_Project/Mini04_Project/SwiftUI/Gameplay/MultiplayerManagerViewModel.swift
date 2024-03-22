@@ -1,6 +1,6 @@
 //
 //  MultiplayerManagerViewModel.swift
-//  Mini04_Project
+//  Mini04_Projectc
 //
 //  Created by Gustavo Horestee Santos Barros on 20/03/24.
 //
@@ -11,18 +11,24 @@ import Combine
 class MultiplayerManagerViewModel: ObservableObject{
     public var sharePlayVM: SharePlayViewModel
     
-    private var statusSession: Bool = false
     private let userDefults: UserDefaults = UserDefaults.standard
     private var cancellables = Set<AnyCancellable>()
     
     @Published var localPlayer: Player?
-    @Published var sessionIsActivity: Bool = false
+    @Published var sessionActivityIsWaiting: Bool = false
+    @Published var sessionActivityIsJoined: Bool = false{
+        didSet{
+            if sessionActivityIsJoined{
+                sendLocalPlayerData()
+            }
+        }
+    }
     @Published var adversaryPlayers: [Player] = []{
         didSet{
             print("Value - \(adversaryPlayers)")
         }
     }
-    
+        
     private var newPlayer: Player?{
         didSet{
             if newPlayer != nil{
@@ -35,16 +41,20 @@ class MultiplayerManagerViewModel: ObservableObject{
         self.sharePlayVM = sharePlayVM
             
         ///monitora as mudancas da varivel adPlayer
-//        sharePlayVM.$players
-//            .assign(to: \.adversaryPlayers, on: self)
-//            .store(in: &cancellables)
+        sharePlayVM.$players
+            .assign(to: \.adversaryPlayers, on: self)
+            .store(in: &cancellables)
         
         sharePlayVM.$newPlayer
             .assign(to: \.newPlayer, on: self)
             .store(in: &cancellables)
         
-        sharePlayVM.$sessionState
-            .assign(to: \.sessionIsActivity, on: self)
+        sharePlayVM.$sessionActivityIsWaiting
+            .assign(to: \.sessionActivityIsWaiting, on: self)
+            .store(in: &cancellables)
+        
+        sharePlayVM.$sessionActivityIsJoined
+            .assign(to: \.sessionActivityIsJoined, on: self)
             .store(in: &cancellables)
         
     }
@@ -65,13 +75,16 @@ class MultiplayerManagerViewModel: ObservableObject{
                                    statusUser: false)
             self.localPlayer = localUser
             print("Crei novo user")
-            sharePlayVM.players.append(localUser)
         }else {
             localPlayer?.userName = name
             print("Fiz update")
         }
     }
     
+//    public func upadtePlayesWithLocalPlayer(){
+//        guard let playerNotOpcional = self.localPlayer else {return}
+//        self.sharePlayVM.players.append(playerNotOpcional)
+//    }
     
     public func defineLocalPlayerHost(){
         self.localPlayer?.isHost = true

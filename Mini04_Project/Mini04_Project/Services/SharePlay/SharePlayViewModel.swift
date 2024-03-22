@@ -13,7 +13,8 @@ import GroupActivities
 final class SharePlayViewModel{
     @Published var players: [Player] = []
     @Published var newPlayer: Player?
-    @Published private(set) var sessionState: Bool = false
+    @Published private(set) var sessionActivityIsWaiting: Bool = false
+    @Published private(set) var sessionActivityIsJoined: Bool = false
     
     private var groupSession: GroupSession<WhereWhereActivity>?
     private var messenger: GroupSessionMessenger?
@@ -35,11 +36,12 @@ final class SharePlayViewModel{
     
     /// Função que envia os dados do jogador local.
     public func sendPlayerData(_ model: Player) {
+        print("Enviando o localPlayer")
         Task {
             do {
                 try await messenger?.send(model)
             } catch {
-                print("Error in send model session [SharePlayViewModel.sendData] - ", error.localizedDescription)
+                print("Error in send model session [SharePlayViewModel.sendData] - ")
             }
         }
     }
@@ -127,18 +129,26 @@ final class SharePlayViewModel{
     public func statusSession(_ groupSession: GroupSession<WhereWhereActivity>){
         groupSession.$state
             .sink{ state in
-                
                 if case .invalidated = state{
                     self.reset()
                 }
                 
+                if state == .joined{
+                    print("STATE: joined")
+                    self.sessionActivityIsJoined = true
+                }
             }
             .store(in: &subscriptions)
         
         if groupSession.state == .waiting{
-            print("entrei no joined")
-            self.sessionState = true
+            print("STATE: waiting")
+            self.sessionActivityIsWaiting = true
         }
+        
+//        if groupSession.state == .joined{
+//            print("STATE: joined")
+//            self.sessionActivityIsJoined = true
+//        }
     }
     
     
