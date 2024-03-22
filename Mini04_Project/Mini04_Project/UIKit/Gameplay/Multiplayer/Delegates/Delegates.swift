@@ -67,6 +67,7 @@ extension GameplayViewModel: PhotoButtonDelegate {
     }
 }
 
+//MARK: - Incrementa pontos do jogador
 extension GameplayViewModel: ItemsDelegate {
     func findedObjectAction() {
         pontos.number += 1
@@ -95,6 +96,7 @@ extension GameplayViewModel: TimerObjectDelegate {
     }
 }
 
+//MARK: - Lógica dos poderzinhos
 extension GameplayViewModel: PowersButtonDelegate {
     func powerButtonAction(powerType: PowerUps) {
         powers.removePower(powerType: powerType)
