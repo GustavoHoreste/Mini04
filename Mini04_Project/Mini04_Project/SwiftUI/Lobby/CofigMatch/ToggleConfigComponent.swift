@@ -16,9 +16,7 @@ struct ToggleConfigComponent: View {
         Group{
             Toggle(textToggle, isOn: $isActivity)
                 .onChange(of: isActivity) { oldValue, newValue in
-                    if newValue{
-                        action()
-                    }
+                    action()
                 }.bold()
         }
     }

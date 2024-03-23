@@ -11,8 +11,9 @@ import GroupActivities
 
 
 final class SharePlayViewModel{
-    @Published var players: [Player] = []
+    @Published var players: Set<Player> = []
     @Published var newPlayer: Player?
+    @Published var configMatch: MatchConfig?
     @Published private(set) var sessionActivityIsWaiting: Bool = false
     @Published private(set) var sessionActivityIsJoined: Bool = false
     
@@ -36,12 +37,11 @@ final class SharePlayViewModel{
     
     /// Função que envia os dados do jogador local.
     public func sendPlayerData(_ model: Player) {
-        print("Enviando o localPlayer")
         Task {
             do {
                 try await messenger?.send(model)
             } catch {
-                print("Error in send model session [SharePlayViewModel.sendData] - ")
+                print("Error in send model session [SharePlayViewModel.sendPlayerData] - ")
             }
         }
     }
@@ -62,8 +62,14 @@ final class SharePlayViewModel{
     }
 
     /// Função que envia os dados de configuração da partida.
-    public func sendConfigMatch(_ config: MatchConfig) {
-        // Implementação para enviar os dados de configuração da partida para os outros participantes.
+    public func sendConfigMatch(_ model: MatchConfig) {
+        Task {
+            do {
+                try await messenger?.send(model)
+            } catch {
+                print("Error in send model session [SharePlayViewModel.sendConfigMatch] - ")
+            }
+        }
     }
     
     ///func que confgura shareplay e recebe o dado do shareplay
@@ -152,6 +158,13 @@ final class SharePlayViewModel{
                 if !players.isEmpty{
                     Task {
                         try? await messenger.send(Players(players: self.players), to: .only(newParticipants))
+                        print("Eviei para pessoa nova")
+                    }
+                }
+                
+                if configMatch != nil {
+                    Task {
+                        try? await messenger.send(MatchConfig(roundTime: configMatch!.roundTime, amoutRound: configMatch!.amoutRound, powerUps: configMatch!.powerUps, coresIsChoise: configMatch!.coresIsChoise), to: .only(newParticipants))
                     }
                 }
                 
@@ -180,6 +193,7 @@ final class SharePlayViewModel{
     
     private func handle(_ model: Player) {
         self.newPlayer = model
+        print("recebi")
     }
 
     private func handle(_ model: SendHindrances) {
@@ -196,6 +210,7 @@ final class SharePlayViewModel{
 
     private func handle(_ model: MatchConfig) {
         print("MatchConfig: \(model)")
+        self.configMatch = model
     }
 }
 

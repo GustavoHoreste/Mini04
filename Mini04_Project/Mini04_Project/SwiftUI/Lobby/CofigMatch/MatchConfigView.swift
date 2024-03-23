@@ -35,44 +35,47 @@ enum RoundTime: Double, CaseIterable, Identifiable, Codable {
 }
 
 class MatchConfigViewModel: ObservableObject{
-    @Published var selectedRound: Round = .three{
-        didSet{
-            print(selectedRound)
-        }
-    }
-    @Published var selectedRoundTime: RoundTime = .oneThirtyMinutes{
-        didSet{
-            print(selectedRoundTime)
-        }
-    }
+    private var multiplayerVM: MultiplayerManagerViewModel?
+    private var selectTypeUser: ParticipantType = .player
+    public var coresIsChoise: Bool = false
+    private(set) var selectPowerUps: Bool = false
+    
+    @Published var selectedRound: Round = .three
+    @Published var selectedRoundTime: RoundTime = .oneThirtyMinutes
     @Published var selectedWatch: Bool = false
     @Published var selecPlayer: Bool = false
     
-    public func saveConfigMach(){
-        print("save config")
+    
+    public func saveConfigMach() {
+        let config: MatchConfig = MatchConfig(roundTime: selectedRoundTime.rawValue,
+                                                   amoutRound: selectedRound.rawValue,
+                                                   powerUps: selectPowerUps,
+                                                   coresIsChoise: coresIsChoise)
+        self.multiplayerVM?.defineMachConfig(config)
     }
     
     public func selectTypeUser(_ type: ParticipantType){
-        print(type)
+        self.selectTypeUser = type
     }
     
-    public func selectModeMatch(_ mode: MatchMode){
-        print(mode)
+    
+    public func defineSelectPowerUps(){
+        self.selectPowerUps.toggle()
     }
     
-    public func selectPowerUps(_ isActivity: Bool){
-        print(isActivity)
+    public func addVM(multiplayerVM: MultiplayerManagerViewModel){
+        self.multiplayerVM = multiplayerVM
     }
 }
 
 struct MatchConfigView: View {
     @StateObject private var matchConfigVM: MatchConfigViewModel = MatchConfigViewModel()
+    @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
     
     var body: some View {
         VStack{
                         
             Spacer()
-            
             
             Toggle("Jogar partida", isOn: $matchConfigVM.selectedWatch)
                 .onChange(of: matchConfigVM.selectedWatch) { oldValue, newValue in
@@ -120,21 +123,19 @@ struct MatchConfigView: View {
             
             
             ToggleConfigComponent(textToggle: "Bônus de habilidade") {
-                print("Bônus de habilidade")
+                matchConfigVM.defineSelectPowerUps()
             }
             
             Text("A partida terá...")
             
-            ToggleConfigComponent(textToggle: "Objetos") {
-                matchConfigVM.selectModeMatch(.objestosChoise)
-            }
-            
             
             ToggleConfigComponent(textToggle: "Cores") {
-                matchConfigVM.selectModeMatch(.colorChoise)
+                matchConfigVM.coresIsChoise.toggle()
+                let _ = print(matchConfigVM.coresIsChoise)
             }
             
             Spacer()
+            
             Button{ matchConfigVM.saveConfigMach() }label: {
                 Text("Salvar alterações")
                     .padding()
@@ -145,9 +146,13 @@ struct MatchConfigView: View {
             }
             
         }.padding()
+            .onAppear{
+                matchConfigVM.addVM(multiplayerVM: multiplayerVM)
+            }
     }
 }
 
 #Preview {
     MatchConfigView()
+        .environmentObject(MultiplayerManagerViewModel())
 }

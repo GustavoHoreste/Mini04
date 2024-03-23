@@ -11,7 +11,7 @@ import Foundation
 
 
 /// Estrutura que representa um jogador
-struct Player: Codable {
+struct Player: Codable,Hashable {
     let id: UUID
     var userName: String
     let playerImage: Int
@@ -21,8 +21,8 @@ struct Player: Codable {
     var statusUser: Bool
 }
 
-struct Players: Codable{
-    let players: [Player]
+struct Players: Codable, Hashable{
+    let players: Set<Player>
 }
 
 /// Estrutura que representa a configuração de uma partida
@@ -30,7 +30,7 @@ struct MatchConfig: Codable {
     let roundTime: Double
     let amoutRound: Int
     let powerUps: Bool
-    let metchMode: MatchMode
+    let coresIsChoise: Bool
 }
 
 
@@ -62,11 +62,11 @@ enum ParticipantType: Codable {
 
 
 /// Enumeração que representa o modo de partida
-enum MatchMode: Codable {
-    case objestosChoise
-    case colorChoise
-    case allChoise
-}
+//enum MatchMode: Codable {
+////    case objestosChoise
+//    case colorChoise
+////    case allChoise
+//}
 
 
 /// Enumeração que representa os diferentes tipos de "power-ups"

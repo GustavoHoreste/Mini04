@@ -86,7 +86,6 @@ class Coordinator: ObservableObject {
         }
     }
     
-//    @MainActor
     @ViewBuilder
     func build(sheet: Sheet) -> some View {
         switch sheet {

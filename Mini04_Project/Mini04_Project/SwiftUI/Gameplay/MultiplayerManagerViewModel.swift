@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 class MultiplayerManagerViewModel: ObservableObject{
-    public var sharePlayVM: SharePlayViewModel
+    public var sharePlayVM: SharePlayViewModel = SharePlayViewModel()
     
     private let userDefults: UserDefaults = UserDefaults.standard
     private var cancellables = Set<AnyCancellable>()
@@ -23,9 +23,14 @@ class MultiplayerManagerViewModel: ObservableObject{
             }
         }
     }
-    @Published var adversaryPlayers: [Player] = []{
+    @Published var adversaryPlayers: Set<Player> = []{
         didSet{
             print("Value - \(adversaryPlayers)")
+        }
+    }
+    @Published var configMatch: MatchConfig?{
+        didSet{
+            print("recebi configMatch: \(String(describing: configMatch))")
         }
     }
         
@@ -37,8 +42,7 @@ class MultiplayerManagerViewModel: ObservableObject{
         }
     }
     
-    init(sharePlayVM: SharePlayViewModel) {
-        self.sharePlayVM = sharePlayVM
+    init() {
             
         ///monitora as mudancas da varivel adPlayer
         sharePlayVM.$players
@@ -57,6 +61,10 @@ class MultiplayerManagerViewModel: ObservableObject{
             .assign(to: \.sessionActivityIsJoined, on: self)
             .store(in: &cancellables)
         
+        sharePlayVM.$configMatch
+            .assign(to: \.configMatch, on: self)
+            .store(in: &cancellables)
+        
     }
     
     
@@ -65,6 +73,7 @@ class MultiplayerManagerViewModel: ObservableObject{
         guard let idString = userDefults.string(forKey: UserDefaultKey.userID.rawValue) else {return}
         guard let id = UUID(uuidString: idString) else {return}
         
+        print("Criei o Id: \(id)")
         if localPlayer == nil{
             let localUser = Player(id: id,
                                    userName: name,
@@ -81,10 +90,6 @@ class MultiplayerManagerViewModel: ObservableObject{
         }
     }
     
-//    public func upadtePlayesWithLocalPlayer(){
-//        guard let playerNotOpcional = self.localPlayer else {return}
-//        self.sharePlayVM.players.append(playerNotOpcional)
-//    }
     
     public func defineLocalPlayerHost(){
         self.localPlayer?.isHost = true
@@ -95,11 +100,17 @@ class MultiplayerManagerViewModel: ObservableObject{
         self.sharePlayVM.sendPlayerData(playerNotOpcional)
     }
     
+    public func defineMachConfig(_ config: MatchConfig){
+        guard let playerNotOpcional = self.localPlayer else {return}
+        if playerNotOpcional.isHost{
+            self.configMatch = config
+            self.sharePlayVM.sendConfigMatch(configMatch!)
+        }
+    }
     
-    ///
     private func validateDuplicateValues(_ playerNew: Player){
         if adversaryPlayers.isEmpty{
-            self.sharePlayVM.players.append(playerNew)
+            self.sharePlayVM.players.insert(playerNew)
             return
         }
         
@@ -108,7 +119,7 @@ class MultiplayerManagerViewModel: ObservableObject{
                 print("Esse usuarioa ja existe - Não adicionarei a lista de menbors da partida: \(adversary.userName)")
                 return
             }
-            self.sharePlayVM.players.append(playerNew)
+            self.sharePlayVM.players.insert(playerNew)
             print("Novo player adicionado na lista")
         }
     }
