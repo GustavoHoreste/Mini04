@@ -30,6 +30,7 @@ extension GameplayViewModel: ChangeButtonDelegate {
         objectName.text = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
         timerObject.resetTimerObject()
         items.shuffleIsOn = false
+        changeButton.subtractCount()
         print("Change Touched")
     }
 }
@@ -66,6 +67,7 @@ extension GameplayViewModel: PhotoButtonDelegate {
     }
 }
 
+//MARK: - Incrementa pontos do jogador
 extension GameplayViewModel: ItemsDelegate {
     func findedObjectAction() {
         pontos.number += 1
@@ -75,40 +77,44 @@ extension GameplayViewModel: ItemsDelegate {
 extension GameplayViewModel: TimerRoundDelegate {
     
     func timerRoundOver() {
-        let nextScreen = PartialResultViewController(data: [])
-        controller?.navigationController!.pushViewController(nextScreen, animated: false)
+        logo.isHidden = false
+        UIView.animate(withDuration: 2.0, animations: {
+            self.logo.transform = CGAffineTransform(scaleX: 100.0, y: 100.0).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 6))
+        }, completion: { _ in
+            let nextScreen = PartialResultViewController(multiVM: self.multiVM!)
+            self.controller?.navigationController!.pushViewController(nextScreen, animated: false)
+        })
     }
 }
 
 extension GameplayViewModel: TimerObjectDelegate {
     func timerObjectOver() {
-        changeButtonAction()
+        items.chooseObject()
+        objectName.text = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
+        timerObject.resetTimerObject()
+        items.shuffleIsOn = false
     }
 }
 
+//MARK: - Lógica dos poderzinhos
 extension GameplayViewModel: PowersButtonDelegate {
     func powerButtonAction(powerType: PowerUps) {
         powers.removePower(powerType: powerType)
         print(powerType)
         switch powerType{
         case .freeze:
-            print("")
             //Função de congelar a câmera
             powers.freezePower()
         case .switchWord:
-            print("")
             //Função de trocar objeto
             changeButtonAction()
         case .subtrac:
-            print("")
             //Função de subtrair os pontos
             pontos.subtractPower()
         case .changeCamera:
-            print("")
             //Função que troca a câmera
             camera.changeCamera()
         case .shuffleWord:
-            print("")
             //Função que embaralha o nome do objeto
             items.shufflePower()
         }

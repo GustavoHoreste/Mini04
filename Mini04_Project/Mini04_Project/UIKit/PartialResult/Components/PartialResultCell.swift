@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PartialResultCell: UITableViewCell {
+class PartialResultCell: UICollectionViewCell {
     static var identifier = "PartialResultCell"
     let background: UIView = {
         let view = UIView()
@@ -25,8 +25,14 @@ class PartialResultCell: UITableViewCell {
     let playerName = UILabel()
     let playerScore = UILabel()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    init() {
+        super.init(frame: .zero)
+        setupBackground()
+        setupLabels()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setupBackground()
         setupLabels()
     }

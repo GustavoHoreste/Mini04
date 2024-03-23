@@ -1,17 +1,17 @@
 //
-//  GameplayViewModel.swift
+//  SingleViewModel.swift
 //  Mini04_Project
 //
-//  Created by GABRIEL Ferreira Cardoso on 18/03/24.
+//  Created by André Felipe Chinen on 22/03/24.
 //
 
 import Foundation
 import UIKit
 import CoreImage
 
-class GameplayViewModel: NSObject {
+class SingleViewModel: NSObject {
     
-    var controller: GameplayViewController?
+    var controller: SingleViewController?
     
     var camera: CameraModel!
     var items = ItemsToFindModel()
@@ -24,10 +24,10 @@ class GameplayViewModel: NSObject {
     lazy var pontos = PontosLabel()
     lazy var profile = ProfileImage()
     lazy var round = RoundLabel()
-    lazy var special = SpecialObjectImage()
     lazy var timerRound = TimerRound()
     lazy var timerObject = TimerObject()
-    lazy var powers = PowersStackView()
+    lazy var crosshair = CrosshairImage()
+    lazy var logo = LogoImage(isIncreased: false)
     
     var context: CIContext = CIContext()
     
@@ -36,11 +36,6 @@ class GameplayViewModel: NSObject {
         setupDelegate()
         
         objectName.text = items.toFindObject
-        special.specialName.text = items.specialObject
+        round.text = "Round Time"
     }
-    
-    
-    
 }
-
-

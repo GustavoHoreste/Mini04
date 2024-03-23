@@ -12,7 +12,7 @@ struct SingleButton: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     
     var body: some View {
-        Button(action: {navigationCoordinator.push(.gameplay)}, label: {
+        Button(action: {navigationCoordinator.push(.singleplayer)}, label: {
             Text("Single")
                 .padding()
                 .foregroundStyle(.white)

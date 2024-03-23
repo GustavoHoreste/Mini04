@@ -20,9 +20,10 @@ extension PartialResultViewModel: EndgameButtonDelegate {
     }
 }
 
+//MARK: - funcao do butao de ready
 extension PartialResultViewModel: ReadyButtonDelegate {
     func ready() {
         self.readyButton.setTitle("Ready", for: .normal)
-        print("button pressed")
+        view.applySnapshot(players: self.data.sorted(by: {$0.points > $1.points}))
     }
 }

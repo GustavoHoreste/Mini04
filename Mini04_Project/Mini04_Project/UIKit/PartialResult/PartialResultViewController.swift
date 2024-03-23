@@ -7,25 +7,41 @@
 
 import UIKit
 
+enum Section {
+    case main
+}
+
 class PartialResultViewController: UIViewController {
+    
+    var multiVM: MultiplayerManagerViewModel
     
     var partialResultVM = PartialResultViewModel()
     
-    lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.allowsSelection = false
-        tableView.register(PartialResultCell.self, forCellReuseIdentifier:PartialResultCell.identifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.separatorColor = .clear
-        tableView.rowHeight = 90
-        tableView.estimatedRowHeight = 90
-        return tableView
+    typealias DataSource = UICollectionViewDiffableDataSource<Section, Player>
+    typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, Player>
+    
+    var collection: UICollectionView = {
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        layout.itemSize = CGSize(width: 280, height: 90)
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.showsVerticalScrollIndicator = false
+        collection.backgroundColor = .systemBackground
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.register(PartialResultCell.self, forCellWithReuseIdentifier: PartialResultCell.identifier)
+        return collection
     }()
     
-    var data:[Player]!
+    var dataSource: DataSource!
+    var snapshot = DataSourceSnapshot()
     
-    init(data: [Player]) {
-        self.data = data
+    var data:[Player]
+    
+    init(multiVM: MultiplayerManagerViewModel) {
+        self.multiVM = multiVM
+        self.data = self.multiVM.adversaryPlayers
+        self.data.append(self.multiVM.localPlayer!)
+        partialResultVM.data = data
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -35,13 +51,25 @@ class PartialResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        partialResultVM.view = self
+        configureCollectionViewDataSource()
+        applySnapshot(players: partialResultVM.data)
         setupView()
     }
-}
-
-
-
-struct player{
-    var playerName:String
-    var playerScore:Int
+    
+    private func configureCollectionViewDataSource() {
+        dataSource = DataSource(collectionView: collection, cellProvider: { (collectionView, indexPath, player) -> PartialResultCell? in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PartialResultCell.identifier, for: indexPath) as! PartialResultCell
+            cell.playerName.text = player.userName
+            cell.playerScore.text = String(player.points)
+            return cell
+        })
+    }
+    
+    func applySnapshot(players: [Player]) {
+        snapshot = DataSourceSnapshot()
+        snapshot.appendSections([Section.main])
+        snapshot.appendItems(players)
+        dataSource.apply(snapshot,animatingDifferences: true)
+    }
 }

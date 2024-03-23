@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct CreditsView: View {
+    
+    @EnvironmentObject private var navigationCoordinator: Coordinator
+    
     var body: some View {
         VStack {
             Text("Creditos aqui")
+                .onTapGesture {
+                    navigationCoordinator.dismissFullScreenCover()
+                }
         }
         .navigationBarBackButtonHidden()
     }

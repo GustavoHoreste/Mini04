@@ -12,7 +12,8 @@ enum Page: String, Identifiable {
          lobby,
          gameplay,
          finalRank,
-         multiplayerHub
+         multiplayerHub,
+         singleplayer
     
     var id: String {
         self.rawValue
@@ -28,7 +29,7 @@ enum Sheet: String, Identifiable {
 }
 
 enum FullScreenCover: String, Identifiable {
-    case config
+    case config, credits
     
     var id: String {
         self.rawValue
@@ -83,6 +84,8 @@ class Coordinator: ObservableObject {
             GameplayView()
         case .multiplayerHub:
             MultiplayerHubView()
+        case .singleplayer:
+            SingleplayerView()
         }
     }
     
@@ -119,6 +122,8 @@ class Coordinator: ObservableObject {
             NavigationStack {
                 ConfigView()
             }
+        case .credits:
+            CreditsView() 
         }
     }
 }
