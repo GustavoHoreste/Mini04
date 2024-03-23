@@ -71,6 +71,7 @@ class MatchConfigViewModel: ObservableObject{
 struct MatchConfigView: View {
     @StateObject private var matchConfigVM: MatchConfigViewModel = MatchConfigViewModel()
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
+    @EnvironmentObject private var coordinator: Coordinator
     
     var body: some View {
         VStack{
@@ -148,6 +149,11 @@ struct MatchConfigView: View {
         }.padding()
             .onAppear{
                 matchConfigVM.addVM(multiplayerVM: multiplayerVM)
+            }
+            .toolbar {
+                Button{ self.coordinator.dismissSheet()} label: {
+                    Text("Dismiss")
+                }
             }
     }
 }

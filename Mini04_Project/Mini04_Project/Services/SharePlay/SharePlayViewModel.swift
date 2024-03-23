@@ -179,6 +179,7 @@ final class SharePlayViewModel{
     private func reset(){
         players = []
         newPlayer = nil
+        configMatch = nil
 //        self.sessionState = false
         messenger = nil
         subscriptions = []

@@ -11,7 +11,7 @@ class PartialResultViewModel {
     
     var view:PartialResultViewController!
     
-    var data:[Player] = []
+    var data: Set<Player> = []
     
     lazy var endGameButton = EndGameButton()
     lazy var partialResultsTitle = PartialResultTitle()

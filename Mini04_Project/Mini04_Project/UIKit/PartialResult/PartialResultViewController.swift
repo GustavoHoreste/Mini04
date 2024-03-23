@@ -35,12 +35,12 @@ class PartialResultViewController: UIViewController {
     var dataSource: DataSource!
     var snapshot = DataSourceSnapshot()
     
-    var data:[Player]
+    var data: Set<Player>
     
     init(multiVM: MultiplayerManagerViewModel) {
         self.multiVM = multiVM
         self.data = self.multiVM.adversaryPlayers
-        self.data.append(self.multiVM.localPlayer!)
+        self.data.insert(self.multiVM.localPlayer!)
         partialResultVM.data = data
         super.init(nibName: nil, bundle: nil)
     }
@@ -66,10 +66,11 @@ class PartialResultViewController: UIViewController {
         })
     }
     
-    func applySnapshot(players: [Player]) {
+    func applySnapshot(players: Set<Player>) {
         snapshot = DataSourceSnapshot()
         snapshot.appendSections([Section.main])
-        snapshot.appendItems(players)
+        let playersArray = Array(players)
+        snapshot.appendItems(playersArray)
         dataSource.apply(snapshot,animatingDifferences: true)
     }
 }
