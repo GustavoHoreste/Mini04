@@ -44,7 +44,7 @@ struct LobbyView: View {
                         .font(.headline)
                         .foregroundStyle(Color.red)
                     
-                    ForEach(multiplayerVM.adversaryPlayers.sorted(by: {$0.id < $1.id}), id: \.id) { player in
+                    ForEach(multiplayerVM.adversaryPlayers, id: \.id) { player in
                         ZStack {
                             RoundedRectangle(cornerRadius: 52.5)
                                 .frame(width: 156, height: 65)

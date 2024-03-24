@@ -11,9 +11,11 @@ import GroupActivities
 
 
 final class SharePlayViewModel{
-    @Published var players: Set<Player> = []
+    @Published var players: [Player] = []
     @Published var newPlayer: Player?
     @Published var configMatch: MatchConfig = MocaData.config
+    @Published var newPoint: UserPoints?
+    @Published var newHidrance: SendHindrances?
     @Published private(set) var sessionActivityIsWaiting: Bool = false
     @Published private(set) var sessionActivityIsJoined: Bool = false
     
@@ -47,13 +49,25 @@ final class SharePlayViewModel{
     }
 
     /// Função que envia os pontos.
-    public func sendPoints(_ points: UserPoints) {
-        // Implementação para enviar os pontos para todos os participantes.
+    public func sendPoints(_ model: UserPoints) {
+        Task {
+            do {
+                try await messenger?.send(model)
+            } catch {
+                print("Error in send model session [SharePlayViewModel.sendPoints] - ")
+            }
+        }
     }
 
     /// Função que envia o PowerUp para o inimigo.
-    public func sendHindrances(_ hindrances: SendHindrances) {
-        // Implementação para enviar os dados do PowerUp para o inimigo.
+    public func sendHindrances(_ model: SendHindrances) {
+        Task {
+            do {
+                try await messenger?.send(model)
+            } catch {
+                print("Error in send model session [SharePlayViewModel.sendConfigMatch] - ")
+            }
+        }
     }
 
     /// Função que envia o status.
@@ -162,11 +176,11 @@ final class SharePlayViewModel{
                     }
                 }
                 
-                if configMatch != nil {
-                    Task {
-                        try? await messenger.send(MatchConfig(roundTime: configMatch.roundTime, amoutRound: configMatch.amoutRound, powerUps: configMatch.powerUps, coresIsChoise: configMatch.coresIsChoise), to: .only(newParticipants))
-                    }
+
+                Task {
+                    try? await messenger.send(MatchConfig(roundTime: configMatch.roundTime, amoutRound: configMatch.amoutRound, powerUps: configMatch.powerUps, coresIsChoise: configMatch.coresIsChoise), to: .only(newParticipants))
                 }
+                
                 
                 if activityParticipant.count > 1{
                     self.sessionActivityIsJoined = true
@@ -181,6 +195,7 @@ final class SharePlayViewModel{
         newPlayer = nil
         configMatch = MocaData.config
 //        self.sessionState = false
+        newHidrance = nil
         messenger = nil
         subscriptions = []
         tasks.forEach {$0.cancel()}
@@ -199,6 +214,7 @@ final class SharePlayViewModel{
 
     private func handle(_ model: SendHindrances) {
         print("SendHindrances: \(model)")
+        self.newHidrance = model
     }
 
     private func handle(_ model: StatusUsers) {
@@ -207,6 +223,7 @@ final class SharePlayViewModel{
 
     private func handle(_ model: UserPoints) {
         print("UserPoints: \(model)")
+        self.newPoint = model
     }
 
     private func handle(_ model: MatchConfig) {

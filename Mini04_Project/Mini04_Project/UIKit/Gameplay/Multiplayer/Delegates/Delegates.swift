@@ -53,9 +53,11 @@ extension GameplayViewModel: PhotoButtonDelegate {
                 }
                 if await special.specialIsOn && (items.specialObject == returnedTargetObject){
                     items.specialObject = ""
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [self] in
                         self.special.specialFinded()
-                        self.pontos.number += 2
+//                        self.pontos.number += 2
+                        self.multiVM?.localPlayer?.points += 2
+                        self.upadatePoint((multiVM?.localPlayer!.points)!)
                         self.powers.addPowers()
                     }
                 }
@@ -70,7 +72,13 @@ extension GameplayViewModel: PhotoButtonDelegate {
 //MARK: - Incrementa pontos do jogador
 extension GameplayViewModel: ItemsDelegate {
     func findedObjectAction() {
-        pontos.number += 1
+//        pontos.number += 1
+        multiVM?.localPlayer?.points += 1
+        upadatePoint((multiVM?.localPlayer!.points)!)
+    }
+    
+    func upadatePoint(_ value: Int){
+        pontos.updateLabel(value)
     }
 }
 
@@ -104,19 +112,24 @@ extension GameplayViewModel: PowersButtonDelegate {
         switch powerType{
         case .freeze:
             //Função de congelar a câmera
-            powers.freezePower()
+//            powers.freezePower()
+            self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
         case .switchWord:
             //Função de trocar objeto
-            changeButtonAction()
+//            changeButtonAction()
+            self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
         case .subtrac:
             //Função de subtrair os pontos
-            pontos.subtractPower()
+//            pontos.subtractPower()
+            self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
         case .changeCamera:
             //Função que troca a câmera
-            camera.changeCamera()
+//            camera.changeCamera()
+            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
         case .shuffleWord:
             //Função que embaralha o nome do objeto
-            items.shufflePower()
+//            items.shufflePower()
+            self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
         }
     }
 }

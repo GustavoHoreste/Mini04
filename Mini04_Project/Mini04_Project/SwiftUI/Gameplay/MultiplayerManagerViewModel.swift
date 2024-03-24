@@ -12,14 +12,38 @@ struct MocaData{
     static let config = MatchConfig(roundTime: 90, amoutRound: 3, powerUps: true, coresIsChoise: true)
 }
 
+private enum PlayerError: Error {
+    case localPlayerNaoDefinido
+}
+
 class MultiplayerManagerViewModel: ObservableObject{
     public var sharePlayVM: SharePlayViewModel = SharePlayViewModel()
     
     private let userDefults: UserDefaults = UserDefaults.standard
     private var cancellables = Set<AnyCancellable>()
     
-    @Published var localPlayer: Player?
+    
+    private var newPlayer: Player?{
+        didSet{
+            if newPlayer != nil{
+                validateDuplicateValues(newPlayer!)
+            }
+        }
+    }
+    private var newPoint: UserPoints?{
+        didSet{
+            self.verifyNewPointFromUser(newPoint)
+        }
+    }
+    
     @Published var sessionActivityIsWaiting: Bool = false
+    @Published var localPlayer: Player?{
+        didSet{
+            if localPlayer != nil{
+                sendPoints()
+            }
+        }
+    }
     @Published var sessionActivityIsJoined: Bool = false{
         didSet{
             if sessionActivityIsJoined{
@@ -27,7 +51,7 @@ class MultiplayerManagerViewModel: ObservableObject{
             }
         }
     }
-    @Published var adversaryPlayers: Set<Player> = []{
+    @Published var adversaryPlayers: [Player] = []{
         didSet{
             print("Value - \(adversaryPlayers)")
         }
@@ -37,12 +61,9 @@ class MultiplayerManagerViewModel: ObservableObject{
             print("recebi configMatch: \(String(describing: configMatch))")
         }
     }
-        
-    private var newPlayer: Player?{
-        didSet{
-            if newPlayer != nil{
-                validateDuplicateValues(newPlayer!)
-            }
+    @Published var newHidrance: SendHindrances?{
+        willSet{
+            verifyHindranceForMe(newValue)
         }
     }
     
@@ -67,6 +88,14 @@ class MultiplayerManagerViewModel: ObservableObject{
         
         sharePlayVM.$configMatch
             .assign(to: \.configMatch, on: self)
+            .store(in: &cancellables)
+        
+        sharePlayVM.$newPoint
+            .assign(to: \.newPoint, on: self)
+            .store(in: &cancellables)
+        
+        sharePlayVM.$newHidrance
+            .assign(to: \.newHidrance, on: self)
             .store(in: &cancellables)
         
     }
@@ -114,7 +143,7 @@ class MultiplayerManagerViewModel: ObservableObject{
     
     private func validateDuplicateValues(_ playerNew: Player){
         if adversaryPlayers.isEmpty{
-            self.sharePlayVM.players.insert(playerNew)
+            self.sharePlayVM.players.append(playerNew)
             return
         }
         
@@ -123,8 +152,54 @@ class MultiplayerManagerViewModel: ObservableObject{
                 print("Esse usuarioa ja existe - Não adicionarei a lista de menbors da partida: \(adversary.userName)")
                 return
             }
-            self.sharePlayVM.players.insert(playerNew)
+            self.sharePlayVM.players.append(playerNew)
             print("Novo player adicionado na lista")
         }
+    }
+    
+    private func returnPlayerNotOpcional() throws -> Player{
+        guard let localPlayer = self.localPlayer else {
+            print("ERROR - Valor de localPlayer e: [\(String(describing: self.localPlayer))]")
+            throw PlayerError.localPlayerNaoDefinido
+        }
+        return localPlayer
+    }
+    
+    public func sendPoints(){
+        let playerLocal = try! returnPlayerNotOpcional()
+        let userPoint = UserPoints(playerID: playerLocal.id, points: playerLocal.points)
+        self.sharePlayVM.sendPoints(userPoint)
+    }
+    
+    private func verifyNewPointFromUser(_ newValue: UserPoints?){
+        guard let value = newValue else {
+            print("Novo point e nil")
+            return
+        }
+        if let index = adversaryPlayers.firstIndex(where: {$0.id == value.playerID}){
+            self.adversaryPlayers[index].points = value.points
+            print("[\(self.adversaryPlayers[index].userName)] - Está com: [\(self.adversaryPlayers[index].points)]")
+        }
+    }
+    
+    public func sendHidrancesForRandonPlayer(_ powerUps: PowerUps){
+        let playerLocal = try! returnPlayerNotOpcional()
+        let randonPlayer = self.adversaryPlayers.randomElement()
+        let hidrance = SendHindrances(localPlayerID: playerLocal.id, adversaryID: randonPlayer!.id, hindrance: powerUps)
+        
+        self.sharePlayVM.sendHindrances(hidrance)
+    }
+    
+    private func verifyHindranceForMe(_ value: SendHindrances?){
+        guard let valueNotOpcional = value else {
+            print("Hindrances is nil")
+            return
+        }
+        let playerLocal = try! returnPlayerNotOpcional()
+        if playerLocal.id == valueNotOpcional.adversaryID{
+            print("recebi o hindrance(me lasquei): [\(valueNotOpcional.hindrance)]")
+            return
+        }
+        print("esse hidrance nao e para min(nao me lasquei)")
     }
 }

@@ -22,7 +22,7 @@ struct Player: Codable,Hashable {
 }
 
 struct Players: Codable, Hashable{
-    let players: Set<Player>
+    let players: [Player]
 }
 
 /// Estrutura que representa a configuração de uma partida

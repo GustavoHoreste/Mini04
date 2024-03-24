@@ -36,5 +36,9 @@ class PontosLabel: UILabel {
             number -= 1
         }
     }
-
+    
+    public func updateLabel(_ value: Int){
+        self.number = value
+        print("pontos incrementado: \(value) ")
+    }
 }
