@@ -12,6 +12,7 @@ import CoreImage
 class GameplayViewModel: NSObject {
     
     var controller: GameplayViewController?
+    //Nao precisa dessa varivel pois a controller ja tem uma referencia de multiVM e esse view tem a referencia da controller
     var multiVM: MultiplayerManagerViewModel?
     
     var camera: CameraModel!
@@ -40,10 +41,19 @@ class GameplayViewModel: NSObject {
         
         objectName.text = items.toFindObject
         special.specialName.text = items.specialObject
+        
     }
     
-    
-    
+    public func configMatch(){
+        //MARK: - estou pegando o valor multiVM da controller ja que ele possui a intancia
+        guard let config = multiVM?.configMatch else {
+            print("sai do configMatch da GamePlayViewModel: \(String(describing: multiVM?.configMatch))")
+            return
+        }
+        
+        let timerRound = config.roundTime
+        self.timerRound.config(timerRound)
+    }
 }
 
 

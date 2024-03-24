@@ -32,6 +32,7 @@ class ProfileViewViewModel: ObservableObject {
     
     private func creatID(){
         let id = UUID()
+        print("id dp user defult e: \(id)")
         userDefault.setValue(id.uuidString, forKey:  UserDefaultKey.userID.rawValue)
     }
 }

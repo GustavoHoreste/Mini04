@@ -8,6 +8,10 @@
 import SwiftUI
 import Combine
 
+struct MocaData{
+    static let config = MatchConfig(roundTime: 90, amoutRound: 3, powerUps: true, coresIsChoise: true)
+}
+
 class MultiplayerManagerViewModel: ObservableObject{
     public var sharePlayVM: SharePlayViewModel = SharePlayViewModel()
     
@@ -28,7 +32,7 @@ class MultiplayerManagerViewModel: ObservableObject{
             print("Value - \(adversaryPlayers)")
         }
     }
-    @Published var configMatch: MatchConfig?{
+    @Published var configMatch: MatchConfig = MocaData.config{
         didSet{
             print("recebi configMatch: \(String(describing: configMatch))")
         }
@@ -73,7 +77,7 @@ class MultiplayerManagerViewModel: ObservableObject{
         guard let idString = userDefults.string(forKey: UserDefaultKey.userID.rawValue) else {return}
         guard let id = UUID(uuidString: idString) else {return}
         
-        print("Criei o Id: \(id)")
+        print("peguei o Id: \(id)")
         if localPlayer == nil{
             let localUser = Player(id: id,
                                    userName: name,
@@ -104,7 +108,7 @@ class MultiplayerManagerViewModel: ObservableObject{
         guard let playerNotOpcional = self.localPlayer else {return}
         if playerNotOpcional.isHost{
             self.configMatch = config
-            self.sharePlayVM.sendConfigMatch(configMatch!)
+            self.sharePlayVM.sendConfigMatch(configMatch)
         }
     }
     

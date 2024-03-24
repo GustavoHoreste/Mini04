@@ -13,7 +13,7 @@ import GroupActivities
 final class SharePlayViewModel{
     @Published var players: Set<Player> = []
     @Published var newPlayer: Player?
-    @Published var configMatch: MatchConfig?
+    @Published var configMatch: MatchConfig = MocaData.config
     @Published private(set) var sessionActivityIsWaiting: Bool = false
     @Published private(set) var sessionActivityIsJoined: Bool = false
     
@@ -164,7 +164,7 @@ final class SharePlayViewModel{
                 
                 if configMatch != nil {
                     Task {
-                        try? await messenger.send(MatchConfig(roundTime: configMatch!.roundTime, amoutRound: configMatch!.amoutRound, powerUps: configMatch!.powerUps, coresIsChoise: configMatch!.coresIsChoise), to: .only(newParticipants))
+                        try? await messenger.send(MatchConfig(roundTime: configMatch.roundTime, amoutRound: configMatch.amoutRound, powerUps: configMatch.powerUps, coresIsChoise: configMatch.coresIsChoise), to: .only(newParticipants))
                     }
                 }
                 
@@ -179,7 +179,7 @@ final class SharePlayViewModel{
     private func reset(){
         players = []
         newPlayer = nil
-        configMatch = nil
+        configMatch = MocaData.config
 //        self.sessionState = false
         messenger = nil
         subscriptions = []

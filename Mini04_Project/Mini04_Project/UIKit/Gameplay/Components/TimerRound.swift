@@ -16,7 +16,7 @@ class TimerRound: UILabel {
     var delegate: TimerRoundDelegate?
     
     var minutos: Int = 0
-    var segundos: Int = 5
+    var segundos: Int = 0
     
     lazy var timer: Timer = {
         let t = Timer()
@@ -31,7 +31,6 @@ class TimerRound: UILabel {
         textColor = .label
         
         showText()
-        playTimer()
     }
     
     required init?(coder: NSCoder) {
@@ -44,6 +43,21 @@ class TimerRound: UILabel {
     
     func pauseTimer() {
         timer.invalidate()
+    }
+    
+    public func config(_ amouthTimer: Double){
+        
+        if amouthTimer > 60{
+            let minutos = Int(amouthTimer/60)
+            let segundos = minutos % Int(60)
+            
+            self.minutos = minutos
+            self.segundos = segundos
+        }else{
+            self.segundos = Int(amouthTimer)
+        }
+        
+        playTimer()
     }
     
     @objc func step() {
