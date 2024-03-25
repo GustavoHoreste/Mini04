@@ -18,6 +18,7 @@ class GameplayViewController: UIViewController {
         gameplayVM.controller = self
         gameplayVM.multiVM = multiVM
         gameplayVM.configMatch()
+        gameplayVM.starCombine()
         setupView()
     }
     

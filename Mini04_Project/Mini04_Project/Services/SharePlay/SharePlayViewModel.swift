@@ -149,6 +149,14 @@ final class SharePlayViewModel{
                 }
             }
         )
+        
+//        tasks.insert(
+//            Task{
+//                for await (message, _) in messenger.messages(of: Players.self){
+//                    handle(message)
+//                }
+//            }
+//        )
     }
     
     
@@ -178,12 +186,13 @@ final class SharePlayViewModel{
                 
                 if !players.isEmpty{
                     Task {
+                        let playersss = Players(players: self.players)
+                        print("\n\nPlayes antes de eniar \(playersss)\n\n")
                         try? await messenger.send(Players(players: self.players), to: .only(newParticipants))
                         print("Eviei para pessoa nova")
                     }
                 }
                 
-
                 Task {
                     try? await messenger.send(MatchConfig(roundTime: configMatch.roundTime, amoutRound: configMatch.amoutRound, powerUps: configMatch.powerUps, coresIsChoise: configMatch.coresIsChoise), to: .only(newParticipants))
                 }
@@ -200,7 +209,9 @@ final class SharePlayViewModel{
     private func reset(){
         players = []
         newPlayer = nil
-        configMatch = MocaData.config
+        DispatchQueue.main.async {
+            self.configMatch = MocaData.config
+        }
 //        self.sessionState = false
         newHidrance = nil
         newStatus = nil
@@ -208,6 +219,7 @@ final class SharePlayViewModel{
         messenger = nil
         subscriptions = []
         tasks.forEach {$0.cancel()}
+        
         if groupSession != nil{
             groupSession?.leave()
             groupSession = nil
@@ -217,8 +229,10 @@ final class SharePlayViewModel{
     }
     
     private func handle(_ model: Player) {
-        print("recebi")
-        self.newPlayer = model
+        print("recebi: \(model)")
+        DispatchQueue.main.async {
+            self.newPlayer = model
+        }
     }
 
     private func handle(_ model: SendHindrances) {
@@ -238,7 +252,14 @@ final class SharePlayViewModel{
 
     private func handle(_ model: MatchConfig) {
         print("MatchConfig: \(model)")
-        self.configMatch = model
+        DispatchQueue.main.async {
+            self.configMatch = model
+        }
     }
+    
+//    private func handle(_ model: Players){
+//        print("Plays para novo user: \(model)")
+//        print("[]")
+//    }
 }
 

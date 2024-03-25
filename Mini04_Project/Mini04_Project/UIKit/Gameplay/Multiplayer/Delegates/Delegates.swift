@@ -121,6 +121,7 @@ extension GameplayViewModel: PowersButtonDelegate {
         }
     }
     
+    
     func powerButtonAction(powerType: PowerUps) {
         powers.removePower(powerType: powerType)
         print(powerType)

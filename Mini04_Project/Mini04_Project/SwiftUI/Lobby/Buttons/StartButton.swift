@@ -23,11 +23,22 @@ class StartButtonViewModel: ObservableObject{
         self.navigationCoordinator = coordinator
     }
     
-    public func verifyUserIsHost(){
+     public func verifyUserIsHost(){
         if multiplayerVM?.localPlayer?.isHost == true{
             if multiplayerVM?.validateAllUsersStarted() == true{
                 self.multiplayerVM?.sendLocalUserStatus()
                 self.navigationCoordinator?.push(.gameplay)
+            }else{
+                if let multiplayerVM = multiplayerVM {
+                    let notReadyPlayers = multiplayerVM.adversaryPlayers.filter { !$0.statusUser }
+                    
+                    if !notReadyPlayers.isEmpty {
+                        print("Alguem não está pronto:")
+                        for player in notReadyPlayers {
+                            print("userName: \(player.userName)")
+                        }
+                    }
+                }
             }
         }else{
             self.multiplayerVM?.sendLocalUserStatus()

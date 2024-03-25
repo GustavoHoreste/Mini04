@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 
+
 struct MocaData{
     static let config = MatchConfig(roundTime: 90, amoutRound: 3, powerUps: true, coresIsChoise: true)
 }
@@ -15,6 +16,7 @@ struct MocaData{
 private enum PlayerError: Error {
     case localPlayerNaoDefinido
 }
+
 
 class MultiplayerManagerViewModel: ObservableObject{
     public var sharePlayVM: SharePlayViewModel = SharePlayViewModel()
@@ -74,7 +76,12 @@ class MultiplayerManagerViewModel: ObservableObject{
         }
     }
     
-    @Published var starActionHidrance: PowerUps?
+    @Published var starActionHidrance: PowerUps?{
+        didSet{
+            print("Novo endrance na varivel starActionHidrance: [\(String(describing: starActionHidrance))]")
+        }
+    }
+    
     @Published var hostIsStarter: Bool = false
     
     init() {
@@ -150,8 +157,10 @@ class MultiplayerManagerViewModel: ObservableObject{
     public func defineMachConfig(_ config: MatchConfig){
         guard let playerNotOpcional = self.localPlayer else {return}
         if playerNotOpcional.isHost{
-            self.configMatch = config
-            self.sharePlayVM.sendConfigMatch(configMatch)
+            DispatchQueue.main.async {
+                self.configMatch = config
+                self.sharePlayVM.sendConfigMatch(self.configMatch)
+            }
         }
     }
     
@@ -160,14 +169,12 @@ class MultiplayerManagerViewModel: ObservableObject{
             self.sharePlayVM.players.append(playerNew)
             return
         }
-        
-        for adversary in adversaryPlayers{
-            if adversary.id == playerNew.id{
-                print("Esse usuarioa ja existe - Não adicionarei a lista de menbors da partida: \(adversary.userName)")
-                return
-            }
-            self.sharePlayVM.players.append(playerNew)
+            
+        if !adversaryPlayers.contains(where: { $0.id == playerNew.id }) {
+            sharePlayVM.players.append(playerNew)
             print("Novo player adicionado na lista")
+        } else {
+            print("Esse usuário já existe na lista de membros da partida")
         }
     }
     
@@ -178,6 +185,7 @@ class MultiplayerManagerViewModel: ObservableObject{
         }
         return localPlayer
     }
+    
     
     public func sendPoints(){
         let playerLocal = try! returnPlayerNotOpcional()
@@ -212,7 +220,9 @@ class MultiplayerManagerViewModel: ObservableObject{
         let playerLocal = try! returnPlayerNotOpcional()
         if playerLocal.id == valueNotOpcional.adversaryID{
             print("recebi o hindrance(me lasquei): [\(valueNotOpcional.hindrance)]")
-            self.starActionHidrance = value?.hindrance
+            DispatchQueue.main.async {
+                self.starActionHidrance = valueNotOpcional.hindrance
+            }
             return
         }
         print("esse hidrance nao e para min(nao me lasquei)")
@@ -236,9 +246,7 @@ class MultiplayerManagerViewModel: ObservableObject{
         
     }
     
-//    private func processHostStatus(_ index: Int){
-//        if adversaryPlayers[index].
-//    }
+
     
     public func validateAllUsersStarted() -> Bool{
         return self.adversaryPlayers.allSatisfy({$0.statusUser == true})
