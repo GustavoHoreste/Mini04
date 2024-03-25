@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import CoreImage
+import Combine
 
 class GameplayViewModel: NSObject {
     
@@ -35,12 +36,25 @@ class GameplayViewModel: NSObject {
     
     var context: CIContext = CIContext()
     
+    private var cancellables = Set<AnyCancellable>()
+    private var startHidrance: PowerUps?{
+        didSet{
+            if startHidrance != nil{
+                reciveHidrance(powerType: startHidrance!)
+            }
+        }
+    }
+    
     override init() {
         super.init()
         setupDelegate()
         
         objectName.text = items.toFindObject
         special.specialName.text = items.specialObject
+        
+        multiVM?.$starActionHidrance
+            .assign(to: \.startHidrance, on: self)
+            .store(in: &cancellables)
         
     }
     

@@ -37,6 +37,10 @@ struct LobbyView: View {
             //Title
             LobbyTitle()
             
+            if multiplayerVM.starActionHidrance != nil{
+                Text("\(String(describing: multiplayerVM.starActionHidrance))")
+            }
+            
             //Grid
             ScrollView {
                 LazyVGrid(columns: adaptiveColumns, alignment: .center, spacing: 20) {
@@ -49,9 +53,12 @@ struct LobbyView: View {
                             RoundedRectangle(cornerRadius: 52.5)
                                 .frame(width: 156, height: 65)
                                 .foregroundStyle(colors.randomElement()!)
-                            Text(player.userName)
-                                .font(.headline)
-                                .foregroundStyle(Color.black)
+                            VStack{
+                                Text(player.userName)
+                                    .font(.headline)
+                                    .foregroundStyle(Color.black)
+                                Text("\(String(describing: player.statusUser))")
+                            }
                         }
                     }
                 }
@@ -72,6 +79,10 @@ struct LobbyView: View {
         }.task {
             for await session in WhereWhereActivity.sessions(){
                 multiplayerVM.sharePlayVM.configurationSessin(session)
+            }
+        }.onReceive(self.multiplayerVM.$hostIsStarter){ newValue in
+            if newValue == true{
+                navigationCoordinator.push(.gameplay)
             }
         }
         .navigationBarBackButtonHidden()

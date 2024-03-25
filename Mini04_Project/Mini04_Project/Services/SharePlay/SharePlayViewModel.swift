@@ -16,6 +16,7 @@ final class SharePlayViewModel{
     @Published var configMatch: MatchConfig = MocaData.config
     @Published var newPoint: UserPoints?
     @Published var newHidrance: SendHindrances?
+    @Published var newStatus: StatusUsers?
     @Published private(set) var sessionActivityIsWaiting: Bool = false
     @Published private(set) var sessionActivityIsJoined: Bool = false
     
@@ -71,8 +72,14 @@ final class SharePlayViewModel{
     }
 
     /// Função que envia o status.
-    public func sendStatus(_ status: StatusUsers) {
-        // Implementação para enviar o status para os outros participantes.
+    public func sendStatus(_ model: StatusUsers) {
+        Task {
+            do {
+                try await messenger?.send(model)
+            } catch {
+                print("Error in send model session [SharePlayViewModel.sendConfigMatch] - ")
+            }
+        }
     }
 
     /// Função que envia os dados de configuração da partida.
@@ -196,6 +203,8 @@ final class SharePlayViewModel{
         configMatch = MocaData.config
 //        self.sessionState = false
         newHidrance = nil
+        newStatus = nil
+        
         messenger = nil
         subscriptions = []
         tasks.forEach {$0.cancel()}
@@ -208,8 +217,8 @@ final class SharePlayViewModel{
     }
     
     private func handle(_ model: Player) {
-        self.newPlayer = model
         print("recebi")
+        self.newPlayer = model
     }
 
     private func handle(_ model: SendHindrances) {
@@ -219,6 +228,7 @@ final class SharePlayViewModel{
 
     private func handle(_ model: StatusUsers) {
         print("StatusUsers: \(model)")
+        self.newStatus = model
     }
 
     private func handle(_ model: UserPoints) {

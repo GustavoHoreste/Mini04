@@ -106,6 +106,21 @@ extension GameplayViewModel: TimerObjectDelegate {
 
 //MARK: - Lógica dos poderzinhos
 extension GameplayViewModel: PowersButtonDelegate {
+    func reciveHidrance(powerType: PowerUps) {
+        switch powerType{
+        case .freeze:
+            powers.freezePower()
+        case .subtrac:
+            pontos.subtractPower()
+        case .switchWord:
+            changeButtonAction()
+        case .shuffleWord:
+            items.shufflePower()
+        case .changeCamera:
+            camera.changeCamera()
+        }
+    }
+    
     func powerButtonAction(powerType: PowerUps) {
         powers.removePower(powerType: powerType)
         print(powerType)

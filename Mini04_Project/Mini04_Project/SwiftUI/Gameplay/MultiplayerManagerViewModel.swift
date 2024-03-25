@@ -35,6 +35,11 @@ class MultiplayerManagerViewModel: ObservableObject{
             self.verifyNewPointFromUser(newPoint)
         }
     }
+    private var newHidrance: SendHindrances?{
+        willSet{
+            verifyHindranceForMe(newValue)
+        }
+    }
     
     @Published var sessionActivityIsWaiting: Bool = false
     @Published var localPlayer: Player?{
@@ -61,11 +66,16 @@ class MultiplayerManagerViewModel: ObservableObject{
             print("recebi configMatch: \(String(describing: configMatch))")
         }
     }
-    @Published var newHidrance: SendHindrances?{
-        willSet{
-            verifyHindranceForMe(newValue)
+    @Published var newStatus: StatusUsers?{
+        didSet{
+            if newStatus != nil{
+                changeUserStatus(newStatus)
+            }
         }
     }
+    
+    @Published var starActionHidrance: PowerUps?
+    @Published var hostIsStarter: Bool = false
     
     init() {
             
@@ -96,6 +106,10 @@ class MultiplayerManagerViewModel: ObservableObject{
         
         sharePlayVM.$newHidrance
             .assign(to: \.newHidrance, on: self)
+            .store(in: &cancellables)
+        
+        sharePlayVM.$newStatus
+            .assign(to: \.newStatus, on: self)
             .store(in: &cancellables)
         
     }
@@ -198,8 +212,45 @@ class MultiplayerManagerViewModel: ObservableObject{
         let playerLocal = try! returnPlayerNotOpcional()
         if playerLocal.id == valueNotOpcional.adversaryID{
             print("recebi o hindrance(me lasquei): [\(valueNotOpcional.hindrance)]")
+            self.starActionHidrance = value?.hindrance
             return
         }
         print("esse hidrance nao e para min(nao me lasquei)")
+    }
+    
+    private func changeUserStatus(_ value: StatusUsers?){
+        guard let valueNotOpcional = value else {
+            print("Novo point e nil")
+            return
+        }
+        if let hostID = self.adversaryPlayers.first(where: { $0.isHost })?.id {
+            if valueNotOpcional.localPlayerID == hostID {
+                self.hostIsStarter = true
+            }
+        }
+        if let index = adversaryPlayers.firstIndex(where: {$0.id == valueNotOpcional.localPlayerID}){
+            self.adversaryPlayers[index].statusUser = valueNotOpcional.status
+            print("[\(self.adversaryPlayers[index].userName)] - Está com pront: [\(self.adversaryPlayers[index].statusUser)]")
+            
+        }
+        
+    }
+    
+//    private func processHostStatus(_ index: Int){
+//        if adversaryPlayers[index].
+//    }
+    
+    public func validateAllUsersStarted() -> Bool{
+        return self.adversaryPlayers.allSatisfy({$0.statusUser == true})
+    }
+    
+    public func sendLocalUserStatus(){
+        if localPlayer?.statusUser != true{
+            self.localPlayer?.statusUser = true
+            let playerLocal = try! returnPlayerNotOpcional()
+            let status = StatusUsers(localPlayerID: playerLocal.id, status: playerLocal.statusUser)
+            self.sharePlayVM.sendStatus(status)
+        }
+        //Fazer validacao de cancelar status?
     }
 }
