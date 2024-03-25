@@ -10,36 +10,52 @@ import SwiftUI
 struct MenuView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
+    @State var isActive: Bool = false
     
     var body: some View {
-        VStack {
-            HStack {
-                InfoButton()
+        ZStack {
+            VStack {
+                HStack {
+                    InfoButton()
+                    
+                    Spacer()
+                    
+                    Button {
+                        isActive = true
+                    } label: {
+                        Image(systemName: "gearshape.circle.fill")
+                            .resizable()
+                            .frame(width: 70, height: 70)
+                    }
+                    
+                    ProfileButton()
+                }.padding()
+                
+               
                 
                 Spacer()
                 
-                ConfigButton()
+                Circle()
+                    .foregroundStyle(.gray)
+                    .frame(width: 310, height: 310)
                 
-                ProfileButton()
+                Spacer()
+                
+                MultiplayerButton()
+                
+                SingleButton()
+                
+                Spacer()
             }
-            .padding()
-            .foregroundStyle(.gray)
+            .navigationBarBackButtonHidden()
             
-            Spacer()
+
             
-            Circle()
-                .foregroundStyle(.gray)
-                .frame(width: 310, height: 310)
-            
-            Spacer()
-            
-            MultiplayerButton()
-            
-            SingleButton()
-            
-            Spacer()
+            if isActive {
+                PopUpConfig(isActive: $isActive)
+            }
         }
-        .navigationBarBackButtonHidden()
+        
     }
     
 }
