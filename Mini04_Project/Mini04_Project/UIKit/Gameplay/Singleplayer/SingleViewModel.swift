@@ -24,7 +24,7 @@ class SingleViewModel: NSObject {
     lazy var pontos = PontosLabel()
     lazy var profile = ProfileImage()
     lazy var round = RoundLabel()
-    lazy var timerRound = TimerRound()
+    lazy var timerRound = TimerSingleRound()
     lazy var timerObject = TimerObject()
     lazy var crosshair = CrosshairImage()
     lazy var logo = LogoImage(isIncreased: false)
