@@ -43,38 +43,47 @@ struct LobbyView: View {
             
             //Grid
             ScrollView {
-                LazyVGrid(columns: adaptiveColumns, alignment: .center, spacing: 20) {
-                    Text(multiplayerVM.localPlayer?.userName ?? "Carlos")
-                        .font(.headline)
-                        .foregroundStyle(Color.red)
-                    
-                    ForEach(multiplayerVM.adversaryPlayers, id: \.id) { player in
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 52.5)
-                                .frame(width: 156, height: 65)
-                                .foregroundStyle(colors.randomElement()!)
-                            VStack{
-                                Text(player.userName)
-                                    .font(.headline)
-                                    .foregroundStyle(Color.black)
-                                Text("\(String(describing: player.statusUser))")
-                            }
-                        }
-                    }
+//                Text(multiplayerVM.localPlayer?.userName ?? "Carlos")
+//                    .font(.headline)
+//                    .foregroundStyle(Color.red)
+                
+                if let player = multiplayerVM.localPlayer {
+                    PlayerListCell(player: player)
+                }
+                
+                ForEach(multiplayerVM.adversaryPlayers, id: \.id) { player in
+//                    ZStack {
+//                        RoundedRectangle(cornerRadius: 52.5)
+//                            .frame(width: 156, height: 65)
+//                            .foregroundStyle(colors.randomElement()!)
+//                        VStack{
+//                            Text(player.userName)
+//                                .font(.headline)
+//                                .foregroundStyle(Color.black)
+//                            Text("\(String(describing: player.statusUser))")
+//                        }
+//                    }
+                    PlayerListCell(player: player)
                 }
             }
             .padding()
             
             Spacer()
             
-            
             //Buttons
+            
+            StartButton()
+            
             Button(action: {verifyStausSession()}, label: {
                 Text("Adicione seu amigo")
+                    .padding()
+                    .foregroundStyle(.white)
+                    .background(.gray)
+                    .clipShape(.capsule)
+                    .font(.title)
             })
+            .padding()
             
-        StartButton()
-
             
         }.task {
             for await session in WhereWhereActivity.sessions(){

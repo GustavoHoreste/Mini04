@@ -57,12 +57,17 @@ struct StartButton: View {
             Button{
                 self.startButtonVM.verifyUserIsHost()
             } label: {
-                Text(multiplayerVM.localPlayer?.isHost == true ? "Começar" : "Pronto")
-                    .padding()
-                    .foregroundStyle(.white)
-                    .background(multiplayerVM.localPlayer?.statusUser == true ? .gray : .orange)
-                    .font(.title)
-                    .clipShape(.capsule)
+                ZStack{
+                    
+                    Circle()
+                        .foregroundStyle(multiplayerVM.localPlayer?.statusUser == true ? .gray : .orange)
+                        .frame(width: 130, height: 130)
+                    
+                    Text(multiplayerVM.localPlayer?.isHost == true ? "Começar" : "Pronto")
+                        .padding()
+                        .foregroundStyle(.white)
+                        .font(.title)
+                }
             }
         }.onAppear{
             self.startButtonVM.addObjectMultiPlayer(self.multiplayerVM, self.navigationCoordinator)
