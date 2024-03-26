@@ -17,7 +17,7 @@ class ChangeButton: UIButton {
     
     lazy var count: PontosLabel = {
         let pts = PontosLabel()
-        pts.number = 3
+        pts.number = 3000
         return pts
     }()
     

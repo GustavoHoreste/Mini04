@@ -44,7 +44,7 @@ struct LobbyView: View {
             //Grid
             ScrollView {
                 LazyVGrid(columns: adaptiveColumns, alignment: .center, spacing: 20) {
-                    Text(multiplayerVM.localPlayer?.userName ?? "Carlos")
+                    Text(multiplayerVM.localPlayer?.userName ?? "Default Name")
                         .font(.headline)
                         .foregroundStyle(Color.red)
                     

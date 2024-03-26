@@ -60,8 +60,6 @@ class SpecialObjectImage: UIImageView {
     @objc func step() {
         tempo -= 1
         if tempo == timeToAppear {
-            specialIsOn = true
-            isHidden = false
             delegate?.specialAppeared()
         }
     }
