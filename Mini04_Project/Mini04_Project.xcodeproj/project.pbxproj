@@ -22,6 +22,11 @@
 		2E3A74532BAB7ED90026BE07 /* SingleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A74522BAB7ED90026BE07 /* SingleButton.swift */; };
 		2E3A74552BAB7F5E0026BE07 /* MultiplayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A74542BAB7F5E0026BE07 /* MultiplayerButton.swift */; };
 		2E3A745E2BB1AF250026BE07 /* PopUpConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A745D2BB1AF250026BE07 /* PopUpConfig.swift */; };
+		2E3A74612BB348790026BE07 /* SoundOffButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A74602BB348790026BE07 /* SoundOffButton.swift */; };
+		2E3A74632BB348870026BE07 /* SoundEffectsOff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A74622BB348870026BE07 /* SoundEffectsOff.swift */; };
+		2E3A74652BB348D90026BE07 /* HapticsOff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A74642BB348D90026BE07 /* HapticsOff.swift */; };
+		2E3A74672BB34ACE0026BE07 /* ProfileButtonPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A74662BB34ACE0026BE07 /* ProfileButtonPopUp.swift */; };
+		2E3A74692BB34AE30026BE07 /* CreditsButtonPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A74682BB34AE30026BE07 /* CreditsButtonPopUp.swift */; };
 		2E81140A2BA4E263009CCC77 /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8114092BA4E263009CCC77 /* ConfigView.swift */; };
 		2E81140D2BA4E3C2009CCC77 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E81140C2BA4E3C2009CCC77 /* CoordinatorView.swift */; };
 		2E8114112BA4EA16009CCC77 /* GameplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8114102BA4EA16009CCC77 /* GameplayView.swift */; };
@@ -115,6 +120,11 @@
 		2E3A74522BAB7ED90026BE07 /* SingleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleButton.swift; sourceTree = "<group>"; };
 		2E3A74542BAB7F5E0026BE07 /* MultiplayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerButton.swift; sourceTree = "<group>"; };
 		2E3A745D2BB1AF250026BE07 /* PopUpConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpConfig.swift; sourceTree = "<group>"; };
+		2E3A74602BB348790026BE07 /* SoundOffButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundOffButton.swift; sourceTree = "<group>"; };
+		2E3A74622BB348870026BE07 /* SoundEffectsOff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundEffectsOff.swift; sourceTree = "<group>"; };
+		2E3A74642BB348D90026BE07 /* HapticsOff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsOff.swift; sourceTree = "<group>"; };
+		2E3A74662BB34ACE0026BE07 /* ProfileButtonPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButtonPopUp.swift; sourceTree = "<group>"; };
+		2E3A74682BB34AE30026BE07 /* CreditsButtonPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsButtonPopUp.swift; sourceTree = "<group>"; };
 		2E8114092BA4E263009CCC77 /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
 		2E81140C2BA4E3C2009CCC77 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
 		2E8114102BA4EA16009CCC77 /* GameplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayView.swift; sourceTree = "<group>"; };
@@ -251,6 +261,18 @@
 				2E3A744A2BAB62C20026BE07 /* ThirdPlaceLabel.swift */,
 			);
 			path = Label;
+			sourceTree = "<group>";
+		};
+		2E3A745F2BB3484F0026BE07 /* PopUpButtons */ = {
+			isa = PBXGroup;
+			children = (
+				2E3A74602BB348790026BE07 /* SoundOffButton.swift */,
+				2E3A74622BB348870026BE07 /* SoundEffectsOff.swift */,
+				2E3A74642BB348D90026BE07 /* HapticsOff.swift */,
+				2E3A74662BB34ACE0026BE07 /* ProfileButtonPopUp.swift */,
+				2E3A74682BB34AE30026BE07 /* CreditsButtonPopUp.swift */,
+			);
+			path = PopUpButtons;
 			sourceTree = "<group>";
 		};
 		2E81140B2BA4E268009CCC77 /* Config */ = {
@@ -491,6 +513,7 @@
 				2E3A74562BACA9D60026BE07 /* Buttons */,
 				D92885B52B9668D100C73B6E /* MenuView.swift */,
 				2E3A745D2BB1AF250026BE07 /* PopUpConfig.swift */,
+				2E3A745F2BB3484F0026BE07 /* PopUpButtons */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -724,6 +747,7 @@
 				C0393D5C2BACC9FA00E97810 /* AudioManager.swift in Sources */,
 				C0A8B2A22BA8CD5B0048AC08 /* PhotoButton.swift in Sources */,
 				C0A8B2A42BA8CE190048AC08 /* Delegates.swift in Sources */,
+				2E3A74692BB34AE30026BE07 /* CreditsButtonPopUp.swift in Sources */,
 				C091070D2BAA243D00037EAB /* TimerObject.swift in Sources */,
 				E0AF6F0E2BACC6B1008BE255 /* ReadyButton.swift in Sources */,
 				C09107042BA90D3400037EAB /* ProfileImage.swift in Sources */,
@@ -756,6 +780,7 @@
 				2E3A74472BAB62410026BE07 /* FirstPlaceLabel.swift in Sources */,
 				C09107092BAA066900037EAB /* PowersButton.swift in Sources */,
 				2E3A74392BAA126A0026BE07 /* TimerRound.swift in Sources */,
+				2E3A74632BB348870026BE07 /* SoundEffectsOff.swift in Sources */,
 				C0A8B2932BA8A1970048AC08 /* NewHomeObjects.mlmodel in Sources */,
 				C09107132BAB730700037EAB /* StringExtension.swift in Sources */,
 				E08782B82BA8C44000FB5ABC /* PlayerData.swift in Sources */,
@@ -765,8 +790,10 @@
 				2E8114112BA4EA16009CCC77 /* GameplayView.swift in Sources */,
 				2E3A74452BAB60CD0026BE07 /* LobbyTitle.swift in Sources */,
 				C09107062BAA056300037EAB /* PowersStackView.swift in Sources */,
+				2E3A74652BB348D90026BE07 /* HapticsOff.swift in Sources */,
 				2E3A74492BAB62AD0026BE07 /* SecondPlaceLabel.swift in Sources */,
 				2E3A74422BAB5FDB0026BE07 /* InviteButton.swift in Sources */,
+				2E3A74672BB34ACE0026BE07 /* ProfileButtonPopUp.swift in Sources */,
 				E08782AA2BA4D46900FB5ABC /* PartialResultViewController.swift in Sources */,
 				C0CBCB3E2BAE2A0E0020E594 /* SingleplayerView.swift in Sources */,
 				2E3A74532BAB7ED90026BE07 /* SingleButton.swift in Sources */,
@@ -782,7 +809,7 @@
 				C0A8B2992BA8B6A80048AC08 /* ObjectName.swift in Sources */,
 				C0CBCB512BB2193E0020E594 /* TimerSingleRound.swift in Sources */,
 				C0393D5E2BACEDBC00E97810 /* CrosshairImage.swift in Sources */,
-				E00C5CD52BB351420020126E /* UILableRepresentable.swift in Sources */,
+				2E3A74612BB348790026BE07 /* SoundOffButton.swift in Sources */,
 				2E3A744F2BAB733D0026BE07 /* InfoButton.swift in Sources */,
 				E00C5CD32BB349140020126E /* PlayerListCell.swift in Sources */,
 				C09106FE2BA8FD7800037EAB /* RoundLabel.swift in Sources */,

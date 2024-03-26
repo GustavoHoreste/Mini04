@@ -16,7 +16,6 @@ struct MenuView: View {
         ZStack {
             VStack {
                 HStack {
-                    InfoButton()
                     
                     Spacer()
                     
@@ -28,15 +27,12 @@ struct MenuView: View {
                             .frame(width: 70, height: 70)
                     }
                     
-                    ProfileButton()
                 }.padding()
-                
-               
                 
                 Spacer()
                 
                 Circle()
-                    .foregroundStyle(.gray)
+                    .foregroundStyle(.red)
                     .frame(width: 310, height: 310)
                 
                 Spacer()
@@ -48,9 +44,7 @@ struct MenuView: View {
                 Spacer()
             }
             .navigationBarBackButtonHidden()
-            
-
-            
+        
             if isActive {
                 PopUpConfig(isActive: $isActive)
             }
