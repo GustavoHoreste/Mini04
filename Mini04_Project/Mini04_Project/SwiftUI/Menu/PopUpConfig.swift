@@ -11,52 +11,33 @@ struct PopUpConfig: View {
     @Binding var isActive: Bool
 
     @State private var offset: CGFloat = 1000
-    
-    @State private var volume: Double = 0
-    
-    @State private var hapticsOn = false
+    @EnvironmentObject private var navigationCoordinator: Coordinator
+
 
     var body: some View {
         ZStack {
             Color(.black)
-                .opacity(0.5)
-                .onTapGesture {
-                    close()
-                }
+                .opacity(0.9)
 
             VStack {
 
-                VStack {
-                    Text("Current Volume \(Int(volume))%")
-                        .font(.body)
-                    
-                    Slider(value: $volume, in: 0...100, step: 5)
-                        .tint(.yellow)
-                    
-                    HStack {
-                        Text("-")
-                        Spacer()
-                        Text("+")
-                    }
-                    
-                    Toggle("Haptics", isOn: $hapticsOn)
+                HStack {
+                    Spacer()
+                    SoundOffButton()
+                    Spacer()
+                    SoundEffectsOff()
+                    Spacer()
+                    HapticsOff()
+                    Spacer()
                 }
                 .padding()
 
-                Button {
-                    close()
-                } label: {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 20)
-                            .foregroundColor(.red)
-
-                        Text("Save")
-                            .font(.system(size: 16, weight: .bold))
-                            .foregroundColor(.white)
-                            .padding()
-                    }
-                    .padding()
-                }
+                ProfileButtonPopUp()
+                
+                Spacer()
+                
+                CreditsButtonPopUp()
+                
             }
             .fixedSize(horizontal: false, vertical: true)
             .padding()
@@ -67,7 +48,7 @@ struct PopUpConfig: View {
                     close()
                 } label: {
                     Image(systemName: "xmark.circle")
-                        .font(.title2)
+                        .font(.title)
                         .fontWeight(.medium)
                 }
                 .tint(.black)
@@ -87,7 +68,7 @@ struct PopUpConfig: View {
 
     func close() {
         withAnimation(.spring()) {
-            offset = 1000
+            offset = 500
             isActive = false
         }
     }

@@ -59,7 +59,7 @@ struct ProfileView: View {
             
             
             Button("Dismiss") {
-                navigationCoordinator.dismissSheet()
+                navigationCoordinator.dismissFullScreenCover()
             }
         }
         .navigationBarBackButtonHidden()
