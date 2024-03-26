@@ -14,8 +14,8 @@ enum Section {
 class PartialResultViewController: UIViewController {
     
     var multiVM: MultiplayerManagerViewModel
-    
     var partialResultVM = PartialResultViewModel()
+    var navigationCoordinator: Coordinator
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Player>
     typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, Player>
@@ -37,8 +37,9 @@ class PartialResultViewController: UIViewController {
     
     var data: [Player]
     
-    init(multiVM: MultiplayerManagerViewModel) {
+    init(multiVM: MultiplayerManagerViewModel, navigationCoordinator: Coordinator) {
         self.multiVM = multiVM
+        self.navigationCoordinator = navigationCoordinator
         self.data = self.multiVM.adversaryPlayers
         self.data.append(self.multiVM.localPlayer!)
         partialResultVM.data = data
@@ -55,6 +56,24 @@ class PartialResultViewController: UIViewController {
         configureCollectionViewDataSource()
         applySnapshot(players: partialResultVM.data)
         setupView()
+        
+        
+//        print("Removendo do navigationcontroller: \(String(describing: navigationController?.viewControllers.count))")
+
+        navigationController?.viewControllers.remove(at: (navigationController?.viewControllers.count)! - 2)
+    
+        
+//        print("Removendo do navigationcontroller: \(String(describing: navigationController?.viewControllers.count))")
+//        
+//        print("Removendo do navigationcontroller: \(String(describing: navigationController?.viewControllers))")
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        navigationController?.viewControllers.remove(at:  (navigationController?.viewControllers.count)! - 2)
+        
+//        print(navigationController?.viewControllers as Any)
     }
     
     private func configureCollectionViewDataSource() {

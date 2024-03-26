@@ -50,7 +50,6 @@ class GameplayViewModel: NSObject {
         setupDelegate()
         
         objectName.text = items.toFindObject
-        special.specialName.text = items.specialObject
         
     }
     
@@ -61,7 +60,21 @@ class GameplayViewModel: NSObject {
     }
     
      public func configMatch(){
-        //MARK: - estou pegando o valor multiVM da controller ja que ele possui a intancia
+         self.configTimeMatch()
+         
+         if multiVM?.configMatch.powerUps == true {
+             items.chooseSpecialObject()
+             special.specialName.text = items.specialObject
+         }
+         
+         if multiVM?.configMatch.coresIsChoise == true {
+             items.setColors()
+         }
+         
+//         items.chooseObject()
+    }
+    
+    private func configTimeMatch(){
         guard let config = multiVM?.configMatch else {
             print("sai do configMatch da GamePlayViewModel: \(String(describing: multiVM?.configMatch))")
             return
@@ -70,6 +83,9 @@ class GameplayViewModel: NSObject {
         let timerRound = config.roundTime
         self.timerRound.config(timerRound)
     }
+    
+//    private func
+    
 }
 
 

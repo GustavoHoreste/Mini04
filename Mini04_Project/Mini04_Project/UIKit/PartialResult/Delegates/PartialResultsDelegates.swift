@@ -24,6 +24,9 @@ extension PartialResultViewModel: EndgameButtonDelegate {
 extension PartialResultViewModel: ReadyButtonDelegate {
     func ready() {
         self.readyButton.setTitle("Ready", for: .normal)
-        view.applySnapshot(players: self.data.sorted(by: { $0.points > $1.points }))
+//        view.applySnapshot(players: self.data.sorted(by: { $0.points > $1.points }))
+        let nextScreen = GameplayViewController(multiVM: self.view.multiVM, navigationCoordinator: self.view.navigationCoordinator)
+        nextScreen.gameplayVM.round.number = currentRound + 1
+        self.view?.navigationController!.pushViewController(nextScreen, animated: false)
     }
 }
