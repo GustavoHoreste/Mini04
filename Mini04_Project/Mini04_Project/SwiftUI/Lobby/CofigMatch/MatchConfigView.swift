@@ -46,6 +46,7 @@ class MatchConfigViewModel: ObservableObject{
     @Published var selecPlayer: Bool = false
     
     
+     
     public func saveConfigMach() {
         let config: MatchConfig = MatchConfig(roundTime: selectedRoundTime.rawValue,
                                                    amoutRound: selectedRound.rawValue,

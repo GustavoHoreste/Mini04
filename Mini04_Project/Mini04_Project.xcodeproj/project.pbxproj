@@ -60,6 +60,13 @@
 		C0CBCB3C2BAE14870020E594 /* DelegatesSP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB3B2BAE14870020E594 /* DelegatesSP.swift */; };
 		C0CBCB3E2BAE2A0E0020E594 /* SingleplayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB3D2BAE2A0E0020E594 /* SingleplayerView.swift */; };
 		C0CBCB402BAE2A9B0020E594 /* PreSingleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB3F2BAE2A9B0020E594 /* PreSingleViewController.swift */; };
+		C0CBCB432BB209010020E594 /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB422BB209010020E594 /* RecordViewController.swift */; };
+		C0CBCB452BB2094B0020E594 /* RecordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB442BB2094B0020E594 /* RecordViewModel.swift */; };
+		C0CBCB482BB20A610020E594 /* HighscoreLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB472BB20A610020E594 /* HighscoreLabel.swift */; };
+		C0CBCB4A2BB20BDE0020E594 /* SingleResultLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB492BB20BDE0020E594 /* SingleResultLabel.swift */; };
+		C0CBCB4C2BB20E070020E594 /* ConstraintsRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB4B2BB20E070020E594 /* ConstraintsRC.swift */; };
+		C0CBCB4E2BB20F4C0020E594 /* ResultMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB4D2BB20F4C0020E594 /* ResultMenuButton.swift */; };
+		C0CBCB512BB2193E0020E594 /* TimerSingleRound.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0CBCB502BB2193E0020E594 /* TimerSingleRound.swift */; };
 		D91D65102BAA1074003D7DBA /* SharePlayAllModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91D650F2BAA1074003D7DBA /* SharePlayAllModels.swift */; };
 		D91D65132BAB2871003D7DBA /* MultiplayerManagerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D91D65122BAB2871003D7DBA /* MultiplayerManagerViewModel.swift */; };
 		D92885B42B9668D100C73B6E /* Mini04_ProjectApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92885B32B9668D100C73B6E /* Mini04_ProjectApp.swift */; };
@@ -75,6 +82,8 @@
 		D9CD142A2BA9D84A003CB0B6 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CD14292BA9D84A003CB0B6 /* CreditsView.swift */; };
 		E009867F2BAB626500E586C6 /* PartialResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E009867E2BAB626500E586C6 /* PartialResultCell.swift */; };
 		E00986822BAB681200E586C6 /* CollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00986812BAB681200E586C6 /* CollectionDelegate.swift */; };
+		E00C5CD32BB349140020126E /* PlayerListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00C5CD22BB349140020126E /* PlayerListCell.swift */; };
+		E00C5CD52BB351420020126E /* UILableRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00C5CD42BB351420020126E /* UILableRepresentable.swift */; };
 		E08782A02BA4D41500FB5ABC /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E087829F2BA4D41400FB5ABC /* UIImageExtension.swift */; };
 		E08782A22BA4D42000FB5ABC /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782A12BA4D42000FB5ABC /* Coordinator.swift */; };
 		E08782A42BA4D42800FB5ABC /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782A32BA4D42800FB5ABC /* CameraModel.swift */; };
@@ -149,6 +158,13 @@
 		C0CBCB3B2BAE14870020E594 /* DelegatesSP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegatesSP.swift; sourceTree = "<group>"; };
 		C0CBCB3D2BAE2A0E0020E594 /* SingleplayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleplayerView.swift; sourceTree = "<group>"; };
 		C0CBCB3F2BAE2A9B0020E594 /* PreSingleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreSingleViewController.swift; sourceTree = "<group>"; };
+		C0CBCB422BB209010020E594 /* RecordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewController.swift; sourceTree = "<group>"; };
+		C0CBCB442BB2094B0020E594 /* RecordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordViewModel.swift; sourceTree = "<group>"; };
+		C0CBCB472BB20A610020E594 /* HighscoreLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighscoreLabel.swift; sourceTree = "<group>"; };
+		C0CBCB492BB20BDE0020E594 /* SingleResultLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleResultLabel.swift; sourceTree = "<group>"; };
+		C0CBCB4B2BB20E070020E594 /* ConstraintsRC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsRC.swift; sourceTree = "<group>"; };
+		C0CBCB4D2BB20F4C0020E594 /* ResultMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultMenuButton.swift; sourceTree = "<group>"; };
+		C0CBCB502BB2193E0020E594 /* TimerSingleRound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSingleRound.swift; sourceTree = "<group>"; };
 		D91D650F2BAA1074003D7DBA /* SharePlayAllModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePlayAllModels.swift; sourceTree = "<group>"; };
 		D91D65122BAB2871003D7DBA /* MultiplayerManagerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplayerManagerViewModel.swift; sourceTree = "<group>"; };
 		D92885B02B9668D100C73B6E /* Mini04_Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mini04_Project.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +182,8 @@
 		D9CD14292BA9D84A003CB0B6 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		E009867E2BAB626500E586C6 /* PartialResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialResultCell.swift; sourceTree = "<group>"; };
 		E00986812BAB681200E586C6 /* CollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDelegate.swift; sourceTree = "<group>"; };
+		E00C5CD22BB349140020126E /* PlayerListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListCell.swift; sourceTree = "<group>"; };
+		E00C5CD42BB351420020126E /* UILableRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILableRepresentable.swift; sourceTree = "<group>"; };
 		E087829F2BA4D41400FB5ABC /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		E08782A12BA4D42000FB5ABC /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E08782A32BA4D42800FB5ABC /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
@@ -367,8 +385,38 @@
 				C0CBCB392BAE14520020E594 /* ConstraintsSP.swift */,
 				C0CBCB3B2BAE14870020E594 /* DelegatesSP.swift */,
 				C0CBCB3F2BAE2A9B0020E594 /* PreSingleViewController.swift */,
+				C0CBCB4F2BB219160020E594 /* Components */,
 			);
 			path = Singleplayer;
+			sourceTree = "<group>";
+		};
+		C0CBCB412BB208D40020E594 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				C0CBCB422BB209010020E594 /* RecordViewController.swift */,
+				C0CBCB442BB2094B0020E594 /* RecordViewModel.swift */,
+				C0CBCB4B2BB20E070020E594 /* ConstraintsRC.swift */,
+				C0CBCB462BB20A2B0020E594 /* Components */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		C0CBCB462BB20A2B0020E594 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C0CBCB472BB20A610020E594 /* HighscoreLabel.swift */,
+				C0CBCB492BB20BDE0020E594 /* SingleResultLabel.swift */,
+				C0CBCB4D2BB20F4C0020E594 /* ResultMenuButton.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C0CBCB4F2BB219160020E594 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C0CBCB502BB2193E0020E594 /* TimerSingleRound.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		D92885A72B9668D100C73B6E = {
@@ -449,6 +497,16 @@
 			path = Delegates;
 			sourceTree = "<group>";
 		};
+		E00C5CD12BB348F50020126E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				2E3A74572BACA9F80026BE07 /* Buttons */,
+				2E3A74582BACAA040026BE07 /* Label */,
+				E00C5CD22BB349140020126E /* PlayerListCell.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		E05410B22BA4CDEF00046661 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -479,6 +537,7 @@
 			isa = PBXGroup;
 			children = (
 				E05410B62BA4CE4600046661 /* PartialResult */,
+				C0CBCB412BB208D40020E594 /* Record */,
 				E05410B52BA4CE1E00046661 /* Gameplay */,
 			);
 			path = UIKit;
@@ -510,8 +569,7 @@
 		E08782972BA4CFE700FB5ABC /* Lobby */ = {
 			isa = PBXGroup;
 			children = (
-				2E3A74582BACAA040026BE07 /* Label */,
-				2E3A74572BACA9F80026BE07 /* Buttons */,
+				E00C5CD12BB348F50020126E /* Components */,
 				E08782B02BA4D4A600FB5ABC /* LobbyView.swift */,
 				D95398522BACCDA90022F444 /* MultiplayerHubView.swift */,
 				D92D6BA92BAD3485006B7E87 /* CofigMatch */,
@@ -580,6 +638,7 @@
 			children = (
 				E087829F2BA4D41400FB5ABC /* UIImageExtension.swift */,
 				C09107122BAB730700037EAB /* StringExtension.swift */,
+				E00C5CD42BB351420020126E /* UILableRepresentable.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -668,6 +727,7 @@
 				C0A8B29B2BA8BA450048AC08 /* ItemsToFindModel.swift in Sources */,
 				E0AF6F0C2BACBC63008BE255 /* PartialResultTitle.swift in Sources */,
 				D9CD14212BA8FABB003CB0B6 /* ShareInviteSheet.swift in Sources */,
+				C0CBCB482BB20A610020E594 /* HighscoreLabel.swift in Sources */,
 				2E81140A2BA4E263009CCC77 /* ConfigView.swift in Sources */,
 				E08782B12BA4D4A600FB5ABC /* LobbyView.swift in Sources */,
 				E08782A22BA4D42000FB5ABC /* Coordinator.swift in Sources */,
@@ -714,6 +774,8 @@
 				2E81140D2BA4E3C2009CCC77 /* CoordinatorView.swift in Sources */,
 				E00986822BAB681200E586C6 /* CollectionDelegate.swift in Sources */,
 				E08782B52BA8C31400FB5ABC /* CoreMlErrorsEnum.swift in Sources */,
+				C0CBCB4A2BB20BDE0020E594 /* SingleResultLabel.swift in Sources */,
+				C0CBCB452BB2094B0020E594 /* RecordViewModel.swift in Sources */,
 				C0CBCB3C2BAE14870020E594 /* DelegatesSP.swift in Sources */,
 				2E3A74472BAB62410026BE07 /* FirstPlaceLabel.swift in Sources */,
 				C09107092BAA066900037EAB /* PowersButton.swift in Sources */,
@@ -724,6 +786,7 @@
 				E08782B82BA8C44000FB5ABC /* PlayerData.swift in Sources */,
 				E08782BA2BAA177600FB5ABC /* ProfileViewViewModel.swift in Sources */,
 				D9CD142A2BA9D84A003CB0B6 /* CreditsView.swift in Sources */,
+				C0CBCB4C2BB20E070020E594 /* ConstraintsRC.swift in Sources */,
 				2E8114112BA4EA16009CCC77 /* GameplayView.swift in Sources */,
 				2E3A74452BAB60CD0026BE07 /* LobbyTitle.swift in Sources */,
 				C09107062BAA056300037EAB /* PowersStackView.swift in Sources */,
@@ -737,14 +800,18 @@
 				C0CBCB362BAE138C0020E594 /* SingleViewController.swift in Sources */,
 				C0A8B2A02BA8C7690048AC08 /* ChangeButton.swift in Sources */,
 				D92885B42B9668D100C73B6E /* Mini04_ProjectApp.swift in Sources */,
+				C0CBCB432BB209010020E594 /* RecordViewController.swift in Sources */,
+				C0CBCB4E2BB20F4C0020E594 /* ResultMenuButton.swift in Sources */,
 				E0AF6F0A2BACAEA9008BE255 /* PartialResultsDelegates.swift in Sources */,
 				E0AF6F082BACAB67008BE255 /* EndGameButton.swift in Sources */,
 				2EC1BA772BA8B5F600E1E410 /* GameplayViewModel.swift in Sources */,
 				2E3A744B2BAB62C20026BE07 /* ThirdPlaceLabel.swift in Sources */,
 				C0A8B2992BA8B6A80048AC08 /* ObjectName.swift in Sources */,
+				C0CBCB512BB2193E0020E594 /* TimerSingleRound.swift in Sources */,
 				C0393D5E2BACEDBC00E97810 /* CrosshairImage.swift in Sources */,
 				2E3A74612BB348790026BE07 /* SoundOffButton.swift in Sources */,
 				2E3A744F2BAB733D0026BE07 /* InfoButton.swift in Sources */,
+				E00C5CD32BB349140020126E /* PlayerListCell.swift in Sources */,
 				C09106FE2BA8FD7800037EAB /* RoundLabel.swift in Sources */,
 				C0CBCB382BAE142B0020E594 /* SingleViewModel.swift in Sources */,
 				2E3A74402BAB5DDF0026BE07 /* StartButton.swift in Sources */,
@@ -882,7 +949,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = J7Y95G67T3;
+				DEVELOPMENT_TEAM = SRXHT55569;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -902,7 +969,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini04-Proje";
+				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini04-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -923,7 +990,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = J7Y95G67T3;
+				DEVELOPMENT_TEAM = SRXHT55569;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -943,7 +1010,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini04-Proje";
+				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini04-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

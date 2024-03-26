@@ -9,7 +9,6 @@ import UIKit
 
 protocol PowersButtonDelegate: AnyObject {
     func powerButtonAction(powerType: PowerUps)
-//    func reciveHidrance(powerType: PowerUps)
 }
 
 class PowersButton: UIButton {

@@ -52,13 +52,15 @@ class GameplayViewModel: NSObject {
         objectName.text = items.toFindObject
         special.specialName.text = items.specialObject
         
-        multiVM?.$starActionHidrance
-            .assign(to: \.startHidrance, on: self)
-            .store(in: &cancellables)
-        
     }
     
-    public func configMatch(){
+     public func starCombine(){
+        controller?.multiVM.$starActionHidrance
+            .assign(to: \.startHidrance, on: self)
+            .store(in: &cancellables)
+    }
+    
+     public func configMatch(){
         //MARK: - estou pegando o valor multiVM da controller ja que ele possui a intancia
         guard let config = multiVM?.configMatch else {
             print("sai do configMatch da GamePlayViewModel: \(String(describing: multiVM?.configMatch))")

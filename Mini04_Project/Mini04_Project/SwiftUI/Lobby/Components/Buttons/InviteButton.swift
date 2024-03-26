@@ -10,6 +10,10 @@ import SwiftUI
 struct InviteButton: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            .foregroundStyle(.white)
+            .background(.gray)
+            .clipShape(.capsule)
+            .font(.title)
     }
 }
 
