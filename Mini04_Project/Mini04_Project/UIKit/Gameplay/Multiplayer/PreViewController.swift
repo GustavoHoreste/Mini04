@@ -15,7 +15,7 @@ class PreViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Task {
+        DispatchQueue.main.async { [self] in
             let gameplay = GameplayViewController(multiVM: multiVM, navigationCoordinator: navigationCoordinator)
             
             if let navigationController = self.navigationController {

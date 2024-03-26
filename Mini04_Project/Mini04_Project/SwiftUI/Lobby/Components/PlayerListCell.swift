@@ -10,7 +10,6 @@ import SwiftUI
 struct PlayerListCell: View {
     
     var player: Player
-    
     let colors: [Color] = [.red, .green, .blue, .yellow, .purple, .pink, .brown]
     
     var body: some View {
