@@ -16,7 +16,7 @@ struct CreditsButtonPopUp: View {
                 RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(.red)
 
-                Text("Credits")
+                Text("Credito")
                     .font(.system(size: 16, weight: .bold))
                     .foregroundColor(.white)
                     .padding()
