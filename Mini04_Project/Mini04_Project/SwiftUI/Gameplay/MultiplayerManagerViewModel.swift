@@ -235,7 +235,9 @@ class MultiplayerManagerViewModel: ObservableObject{
         }
         if let hostID = self.adversaryPlayers.first(where: { $0.isHost })?.id {
             if valueNotOpcional.localPlayerID == hostID {
-                self.hostIsStarter = true
+                DispatchQueue.main.async {
+                    self.hostIsStarter = true
+                }
             }
         }
         if let index = adversaryPlayers.firstIndex(where: {$0.id == valueNotOpcional.localPlayerID}){
