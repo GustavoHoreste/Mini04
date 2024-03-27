@@ -269,10 +269,10 @@ class MultiplayerManagerViewModel: ObservableObject{
     }
     
     public func sendEspcialObject(_ value: SpecialObject){
-        let localPlayer = try! returnPlayerNotOpcional()
+//        let localPlayer = try! returnPlayerNotOpcional()
 //        if localPlayer.isHost{
             self.sharePlayVM.sendEspecialObj(value)
-//        }
+        }
     public func invalidateGroupSession() {
         let playerLocal = try! returnPlayerNotOpcional()
         if !playerLocal.isHost {
