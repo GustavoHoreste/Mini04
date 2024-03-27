@@ -22,7 +22,7 @@ class SpecialObjectImage: UIImageView {
         return t
     }()
     
-    var tempo: Int = 30
+    var tempo: Int = 5
     var timeToAppear: Int = 0
     var specialIsOn = false
     

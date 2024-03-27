@@ -31,8 +31,8 @@ class ProfileViewViewModel: ObservableObject {
     }
     
     private func verifyExistemUser(){
-        if let _ = userDefault.string(forKey: UserDefaultKey.userName.rawValue){
-            print("user ja existe")
+        if let id = userDefault.string(forKey: UserDefaultKey.userID.rawValue){
+            print("user ja existe: \(id)")
             return
         }
         creatID()

@@ -63,16 +63,17 @@ class GameplayViewModel: NSObject {
          self.configTimeMatch()
          
          if multiVM?.configMatch.powerUps == true {
-             items.chooseSpecialObject()
-             let specialObject = SpecialObject(objectName: items.specialObject)
-             self.multiVM?.newEspecialObj = specialObject
-             special.specialName.text = items.specialObject
+             if multiVM?.localPlayer?.isHost == true{
+                 items.chooseSpecialObject()
+                 let specialObject = SpecialObject(objectName: items.specialObject)
+                 self.multiVM?.newEspecialObj = specialObject
+             }
+             special.specialName.text = self.multiVM?.newEspecialObj?.objectName
          }
          
          if multiVM?.configMatch.coresIsChoise == true {
              items.setColors()
          }
-         
 //         items.chooseObject()
     }
     
