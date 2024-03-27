@@ -1,16 +1,16 @@
 //
-//  PopUpConfig.swift
+//  PopUpConfigMatch.swift
 //  Mini04_Project
 //
-//  Created by GABRIEL Ferreira Cardoso on 25/03/24.
+//  Created by GABRIEL Ferreira Cardoso on 27/03/24.
 //
 
 import SwiftUI
 
-struct PopUpConfig: View {
-    @Binding var isActive: Bool
+struct PopUpConfigMatch: View {
+    @Binding var ativouteste: Bool
 
-    @State private var offset: CGFloat = 1000
+    @State private var offset: CGFloat = 1300
     @EnvironmentObject private var navigationCoordinator: Coordinator
 
 
@@ -23,23 +23,10 @@ struct PopUpConfig: View {
                 }
 
             VStack {
-
-                HStack {
-                    Spacer()
-                    SoundOffButton()
-                    Spacer()
-                    SoundEffectsOff()
-                    Spacer()
-                    HapticsOff()
-                    Spacer()
+                ScrollView {
+                    MatchConfigView()
+                        .padding()
                 }
-                .padding()
-
-                ProfileButtonPopUp()
-                
-                Spacer()
-                
-                CreditsButtonPopUp()
                 
             }
             .fixedSize(horizontal: false, vertical: true)
@@ -71,8 +58,9 @@ struct PopUpConfig: View {
 
     func close() {
         withAnimation(.spring()) {
-            offset = 500
-            isActive = false
+            offset = 1300
+            ativouteste = false
         }
     }
 }
+

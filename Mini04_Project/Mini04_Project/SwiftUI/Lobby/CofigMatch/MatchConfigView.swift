@@ -151,11 +151,6 @@ struct MatchConfigView: View {
             .onAppear{
                 matchConfigVM.addVM(multiplayerVM: multiplayerVM)
             }
-            .toolbar {
-                Button{ self.coordinator.dismissSheet()} label: {
-                    Text("Dismiss")
-                }
-            }
     }
 }
 
