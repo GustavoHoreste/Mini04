@@ -97,6 +97,7 @@
 		E08782B82BA8C44000FB5ABC /* PlayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B72BA8C44000FB5ABC /* PlayerData.swift */; };
 		E08782BA2BAA177600FB5ABC /* ProfileViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B92BAA177500FB5ABC /* ProfileViewViewModel.swift */; };
 		E08782BC2BAB565900FB5ABC /* ConstraintsPR.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782BB2BAB565900FB5ABC /* ConstraintsPR.swift */; };
+		E0A9DA632BB4920A00314E72 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A9DA622BB4920A00314E72 /* Haptics.swift */; };
 		E0AF6F042BACA948008BE255 /* PartialResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AF6F032BACA948008BE255 /* PartialResultViewModel.swift */; };
 		E0AF6F082BACAB67008BE255 /* EndGameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AF6F072BACAB67008BE255 /* EndGameButton.swift */; };
 		E0AF6F0A2BACAEA9008BE255 /* PartialResultsDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AF6F092BACAEA9008BE255 /* PartialResultsDelegates.swift */; };
@@ -197,6 +198,7 @@
 		E08782B72BA8C44000FB5ABC /* PlayerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerData.swift; sourceTree = "<group>"; };
 		E08782B92BAA177500FB5ABC /* ProfileViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewViewModel.swift; sourceTree = "<group>"; };
 		E08782BB2BAB565900FB5ABC /* ConstraintsPR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsPR.swift; sourceTree = "<group>"; };
+		E0A9DA622BB4920A00314E72 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
 		E0AF6F032BACA948008BE255 /* PartialResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialResultViewModel.swift; sourceTree = "<group>"; };
 		E0AF6F072BACAB67008BE255 /* EndGameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameButton.swift; sourceTree = "<group>"; };
 		E0AF6F092BACAEA9008BE255 /* PartialResultsDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialResultsDelegates.swift; sourceTree = "<group>"; };
@@ -589,6 +591,7 @@
 		E08782992BA4D00200FB5ABC /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E0A9DA612BB491F700314E72 /* Haptics */,
 				C0393D5A2BACC9D100E97810 /* Audio */,
 				E087829C2BA4D03800FB5ABC /* Camera */,
 				E087829B2BA4D02000FB5ABC /* SharePlay */,
@@ -652,6 +655,14 @@
 				D91D650F2BAA1074003D7DBA /* SharePlayAllModels.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		E0A9DA612BB491F700314E72 /* Haptics */ = {
+			isa = PBXGroup;
+			children = (
+				E0A9DA622BB4920A00314E72 /* Haptics.swift */,
+			);
+			path = Haptics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -816,6 +827,7 @@
 				C0CBCB382BAE142B0020E594 /* SingleViewModel.swift in Sources */,
 				2E3A74402BAB5DDF0026BE07 /* StartButton.swift in Sources */,
 				C0393D602BACF05900E97810 /* LogoImage.swift in Sources */,
+				E0A9DA632BB4920A00314E72 /* Haptics.swift in Sources */,
 				C09107002BA8FF0800037EAB /* SpecialObjectLabel.swift in Sources */,
 				D9D181742BB3895700283E2E /* UILableRepresentable.swift in Sources */,
 			);
