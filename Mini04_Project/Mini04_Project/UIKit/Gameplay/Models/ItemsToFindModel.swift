@@ -29,10 +29,6 @@ class ItemsToFindModel {
     var withColors = true
     var shuffleIsOn = false
     
-    init() {
-        chooseObject()
-    }
-    
     func setColors() {
         if withColors {
             let colors: [String] = ["Azul", "Verde", "Rosa", "Roxo", "Vermelho", "Branco", "Amarelo"]

@@ -12,23 +12,31 @@ protocol TimerObjectDelegate {
 }
 
 class TimerObject: UILabel {
-
+    
     var delegate: TimerObjectDelegate?
     
     var minutos: Int = 0
-    var segundos: Int = 15
+    var segundos: Int = 20
     
     lazy var timer: Timer = {
         let t = Timer()
         return t
     }()
     
+    let startColor = UIColor(hue: 120.0/360.0, saturation: 1.0, brightness: 1.0, alpha: 1.0) // Verde
+    
+    var currentHue: CGFloat = 120.0/360.0{
+        didSet {
+            textColor = UIColor(hue: currentHue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+        }
+    }
+    
     init() {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
         font = .systemFont(ofSize: 20)
-        textColor = .label
+        textColor = startColor
         
         showText()
         playTimer()
@@ -46,8 +54,9 @@ class TimerObject: UILabel {
         timer.invalidate()
     }
     func resetTimerObject() {
-        segundos = 15
+        segundos = 20
         showText()
+        currentHue = 120.0/360.0
     }
     
     @objc func step() {
@@ -62,6 +71,7 @@ class TimerObject: UILabel {
                 segundos = 10
             }
         }
+        
         if segundos >= 0 && segundos < 10 {
             text = "\(minutos):0\(segundos)"
         } else {
@@ -72,6 +82,10 @@ class TimerObject: UILabel {
             resetTimerObject()
             delegate?.timerObjectOver()
         }
+        
+        if minutos == 0 && (segundos <= 15 && segundos >= 5) {
+            changeColor()
+        }
     }
     
     func showText() {
@@ -81,5 +95,9 @@ class TimerObject: UILabel {
             text = "\(minutos):\(segundos)"
         }
     }
-
+    
+    func changeColor() {
+        // Calcula a próxima etapa da transição de cor
+        currentHue -= (120.0/360.0 - 0.0/360.0) / 10.0 // 10 etapas no total
+    }
 }

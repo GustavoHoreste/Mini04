@@ -55,8 +55,6 @@ class GameplayViewModel: NSObject {
     override init() {
         super.init()
         setupDelegate()
-        
-        objectName.text = items.toFindObject
     }
     
      public func starCombine(){
@@ -85,7 +83,9 @@ class GameplayViewModel: NSObject {
          if multiVM?.configMatch.coresIsChoise == true {
              items.setColors()
          }
-//         items.chooseObject()
+         
+         items.chooseObject()
+         objectName.text = items.toFindObject
     }
     
     private func configTimeMatch(){

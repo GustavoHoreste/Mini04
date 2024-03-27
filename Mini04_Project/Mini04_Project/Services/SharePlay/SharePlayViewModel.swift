@@ -21,7 +21,7 @@ final class SharePlayViewModel{
     @Published private(set) var sessionActivityIsWaiting: Bool = false
     @Published private(set) var sessionActivityIsJoined: Bool = false
     
-    private var groupSession: GroupSession<WhereWhereActivity>?
+    public var groupSession: GroupSession<WhereWhereActivity>?
     private var messenger: GroupSessionMessenger?
     private var subscriptions = Set<AnyCancellable>()
     private var tasks = Set<Task<Void, Never>>()
@@ -237,7 +237,6 @@ final class SharePlayViewModel{
             groupSession = nil
             self.startSession()
         }
-        
     }
     
     private func handle(_ model: Player) {
