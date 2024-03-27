@@ -10,12 +10,13 @@ import UIKit
 class PreViewController: UIViewController {
     
     var multiVM: MultiplayerManagerViewModel
+    var navigationCoordinator: Coordinator
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Task {
-            let gameplay = GameplayViewController(multiVM: multiVM)
+        DispatchQueue.main.async { [self] in
+            let gameplay = GameplayViewController(multiVM: multiVM, navigationCoordinator: navigationCoordinator)
             
             if let navigationController = self.navigationController {
                 navigationController.pushViewController(gameplay, animated: false)
@@ -23,8 +24,9 @@ class PreViewController: UIViewController {
         }
     }
     
-    init(multiVM: MultiplayerManagerViewModel) {
+    init(multiVM: MultiplayerManagerViewModel, navigationCoordinator: Coordinator) {
         self.multiVM = multiVM
+        self.navigationCoordinator = navigationCoordinator
         super.init(nibName: nil, bundle: nil)
     }
     

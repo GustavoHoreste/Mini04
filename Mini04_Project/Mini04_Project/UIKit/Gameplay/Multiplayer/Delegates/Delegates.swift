@@ -18,6 +18,7 @@ extension GameplayViewModel {
         items.delegate = self
         timerRound.delegate = self
         timerObject.delegate = self
+        special.delegate = self
         for power in powers.allPowers {
             power.delegate = self
         }
@@ -51,7 +52,7 @@ extension GameplayViewModel: PhotoButtonDelegate {
                         self.items.shuffleIsOn = false
                     }
                 }
-                if await special.specialIsOn && (items.specialObject == returnedTargetObject){
+                if await special.specialIsOn && (items.specialObject == returnedTargetObject) && multiVM?.configMatch.powerUps == false{
                     items.specialObject = ""
                     DispatchQueue.main.async { [self] in
                         self.special.specialFinded()
@@ -72,7 +73,6 @@ extension GameplayViewModel: PhotoButtonDelegate {
 //MARK: - Incrementa pontos do jogador
 extension GameplayViewModel: ItemsDelegate {
     func findedObjectAction() {
-//        pontos.number += 1
         multiVM?.localPlayer?.points += 1
         upadatePoint((multiVM?.localPlayer!.points)!)
     }
@@ -89,7 +89,13 @@ extension GameplayViewModel: TimerRoundDelegate {
         UIView.animate(withDuration: 2.0, animations: {
             self.logo.transform = CGAffineTransform(scaleX: 100.0, y: 100.0).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 6))
         }, completion: { _ in
-            let nextScreen = PartialResultViewController(multiVM: self.multiVM!)
+            self.timerObject.timer.invalidate()
+            if self.round.number == self.multiVM?.configMatch.amoutRound{
+                self.controller?.navigationCoordinator.push(.finalRank)
+                return
+            }
+            let nextScreen = PartialResultViewController(multiVM: self.multiVM!, navigationCoordinator: self.controller!.navigationCoordinator)
+            nextScreen.partialResultVM.currentRound = self.round.number
             self.controller?.navigationController!.pushViewController(nextScreen, animated: false)
         })
     }
@@ -101,6 +107,7 @@ extension GameplayViewModel: TimerObjectDelegate {
         objectName.text = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
         timerObject.resetTimerObject()
         items.shuffleIsOn = false
+        print("timer objeto acabou")
     }
 }
 
@@ -128,23 +135,18 @@ extension GameplayViewModel: PowersButtonDelegate {
         switch powerType{
         case .freeze:
             //Função de congelar a câmera
-//            powers.freezePower()
             self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
         case .switchWord:
             //Função de trocar objeto
-//            changeButtonAction()
             self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
         case .subtrac:
             //Função de subtrair os pontos
-//            pontos.subtractPower()
             self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
         case .changeCamera:
             //Função que troca a câmera
-//            camera.changeCamera()
             self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
         case .shuffleWord:
             //Função que embaralha o nome do objeto
-//            items.shufflePower()
             self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
         }
     }
@@ -153,6 +155,11 @@ extension GameplayViewModel: PowersButtonDelegate {
 extension GameplayViewModel: SpecialObjectImageDelegate {
     func specialAppeared() {
         //Precisar fazer algo quando o Objeto Especial aparecer
+        if multiVM?.configMatch.powerUps == true {
+            special.specialIsOn = true
+            special.isHidden = false
+        }
+        
     }
 }
 

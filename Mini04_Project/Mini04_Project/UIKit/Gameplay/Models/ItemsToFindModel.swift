@@ -30,8 +30,6 @@ class ItemsToFindModel {
     var shuffleIsOn = false
     
     init() {
-        chooseSpecialObject()
-        setColors()
         chooseObject()
     }
     

@@ -16,7 +16,7 @@ enum Round: Int, CaseIterable, Identifiable {
 enum RoundTime: Double, CaseIterable, Identifiable, Codable {
     case thirtySeconds = 30.0
     case oneMinute = 60.0
-    case oneThirtyMinutes = 90.0
+    case oneThirtyMinutes = 05.0
     case twoMinutes = 120.0
     case twoThirtyMinutes = 150.0
     case threeMinutes = 180.0
@@ -40,7 +40,7 @@ class MatchConfigViewModel: ObservableObject{
     public var coresIsChoise: Bool = false
     private(set) var selectPowerUps: Bool = false
     
-    @Published var selectedRound: Round = .three
+    @Published var selectedRound: Round = .one
     @Published var selectedRoundTime: RoundTime = .oneThirtyMinutes
     @Published var selectedWatch: Bool = false
     @Published var selecPlayer: Bool = false

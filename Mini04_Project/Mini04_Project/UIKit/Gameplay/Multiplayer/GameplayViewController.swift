@@ -11,6 +11,7 @@ class GameplayViewController: UIViewController {
     
     var gameplayVM = GameplayViewModel()
     var multiVM: MultiplayerManagerViewModel
+    var navigationCoordinator: Coordinator
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +23,15 @@ class GameplayViewController: UIViewController {
         setupView()
     }
     
-    init(multiVM: MultiplayerManagerViewModel) {
+    init(multiVM: MultiplayerManagerViewModel, navigationCoordinator: Coordinator) {
         self.multiVM = multiVM
+        self.navigationCoordinator = navigationCoordinator
         super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     
 }

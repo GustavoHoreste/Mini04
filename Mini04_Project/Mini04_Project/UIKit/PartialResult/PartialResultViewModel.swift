@@ -13,6 +13,8 @@ class PartialResultViewModel {
     
     var data: [Player] = []
     
+    var currentRound: Int = 0
+    
     lazy var endGameButton = EndGameButton()
     lazy var partialResultsTitle = PartialResultTitle()
     lazy var readyButton = ReadyButton()
