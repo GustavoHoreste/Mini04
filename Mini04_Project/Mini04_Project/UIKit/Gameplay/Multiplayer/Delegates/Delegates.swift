@@ -40,8 +40,9 @@ extension GameplayViewModel: PhotoButtonDelegate {
     func photoButtonAction() {
         Task{
             do{
-                let returnedTargetObject = try await model.verifyObject(image: cameraImage.image!)
-                let returnedTargetColor = try await model.verifyColor(image: cameraImage.image!)
+                guard let cameraImage = await self.cameraImage.image else {return}
+                let returnedTargetObject = try await model.verifyObject(image: cameraImage)
+                let returnedTargetColor = try await model.verifyColor(image: cameraImage)
                 print(returnedTargetObject)
                 print(returnedTargetColor)
                 if returnedTargetObject == items.toFindObject || returnedTargetColor == items.toFindObject{
@@ -52,11 +53,12 @@ extension GameplayViewModel: PhotoButtonDelegate {
                         self.items.shuffleIsOn = false
                     }
                 }
-                if await special.specialIsOn && (items.specialObject == returnedTargetObject) && multiVM?.configMatch.powerUps == false{
+                if await special.specialIsOn && (items.specialObject == returnedTargetObject) && multiVM?.configMatch.powerUps == true{
                     items.specialObject = ""
+                    let specialObject = SpecialObject(objectName: items.specialObject, isHit: true)
                     DispatchQueue.main.async { [self] in
                         self.special.specialFinded()
-//                        self.pontos.number += 2
+                        self.multiVM?.sendEspcialObject(specialObject)
                         self.multiVM?.localPlayer?.points += 2
                         self.upadatePoint((multiVM?.localPlayer!.points)!)
                         self.powers.addPowers()
@@ -135,19 +137,23 @@ extension GameplayViewModel: PowersButtonDelegate {
         switch powerType{
         case .freeze:
             //Função de congelar a câmera
-            self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
+//            self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
+            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
         case .switchWord:
             //Função de trocar objeto
-            self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
+//            self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
+            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
         case .subtrac:
             //Função de subtrair os pontos
-            self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
+//            self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
+            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
         case .changeCamera:
             //Função que troca a câmera
             self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
         case .shuffleWord:
             //Função que embaralha o nome do objeto
-            self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
+//            self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
+            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
         }
     }
 }

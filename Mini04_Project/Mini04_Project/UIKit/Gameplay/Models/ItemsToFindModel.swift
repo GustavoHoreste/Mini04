@@ -43,7 +43,7 @@ class ItemsToFindModel {
     }
     
     func chooseObject() {
-        if numberOfObjects < 46 {
+        if numberOfObjects < objects.count{
             let actualObject = toFindObject
             while(actualObject == toFindObject){
                 toFindObject = objects.filter{!findedObjects.contains($0)}.randomElement()!
