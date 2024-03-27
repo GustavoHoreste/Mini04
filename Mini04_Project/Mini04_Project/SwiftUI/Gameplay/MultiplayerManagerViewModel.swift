@@ -83,6 +83,7 @@ class MultiplayerManagerViewModel: ObservableObject{
     }
     
     @Published var hostIsStarter: Bool = false
+    @Published var newEspecialObj: SpecialObject?
     
     init() {
             
@@ -119,6 +120,9 @@ class MultiplayerManagerViewModel: ObservableObject{
             .assign(to: \.newStatus, on: self)
             .store(in: &cancellables)
         
+        sharePlayVM.$newEspecialObj
+            .assign(to: \.newEspecialObj, on: self)
+            .store(in: &cancellables)
     }
     
     
@@ -262,5 +266,13 @@ class MultiplayerManagerViewModel: ObservableObject{
             self.sharePlayVM.sendStatus(status)
         }
         //Fazer validacao de cancelar status?
+    }
+    
+    public func sendEspcialObject(){
+        let localPlayer = try! returnPlayerNotOpcional()
+        guard let word = self.newEspecialObj else {return}
+        if localPlayer.isHost{
+            self.sharePlayVM.sendEspecialObj(word)
+        }
     }
 }

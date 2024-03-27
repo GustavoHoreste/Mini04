@@ -64,6 +64,8 @@ class GameplayViewModel: NSObject {
          
          if multiVM?.configMatch.powerUps == true {
              items.chooseSpecialObject()
+             let specialObject = SpecialObject(objectName: items.specialObject)
+             self.multiVM?.newEspecialObj = specialObject
              special.specialName.text = items.specialObject
          }
          

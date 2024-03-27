@@ -17,6 +17,7 @@ final class SharePlayViewModel{
     @Published var newPoint: UserPoints?
     @Published var newHidrance: SendHindrances?
     @Published var newStatus: StatusUsers?
+    @Published var newEspecialObj: SpecialObject?
     @Published private(set) var sessionActivityIsWaiting: Bool = false
     @Published private(set) var sessionActivityIsJoined: Bool = false
     
@@ -88,7 +89,17 @@ final class SharePlayViewModel{
             do {
                 try await messenger?.send(model)
             } catch {
-                print("Error in send model session [SharePlayViewModel.sendConfigMatch] - ")
+                print("Error in send model session [SharePlayViewModel.sendConfigMatch]")
+            }
+        }
+    }
+    
+    public func sendEspecialObj(_ model: SpecialObject){
+        Task {
+            do {
+                try await messenger?.send(model)
+            } catch {
+                print("Error in send model session [SharePlayViewModel.sendEspecialObj]")
             }
         }
     }
@@ -150,13 +161,13 @@ final class SharePlayViewModel{
             }
         )
         
-//        tasks.insert(
-//            Task{
-//                for await (message, _) in messenger.messages(of: Players.self){
-//                    handle(message)
-//                }
-//            }
-//        )
+        tasks.insert(
+            Task{
+                for await (message, _) in messenger.messages(of: SpecialObject.self){
+                    handle(message)
+                }
+            }
+        )
     }
     
     
@@ -215,6 +226,7 @@ final class SharePlayViewModel{
 //        self.sessionState = false
         newHidrance = nil
         newStatus = nil
+        newEspecialObj = nil
         
         messenger = nil
         subscriptions = []
@@ -229,7 +241,6 @@ final class SharePlayViewModel{
     }
     
     private func handle(_ model: Player) {
-        print("recebi: \(model)")
         DispatchQueue.main.async {
             self.newPlayer = model
         }
@@ -257,9 +268,9 @@ final class SharePlayViewModel{
         }
     }
     
-//    private func handle(_ model: Players){
-//        print("Plays para novo user: \(model)")
-//        print("[]")
-//    }
+    private func handle(_ model: SpecialObject){
+        print("EspcialObject: \(model)")
+        self.newEspecialObj = model
+    }
 }
 
