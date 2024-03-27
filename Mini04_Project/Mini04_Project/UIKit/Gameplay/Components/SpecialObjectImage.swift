@@ -22,7 +22,7 @@ class SpecialObjectImage: UIImageView {
         return t
     }()
     
-    var tempo: Int = 5
+    var tempo: Int = 30
     var timeToAppear: Int = 0
     var specialIsOn = false
     
@@ -46,7 +46,6 @@ class SpecialObjectImage: UIImageView {
         ])
         
         playTimer()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -63,10 +62,10 @@ class SpecialObjectImage: UIImageView {
             delegate?.specialAppeared()
         }
     }
+
     
     func specialFinded() {
         removeFromSuperview()
         timer.invalidate()
     }
-    
 }

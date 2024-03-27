@@ -56,6 +56,7 @@ struct StatusUsers: Codable{
 
 struct SpecialObject: Codable{
     var objectName: String
+    var isHit: Bool
 }
 
 /// Enumeração que representa o tipo de participante (jogador ou espectador)

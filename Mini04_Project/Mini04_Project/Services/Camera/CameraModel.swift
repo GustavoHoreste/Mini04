@@ -31,7 +31,7 @@ class CameraModel: NSObject, ObservableObject {
     var frontCameraInput: AVCaptureInput!
     
     //Output da imagem
-    var videoOutput: AVCaptureVideoDataOutput!
+    var videoOutput: AVCaptureVideoDataOutput = AVCaptureVideoDataOutput()
     
     //Verifica se o usuario permitio o uso da camera
     var permission:Bool = true
@@ -175,38 +175,30 @@ class CameraModel: NSObject, ObservableObject {
         }
     }
     
+    func changeCamera2() {
+        captureSession.beginConfiguration()
+        if backCameraOn {
+            print("Entrou no if")
+            captureSession.removeInput(backCameraInput)
+            captureSession.addInput(frontCameraInput)
+            backCameraOn = false
+        } else {
+            captureSession.removeInput(frontCameraInput)
+            captureSession.addInput(backCameraInput)
+            backCameraOn = true
+        }
+        self.videoOutput.connections.first?.videoRotationAngle = 90
+        self.captureSession.commitConfiguration()
+    }
+    
     func changeCamera() {
         //Reconfigura o input
-//        captureSession.beginConfiguration()
-//        if backCameraOn {
-//            captureSession.removeInput(backCameraInput)
-//            captureSession.addInput(frontCameraInput)
-//            backCameraOn = false
-//        } else {
-//            captureSession.removeInput(frontCameraInput)
-//            captureSession.addInput(backCameraInput)
-//            backCameraOn = true
-//        }
+        changeCamera2()
         
-        //Ajeita o angula da imgem para o frame
-//        videoOutput.connections.first?.videoRotationAngle = 90
-        
-        //Faz o commit das configurcoes
-//        captureSession.commitConfiguration()
-        
-        captureSession.beginConfiguration()
-        captureSession.removeInput(backCameraInput)
-        captureSession.addInput(frontCameraInput)
-        videoOutput.connections.first?.videoRotationAngle = 90
-        captureSession.commitConfiguration()
-//        backCameraOn = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
-            self.captureSession.beginConfiguration()
-            self.captureSession.removeInput(self.frontCameraInput)
-            self.captureSession.addInput(self.backCameraInput)
-            self.backCameraOn = true
-            self.videoOutput.connections.first?.videoRotationAngle = 90
-            self.captureSession.commitConfiguration()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            print("Entrou no DispatchQueue")
+            self.changeCamera2()
+            print("Entrou no DispatchQueue: \(self.backCameraOn)")
         }
     }
 }

@@ -268,11 +268,10 @@ class MultiplayerManagerViewModel: ObservableObject{
         //Fazer validacao de cancelar status?
     }
     
-    public func sendEspcialObject(){
+    public func sendEspcialObject(_ value: SpecialObject){
         let localPlayer = try! returnPlayerNotOpcional()
-        guard let word = self.newEspecialObj else {return}
-        if localPlayer.isHost{
-            self.sharePlayVM.sendEspecialObj(word)
-        }
+//        if localPlayer.isHost{
+            self.sharePlayVM.sendEspecialObj(value)
+//        }
     }
 }
