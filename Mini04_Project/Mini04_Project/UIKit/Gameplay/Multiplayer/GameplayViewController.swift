@@ -13,9 +13,14 @@ class GameplayViewController: UIViewController {
     var multiVM: MultiplayerManagerViewModel
     var navigationCoordinator: Coordinator
     
+    var notificationCenter = NotificationCenter.default
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+//        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+        
         gameplayVM.controller = self
         gameplayVM.multiVM = multiVM
         gameplayVM.configMatch()
@@ -33,5 +38,15 @@ class GameplayViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc func appMovedToBackground() {
+        print("App foi pro background")
+        multiVM.invalidateGroupSession()
+        notificationCenter.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
+        gameplayVM.timerRound.timer.invalidate()
+        gameplayVM.timerObject.timer.invalidate()
+        multiVM.hostIsStarter = false
+        navigationCoordinator.push(.menu)
+        navigationController?.viewControllers.removeAll()
+    }
     
 }

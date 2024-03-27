@@ -263,4 +263,11 @@ class MultiplayerManagerViewModel: ObservableObject{
         }
         //Fazer validacao de cancelar status?
     }
+    
+    public func invalidateGroupSession() {
+        let playerLocal = try! returnPlayerNotOpcional()
+        if !playerLocal.isHost {
+            self.sharePlayVM.groupSession = nil
+        }
+    }
 }
