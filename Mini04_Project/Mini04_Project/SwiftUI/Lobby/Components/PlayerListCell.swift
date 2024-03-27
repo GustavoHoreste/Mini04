@@ -18,7 +18,7 @@ struct PlayerListCell: View {
                 .frame(width: 280, height: 45)
                 .foregroundStyle(colors.randomElement()!)
             HStack{
-                TextView(text: player.userName)
+                UILableRepresentable(text: player.userName)
                     .frame(width: 180,height: 52.5)
                     .font(.headline)
                     

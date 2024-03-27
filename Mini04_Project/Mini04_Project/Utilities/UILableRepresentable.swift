@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct TextView: UIViewRepresentable {
+struct UILableRepresentable: UIViewRepresentable {
     var text: String
     
     func makeUIView(context: Context) -> UILabel {
