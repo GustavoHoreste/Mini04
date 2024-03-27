@@ -86,7 +86,7 @@ extension GameplayViewModel: TimerRoundDelegate {
     
     func timerRoundOver() {
         logo.isHidden = false
-        UIView.animate(withDuration: 2.0, animations: {
+        UIView.animate(withDuration: 1.0, animations: {
             self.logo.transform = CGAffineTransform(scaleX: 100.0, y: 100.0).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 6))
         }, completion: { _ in
             self.timerObject.timer.invalidate()

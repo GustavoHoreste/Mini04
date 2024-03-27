@@ -23,12 +23,20 @@ class TimerRound: UILabel {
         return t
     }()
     
+    let startColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 1.0, alpha: 1.0)
+    
+    var currentSaturation: CGFloat = 0 {
+        didSet {
+            textColor = UIColor(hue: 0.0, saturation: currentSaturation, brightness: 1.0, alpha: 1.0)
+        }
+    }
+    
     init() {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
         font = .systemFont(ofSize: 15)
-        textColor = .label
+        textColor = startColor
         
         showText()
     }
@@ -81,6 +89,10 @@ class TimerRound: UILabel {
         if minutos == 0 && segundos == 0 {
             delegate?.timerRoundOver()
         }
+        
+        if minutos == 0 && (segundos <= 30 && segundos >= 10) {
+            changeColor()
+        }
     }
     
     func showText() {
@@ -89,6 +101,11 @@ class TimerRound: UILabel {
         } else {
             text = "\(minutos):\(segundos)"
         }
+    }
+    
+    func changeColor() {
+        // Calcula a próxima etapa da transição de cor
+        currentSaturation += 1.0 / 20.0 // 20 etapas no total
     }
     
 }
