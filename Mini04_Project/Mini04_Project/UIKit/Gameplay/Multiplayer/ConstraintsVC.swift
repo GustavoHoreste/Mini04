@@ -33,7 +33,7 @@ extension GameplayViewController {
             gameplayVM.changeButton.topAnchor.constraint(equalTo: gameplayVM.objectName.bottomAnchor, constant: 10),
             
             gameplayVM.photoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameplayVM.photoButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
+            gameplayVM.photoButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -80),
             
             gameplayVM.cameraImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.cameraImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -59,7 +59,7 @@ extension GameplayViewController {
             gameplayVM.timerObject.bottomAnchor.constraint(equalTo: gameplayVM.objectName.topAnchor, constant: -10),
             
             gameplayVM.powers.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameplayVM.powers.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            gameplayVM.powers.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             
             gameplayVM.crosshair.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.crosshair.centerYAnchor.constraint(equalTo: view.centerYAnchor),

@@ -341,10 +341,10 @@
 				C09106FB2BA8F96A00037EAB /* PontosLabel.swift */,
 				C09106FD2BA8FD7800037EAB /* RoundLabel.swift */,
 				C09106FF2BA8FF0800037EAB /* SpecialObjectLabel.swift */,
+				C09107102BAB563A00037EAB /* SpecialObjectImage.swift */,
 				C09107032BA90D3400037EAB /* ProfileImage.swift */,
 				2E3A74382BAA126A0026BE07 /* TimerRound.swift */,
 				C091070C2BAA243D00037EAB /* TimerObject.swift */,
-				C09107102BAB563A00037EAB /* SpecialObjectImage.swift */,
 				C0393D5D2BACEDBC00E97810 /* CrosshairImage.swift */,
 				C0393D5F2BACF05900E97810 /* LogoImage.swift */,
 			);
@@ -974,7 +974,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini4-Proje";
+				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini4-Project0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1015,7 +1015,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini04-Proje";
+				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini04-Project0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

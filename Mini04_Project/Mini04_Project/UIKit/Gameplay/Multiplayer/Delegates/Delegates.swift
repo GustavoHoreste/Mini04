@@ -19,6 +19,7 @@ extension GameplayViewModel {
         timerRound.delegate = self
         timerObject.delegate = self
         special.delegate = self
+        powers.delegate = self
         for power in powers.allPowers {
             power.delegate = self
         }
@@ -137,22 +138,22 @@ extension GameplayViewModel: PowersButtonDelegate {
         switch powerType{
         case .freeze:
             //Função de congelar a câmera
-//            self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
+            //            self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
             self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
         case .switchWord:
             //Função de trocar objeto
-//            self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
+            //            self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
             self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
         case .subtrac:
             //Função de subtrair os pontos
-//            self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
+            //            self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
             self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
         case .changeCamera:
             //Função que troca a câmera
             self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
         case .shuffleWord:
             //Função que embaralha o nome do objeto
-//            self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
+            //            self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
             self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
         }
     }
@@ -164,6 +165,36 @@ extension GameplayViewModel: SpecialObjectImageDelegate {
         if multiVM?.configMatch.powerUps == true {
             special.specialIsOn = true
             special.isHidden = false
+        }
+        
+    }
+}
+
+extension GameplayViewModel: PowersStackViewDelegate {
+    func animatePower(imagem: UIImage?, power: PowerUps?) {
+        guard let controller = controller else { return }
+        
+        let power = PowersButton(imagem: imagem!, power: power!)
+        
+        power.alpha = 0
+        
+        controller.view.addSubview(power)
+        
+        NSLayoutConstraint.activate([
+            power.centerXAnchor.constraint(equalTo: controller.view.centerXAnchor),
+            power.centerYAnchor.constraint(equalTo: controller.view.centerYAnchor, constant: -80),
+        ])
+        
+        UIView.animate(withDuration: 2.0, animations: {
+            power.alpha = 1
+        }) { _ in
+            power.translatesAutoresizingMaskIntoConstraints = true
+            UIView.animate(withDuration: 1.0, animations: {
+                power.center = self.powers.center
+            }) { _ in
+                power.removeFromSuperview()
+                self.powers.usersPowers.last!.alpha = 1
+            }
         }
         
     }
