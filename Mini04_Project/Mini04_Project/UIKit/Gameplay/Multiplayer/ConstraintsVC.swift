@@ -14,6 +14,7 @@ extension GameplayViewController {
         view.addSubview(gameplayVM.cameraImage)
         view.addSubview(gameplayVM.objectName)
         view.addSubview(gameplayVM.changeButton)
+        view.addSubview(gameplayVM.changeCount)
         view.addSubview(gameplayVM.photoButton)
         view.addSubview(gameplayVM.profile)
         view.addSubview(gameplayVM.pontos)
@@ -31,6 +32,9 @@ extension GameplayViewController {
             
             gameplayVM.changeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.changeButton.topAnchor.constraint(equalTo: gameplayVM.objectName.bottomAnchor, constant: 10),
+            
+            gameplayVM.changeCount.trailingAnchor.constraint(equalTo: gameplayVM.changeButton.trailingAnchor),
+            gameplayVM.changeCount.bottomAnchor.constraint(equalTo: gameplayVM.changeButton.bottomAnchor),
             
             gameplayVM.photoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.photoButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -80),

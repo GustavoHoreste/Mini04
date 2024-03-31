@@ -33,6 +33,7 @@
 		2E8114112BA4EA16009CCC77 /* GameplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8114102BA4EA16009CCC77 /* GameplayView.swift */; };
 		2EC1BA742BA8737100E1E410 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1BA732BA8737100E1E410 /* ProfileView.swift */; };
 		2EC1BA772BA8B5F600E1E410 /* GameplayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC1BA762BA8B5F600E1E410 /* GameplayViewModel.swift */; };
+		C019C0362BB9FBD400F5B1F1 /* ChangeCountLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C019C0352BB9FBD400F5B1F1 /* ChangeCountLabel.swift */; };
 		C0393D5C2BACC9FA00E97810 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0393D5B2BACC9FA00E97810 /* AudioManager.swift */; };
 		C0393D5E2BACEDBC00E97810 /* CrosshairImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0393D5D2BACEDBC00E97810 /* CrosshairImage.swift */; };
 		C0393D602BACF05900E97810 /* LogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0393D5F2BACF05900E97810 /* LogoImage.swift */; };
@@ -132,6 +133,7 @@
 		2E8114102BA4EA16009CCC77 /* GameplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayView.swift; sourceTree = "<group>"; };
 		2EC1BA732BA8737100E1E410 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		2EC1BA762BA8B5F600E1E410 /* GameplayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayViewModel.swift; sourceTree = "<group>"; };
+		C019C0352BB9FBD400F5B1F1 /* ChangeCountLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCountLabel.swift; sourceTree = "<group>"; };
 		C0393D5B2BACC9FA00E97810 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		C0393D5D2BACEDBC00E97810 /* CrosshairImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrosshairImage.swift; sourceTree = "<group>"; };
 		C0393D5F2BACF05900E97810 /* LogoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImage.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				C09107072BAA05F800037EAB /* Powers */,
 				C0A8B2982BA8B6A80048AC08 /* ObjectName.swift */,
 				C0A8B29F2BA8C7690048AC08 /* ChangeButton.swift */,
+				C019C0352BB9FBD400F5B1F1 /* ChangeCountLabel.swift */,
 				C0A8B2A12BA8CD5B0048AC08 /* PhotoButton.swift */,
 				C09106F92BA8DECB00037EAB /* CameraImageView.swift */,
 				C09106FB2BA8F96A00037EAB /* PontosLabel.swift */,
@@ -791,6 +794,7 @@
 				D9CD142A2BA9D84A003CB0B6 /* CreditsView.swift in Sources */,
 				C0CBCB4C2BB20E070020E594 /* ConstraintsRC.swift in Sources */,
 				2E8114112BA4EA16009CCC77 /* GameplayView.swift in Sources */,
+				C019C0362BB9FBD400F5B1F1 /* ChangeCountLabel.swift in Sources */,
 				2E3A74452BAB60CD0026BE07 /* LobbyTitle.swift in Sources */,
 				C09107062BAA056300037EAB /* PowersStackView.swift in Sources */,
 				2E3A74652BB348D90026BE07 /* HapticsOff.swift in Sources */,

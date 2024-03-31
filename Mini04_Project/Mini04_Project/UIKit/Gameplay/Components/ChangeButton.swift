@@ -12,13 +12,19 @@ protocol ChangeButtonDelegate: AnyObject {
 }
 
 class ChangeButton: UIButton {
-
+    
     weak var delegate: ChangeButtonDelegate?
     
-    lazy var count: PontosLabel = {
-        let pts = PontosLabel()
-        pts.number = 3
-        return pts
+    let animation: CABasicAnimation = {
+        let animation = CABasicAnimation(keyPath: "transform.rotation")
+        animation.fromValue = CGFloat.pi * 2
+        animation.toValue = 0
+        animation.duration = 0.5
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        animation.repeatCount = 0
+        animation.isRemovedOnCompletion = false
+        animation.fillMode = .forwards
+        return animation
     }()
     
     init() {
@@ -29,35 +35,17 @@ class ChangeButton: UIButton {
         let image = UIImage(systemName: "arrow.circlepath")
         let symbolConfig = UIImage.SymbolConfiguration(pointSize: 40)
         let resizedImage = image?.withConfiguration(symbolConfig)
-
+        
         setImage(resizedImage, for: .normal)
         addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        
-        addSubview(count)
-        
-        NSLayoutConstraint.activate([
-            count.trailingAnchor.constraint(equalTo: trailingAnchor),
-            count.bottomAnchor.constraint(equalTo: bottomAnchor),
-        ])
-        
     }
     
     @objc func buttonAction() {
         delegate?.changeButtonAction()
     }
     
-    func subtractCount() {
-        if count.number >= 1 {
-            count.number -= 1
-        }
-        verifyCount()
-    }
-    
-    func verifyCount() {
-        if count.number == 0 {
-            alpha = 0.3
-            isUserInteractionEnabled = false
-        }
+    func rotateAnimate() {
+        layer.add(animation, forKey: "rotationAnimation")
     }
     
     required init?(coder: NSCoder) {

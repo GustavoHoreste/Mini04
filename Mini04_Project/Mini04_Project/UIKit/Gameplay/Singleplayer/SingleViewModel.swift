@@ -19,6 +19,7 @@ class SingleViewModel: NSObject {
     
     lazy var objectName = ObjectName()
     lazy var changeButton = ChangeButton()
+    lazy var changeCount = ChangeCountLabel()
     lazy var photoButton = PhotoButton()
     lazy var cameraImage = CameraImageView()
     lazy var pontos = PontosLabel()
@@ -35,6 +36,7 @@ class SingleViewModel: NSObject {
         super.init()
         setupDelegate()
         
+        items.chooseObject()
         objectName.text = items.toFindObject
         round.text = "Round Time"
     }

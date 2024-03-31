@@ -26,7 +26,8 @@ extension SingleViewModel: ChangeButtonDelegate {
         items.chooseObject()
         objectName.text = items.toFindObject
         timerObject.resetTimerObject()
-        changeButton.subtractCount()
+        changeCount.subtractCount()
+        changeButton.rotateAnimate()
         print("Change Touched")
     }
 }
@@ -79,6 +80,7 @@ extension SingleViewModel: TimerObjectDelegate {
         items.chooseObject()
         objectName.text = items.toFindObject
         timerObject.resetTimerObject()
+        changeButton.rotateAnimate()
     }
 }
 

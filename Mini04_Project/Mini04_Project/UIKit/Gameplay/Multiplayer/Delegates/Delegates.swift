@@ -14,6 +14,7 @@ extension GameplayViewModel {
     func setupDelegate() {
         self.camera = CameraModel(delegate: self)
         changeButton.delegate = self
+        changeCount.delegate = self
         photoButton.delegate = self
         items.delegate = self
         timerRound.delegate = self
@@ -32,8 +33,16 @@ extension GameplayViewModel: ChangeButtonDelegate {
         objectName.text = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
         timerObject.resetTimerObject()
         items.shuffleIsOn = false
-        changeButton.subtractCount()
+        changeCount.subtractCount()
+        changeButton.rotateAnimate()
         print("Change Touched")
+    }
+}
+
+extension GameplayViewModel: ChangeCountLabelDelegate {
+    func countEnded() {
+        changeButton.alpha = 0.3
+        changeButton.isUserInteractionEnabled = false
     }
 }
 
@@ -46,14 +55,14 @@ extension GameplayViewModel: PhotoButtonDelegate {
                 let returnedTargetColor = try await model.verifyColor(image: cameraImage)
                 print(returnedTargetObject)
                 print(returnedTargetColor)
-                if returnedTargetObject == items.toFindObject || returnedTargetColor == items.toFindObject{
-                    items.findedObject()
-                    DispatchQueue.main.async{
-                        self.objectName.text = self.items.shuffleIsOn ? self.items.toFindShuffled : self.items.toFindObject
-                        self.timerObject.resetTimerObject()
-                        self.items.shuffleIsOn = false
-                    }
+                //                if returnedTargetObject == items.toFindObject || returnedTargetColor == items.toFindObject{
+                DispatchQueue.main.async{
+                    self.items.findedObject()
+                    self.objectName.text = self.items.shuffleIsOn ? self.items.toFindShuffled : self.items.toFindObject
+                    self.timerObject.resetTimerObject()
+                    self.items.shuffleIsOn = false
                 }
+                //                }
                 if await special.specialIsOn && (items.specialObject == returnedTargetObject) && multiVM?.configMatch.powerUps == true{
                     items.specialObject = ""
                     let specialObject = SpecialObject(objectName: items.specialObject, isHit: true)
@@ -76,6 +85,7 @@ extension GameplayViewModel: PhotoButtonDelegate {
 //MARK: - Incrementa pontos do jogador
 extension GameplayViewModel: ItemsDelegate {
     func findedObjectAction() {
+        pontos.plusAnimate(color: .green)
         multiVM?.localPlayer?.points += 1
         upadatePoint((multiVM?.localPlayer!.points)!)
     }
@@ -109,6 +119,7 @@ extension GameplayViewModel: TimerObjectDelegate {
         items.chooseObject()
         objectName.text = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
         timerObject.resetTimerObject()
+        changeButton.rotateAnimate()
         items.shuffleIsOn = false
         print("timer objeto acabou")
     }
@@ -121,7 +132,7 @@ extension GameplayViewModel: PowersButtonDelegate {
         case .freeze:
             powers.freezePower()
         case .subtrac:
-            pontos.subtractPower()
+            subtractPower()
         case .switchWord:
             changeButtonAction()
         case .shuffleWord:
@@ -157,6 +168,12 @@ extension GameplayViewModel: PowersButtonDelegate {
             self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
         }
     }
+    
+    func subtractPower() {
+        multiVM?.localPlayer?.points -= 1
+        upadatePoint((multiVM?.localPlayer!.points)!)
+        pontos.plusAnimate(color: .red)
+    }
 }
 
 extension GameplayViewModel: SpecialObjectImageDelegate {
@@ -185,7 +202,23 @@ extension GameplayViewModel: PowersStackViewDelegate {
             power.centerYAnchor.constraint(equalTo: controller.view.centerYAnchor, constant: -80),
         ])
         
-        UIView.animate(withDuration: 2.0, animations: {
+        if powers.numberOfPowers == 2 {
+            UIView.animate(withDuration: 1.0, animations: {
+                power.alpha = 1
+            }) { _ in
+                power.translatesAutoresizingMaskIntoConstraints = true
+                UIView.animate(withDuration: 1.0, animations: {
+                    power.center = self.powers.center
+                    power.center.x = self.powers.center.x + 35
+                }) { _ in
+                    power.removeFromSuperview()
+                    self.powers.usersPowers.last!.alpha = 1
+                }
+            }
+            return
+        }
+        
+        UIView.animate(withDuration: 1.0, animations: {
             power.alpha = 1
         }) { _ in
             power.translatesAutoresizingMaskIntoConstraints = true

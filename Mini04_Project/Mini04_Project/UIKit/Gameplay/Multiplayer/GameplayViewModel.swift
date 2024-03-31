@@ -22,6 +22,7 @@ class GameplayViewModel: NSObject {
     
     lazy var objectName = ObjectName()
     lazy var changeButton = ChangeButton()
+    lazy var changeCount = ChangeCountLabel()
     lazy var photoButton = PhotoButton()
     lazy var cameraImage = CameraImageView()
     lazy var pontos = PontosLabel()

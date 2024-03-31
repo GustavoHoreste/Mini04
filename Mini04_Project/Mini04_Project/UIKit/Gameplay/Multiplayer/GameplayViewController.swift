@@ -15,6 +15,26 @@ class GameplayViewController: UIViewController {
     
     var notificationCenter = NotificationCenter.default
     
+    lazy var button: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.configuration = .filled()
+        button.configuration?.baseBackgroundColor = .systemRed
+        button.configuration?.title = "Subtract"
+        button.isUserInteractionEnabled = true
+        button.addTarget(self, action: #selector(acao), for: .touchUpInside)
+        button.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        return button
+    }()
+    
+    @objc func acao() {
+//        gameplayVM.multiVM?.localPlayer?.points -= 1
+//        gameplayVM.upadatePoint((multiVM.localPlayer!.points))
+//        gameplayVM.pontos.plusAnimate(color: .red)
+        gameplayVM.powers.addPowers()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +46,12 @@ class GameplayViewController: UIViewController {
         gameplayVM.configMatch()
         gameplayVM.starCombine()
         setupView()
+        
+        view.addSubview(button)
+        NSLayoutConstraint.activate([
+            button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
     }
     
     init(multiVM: MultiplayerManagerViewModel, navigationCoordinator: Coordinator) {
