@@ -31,15 +31,7 @@ struct LobbyView: View {
                     
                     Spacer()
                     
-                    Button {
-                        isOpenConfigMatch = true
-                    } label: {
-                        Image(systemName: "gearshape.circle.fill")
-                            .resizable()
-                            .frame(width: 70, height: 70)
-                    }
-                    //
-                    //                ConfigButton()
+                    configMatchButton()
                     
                 }
                 .foregroundStyle(.gray)
@@ -54,26 +46,11 @@ struct LobbyView: View {
                 
                 //Grid
                 ScrollView {
-                    //                Text(multiplayerVM.localPlayer?.userName ?? "Carlos")
-                    //                    .font(.headline)
-                    //                    .foregroundStyle(Color.red)
-                    
                     if let player = multiplayerVM.localPlayer {
                         PlayerListCell(player: player)
                     }
                     
                     ForEach(multiplayerVM.adversaryPlayers, id: \.id) { player in
-                        //                    ZStack {
-                        //                        RoundedRectangle(cornerRadius: 52.5)
-                        //                            .frame(width: 156, height: 65)
-                        //                            .foregroundStyle(colors.randomElement()!)
-                        //                        VStack{
-                        //                            Text(player.userName)
-                        //                                .font(.headline)
-                        //                                .foregroundStyle(Color.black)
-                        //                            Text("\(String(describing: player.statusUser))")
-                        //                        }
-                        //                    }
                         PlayerListCell(player: player)
                     }
                 }
@@ -81,20 +58,11 @@ struct LobbyView: View {
                 
                 Spacer()
                 
-                //Buttons
                 
+                //Buttons
                 StartButton()
                 
-                Button(action: {verifyStausSession()}, label: {
-                    Text("Adicione seu amigo")
-                        .padding()
-                        .foregroundStyle(.white)
-                        .background(.gray)
-                        .clipShape(.capsule)
-                        .font(.title)
-                })
-                .padding()
-                
+                inviteFriend()
                 
             }.task {
                 for await session in WhereWhereActivity.sessions(){
@@ -102,11 +70,12 @@ struct LobbyView: View {
                 }
             }.onReceive(self.multiplayerVM.$hostIsStarter){ newValue in
                 if newValue == true{
+                    //MARK: Aqui pode estar dando problema
                     navigationCoordinator.push(.gameplay)
                 }
             }
         
-            if isOpenConfigMatch {
+            if (isOpenConfigMatch){
                 PopUpConfigMatch(ativouteste: $isOpenConfigMatch)
             }
         }
@@ -120,6 +89,34 @@ struct LobbyView: View {
             return
         }
         navigationCoordinator.present(sheet: .shareplay)
+    }
+}
+
+extension LobbyView{
+    @ViewBuilder
+    private func configMatchButton() -> some View{
+        if multiplayerVM.localPlayer?.isHost == true {
+            Button { isOpenConfigMatch = true} label: {
+                Image(systemName: "gearshape.circle.fill")
+                    .resizable()
+                    .frame(width: 70, height: 70)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func inviteFriend() -> some View{
+        if multiplayerVM.localPlayer?.isHost == true{
+            Button{ verifyStausSession() }label: {
+                Text("Adicione seu amigo")
+                    .padding()
+                    .foregroundStyle(.white)
+                    .background(.gray)
+                    .clipShape(.capsule)
+                    .font(.title)
+            }
+            .padding()
+        }
     }
 }
 

@@ -27,7 +27,7 @@ enum RoundTime: Double, CaseIterable, Identifiable, Codable {
         let minutes = Int(self.rawValue) / 60
         let seconds = Int(self.rawValue) % 60
         if seconds == 0 {
-            return "\(minutes)"
+            return "\(minutes):00"
         } else {
             return "\(minutes):\(seconds)"
         }
@@ -37,16 +37,13 @@ enum RoundTime: Double, CaseIterable, Identifiable, Codable {
 class MatchConfigViewModel: ObservableObject{
     private var multiplayerVM: MultiplayerManagerViewModel?
     private var selectTypeUser: ParticipantType = .player
-    public var coresIsChoise: Bool = false
-    private(set) var selectPowerUps: Bool = true
     
+    @Published public var coresIsChoise: Bool = false
+    @Published public var selectPowerUps: Bool = true
     @Published var selectedRound: Round = .one
     @Published var selectedRoundTime: RoundTime = .oneThirtyMinutes
-    @Published var selectedWatch: Bool = false
-    @Published var selecPlayer: Bool = false
     
     
-     
     public func saveConfigMach() {
         let config: MatchConfig = MatchConfig(roundTime: selectedRoundTime.rawValue,
                                                    amoutRound: selectedRound.rawValue,
@@ -55,14 +52,14 @@ class MatchConfigViewModel: ObservableObject{
         self.multiplayerVM?.defineMachConfig(config)
     }
     
-    public func selectTypeUser(_ type: ParticipantType){
-        self.selectTypeUser = type
+    public func reset() {
+        selectTypeUser = .player
+        coresIsChoise = false
+        selectPowerUps = true
+        selectedRound = .one
+        selectedRoundTime = .oneThirtyMinutes
     }
     
-    
-    public func defineSelectPowerUps(){
-        self.selectPowerUps.toggle()
-    }
     
     public func addVM(multiplayerVM: MultiplayerManagerViewModel){
         self.multiplayerVM = multiplayerVM
@@ -76,31 +73,11 @@ struct MatchConfigView: View {
     
     var body: some View {
         VStack{
-                        
             Spacer()
-            
-            Toggle("Jogar partida", isOn: $matchConfigVM.selectedWatch)
-                .onChange(of: matchConfigVM.selectedWatch) { oldValue, newValue in
-                    if newValue {
-                        matchConfigVM.selecPlayer = false
-                        matchConfigVM.selectTypeUser(.player)
-                    }
-                }
-                .bold()
-            
-            Toggle("Assistir partida", isOn: $matchConfigVM.selecPlayer)
-                .onChange(of: matchConfigVM.selecPlayer) { oldValue ,newValue in
-                    if newValue {
-                        matchConfigVM.selectedWatch = false
-                        matchConfigVM.selectTypeUser(.espectetor)
-                    }
-                }
-                .bold()
-            
-            
-            HStack(alignment: .center) {
-                VStack {
+
+                HStack {
                     Text("Rodadas")
+                    Spacer()
                     Picker("Round", selection: $matchConfigVM.selectedRound) {
                         ForEach(Round.allCases, id: \.self) { round in
                             Text("\(round.rawValue)")
@@ -111,8 +88,9 @@ struct MatchConfigView: View {
                 }
                 
                 
-                VStack {
+                HStack {
                     Text("Tempo")
+                    Spacer()
                     Picker("Round", selection: $matchConfigVM.selectedRoundTime) {
                         ForEach(RoundTime.allCases, id: \.self) { roundTime in
                             Text("\(roundTime.minutes)")
@@ -121,30 +99,28 @@ struct MatchConfigView: View {
                         .tint(.black)
                         .background(.gray)
                 }
-            }
             
             
-            ToggleConfigComponent(textToggle: "Bônus de habilidade") {
-                matchConfigVM.defineSelectPowerUps()
-            }
+            Toggle("Bônus de habilidade", isOn: $matchConfigVM.selectPowerUps)
             
-            Text("A partida terá...")
-            
-            
-            ToggleConfigComponent(textToggle: "Cores") {
-                matchConfigVM.coresIsChoise.toggle()
-                let _ = print(matchConfigVM.coresIsChoise)
-            }
+            Toggle("Cores", isOn: $matchConfigVM.coresIsChoise)
             
             Spacer()
             
-            Button{ matchConfigVM.saveConfigMach() }label: {
-                Text("Salvar alterações")
+            Button{ matchConfigVM.saveConfigMach()} label: {
+                Text("Confirmar")
                     .padding()
                     .foregroundStyle(.white)
                     .background(.gray)
-                    .clipShape(.capsule)
-                    .font(.title)
+                    .font(.title2)
+            }
+            
+            Button{ matchConfigVM.reset()} label: {
+                Text("Cancelar")
+                    .padding()
+                    .foregroundStyle(.white)
+                    .background(.gray)
+                    .font(.title2)
             }
             
         }.padding()

@@ -217,25 +217,27 @@ final class SharePlayViewModel{
     }
 
     
-    private func reset(){
+    
+    private func reset() {
         players = []
         newPlayer = nil
         DispatchQueue.main.async {
             self.configMatch = MocaData.config
         }
-//        self.sessionState = false
+        newPoint = nil
         newHidrance = nil
         newStatus = nil
         newEspecialObj = nil
+        sessionActivityIsWaiting = false
+        sessionActivityIsJoined = false
         
         messenger = nil
         subscriptions = []
-        tasks.forEach {$0.cancel()}
+        tasks.forEach { $0.cancel() }
         
-        if groupSession != nil{
-            groupSession?.leave()
-            groupSession = nil
-            self.startSession()
+        if let groupSession = groupSession {
+            groupSession.leave()
+            self.groupSession = nil
         }
     }
     

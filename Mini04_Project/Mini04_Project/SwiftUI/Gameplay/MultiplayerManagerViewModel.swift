@@ -85,6 +85,7 @@ class MultiplayerManagerViewModel: ObservableObject{
     @Published var hostIsStarter: Bool = false
     @Published var newEspecialObj: SpecialObject?
     
+    
     init() {
             
         ///monitora as mudancas da varivel adPlayer
@@ -125,6 +126,10 @@ class MultiplayerManagerViewModel: ObservableObject{
             .store(in: &cancellables)
     }
     
+//    deinit {
+//        resetGame()
+//    }
+//    
     
     public func creatLocalUser(){
         guard let name = userDefults.string(forKey: UserDefaultKey.userName.rawValue) else {return}
@@ -268,15 +273,34 @@ class MultiplayerManagerViewModel: ObservableObject{
         //Fazer validacao de cancelar status?
     }
     
+    
     public func sendEspcialObject(_ value: SpecialObject){
-//        let localPlayer = try! returnPlayerNotOpcional()
-//        if localPlayer.isHost{
             self.sharePlayVM.sendEspecialObj(value)
         }
+    
+    
     public func invalidateGroupSession() {
         let playerLocal = try! returnPlayerNotOpcional()
         if !playerLocal.isHost {
             self.sharePlayVM.groupSession = nil
+            resetGame()
         }
+    }
+    
+    
+    public func resetGame() {
+        newPlayer = nil
+        newPoint = nil
+        newHidrance = nil
+        sessionActivityIsWaiting = false
+//        localPlayer = nil
+        sessionActivityIsJoined = false
+        adversaryPlayers = []
+        cancellables = []
+        configMatch = MocaData.config
+        newStatus = nil
+        starActionHidrance = nil
+        hostIsStarter = false
+        newEspecialObj = nil
     }
 }
