@@ -20,11 +20,18 @@ class ReadyButton: UIButton {
         self.translatesAutoresizingMaskIntoConstraints = false
         addTarget(self, action: #selector(ready), for: .touchUpInside)
         setBackgroundImage(UIImage(systemName: "squareshape.fill"), for: .normal)
-        setTitle("Not Ready", for: .normal)
     }
 
     required init?(coder: NSCoder) {
         fatalError("not implemented")
+    }
+    
+    public func witchLabel(_ value: Bool){
+        if !value{
+            self.setTitle("Preparado?", for: .normal)
+            return
+        }
+        self.setTitle("Start", for: .normal)
     }
     
     @objc

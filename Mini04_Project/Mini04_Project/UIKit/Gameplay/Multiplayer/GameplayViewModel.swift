@@ -41,6 +41,7 @@ class GameplayViewModel: NSObject {
         didSet{
             if startHidrance != nil{
                 reciveHidrance(powerType: startHidrance!)
+                startHidrance = nil
             }
         }
     }
@@ -48,6 +49,7 @@ class GameplayViewModel: NSObject {
         didSet{
             if newEspecialObj != nil{
                 verifyNewWord(newEspecialObj)
+                newEspecialObj = nil
             }
         }
     }
@@ -77,7 +79,6 @@ class GameplayViewModel: NSObject {
                  self.multiVM?.newEspecialObj = specialObject
                  self.multiVM?.sendEspcialObject(specialObject)
              }
-             print(self.multiVM?.newEspecialObj as Any)
          }
          
          if multiVM?.configMatch.coresIsChoise == true {

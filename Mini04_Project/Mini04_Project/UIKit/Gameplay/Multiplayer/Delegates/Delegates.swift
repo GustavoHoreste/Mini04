@@ -85,20 +85,21 @@ extension GameplayViewModel: ItemsDelegate {
 }
 
 extension GameplayViewModel: TimerRoundDelegate {
-    
     func timerRoundOver() {
         logo.isHidden = false
         UIView.animate(withDuration: 1.0, animations: {
             self.logo.transform = CGAffineTransform(scaleX: 100.0, y: 100.0).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 6))
         }, completion: { _ in
             self.timerObject.timer.invalidate()
+            print("Esse e o valor da quantidade de rpunds\(self.multiVM?.configMatch.amoutRound as Any)")
             if self.round.number == self.multiVM?.configMatch.amoutRound{
                 self.controller?.navigationCoordinator.push(.finalRank)
                 return
+            }else{
+                let nextScreen = PartialResultViewController(multiVM: self.multiVM!, navigationCoordinator: self.controller!.navigationCoordinator)
+                nextScreen.partialResultVM.currentRound = self.round.number
+                self.controller?.navigationController!.pushViewController(nextScreen, animated: false)
             }
-            let nextScreen = PartialResultViewController(multiVM: self.multiVM!, navigationCoordinator: self.controller!.navigationCoordinator)
-            nextScreen.partialResultVM.currentRound = self.round.number
-            self.controller?.navigationController!.pushViewController(nextScreen, animated: false)
         })
     }
 }
@@ -109,7 +110,6 @@ extension GameplayViewModel: TimerObjectDelegate {
         objectName.text = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
         timerObject.resetTimerObject()
         items.shuffleIsOn = false
-        print("timer objeto acabou")
     }
 }
 

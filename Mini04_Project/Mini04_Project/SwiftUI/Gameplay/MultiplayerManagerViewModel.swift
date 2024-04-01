@@ -268,7 +268,6 @@ class MultiplayerManagerViewModel: ObservableObject{
             print("[\(self.adversaryPlayers[index].userName)] - Está com pront: [\(self.adversaryPlayers[index].statusUser)]")
             
         }
-        
     }
     
 

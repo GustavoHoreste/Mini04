@@ -40,10 +40,6 @@ struct LobbyView: View {
                 //Title
                 LobbyTitle()
                 
-                if multiplayerVM.starActionHidrance != nil{
-                    Text("\(String(describing: multiplayerVM.starActionHidrance))")
-                }
-                
                 //Grid
                 ScrollView {
                     if let player = multiplayerVM.localPlayer {

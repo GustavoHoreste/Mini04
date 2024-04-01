@@ -19,7 +19,7 @@ class PartialResultViewController: UIViewController {
     var navigationCoordinator: Coordinator
     
     private var cancellables = Set<AnyCancellable>()
-    @Published var newFinishGame: FinishGame?{
+    private var newFinishGame: FinishGame?{
         didSet{
             if newFinishGame != nil{
                 backLobby()
@@ -27,7 +27,7 @@ class PartialResultViewController: UIViewController {
             }
         }
     }
-    @Published var hostIsStarter: Bool = false{
+    private var hostIsStarter: Bool = false{
         didSet{
             if hostIsStarter != false{
                 nextRound()
@@ -64,6 +64,8 @@ class PartialResultViewController: UIViewController {
         partialResultVM.data = data
         
         super.init(nibName: nil, bundle: nil)
+        
+        self.cinfigureLabelReadyButton()
         
         self.multiVM.$newFinishGame
             .assign(to: \.newFinishGame, on: self)
@@ -121,12 +123,17 @@ class PartialResultViewController: UIViewController {
     private func nextRound(){
         let nextScreen = GameplayViewController(multiVM: self.multiVM, navigationCoordinator: self.navigationCoordinator)
         nextScreen.gameplayVM.round.number = partialResultVM.currentRound + 1
-        self.navigationController!.pushViewController(nextScreen, animated: false)
+        self.navigationController?.pushViewController(nextScreen, animated: false)
     }
     
     private func verifyIsHost(){
         if multiVM.localPlayer?.isHost == true{
             partialResultVM.endGameButton.diableButton()
         }
+    }
+    
+    private func cinfigureLabelReadyButton(){
+        let userIsHost = self.multiVM.localPlayer?.isHost
+        self.partialResultVM.readyButton.witchLabel(userIsHost!)
     }
 }

@@ -26,7 +26,6 @@ extension PartialResultViewModel: EndgameButtonDelegate {
 extension PartialResultViewModel: ReadyButtonDelegate {
     func ready() {
         if view.multiVM.localPlayer?.statusUser == false{
-            witchLabel()
             sendUserStatus()
         }else{
             let alertController = UIAlertController(title: "Você já deu ready", message: "Você já realizou esta ação anteriormente.", preferredStyle: .alert)
@@ -38,24 +37,16 @@ extension PartialResultViewModel: ReadyButtonDelegate {
 
         }
     }
-    
-    private func witchLabel(){
-        if view.multiVM.localPlayer?.isHost == false{
-            self.readyButton.setTitle("Preparado?", for: .normal)
-            return
-        }
-        self.readyButton.setTitle("Start", for: .normal)
-    }
+
     
     private func sendUserStatus(){
         print("E para essa valor ser 0 e false pois ja deveriater reiniciado os pontos: \(String(describing: view.multiVM.localPlayer?.userName) ) \(String(describing: view.multiVM.localPlayer?.points) ) - \(String(describing: view.multiVM.localPlayer?.statusUser))")
-        
+
         if view.multiVM.localPlayer?.isHost == false{
             self.view.multiVM.sendLocalUserStatus()
-        }
-        
-        if view.multiVM.validateAllUsersStarted(){
+        } else if view.multiVM.validateAllUsersStarted() && view.multiVM.localPlayer?.isHost == true{
             self.view.multiVM.sendLocalUserStatus()
+            self.view.navigationCoordinator.push(.gameplay)
         }else{
             let alertController = UIAlertController(title: "Jogadores não preparados", message: "Para começar o jogo, todos devem estar prontos.", preferredStyle: .alert)
 
