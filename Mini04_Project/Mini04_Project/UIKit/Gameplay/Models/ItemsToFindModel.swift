@@ -29,10 +29,6 @@ class ItemsToFindModel {
     var withColors = true
     var shuffleIsOn = false
     
-    init() {
-        chooseObject()
-    }
-    
     func setColors() {
         if withColors {
             let colors: [String] = ["Azul", "Verde", "Rosa", "Roxo", "Vermelho", "Branco", "Amarelo"]
@@ -43,7 +39,7 @@ class ItemsToFindModel {
     }
     
     func chooseObject() {
-        if numberOfObjects < 46 {
+        if numberOfObjects < objects.count{
             let actualObject = toFindObject
             while(actualObject == toFindObject){
                 toFindObject = objects.filter{!findedObjects.contains($0)}.randomElement()!

@@ -17,10 +17,11 @@ final class SharePlayViewModel{
     @Published var newPoint: UserPoints?
     @Published var newHidrance: SendHindrances?
     @Published var newStatus: StatusUsers?
+    @Published var newEspecialObj: SpecialObject?
     @Published private(set) var sessionActivityIsWaiting: Bool = false
     @Published private(set) var sessionActivityIsJoined: Bool = false
     
-    private var groupSession: GroupSession<WhereWhereActivity>?
+    public var groupSession: GroupSession<WhereWhereActivity>?
     private var messenger: GroupSessionMessenger?
     private var subscriptions = Set<AnyCancellable>()
     private var tasks = Set<Task<Void, Never>>()
@@ -88,7 +89,17 @@ final class SharePlayViewModel{
             do {
                 try await messenger?.send(model)
             } catch {
-                print("Error in send model session [SharePlayViewModel.sendConfigMatch] - ")
+                print("Error in send model session [SharePlayViewModel.sendConfigMatch]")
+            }
+        }
+    }
+    
+    public func sendEspecialObj(_ model: SpecialObject){
+        Task {
+            do {
+                try await messenger?.send(model)
+            } catch {
+                print("Error in send model session [SharePlayViewModel.sendEspecialObj]")
             }
         }
     }
@@ -150,13 +161,13 @@ final class SharePlayViewModel{
             }
         )
         
-//        tasks.insert(
-//            Task{
-//                for await (message, _) in messenger.messages(of: Players.self){
-//                    handle(message)
-//                }
-//            }
-//        )
+        tasks.insert(
+            Task{
+                for await (message, _) in messenger.messages(of: SpecialObject.self){
+                    handle(message)
+                }
+            }
+        )
     }
     
     
@@ -206,30 +217,31 @@ final class SharePlayViewModel{
     }
 
     
-    private func reset(){
+    
+    private func reset() {
         players = []
         newPlayer = nil
         DispatchQueue.main.async {
             self.configMatch = MocaData.config
         }
-//        self.sessionState = false
+        newPoint = nil
         newHidrance = nil
         newStatus = nil
+        newEspecialObj = nil
+        sessionActivityIsWaiting = false
+        sessionActivityIsJoined = false
         
         messenger = nil
         subscriptions = []
-        tasks.forEach {$0.cancel()}
+        tasks.forEach { $0.cancel() }
         
-        if groupSession != nil{
-            groupSession?.leave()
-            groupSession = nil
-            self.startSession()
+        if let groupSession = groupSession {
+            groupSession.leave()
+            self.groupSession = nil
         }
-        
     }
     
     private func handle(_ model: Player) {
-        print("recebi: \(model)")
         DispatchQueue.main.async {
             self.newPlayer = model
         }
@@ -257,9 +269,9 @@ final class SharePlayViewModel{
         }
     }
     
-//    private func handle(_ model: Players){
-//        print("Plays para novo user: \(model)")
-//        print("[]")
-//    }
+    private func handle(_ model: SpecialObject){
+        print("EspcialObject: \(model)")
+        self.newEspecialObj = model
+    }
 }
 

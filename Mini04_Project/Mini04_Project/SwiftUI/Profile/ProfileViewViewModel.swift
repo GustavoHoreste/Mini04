@@ -23,11 +23,19 @@ class ProfileViewViewModel: ObservableObject {
     init() {
         textField = userDefault.string(forKey: UserDefaultKey.userName.rawValue) ?? nomesPadrao.randomElement()!
         addUserName()
-        creatID()
+        verifyExistemUser()
     }
     
     public func addUserName() {
         userDefault.setValue(textField, forKey: UserDefaultKey.userName.rawValue)
+    }
+    
+    private func verifyExistemUser(){
+        if let id = userDefault.string(forKey: UserDefaultKey.userID.rawValue){
+            print("user ja existe: \(id)")
+            return
+        }
+        creatID()
     }
     
     private func creatID(){

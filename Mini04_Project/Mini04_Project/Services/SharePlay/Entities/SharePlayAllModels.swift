@@ -54,19 +54,16 @@ struct StatusUsers: Codable{
     let status: Bool
 }
 
+struct SpecialObject: Codable{
+    var objectName: String
+    var isHit: Bool
+}
+
 /// Enumeração que representa o tipo de participante (jogador ou espectador)
 enum ParticipantType: Codable {
     case player
     case espectetor
 }
-
-
-/// Enumeração que representa o modo de partida
-//enum MatchMode: Codable {
-////    case objestosChoise
-//    case colorChoise
-////    case allChoise
-//}
 
 
 /// Enumeração que representa os diferentes tipos de "power-ups"

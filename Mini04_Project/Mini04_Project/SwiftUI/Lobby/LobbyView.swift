@@ -13,6 +13,8 @@ struct LobbyView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
     @StateObject var groupStateObserver = GroupStateObserver()
+    @State var isOpenConfigMatch = false
+    
     
     let colors: [Color] = [.red, .green, .blue, .yellow, .purple, .pink, .brown]
     
@@ -21,77 +23,60 @@ struct LobbyView: View {
     ]
     
     var body: some View {
-        VStack {
-            //Menu
-            HStack {
-                BackButton()
+        ZStack {
+            VStack {
+                //Menu
+                HStack {
+                    BackButton()
+                    
+                    Spacer()
+                    
+                    configMatchButton()
+                    
+                }
+                .foregroundStyle(.gray)
+                .padding()
+                
+                //Title
+                LobbyTitle()
+                
+                if multiplayerVM.starActionHidrance != nil{
+                    Text("\(String(describing: multiplayerVM.starActionHidrance))")
+                }
+                
+                //Grid
+                ScrollView {
+                    if let player = multiplayerVM.localPlayer {
+                        PlayerListCell(player: player)
+                    }
+                    
+                    ForEach(multiplayerVM.adversaryPlayers, id: \.id) { player in
+                        PlayerListCell(player: player)
+                    }
+                }
+                .padding()
                 
                 Spacer()
                 
-                ConfigButton()
                 
-            }
-            .foregroundStyle(.gray)
-            .padding()
-            
-            //Title
-            LobbyTitle()
-            
-            if multiplayerVM.starActionHidrance != nil{
-                Text("\(String(describing: multiplayerVM.starActionHidrance))")
-            }
-            
-            //Grid
-            ScrollView {
-//                Text(multiplayerVM.localPlayer?.userName ?? "Carlos")
-//                    .font(.headline)
-//                    .foregroundStyle(Color.red)
+                //Buttons
+                StartButton()
                 
-                if let player = multiplayerVM.localPlayer {
-                    PlayerListCell(player: player)
+                inviteFriend()
+                
+            }.task {
+                for await session in WhereWhereActivity.sessions(){
+                    multiplayerVM.sharePlayVM.configurationSessin(session)
                 }
-                
-                ForEach(multiplayerVM.adversaryPlayers, id: \.id) { player in
-//                    ZStack {
-//                        RoundedRectangle(cornerRadius: 52.5)
-//                            .frame(width: 156, height: 65)
-//                            .foregroundStyle(colors.randomElement()!)
-//                        VStack{
-//                            Text(player.userName)
-//                                .font(.headline)
-//                                .foregroundStyle(Color.black)
-//                            Text("\(String(describing: player.statusUser))")
-//                        }
-//                    }
-                    PlayerListCell(player: player)
+            }.onReceive(self.multiplayerVM.$hostIsStarter){ newValue in
+                if newValue == true{
+                    //MARK: Aqui pode estar dando problema
+                    navigationCoordinator.push(.gameplay)
                 }
             }
-            .padding()
-            
-            Spacer()
-            
-            //Buttons
-            
-            StartButton()
-            
-            Button(action: {verifyStausSession()}, label: {
-                Text("Adicione seu amigo")
-                    .padding()
-                    .foregroundStyle(.white)
-                    .background(.gray)
-                    .clipShape(.capsule)
-                    .font(.title)
-            })
-            .padding()
-            
-            
-        }.task {
-            for await session in WhereWhereActivity.sessions(){
-                multiplayerVM.sharePlayVM.configurationSessin(session)
-            }
-        }.onReceive(self.multiplayerVM.$hostIsStarter){ newValue in
-            if newValue == true{
-                navigationCoordinator.push(.gameplay)
+        
+            if (isOpenConfigMatch){
+                PopUpConfigMatch(ativouteste: $isOpenConfigMatch)
             }
         }
         .navigationBarBackButtonHidden()
@@ -104,6 +89,34 @@ struct LobbyView: View {
             return
         }
         navigationCoordinator.present(sheet: .shareplay)
+    }
+}
+
+extension LobbyView{
+    @ViewBuilder
+    private func configMatchButton() -> some View{
+        if multiplayerVM.localPlayer?.isHost == true {
+            Button { isOpenConfigMatch = true} label: {
+                Image(systemName: "gearshape.circle.fill")
+                    .resizable()
+                    .frame(width: 70, height: 70)
+            }
+        }
+    }
+    
+    @ViewBuilder
+    private func inviteFriend() -> some View{
+        if multiplayerVM.localPlayer?.isHost == true{
+            Button{ verifyStausSession() }label: {
+                Text("Adicione seu amigo")
+                    .padding()
+                    .foregroundStyle(.white)
+                    .background(.gray)
+                    .clipShape(.capsule)
+                    .font(.title)
+            }
+            .padding()
+        }
     }
 }
 

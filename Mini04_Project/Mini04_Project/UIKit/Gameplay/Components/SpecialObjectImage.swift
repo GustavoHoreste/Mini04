@@ -46,7 +46,6 @@ class SpecialObjectImage: UIImageView {
         ])
         
         playTimer()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -63,10 +62,10 @@ class SpecialObjectImage: UIImageView {
             delegate?.specialAppeared()
         }
     }
+
     
     func specialFinded() {
         removeFromSuperview()
         timer.invalidate()
     }
-    
 }

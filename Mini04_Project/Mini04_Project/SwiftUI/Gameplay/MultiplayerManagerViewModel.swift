@@ -83,6 +83,8 @@ class MultiplayerManagerViewModel: ObservableObject{
     }
     
     @Published var hostIsStarter: Bool = false
+    @Published var newEspecialObj: SpecialObject?
+    
     
     init() {
             
@@ -119,8 +121,15 @@ class MultiplayerManagerViewModel: ObservableObject{
             .assign(to: \.newStatus, on: self)
             .store(in: &cancellables)
         
+        sharePlayVM.$newEspecialObj
+            .assign(to: \.newEspecialObj, on: self)
+            .store(in: &cancellables)
     }
     
+//    deinit {
+//        resetGame()
+//    }
+//    
     
     public func creatLocalUser(){
         guard let name = userDefults.string(forKey: UserDefaultKey.userName.rawValue) else {return}
@@ -262,5 +271,36 @@ class MultiplayerManagerViewModel: ObservableObject{
             self.sharePlayVM.sendStatus(status)
         }
         //Fazer validacao de cancelar status?
+    }
+    
+    
+    public func sendEspcialObject(_ value: SpecialObject){
+            self.sharePlayVM.sendEspecialObj(value)
+        }
+    
+    
+    public func invalidateGroupSession() {
+        let playerLocal = try! returnPlayerNotOpcional()
+        if !playerLocal.isHost {
+            self.sharePlayVM.groupSession = nil
+            resetGame()
+        }
+    }
+    
+    
+    public func resetGame() {
+        newPlayer = nil
+        newPoint = nil
+        newHidrance = nil
+        sessionActivityIsWaiting = false
+//        localPlayer = nil
+        sessionActivityIsJoined = false
+        adversaryPlayers = []
+        cancellables = []
+        configMatch = MocaData.config
+        newStatus = nil
+        starActionHidrance = nil
+        hostIsStarter = false
+        newEspecialObj = nil
     }
 }

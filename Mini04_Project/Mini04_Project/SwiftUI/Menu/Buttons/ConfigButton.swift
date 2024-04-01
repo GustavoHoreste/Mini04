@@ -11,13 +11,22 @@ struct ConfigButton: View {
     
     @EnvironmentObject private var navigationCoordinator: Coordinator
     
+    @State var ativouteste = false
+    
     var body: some View {
-        Button(action: {navigationCoordinator.present(sheet: .matchConfigView)}, label: {
-            Image(systemName: "gearshape.circle.fill")
-                .resizable()
-                .frame(width: 70, height: 70)
-            
-        })
+        
+        Button {
+            ativouteste = true
+        } label: {
+            Text("Teste")
+        }
+        
+//        Button(action: {navigationCoordinator.present(sheet: .matchConfigView)}, label: {
+//            Image(systemName: "gearshape.circle.fill")
+//                .resizable()
+//                .frame(width: 70, height: 70)
+//            
+//        })
     }
 }
 

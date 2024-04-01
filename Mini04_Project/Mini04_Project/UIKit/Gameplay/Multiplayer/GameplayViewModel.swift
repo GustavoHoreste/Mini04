@@ -44,34 +44,48 @@ class GameplayViewModel: NSObject {
             }
         }
     }
+    private var newEspecialObj: SpecialObject?{
+        didSet{
+            if newEspecialObj != nil{
+                verifyNewWord(newEspecialObj)
+            }
+        }
+    }
     
     override init() {
         super.init()
         setupDelegate()
-        
-        objectName.text = items.toFindObject
-        
     }
     
      public func starCombine(){
         controller?.multiVM.$starActionHidrance
             .assign(to: \.startHidrance, on: self)
             .store(in: &cancellables)
+         
+         controller?.multiVM.$newEspecialObj
+             .assign(to: \.newEspecialObj, on: self)
+             .store(in: &cancellables)
     }
     
      public func configMatch(){
          self.configTimeMatch()
          
          if multiVM?.configMatch.powerUps == true {
-             items.chooseSpecialObject()
-             special.specialName.text = items.specialObject
+             if multiVM?.localPlayer?.isHost == true{
+                 items.chooseSpecialObject()
+                 let specialObject = SpecialObject(objectName: items.specialObject, isHit: false)
+                 self.multiVM?.newEspecialObj = specialObject
+                 self.multiVM?.sendEspcialObject(specialObject)
+             }
+             print(self.multiVM?.newEspecialObj as Any)
          }
          
          if multiVM?.configMatch.coresIsChoise == true {
              items.setColors()
          }
          
-//         items.chooseObject()
+         items.chooseObject()
+         objectName.text = items.toFindObject
     }
     
     private func configTimeMatch(){
@@ -84,8 +98,17 @@ class GameplayViewModel: NSObject {
         self.timerRound.config(timerRound)
     }
     
-//    private func
-    
+    private func verifyNewWord(_ value: SpecialObject?){
+        guard let valueNotOpcional = value else {return}
+        DispatchQueue.main.async { [self] in
+            print("acertou? \(String(describing: value))")
+            special.specialName.text = valueNotOpcional.objectName
+            items.specialObject = valueNotOpcional.objectName
+            if valueNotOpcional.isHit{
+                special.specialFinded()
+            }
+        }
+    }
 }
 
 
