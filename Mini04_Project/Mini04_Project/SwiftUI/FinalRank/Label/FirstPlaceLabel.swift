@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct FirstPlaceLabel: View {
+    var player: Player
+    
     var body: some View {
         //First Place
         VStack {
@@ -17,13 +19,13 @@ struct FirstPlaceLabel: View {
                 .resizable()
                 .frame(width: 94, height: 95)
             HStack {
-                Text("Gabriel")
-                Text("8")
+                Text(player.userName)
+                Text("\(player.points)")
             }
         }
     }
 }
 
 #Preview {
-    FirstPlaceLabel()
+    FirstPlaceLabel(player: MocaData.playerForPreview)
 }

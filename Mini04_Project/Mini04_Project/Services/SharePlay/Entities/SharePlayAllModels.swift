@@ -54,6 +54,10 @@ struct StatusUsers: Codable{
     let status: Bool
 }
 
+struct FinishGame: Codable{
+    let status: Bool
+}
+
 struct SpecialObject: Codable{
     var objectName: String
     var isHit: Bool

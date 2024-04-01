@@ -39,6 +39,7 @@ class EndGameButton: UIButton {
         self.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         setBackgroundImage(UIImage(systemName: "squareshape.fill"), for: .normal)
         setTitle("Terminar Jogo", for: .normal)
+        isHidden = true
     }
     
     required init?(coder: NSCoder) {
@@ -62,6 +63,10 @@ class EndGameButton: UIButton {
 //            label.trailingAnchor.constraint(equalTo: background.trailingAnchor),
 //            label.bottomAnchor.constraint(equalTo: background.bottomAnchor),
 //        ])
+    }
+    
+    public func diableButton(){
+        isHidden.toggle()
     }
     
     @objc

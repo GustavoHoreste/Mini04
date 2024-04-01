@@ -16,17 +16,53 @@ extension PartialResultViewModel {
 
 extension PartialResultViewModel: EndgameButtonDelegate {
     func endGame() {
-        print("Button pressed")
+        print("terminar partida")
+        self.view.multiVM.sendHostFinish()
+        self.view.navigationCoordinator.push(.lobby)
     }
 }
 
 //MARK: - funcao do butao de ready
 extension PartialResultViewModel: ReadyButtonDelegate {
     func ready() {
-        self.readyButton.setTitle("Ready", for: .normal)
-//        view.applySnapshot(players: self.data.sorted(by: { $0.points > $1.points }))
-        let nextScreen = GameplayViewController(multiVM: self.view.multiVM, navigationCoordinator: self.view.navigationCoordinator)
-        nextScreen.gameplayVM.round.number = currentRound + 1
-        self.view?.navigationController!.pushViewController(nextScreen, animated: false)
+        if view.multiVM.localPlayer?.statusUser == false{
+            witchLabel()
+            sendUserStatus()
+        }else{
+            let alertController = UIAlertController(title: "Você já deu ready", message: "Você já realizou esta ação anteriormente.", preferredStyle: .alert)
+
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(okAction)
+
+            view.present(alertController, animated: true, completion: nil)
+
+        }
+    }
+    
+    private func witchLabel(){
+        if view.multiVM.localPlayer?.isHost == false{
+            self.readyButton.setTitle("Preparado?", for: .normal)
+            return
+        }
+        self.readyButton.setTitle("Start", for: .normal)
+    }
+    
+    private func sendUserStatus(){
+        print("E para essa valor ser 0 e false pois ja deveriater reiniciado os pontos: \(String(describing: view.multiVM.localPlayer?.userName) ) \(String(describing: view.multiVM.localPlayer?.points) ) - \(String(describing: view.multiVM.localPlayer?.statusUser))")
+        
+        if view.multiVM.localPlayer?.isHost == false{
+            self.view.multiVM.sendLocalUserStatus()
+        }
+        
+        if view.multiVM.validateAllUsersStarted(){
+            self.view.multiVM.sendLocalUserStatus()
+        }else{
+            let alertController = UIAlertController(title: "Jogadores não preparados", message: "Para começar o jogo, todos devem estar prontos.", preferredStyle: .alert)
+
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(okAction)
+
+            view.present(alertController, animated: true, completion: nil)
+        }
     }
 }

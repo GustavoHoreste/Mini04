@@ -10,11 +10,18 @@ import Combine
 
 
 struct MocaData{
-    static let config = MatchConfig(roundTime: 90, amoutRound: 3, powerUps: true, coresIsChoise: true)
+    static let config = MatchConfig(roundTime: 5, amoutRound: 2, powerUps: true, coresIsChoise: false)
+    static let playerForPreview = Player(id: UUID(),
+                                         userName: "Gustavo",
+                                         playerImage: 1,
+                                         isHost: false,
+                                         participantType: .player,
+                                         points: 0,
+                                         statusUser: false)
 }
 
 private enum PlayerError: Error {
-    case localPlayerNaoDefinido
+    case localPlayerNotDefined
 }
 
 
@@ -76,14 +83,17 @@ class MultiplayerManagerViewModel: ObservableObject{
         }
     }
     
-    @Published var starActionHidrance: PowerUps?{
+    @Published var starActionHidrance: PowerUps?
+    @Published var newFinishGame: FinishGame?{
         didSet{
-            print("Novo endrance na varivel starActionHidrance: [\(String(describing: starActionHidrance))]")
+            if newFinishGame != nil{
+                resetPointAndStatus()
+            }
         }
     }
-    
     @Published var hostIsStarter: Bool = false
     @Published var newEspecialObj: SpecialObject?
+    
     
     
     init() {
@@ -124,6 +134,10 @@ class MultiplayerManagerViewModel: ObservableObject{
         sharePlayVM.$newEspecialObj
             .assign(to: \.newEspecialObj, on: self)
             .store(in: &cancellables)
+        
+        sharePlayVM.$newFinishGame
+            .assign(to: \.newFinishGame, on: self)
+            .store(in: &cancellables)
     }
     
 //    deinit {
@@ -136,7 +150,6 @@ class MultiplayerManagerViewModel: ObservableObject{
         guard let idString = userDefults.string(forKey: UserDefaultKey.userID.rawValue) else {return}
         guard let id = UUID(uuidString: idString) else {return}
         
-        print("peguei o Id: \(id)")
         if localPlayer == nil{
             let localUser = Player(id: id,
                                    userName: name,
@@ -154,8 +167,8 @@ class MultiplayerManagerViewModel: ObservableObject{
     }
     
     
-    public func defineLocalPlayerHost(){
-        self.localPlayer?.isHost = true
+    public func defineLocalPlayerHost(_ value: Bool){
+        self.localPlayer?.isHost = value
     }
     
     public func sendLocalPlayerData(){
@@ -187,10 +200,11 @@ class MultiplayerManagerViewModel: ObservableObject{
         }
     }
     
+    
     private func returnPlayerNotOpcional() throws -> Player{
         guard let localPlayer = self.localPlayer else {
             print("ERROR - Valor de localPlayer e: [\(String(describing: self.localPlayer))]")
-            throw PlayerError.localPlayerNaoDefinido
+            throw PlayerError.localPlayerNotDefined
         }
         return localPlayer
     }
@@ -275,25 +289,43 @@ class MultiplayerManagerViewModel: ObservableObject{
     
     
     public func sendEspcialObject(_ value: SpecialObject){
-            self.sharePlayVM.sendEspecialObj(value)
+        self.sharePlayVM.sendEspecialObj(value)
+    }
+    
+    
+    public func sendHostFinish(){
+        let playerLocal = try! returnPlayerNotOpcional()
+        if playerLocal.isHost{
+            let finish = FinishGame(status: true)
+            self.sharePlayVM.sendFinishGame(finish)
         }
+    }
     
     
     public func invalidateGroupSession() {
         let playerLocal = try! returnPlayerNotOpcional()
         if !playerLocal.isHost {
             self.sharePlayVM.groupSession = nil
-            resetGame()
         }
+        resetGame()
     }
     
+    
+    public func resetPointAndStatus(){
+        for index in adversaryPlayers.indices{
+            adversaryPlayers[index].points = 0
+            adversaryPlayers[index].statusUser = false
+        }
+        self.localPlayer?.points = 0
+        self.localPlayer?.statusUser = false
+        print("reseat pontos e status")
+    }
     
     public func resetGame() {
         newPlayer = nil
         newPoint = nil
         newHidrance = nil
         sessionActivityIsWaiting = false
-//        localPlayer = nil
         sessionActivityIsJoined = false
         adversaryPlayers = []
         cancellables = []

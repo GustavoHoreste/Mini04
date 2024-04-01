@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 
 enum Section {
     case main
@@ -16,6 +17,24 @@ class PartialResultViewController: UIViewController {
     var multiVM: MultiplayerManagerViewModel
     var partialResultVM = PartialResultViewModel()
     var navigationCoordinator: Coordinator
+    
+    private var cancellables = Set<AnyCancellable>()
+    @Published var newFinishGame: FinishGame?{
+        didSet{
+            if newFinishGame != nil{
+                backLobby()
+                newFinishGame = nil
+            }
+        }
+    }
+    @Published var hostIsStarter: Bool = false{
+        didSet{
+            if hostIsStarter != false{
+                nextRound()
+                hostIsStarter = false
+            }
+        }
+    }
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Player>
     typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, Player>
@@ -43,7 +62,20 @@ class PartialResultViewController: UIViewController {
         self.data = self.multiVM.adversaryPlayers
         self.data.append(self.multiVM.localPlayer!)
         partialResultVM.data = data
+        
         super.init(nibName: nil, bundle: nil)
+        
+        self.multiVM.$newFinishGame
+            .assign(to: \.newFinishGame, on: self)
+            .store(in: &cancellables)
+        
+        self.multiVM.$hostIsStarter
+            .assign(to: \.hostIsStarter, on: self)
+            .store(in: &cancellables)
+        
+        self.verifyIsHost()
+        
+        self.multiVM.resetPointAndStatus()
     }
     
     required init?(coder: NSCoder) {
@@ -57,23 +89,12 @@ class PartialResultViewController: UIViewController {
         applySnapshot(players: partialResultVM.data)
         setupView()
         
-        
-//        print("Removendo do navigationcontroller: \(String(describing: navigationController?.viewControllers.count))")
-
         navigationController?.viewControllers.remove(at: (navigationController?.viewControllers.count)! - 2)
-    
-        
-//        print("Removendo do navigationcontroller: \(String(describing: navigationController?.viewControllers.count))")
-//        
-//        print("Removendo do navigationcontroller: \(String(describing: navigationController?.viewControllers))")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         navigationController?.viewControllers.remove(at:  (navigationController?.viewControllers.count)! - 2)
-        
-//        print(navigationController?.viewControllers as Any)
     }
     
     private func configureCollectionViewDataSource() {
@@ -90,5 +111,22 @@ class PartialResultViewController: UIViewController {
         snapshot.appendSections([Section.main])
         snapshot.appendItems(players)
         dataSource.apply(snapshot,animatingDifferences: true)
+    }
+    
+    
+    private func backLobby(){
+        self.navigationCoordinator.push(.lobby)
+    }
+    
+    private func nextRound(){
+        let nextScreen = GameplayViewController(multiVM: self.multiVM, navigationCoordinator: self.navigationCoordinator)
+        nextScreen.gameplayVM.round.number = partialResultVM.currentRound + 1
+        self.navigationController!.pushViewController(nextScreen, animated: false)
+    }
+    
+    private func verifyIsHost(){
+        if multiVM.localPlayer?.isHost == true{
+            partialResultVM.endGameButton.diableButton()
+        }
     }
 }

@@ -21,7 +21,7 @@ struct MultiplayerHubView: View {
             Spacer()
             
             Button{ 
-                multiplayerVM.defineLocalPlayerHost()
+                multiplayerVM.defineLocalPlayerHost(true)
                 navigationCoordinator.push(.lobby)
             }label: {
                 Text("Criar Jogo")
@@ -33,6 +33,7 @@ struct MultiplayerHubView: View {
             }
             
             Button{
+                multiplayerVM.defineLocalPlayerHost(false)
                 multiplayerVM.sendLocalPlayerData()
                 navigationCoordinator.push(.lobby)
             }label: {

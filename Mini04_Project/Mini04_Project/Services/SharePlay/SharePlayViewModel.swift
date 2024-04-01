@@ -18,6 +18,7 @@ final class SharePlayViewModel{
     @Published var newHidrance: SendHindrances?
     @Published var newStatus: StatusUsers?
     @Published var newEspecialObj: SpecialObject?
+    @Published var newFinishGame: FinishGame?
     @Published private(set) var sessionActivityIsWaiting: Bool = false
     @Published private(set) var sessionActivityIsJoined: Bool = false
     
@@ -104,6 +105,16 @@ final class SharePlayViewModel{
         }
     }
     
+    public func sendFinishGame(_ model: FinishGame) {
+        Task {
+            do {
+                try await messenger?.send(model)
+            } catch {
+                print("Error in send model session [SharePlayViewModel.sendFinishGame] - ")
+            }
+        }
+    }
+    
     ///func que confgura shareplay e recebe o dado do shareplay
     public func configurationSessin(_ groupSession: GroupSession<WhereWhereActivity>){
         let messenger = GroupSessionMessenger(session: groupSession)
@@ -168,6 +179,14 @@ final class SharePlayViewModel{
                 }
             }
         )
+        
+        tasks.insert(
+            Task{
+                for await (message, _) in messenger.messages(of: FinishGame.self){
+                    handle(message)
+                }
+            }
+        )
     }
     
     
@@ -227,10 +246,11 @@ final class SharePlayViewModel{
         newPoint = nil
         newHidrance = nil
         newStatus = nil
+        newFinishGame = nil
         newEspecialObj = nil
         sessionActivityIsWaiting = false
         sessionActivityIsJoined = false
-        
+    
         messenger = nil
         subscriptions = []
         tasks.forEach { $0.cancel() }
@@ -272,6 +292,11 @@ final class SharePlayViewModel{
     private func handle(_ model: SpecialObject){
         print("EspcialObject: \(model)")
         self.newEspecialObj = model
+    }
+    
+    private func handle(_ model: FinishGame){
+        print("FinishGame: \(model)")
+        self.newFinishGame = model
     }
 }
 

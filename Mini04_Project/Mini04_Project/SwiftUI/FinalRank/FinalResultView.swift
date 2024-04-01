@@ -10,9 +10,9 @@ import SwiftUI
 struct FinalResultView: View {
     
     @EnvironmentObject private var navigationCoordinator: Coordinator
+    @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
     
     var data: [Int] = Array(1...3)
-    let colors: [Color] = [.red, .green, .blue, .yellow]
     let columnss = [
         GridItem(.fixed(1))
     ]
@@ -26,17 +26,17 @@ struct FinalResultView: View {
             
             //Podium
             VStack {
-                FirstPlaceLabel()
+                FirstPlaceLabel(player: multiplayerVM.localPlayer!)
                 
                 //Second and third
                 HStack {
                     
                     Spacer()
-                    SecondPlaceLabel()
+                    SecondPlaceLabel(player: multiplayerVM.localPlayer!)
                     
                     Spacer()
                     //third
-                    ThirdPlaceLabel()
+                    ThirdPlaceLabel(player: multiplayerVM.localPlayer!)
                     
                     Spacer()
                 }
@@ -63,9 +63,9 @@ struct FinalResultView: View {
         }
         .navigationBarBackButtonHidden()
         .padding()
+        .onAppear{
+            
+        }
     }
 }
 
-#Preview {
-    FinalResultView()
-}

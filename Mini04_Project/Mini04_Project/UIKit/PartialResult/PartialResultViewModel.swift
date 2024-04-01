@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 class PartialResultViewModel {
     
@@ -20,7 +21,7 @@ class PartialResultViewModel {
     lazy var readyButton = ReadyButton()
     lazy var logo = LogoImage(isIncreased: true)
     
-    init() {
+    init() {        
         setupDelegates()
         logo.sizeDecrease()
     }

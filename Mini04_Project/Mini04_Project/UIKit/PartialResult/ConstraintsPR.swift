@@ -25,23 +25,23 @@ extension PartialResultViewController {
         
         NSLayoutConstraint.activate([
             
-            partialResultVM.endGameButton.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            partialResultVM.endGameButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),
-            partialResultVM.endGameButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            partialResultVM.endGameButton.heightAnchor.constraint(equalToConstant: 80),
-            
-            partialResultVM.partialResultsTitle.topAnchor.constraint(equalTo: partialResultVM.endGameButton.bottomAnchor),
+            partialResultVM.partialResultsTitle.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20.0),
             partialResultVM.partialResultsTitle.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             
             collection.topAnchor.constraint(equalTo: partialResultVM.partialResultsTitle.bottomAnchor),
             collection.bottomAnchor.constraint(equalTo: partialResultVM.readyButton.topAnchor),
             collection.leftAnchor.constraint(equalTo: view.leftAnchor),
             collection.rightAnchor.constraint(equalTo: view.rightAnchor),
-            
-            partialResultVM.readyButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+        
             partialResultVM.readyButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),
             partialResultVM.readyButton.heightAnchor.constraint(equalToConstant: 80),
             partialResultVM.readyButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            partialResultVM.readyButton.bottomAnchor.constraint(equalTo: partialResultVM.endGameButton.topAnchor),
+            
+            partialResultVM.endGameButton.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            partialResultVM.endGameButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.5),
+            partialResultVM.endGameButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            partialResultVM.endGameButton.heightAnchor.constraint(equalToConstant: 80),
             
             partialResultVM.logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             partialResultVM.logo.centerYAnchor.constraint(equalTo: view.centerYAnchor),
