@@ -175,10 +175,10 @@ class CameraModel: NSObject, ObservableObject {
         }
     }
     
-    func changeCamera2() {
+    func changeCamera() {
         captureSession.beginConfiguration()
         if backCameraOn {
-            print("Entrou no if")
+            print("trocou para frontal")
             captureSession.removeInput(backCameraInput)
             captureSession.addInput(frontCameraInput)
             backCameraOn = false
@@ -191,14 +191,16 @@ class CameraModel: NSObject, ObservableObject {
         self.captureSession.commitConfiguration()
     }
     
-    func changeCamera() {
-        //Reconfigura o input
-        changeCamera2()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            print("Entrou no DispatchQueue")
-            self.changeCamera2()
-            print("Entrou no DispatchQueue: \(self.backCameraOn)")
-        }
-    }
+//    func changeCamera() async{
+//        //Reconfigura o input
+//        do{
+//            changeCamera2()
+//            
+//            try await Task.sleep(nanoseconds: 5 * 1_000_000_000)
+//            
+//            changeCamera2()
+//        } catch {
+//            print(error)
+//        }
+//    }
 }

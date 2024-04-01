@@ -8,7 +8,6 @@
 import SwiftUI
 import Combine
 
-
 struct MocaData{
     static let config = MatchConfig(roundTime: 90, amoutRound: 3, powerUps: true, coresIsChoise: true)
 }

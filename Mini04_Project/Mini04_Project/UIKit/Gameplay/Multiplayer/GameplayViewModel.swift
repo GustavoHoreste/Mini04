@@ -13,7 +13,7 @@ import Combine
 class GameplayViewModel: NSObject {
     
     var controller: GameplayViewController?
-    //Nao precisa dessa varivel pois a controller ja tem uma referencia de multiVM e esse view tem a referencia da controller
+    //Nao precisa dessa varivel pois a controller j `   a tem uma referencia de multiVM e esse view tem a referencia da controller
     var multiVM: MultiplayerManagerViewModel?
     
     var camera: CameraModel!
@@ -40,7 +40,10 @@ class GameplayViewModel: NSObject {
     private var startHidrance: PowerUps?{
         didSet{
             if startHidrance != nil{
-                reciveHidrance(powerType: startHidrance!)
+                Task{
+                    await reciveHidrance(powerType: startHidrance!)
+                    startHidrance = nil
+                }
             }
         }
     }
@@ -48,6 +51,7 @@ class GameplayViewModel: NSObject {
         didSet{
             if newEspecialObj != nil{
                 verifyNewWord(newEspecialObj)
+                newEspecialObj = nil
             }
         }
     }
@@ -107,6 +111,16 @@ class GameplayViewModel: NSObject {
             if valueNotOpcional.isHit{
                 special.specialFinded()
             }
+        }
+    }
+    
+    func cameraPower() async {
+        do {
+            camera.changeCamera()
+            try await Task.sleep(nanoseconds: 1 * 5_000_000_000)
+            camera.changeCamera()
+        } catch {
+            print(error)
         }
     }
 }
