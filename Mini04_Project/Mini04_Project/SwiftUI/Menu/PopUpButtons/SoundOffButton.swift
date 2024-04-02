@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct SoundOffButton: View {
+    
+    @Binding var isSoundOn: Bool
+    
     var body: some View {
-        Image(systemName: "music.quarternote.3")
-            .resizable()
-            .frame(width: 70, height: 70)
+        
+        Toggle("SoundOff", systemImage: isSoundOn ? "music.quarternote.3" : "music.note", isOn: $isSoundOn )
+            .font(.title)
+            .tint(.purple)
+            .toggleStyle(.button)
+            .labelStyle(.iconOnly)
+            .contentTransition(.symbolEffect)
     }
 }
 
-#Preview {
-    SoundOffButton()
-}

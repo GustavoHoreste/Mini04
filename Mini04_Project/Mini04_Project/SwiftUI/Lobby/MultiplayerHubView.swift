@@ -18,6 +18,14 @@ struct MultiplayerHubView: View {
                 .fontWeight(.black)
                 .padding()
             
+            //Menu
+            HStack {
+                BackButton()
+                Spacer()
+            }
+            .foregroundStyle(.gray)
+            .padding()
+            
             Spacer()
             
             Button{ 

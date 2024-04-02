@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileButtonPopUp: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     
+    
     var body: some View {
         Button(action: {navigationCoordinator.present(fullScreenCover: .profile)}, label: {
             ZStack {

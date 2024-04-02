@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct PopUpConfig: View {
-    @Binding var isActive: Bool
-
-    @State private var offset: CGFloat = 1000
     @EnvironmentObject private var navigationCoordinator: Coordinator
+    
+    @State private var offset: CGFloat = 1000
+    @State var isSoundOn = false
+    @State var isSoundEffectsOn = false
+    @State var isHapticsOn = false
+    
+    @Binding var isActive: Bool
 
 
     var body: some View {
@@ -26,14 +30,15 @@ struct PopUpConfig: View {
 
                 HStack {
                     Spacer()
-                    SoundOffButton()
+                    SoundOffButton(isSoundOn: $isSoundOn)
                     Spacer()
-                    SoundEffectsOff()
+                    SoundEffectsOff(isSoundEffectsOn: $isSoundEffectsOn)
                     Spacer()
-                    HapticsOff()
+                    HapticsOff(isHapticsOn: $isHapticsOn)
                     Spacer()
                 }
                 .padding()
+                .transition(.opacity)
 
                 ProfileButtonPopUp()
                 
