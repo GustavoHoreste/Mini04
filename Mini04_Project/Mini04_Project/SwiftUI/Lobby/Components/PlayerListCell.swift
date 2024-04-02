@@ -9,23 +9,24 @@ import SwiftUI
 
 struct PlayerListCell: View {
     
-    var player: Player
-    let colors: [Color] = [.red, .green, .blue, .yellow, .purple, .pink, .brown]
+    var player: player
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 52.5)
-                .frame(width: 280, height: 45)
-                .foregroundStyle(colors.randomElement()!)
-            HStack{
-                UILableRepresentable(text: player.userName)
-                    .frame(width: 180,height: 52.5)
-                    .font(.headline)
-                    
-                    .foregroundStyle(Color.black)
-                
-                Text("\(String(describing: player.statusUser))")
-            }
+        ZStack{
+//            Image(uiImage: UIImage(named: "CellBall")!)
+//                .resizable()
+//                .scaledToFit()
+//                .zIndex(1)
+            UILableRepresentable(text: player.name)
+                .frame(width: 190,height: 25)
+                .font(.headline)
+                .foregroundStyle(Color.black)
+                .padding()
+                .background {
+                    Image(uiImage: UIImage(named: "Vector")!)
+                        .resizable()
+                        .scaledToFill()
+                }
         }
     }
 }

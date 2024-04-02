@@ -5,22 +5,32 @@
 //  Created by Luca Lacerda on 02/04/24.
 //
 
+struct player{
+    var name:String
+    var score:Int
+}
+
 import SwiftUI
 
 struct LobbyListView: View {
     var body: some View {
-        ZStack{
-            Image(uiImage: UIImage(named: "LobbyListBack")!)
-                .resizable()
-                .scaledToFit()
-            ScrollView{
-                VStack{
-                    
+        GeometryReader{ proxy in
+            ZStack{
+                Image(uiImage: UIImage(named: "LobbyListBack")!)
+                    .resizable()
+                    .scaledToFill()
+                Image(uiImage: UIImage(named: "LobbyListFront")!)
+                    .resizable()
+                    .scaledToFit()
+                ScrollView{
+                    VStack{
+                        PlayerListCell(player: player(name: "teste", score: 8))
+                        PlayerListCell(player: player(name: "teste2", score: 2))
+                    }.padding()
                 }
+                .padding(40)
             }
-            Image(uiImage: UIImage(named: "LobbyListFront")!)
-                .resizable()
-                .scaledToFit()
+            .position(x: proxy.size.width/2, y: proxy.size.height/2)
         }
     }
 }

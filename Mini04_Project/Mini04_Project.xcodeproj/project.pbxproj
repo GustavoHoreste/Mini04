@@ -214,6 +214,7 @@
 		E0AF6F092BACAEA9008BE255 /* PartialResultsDelegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialResultsDelegates.swift; sourceTree = "<group>"; };
 		E0AF6F0B2BACBC63008BE255 /* PartialResultTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialResultTitle.swift; sourceTree = "<group>"; };
 		E0AF6F0D2BACC6B1008BE255 /* ReadyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyButton.swift; sourceTree = "<group>"; };
+		E0B04A612BBC89C20050312C /* Mini04-Project-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Mini04-Project-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -451,6 +452,7 @@
 		D92885B22B9668D100C73B6E /* Mini04_Project */ = {
 			isa = PBXGroup;
 			children = (
+				E0B04A612BBC89C20050312C /* Mini04-Project-Info.plist */,
 				C0A8B2902BA8A1460048AC08 /* CoreMLModels */,
 				E087829E2BA4D06E00FB5ABC /* Utilities */,
 				E087829D2BA4D06400FB5ABC /* Coordinator */,
@@ -982,10 +984,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = 335BRL9A43;
+				DEVELOPMENT_TEAM = SRXHT55569;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Mini04-Project-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This apps needs camera usage to work";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -996,13 +999,12 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini4-Proje";
+				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini4-Project";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1027,6 +1029,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Mini04-Project-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This apps needs camera usage to work";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -1037,7 +1040,6 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";

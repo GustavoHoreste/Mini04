@@ -59,14 +59,18 @@ struct StartButton: View {
             } label: {
                 ZStack{
                     
-                    Circle()
-                        .foregroundStyle(multiplayerVM.localPlayer?.statusUser == true ? .gray : .orange)
-                        .frame(width: 130, height: 130)
+                    Image(uiImage: UIImage(named: "StartButton")!)
+                        .resizable()
+                        .scaledToFit()
                     
-                    Text(multiplayerVM.localPlayer?.isHost == true ? "Começar" : "Pronto")
-                        .padding()
-                        .foregroundStyle(.white)
-                        .font(.title)
+//                    Circle()
+//                        .foregroundStyle(multiplayerVM.localPlayer?.statusUser == true ? .gray : .orange)
+//                        .frame(width: 130, height: 130)
+//                    
+//                    Text(multiplayerVM.localPlayer?.isHost == true ? "Começar" : "Pronto")
+//                        .padding()
+//                        .foregroundStyle(.white)
+//                        .font(.title)
                 }
             }
         }.onAppear{

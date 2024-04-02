@@ -15,67 +15,58 @@ struct LobbyView: View {
     @StateObject var groupStateObserver = GroupStateObserver()
     @State var isOpenConfigMatch = false
     
-    
-    let colors: [Color] = [.red, .green, .blue, .yellow, .purple, .pink, .brown]
-    
-    let adaptiveColumns = [
-        GridItem(.adaptive(minimum: 170))
-    ]
-    
     var body: some View {
-        ZStack {
-            VStack {
-                //Menu
-                HStack {
-                    BackButton()
+        GeometryReader{ proxy in
+            ZStack {
+                VStack {
+                    //Menu
+                    HStack {
+                        BackButton()
+                        
+                        Spacer()
+                        
+                        configMatchButton()
+                        
+                    }
+                    .foregroundStyle(.gray)
+                    .padding()
+                    
+                    //Title
+                    LobbyTitle()
+                    
+                    //Grid
+                    LobbyListView()
+                        .frame(width: proxy.size.width)
+//                        .padding()
                     
                     Spacer()
                     
-                    configMatchButton()
                     
-                }
-                .foregroundStyle(.gray)
-                .padding()
-                
-                //Title
-                LobbyTitle()
-                
-                //Grid
-                ScrollView {
-                    if let player = multiplayerVM.localPlayer {
-                        PlayerListCell(player: player)
+                    //Buttons
+                    StartButton()
+                    
+                    inviteFriend()
+                    
+                }.task {
+                    for await session in WhereWhereActivity.sessions(){
+                        multiplayerVM.sharePlayVM.configurationSessin(session)
                     }
-                    
-                    ForEach(multiplayerVM.adversaryPlayers, id: \.id) { player in
-                        PlayerListCell(player: player)
+                }.onReceive(self.multiplayerVM.$hostIsStarter){ newValue in
+                    if newValue == true{
+                        //MARK: Aqui pode estar dando problema
+                        navigationCoordinator.push(.gameplay)
                     }
                 }
-                .padding()
                 
-                Spacer()
-                
-                
-                //Buttons
-                StartButton()
-                
-                inviteFriend()
-                
-            }.task {
-                for await session in WhereWhereActivity.sessions(){
-                    multiplayerVM.sharePlayVM.configurationSessin(session)
-                }
-            }.onReceive(self.multiplayerVM.$hostIsStarter){ newValue in
-                if newValue == true{
-                    //MARK: Aqui pode estar dando problema
-                    navigationCoordinator.push(.gameplay)
+                if (isOpenConfigMatch){
+                    PopUpConfigMatch(ativouteste: $isOpenConfigMatch)
                 }
             }
-        
-            if (isOpenConfigMatch){
-                PopUpConfigMatch(ativouteste: $isOpenConfigMatch)
+            .navigationBarBackButtonHidden()
+            .background {
+                Image(uiImage: UIImage(named: "LobbyBackground")!)
             }
         }
-        .navigationBarBackButtonHidden()
     }
     
     ///funcao que verifica o estado da session - se for desativada inicia a session
