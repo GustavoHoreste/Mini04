@@ -9,12 +9,13 @@ import SwiftUI
 
 struct BackButton: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
+
     var body: some View {
         VStack{
             Button{navigationCoordinator.popToRoot()}label: {
-                Image(systemName: "chevron.left.circle.fill")
+                Image("MenuConfig")
                     .resizable()
-                    .frame(width: 70, height: 70)
+                    .frame(width: screenWidth * 0.114, height: screenHeight * 0.05284334763)
             }
         }
     }

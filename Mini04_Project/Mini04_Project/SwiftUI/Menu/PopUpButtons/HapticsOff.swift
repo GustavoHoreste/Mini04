@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct HapticsOff: View {
+    @Binding var isHapticsOn: Bool
+    
     var body: some View {
-        Image(systemName: "iphone.gen3.radiowaves.left.and.right.circle.fill")
-            .resizable()
-            .frame(width: 70, height: 70)
+        Toggle("SoundOff", systemImage: isHapticsOn ? "iphone.gen3.radiowaves.left.and.right.circle.fill" : "iphone.gen1.radiowaves.left.and.right", isOn: $isHapticsOn )
+            .font(.title)
+            .tint(.purple)
+            .toggleStyle(.button)
+            .labelStyle(.iconOnly)
+            .contentTransition(.symbolEffect)
+        
     }
 }
 
-#Preview {
-    HapticsOff()
-}
