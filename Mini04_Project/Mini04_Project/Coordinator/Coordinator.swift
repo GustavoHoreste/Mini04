@@ -14,8 +14,8 @@ enum Page: String, Identifiable {
          finalRank,
          multiplayerHub,
          singleplayer,
-        profile,
-        credits
+         profile,
+         credits
     
     var id: String {
         self.rawValue
@@ -129,9 +129,9 @@ class Coordinator: ObservableObject {
                 ConfigView()
             }
         case .credits:
-            CreditsView() 
+            CreditsView()
         case .profile:
-                ProfileView()
+            ProfileView()
         }
     }
 }
