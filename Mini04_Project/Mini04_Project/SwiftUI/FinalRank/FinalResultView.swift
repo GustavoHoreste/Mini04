@@ -11,8 +11,7 @@ struct FinalResultView: View {
     
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
-    
-    var data: [Int] = Array(1...3)
+    @StateObject var vm = FinalResultViewModel()
     let columnss = [
         GridItem(.fixed(1))
     ]
@@ -24,19 +23,19 @@ struct FinalResultView: View {
                 .bold()
                 .padding()
             
-            //Podium
+            //Podium 
             VStack {
-                FirstPlaceLabel(player: multiplayerVM.localPlayer!)
+                FirstPlaceLabel(player: vm.tops[0])
                 
                 //Second and third
                 HStack {
                     
                     Spacer()
-                    SecondPlaceLabel(player: multiplayerVM.localPlayer!)
+                    SecondPlaceLabel(player: vm.tops[1])
                     
                     Spacer()
                     //third
-                    ThirdPlaceLabel(player: multiplayerVM.localPlayer!)
+                    ThirdPlaceLabel(player: vm.tops[2])
                     
                     Spacer()
                 }
@@ -45,11 +44,9 @@ struct FinalResultView: View {
             //Rest of ranking
             ScrollView {
                 LazyVGrid(columns: columnss, spacing: 20) {
-                    ForEach(data, id: \.self) { number in
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 20)
-                                .frame(width: 329, height: 49)
-                                .foregroundStyle(.gray)
+                    ForEach(0..<vm.data.count, id: \.self) { i in
+                        if i > 3{
+                            NormalRankCell(player: vm.data[i])
                         }
                     }
                 }
@@ -64,8 +61,8 @@ struct FinalResultView: View {
         .navigationBarBackButtonHidden()
         .padding()
         .onAppear{
-            
+            vm.data = multiplayerVM.adversaryPlayers
+            vm.data.append(multiplayerVM.localPlayer!)
         }
     }
 }
-

@@ -85,6 +85,8 @@
 		E009867F2BAB626500E586C6 /* PartialResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E009867E2BAB626500E586C6 /* PartialResultCell.swift */; };
 		E00986822BAB681200E586C6 /* CollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00986812BAB681200E586C6 /* CollectionDelegate.swift */; };
 		E00C5CD32BB349140020126E /* PlayerListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00C5CD22BB349140020126E /* PlayerListCell.swift */; };
+		E021364A2BBC791A0067D278 /* FianlResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02136492BBC791A0067D278 /* FianlResultViewModel.swift */; };
+		E021364C2BBC7B130067D278 /* NormalRankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021364B2BBC7B130067D278 /* NormalRankCell.swift */; };
 		E08782A02BA4D41500FB5ABC /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E087829F2BA4D41400FB5ABC /* UIImageExtension.swift */; };
 		E08782A22BA4D42000FB5ABC /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782A12BA4D42000FB5ABC /* Coordinator.swift */; };
 		E08782A42BA4D42800FB5ABC /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782A32BA4D42800FB5ABC /* CameraModel.swift */; };
@@ -187,6 +189,8 @@
 		E00986812BAB681200E586C6 /* CollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDelegate.swift; sourceTree = "<group>"; };
 		E00C5CD22BB349140020126E /* PlayerListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListCell.swift; sourceTree = "<group>"; };
 		E00C5CD42BB351420020126E /* UILableRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILableRepresentable.swift; sourceTree = "<group>"; };
+		E02136492BBC791A0067D278 /* FianlResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FianlResultViewModel.swift; sourceTree = "<group>"; };
+		E021364B2BBC7B130067D278 /* NormalRankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalRankCell.swift; sourceTree = "<group>"; };
 		E087829F2BA4D41400FB5ABC /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		E08782A12BA4D42000FB5ABC /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E08782A32BA4D42800FB5ABC /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
@@ -263,6 +267,7 @@
 				2E3A74462BAB62410026BE07 /* FirstPlaceLabel.swift */,
 				2E3A74482BAB62AD0026BE07 /* SecondPlaceLabel.swift */,
 				2E3A744A2BAB62C20026BE07 /* ThirdPlaceLabel.swift */,
+				E021364B2BBC7B130067D278 /* NormalRankCell.swift */,
 			);
 			path = Label;
 			sourceTree = "<group>";
@@ -587,6 +592,7 @@
 			children = (
 				2E3A74592BACAA130026BE07 /* Label */,
 				E08782AE2BA4D49E00FB5ABC /* FinalResultView.swift */,
+				E02136492BBC791A0067D278 /* FianlResultViewModel.swift */,
 			);
 			path = FinalRank;
 			sourceTree = "<group>";
@@ -752,6 +758,7 @@
 				E009867F2BAB626500E586C6 /* PartialResultCell.swift in Sources */,
 				E08782A02BA4D41500FB5ABC /* UIImageExtension.swift in Sources */,
 				E08782A02BA4D41500FB5ABC /* UIImageExtension.swift in Sources */,
+				E021364C2BBC7B130067D278 /* NormalRankCell.swift in Sources */,
 				E08782AC2BA4D47F00FB5ABC /* GameplayViewController.swift in Sources */,
 				C0A8B29E2BA8C1320048AC08 /* ConstraintsVC.swift in Sources */,
 				E08782A42BA4D42800FB5ABC /* CameraModel.swift in Sources */,
@@ -779,6 +786,7 @@
 				E08782B32BA4ED1600FB5ABC /* CameraDelegate.swift in Sources */,
 				C0393D842BAD23FB00E97810 /* PreViewController.swift in Sources */,
 				2E3A745E2BB1AF250026BE07 /* PopUpConfig.swift in Sources */,
+				E021364A2BBC791A0067D278 /* FianlResultViewModel.swift in Sources */,
 				2E3A744D2BAB63E20026BE07 /* MenuButtonLabel.swift in Sources */,
 				E08782AF2BA4D49E00FB5ABC /* FinalResultView.swift in Sources */,
 				2E3A743B2BAB52D40026BE07 /* BackButton.swift in Sources */,
