@@ -87,6 +87,7 @@
 		E00C5CD32BB349140020126E /* PlayerListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00C5CD22BB349140020126E /* PlayerListCell.swift */; };
 		E021364A2BBC791A0067D278 /* FianlResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02136492BBC791A0067D278 /* FianlResultViewModel.swift */; };
 		E021364C2BBC7B130067D278 /* NormalRankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021364B2BBC7B130067D278 /* NormalRankCell.swift */; };
+		E021364E2BBC859F0067D278 /* LobbyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021364D2BBC859F0067D278 /* LobbyListView.swift */; };
 		E08782A02BA4D41500FB5ABC /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E087829F2BA4D41400FB5ABC /* UIImageExtension.swift */; };
 		E08782A22BA4D42000FB5ABC /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782A12BA4D42000FB5ABC /* Coordinator.swift */; };
 		E08782A42BA4D42800FB5ABC /* CameraModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782A32BA4D42800FB5ABC /* CameraModel.swift */; };
@@ -191,6 +192,7 @@
 		E00C5CD42BB351420020126E /* UILableRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILableRepresentable.swift; sourceTree = "<group>"; };
 		E02136492BBC791A0067D278 /* FianlResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FianlResultViewModel.swift; sourceTree = "<group>"; };
 		E021364B2BBC7B130067D278 /* NormalRankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalRankCell.swift; sourceTree = "<group>"; };
+		E021364D2BBC859F0067D278 /* LobbyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyListView.swift; sourceTree = "<group>"; };
 		E087829F2BA4D41400FB5ABC /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		E08782A12BA4D42000FB5ABC /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E08782A32BA4D42800FB5ABC /* CameraModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraModel.swift; sourceTree = "<group>"; };
@@ -581,6 +583,7 @@
 			children = (
 				E00C5CD12BB348F50020126E /* Components */,
 				E08782B02BA4D4A600FB5ABC /* LobbyView.swift */,
+				E021364D2BBC859F0067D278 /* LobbyListView.swift */,
 				D95398522BACCDA90022F444 /* MultiplayerHubView.swift */,
 				D92D6BA92BAD3485006B7E87 /* CofigMatch */,
 			);
@@ -836,6 +839,7 @@
 				2E3A744F2BAB733D0026BE07 /* InfoButton.swift in Sources */,
 				E00C5CD32BB349140020126E /* PlayerListCell.swift in Sources */,
 				C09106FE2BA8FD7800037EAB /* RoundLabel.swift in Sources */,
+				E021364E2BBC859F0067D278 /* LobbyListView.swift in Sources */,
 				C0CBCB382BAE142B0020E594 /* SingleViewModel.swift in Sources */,
 				2E3A74402BAB5DDF0026BE07 /* StartButton.swift in Sources */,
 				C0393D602BACF05900E97810 /* LogoImage.swift in Sources */,
