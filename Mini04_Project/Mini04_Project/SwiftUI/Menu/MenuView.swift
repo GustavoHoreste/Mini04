@@ -31,6 +31,8 @@ struct MenuView: View {
                 
                 Spacer()
                 
+            
+                
                 Circle()
                     .foregroundStyle(.red)
                     .frame(width: 310, height: 310)
