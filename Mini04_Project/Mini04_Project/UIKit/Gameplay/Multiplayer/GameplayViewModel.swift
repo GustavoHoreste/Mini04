@@ -17,7 +17,7 @@ class GameplayViewModel: NSObject {
     var multiVM: MultiplayerManagerViewModel?
     
     //MARK: - Camera
-//    var camera: CameraModel!
+    var camera: CameraModel!
     var items = ItemsToFindModel()
     var model = MlModel()
     

@@ -13,7 +13,7 @@ import CoreImage
 extension GameplayViewModel {
     func setupDelegate() {
         //MARK: - Camera
-//        self.camera = CameraModel(delegate: self)
+        self.camera = CameraModel(delegate: self)
         changeButton.delegate = self
         changeCount.delegate = self
         photoButton.delegate = self
@@ -96,6 +96,18 @@ extension GameplayViewModel: ItemsDelegate {
         pontos.updateLabel(value)
     }
 }
+
+extension GameplayViewModel: TimerStartDelegate {
+    func timerStartOver() {
+        fadeBackground.removeFromSuperview()
+        timerRound.playTimer()
+        timerObject.playTimer()
+        configMatch()
+        objectName.isHidden = false
+        controller!.view.isUserInteractionEnabled = true
+    }
+}
+
 extension GameplayViewModel: TimerRoundDelegate {
     func timerRoundOver() {
         print(self.controller?.navigationController?.viewControllers.count as Any)
