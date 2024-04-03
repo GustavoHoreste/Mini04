@@ -58,7 +58,6 @@ struct StartButton: View {
                 self.startButtonVM.verifyUserIsHost()
             } label: {
                 ZStack{
-                    
                     Circle()
                         .foregroundStyle(multiplayerVM.localPlayer?.statusUser == true ? .gray : .orange)
                         .frame(width: 130, height: 130)

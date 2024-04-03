@@ -64,7 +64,7 @@ struct FinalResultView: View {
         .navigationBarBackButtonHidden()
         .padding()
         .onAppear{
-            
+            let _ = print("Iniciei o rank final")
         }
     }
 }

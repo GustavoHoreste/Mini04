@@ -12,7 +12,8 @@ import CoreImage
 
 extension GameplayViewModel {
     func setupDelegate() {
-        self.camera = CameraModel(delegate: self)
+        //MARK: - Camera
+//        self.camera = CameraModel(delegate: self)
         changeButton.delegate = self
         photoButton.delegate = self
         items.delegate = self
@@ -83,22 +84,30 @@ extension GameplayViewModel: ItemsDelegate {
         pontos.updateLabel(value)
     }
 }
-
+//221103
 extension GameplayViewModel: TimerRoundDelegate {
     func timerRoundOver() {
+        print(self.controller?.navigationController?.viewControllers.count as Any)
+        
+        self.multiVM?.resetPowerUpsAndStatus()
+        
         logo.isHidden = false
+        
         UIView.animate(withDuration: 1.0, animations: {
             self.logo.transform = CGAffineTransform(scaleX: 100.0, y: 100.0).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 6))
-        }, completion: { _ in
+        }, completion: { [self] _ in
             self.timerObject.timer.invalidate()
-            print("Esse e o valor da quantidade de rpunds\(self.multiVM?.configMatch.amoutRound as Any)")
-            if self.round.number == self.multiVM?.configMatch.amoutRound{
+            self.timerRound.timer.invalidate()
+            print("Esse e o valor da quantidade de rounds\(self.multiVM?.configMatch.amoutRound as Any) e o valor de round e \(self.round.number)")
+            guard let multiVMNotOpcional = self.multiVM else {return}
+            if self.round.number >= multiVMNotOpcional.configMatch.amoutRound{
                 self.controller?.navigationCoordinator.push(.finalRank)
                 return
             }else{
-                let nextScreen = PartialResultViewController(multiVM: self.multiVM!, navigationCoordinator: self.controller!.navigationCoordinator)
-                nextScreen.partialResultVM.currentRound = self.round.number
-                self.controller?.navigationController!.pushViewController(nextScreen, animated: false)
+                let nextScreen = controller?.parcialRanking
+                nextScreen?.partialResultVM.currentRound = self.round.number
+                print("Essa e o valor que estou enviando para parcial rank: \(nextScreen!.partialResultVM.currentRound)")
+                self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
             }
         })
     }
@@ -125,8 +134,9 @@ extension GameplayViewModel: PowersButtonDelegate {
             changeButtonAction()
         case .shuffleWord:
             items.shufflePower()
-        case .changeCamera:
-            camera.changeCamera()
+        case .changeCamera: break
+            //MARK: - Camera
+//            camera.changeCamera()
         }
     }
     

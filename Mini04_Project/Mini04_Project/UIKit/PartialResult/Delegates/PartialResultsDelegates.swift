@@ -34,19 +34,33 @@ extension PartialResultViewModel: ReadyButtonDelegate {
             alertController.addAction(okAction)
 
             view.present(alertController, animated: true, completion: nil)
-
         }
     }
 
     
     private func sendUserStatus(){
-        print("E para essa valor ser 0 e false pois ja deveriater reiniciado os pontos: \(String(describing: view.multiVM.localPlayer?.userName) ) \(String(describing: view.multiVM.localPlayer?.points) ) - \(String(describing: view.multiVM.localPlayer?.statusUser))")
-
         if view.multiVM.localPlayer?.isHost == false{
             self.view.multiVM.sendLocalUserStatus()
+            
         } else if view.multiVM.validateAllUsersStarted() && view.multiVM.localPlayer?.isHost == true{
             self.view.multiVM.sendLocalUserStatus()
-            self.view.navigationCoordinator.push(.gameplay)
+            
+            var nextScreen: GameplayViewController?
+            
+            if let nextScreenNotOpcional = self.view.gameplayVM.controller{
+                 nextScreen = nextScreenNotOpcional
+            } else {
+                 nextScreen = GameplayViewController(multiVM: self.view.multiVM, navigationCoordinator: self.view.navigationCoordinator)
+            }
+            
+            print("Valor antes de incrementar: \(String(describing: nextScreen?.gameplayVM.round.number)) HOST")
+            nextScreen?.gameplayVM.round.number = currentRound + 1
+            print("Valor depois de incrementar:\(String(describing: nextScreen?.gameplayVM.round.number)) HOST")
+
+            self.view.navigationController?.pushViewController(nextScreen!, animated: false)
+//            self.view.dismiss(animated: true)
+//            self.view.navigationController?.dismiss(animated: true)
+            
         }else{
             let alertController = UIAlertController(title: "Jogadores não preparados", message: "Para começar o jogo, todos devem estar prontos.", preferredStyle: .alert)
 

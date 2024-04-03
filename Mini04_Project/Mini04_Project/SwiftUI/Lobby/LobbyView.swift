@@ -8,12 +8,14 @@
 import SwiftUI
 import GroupActivities
 
+//var isStarter: Bool = false
 
 struct LobbyView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
     @StateObject var groupStateObserver = GroupStateObserver()
     @State var isOpenConfigMatch = false
+   // @State var isStarter: Bool = false
     
     
     let colors: [Color] = [.red, .green, .blue, .yellow, .purple, .pink, .brown]
@@ -64,9 +66,8 @@ struct LobbyView: View {
                 for await session in WhereWhereActivity.sessions(){
                     multiplayerVM.sharePlayVM.configurationSessin(session)
                 }
-            }.onReceive(self.multiplayerVM.$hostIsStarter){ newValue in
+            }.onReceive(self.multiplayerVM.$hostIsReadyInLobby){ newValue in
                 if newValue == true{
-                    //MARK: Aqui pode estar dando problema
                     navigationCoordinator.push(.gameplay)
                 }
             }

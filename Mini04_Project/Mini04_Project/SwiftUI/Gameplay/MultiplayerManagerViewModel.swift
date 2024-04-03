@@ -10,7 +10,7 @@ import Combine
 
 
 struct MocaData{
-    static let config = MatchConfig(roundTime: 5, amoutRound: 2, powerUps: true, coresIsChoise: false)
+    static let config = MatchConfig(roundTime: 5, amoutRound: 5, powerUps: true, coresIsChoise: false)
     static let playerForPreview = Player(id: UUID(),
                                          userName: "Gustavo",
                                          playerImage: 1,
@@ -30,7 +30,6 @@ class MultiplayerManagerViewModel: ObservableObject{
     
     private let userDefults: UserDefaults = UserDefaults.standard
     private var cancellables = Set<AnyCancellable>()
-    
     
     private var newPlayer: Player?{
         didSet{
@@ -65,16 +64,8 @@ class MultiplayerManagerViewModel: ObservableObject{
             }
         }
     }
-    @Published var adversaryPlayers: [Player] = []{
-        didSet{
-            print("Value - \(adversaryPlayers)")
-        }
-    }
-    @Published var configMatch: MatchConfig = MocaData.config{
-        didSet{
-            print("recebi configMatch: \(String(describing: configMatch))")
-        }
-    }
+    @Published var adversaryPlayers: [Player] = []
+    @Published var configMatch: MatchConfig = MocaData.config
     @Published var newStatus: StatusUsers?{
         didSet{
             if newStatus != nil{
@@ -82,19 +73,18 @@ class MultiplayerManagerViewModel: ObservableObject{
             }
         }
     }
-    
+    @Published var hostIsReadyInLobby: Bool = false
     @Published var starActionHidrance: PowerUps?
-    @Published var newFinishGame: FinishGame?{
+    @Published var newFinishGame: FinishGame?
+    {
         didSet{
             if newFinishGame != nil{
-                resetPointAndStatus()
+                resetPowerUpsAndStatus()
             }
         }
     }
     @Published var hostIsStarter: Bool = false
     @Published var newEspecialObj: SpecialObject?
-    
-    
     
     init() {
             
@@ -140,10 +130,6 @@ class MultiplayerManagerViewModel: ObservableObject{
             .store(in: &cancellables)
     }
     
-//    deinit {
-//        resetGame()
-//    }
-//    
     
     public func creatLocalUser(){
         guard let name = userDefults.string(forKey: UserDefaultKey.userName.rawValue) else {return}
@@ -253,20 +239,21 @@ class MultiplayerManagerViewModel: ObservableObject{
     
     private func changeUserStatus(_ value: StatusUsers?){
         guard let valueNotOpcional = value else {
-            print("Novo point e nil")
             return
         }
         if let hostID = self.adversaryPlayers.first(where: { $0.isHost })?.id {
             if valueNotOpcional.localPlayerID == hostID {
                 DispatchQueue.main.async {
-                    self.hostIsStarter = true
+                    if self.hostIsReadyInLobby == false{
+                        self.hostIsReadyInLobby = true
+                    }else{
+                        self.hostIsStarter = true
+                    }
                 }
             }
         }
         if let index = adversaryPlayers.firstIndex(where: {$0.id == valueNotOpcional.localPlayerID}){
             self.adversaryPlayers[index].statusUser = valueNotOpcional.status
-            print("[\(self.adversaryPlayers[index].userName)] - Está com pront: [\(self.adversaryPlayers[index].statusUser)]")
-            
         }
     }
     
@@ -310,14 +297,14 @@ class MultiplayerManagerViewModel: ObservableObject{
     }
     
     
-    public func resetPointAndStatus(){
+    public func resetPowerUpsAndStatus(){
         for index in adversaryPlayers.indices{
-            adversaryPlayers[index].points = 0
             adversaryPlayers[index].statusUser = false
         }
-        self.localPlayer?.points = 0
         self.localPlayer?.statusUser = false
-        print("reseat pontos e status")
+        self.starActionHidrance = nil
+        self.hostIsStarter = false
+        self.newStatus = nil
     }
     
     public func resetGame() {
@@ -332,6 +319,7 @@ class MultiplayerManagerViewModel: ObservableObject{
         newStatus = nil
         starActionHidrance = nil
         hostIsStarter = false
+        hostIsReadyInLobby = false
         newEspecialObj = nil
     }
 }
