@@ -32,11 +32,7 @@ class ChangeButton: UIButton {
         
         translatesAutoresizingMaskIntoConstraints = false
         
-        let image = UIImage(systemName: "arrow.circlepath")
-        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 40)
-        let resizedImage = image?.withConfiguration(symbolConfig)
-        
-        setImage(resizedImage, for: .normal)
+        setImage(UIImage(named: "ChangeButton"), for: .normal)
         addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
     }
     

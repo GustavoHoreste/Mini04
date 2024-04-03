@@ -12,7 +12,7 @@ class PontosLabel: UILabel {
     var number = 0 {
         didSet {
             DispatchQueue.main.async {
-                self.text = "\(self.number)"
+                self.text = "\(self.number) pts"
             }
         }
     }
@@ -23,9 +23,9 @@ class PontosLabel: UILabel {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
-        font = .systemFont(ofSize: 15, weight: .regular)
-        text = "0"
-        textColor = .label
+        font = .systemFont(ofSize: 25, weight: .regular)
+        text = "0 pts"
+        textColor = .black
         
     }
     
@@ -54,7 +54,7 @@ class PontosLabel: UILabel {
         }) { _ in
             UIView.animate(withDuration: 0.5, animations: {
                 self.transform = .identity
-                self.textColor = .label
+                self.textColor = .black
             }) { _ in
                 self.isPlusAnimating = false
             }

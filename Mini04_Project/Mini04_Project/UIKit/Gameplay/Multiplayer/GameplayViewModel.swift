@@ -20,20 +20,23 @@ class GameplayViewModel: NSObject {
     var items = ItemsToFindModel()
     var model = MlModel()
     
-    lazy var objectName = ObjectName()
-    lazy var changeButton = ChangeButton()
-    lazy var changeCount = ChangeCountLabel()
-    lazy var photoButton = PhotoButton()
-    lazy var cameraImage = CameraImageView()
-    lazy var pontos = PontosLabel()
-    lazy var profile = ProfileImage()
-    lazy var round = RoundLabel()
-    lazy var special = SpecialObjectImage()
-    lazy var timerRound = TimerRound()
-    lazy var timerObject = TimerObject()
-    lazy var powers = PowersStackView()
-    lazy var crosshair = CrosshairImage()
-    lazy var logo = LogoImage(isIncreased: false)
+    var objectName = ObjectName()
+    var changeButton = ChangeButton()
+    var changeCount = ChangeCountLabel()
+    var photoButton = PhotoButton()
+    var cameraImage = CameraImageView()
+    var pontos = PontosLabel()
+    var profile = ProfileImage()
+    var round = RoundLabel()
+    var special = SpecialObjectImage()
+    var timerRound = TimerRound()
+    var timerObject = TimerObject()
+    var powers = PowersStackView()
+    var crosshair = CrosshairImage()
+    var logo = LogoImage(isIncreased: false)
+    var timerStart = TimerStart()
+    var fadeBackground = BackgroundFade()
+    var alert = AlertPowerView(icon: UIImage(), name: "")
     
     var context: CIContext = CIContext()
     
@@ -69,8 +72,6 @@ class GameplayViewModel: NSObject {
     }
     
      public func configMatch(){
-         self.configTimeMatch()
-         
          if multiVM?.configMatch.powerUps == true {
              if multiVM?.localPlayer?.isHost == true{
                  items.chooseSpecialObject()
@@ -89,7 +90,7 @@ class GameplayViewModel: NSObject {
          objectName.text = items.toFindObject
     }
     
-    private func configTimeMatch(){
+    public func configTimeMatch(){
         guard let config = multiVM?.configMatch else {
             print("sai do configMatch da GamePlayViewModel: \(String(describing: multiVM?.configMatch))")
             return

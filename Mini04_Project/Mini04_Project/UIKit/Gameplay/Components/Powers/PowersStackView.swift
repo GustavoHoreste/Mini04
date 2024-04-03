@@ -38,12 +38,12 @@ class PowersStackView: UIStackView {
         
         axis = .horizontal
         alignment = .center
-        spacing = 20
+        spacing = 80
     }
     
     func addPowers() {
         if numberOfPowers < 2 {
-            var power = allPowers.filter{!usersPowers.contains($0)}.randomElement()!
+            let power = allPowers.filter{!usersPowers.contains($0)}.randomElement()!
             power.alpha = 0
             usersPowers.append(power)
             addArrangedSubview(usersPowers.last!)

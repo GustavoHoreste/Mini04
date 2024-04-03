@@ -13,44 +13,49 @@ class GameplayViewController: UIViewController {
     var multiVM: MultiplayerManagerViewModel
     var navigationCoordinator: Coordinator
     
-    var notificationCenter = NotificationCenter.default
-    
     lazy var button: UIButton = {
         let button = UIButton(type: .system)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration = .filled()
         button.configuration?.baseBackgroundColor = .systemRed
-        button.configuration?.title = "Subtract"
+        button.configuration?.title = "Add Power"
+        button.configuration?.titleAlignment = .center
         button.isUserInteractionEnabled = true
         button.addTarget(self, action: #selector(acao), for: .touchUpInside)
-        button.widthAnchor.constraint(equalToConstant: 150).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 100).isActive = true
         button.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        
+        button.isHidden = true
         return button
     }()
     
     @objc func acao() {
+        //Testar subtract
 //        gameplayVM.multiVM?.localPlayer?.points -= 1
 //        gameplayVM.upadatePoint((multiVM.localPlayer!.points))
 //        gameplayVM.pontos.plusAnimate(color: .red)
+        
+        //Testar poderzinhos
         gameplayVM.powers.addPowers()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.willResignActiveNotification, object: nil)
+        view.isUserInteractionEnabled = false
         
         gameplayVM.controller = self
         gameplayVM.multiVM = multiVM
-        gameplayVM.configMatch()
         gameplayVM.starCombine()
+        gameplayVM.configTimeMatch()
         setupView()
+        gameplayVM.timerStart.sizeIncrease()
         
         view.addSubview(button)
         NSLayoutConstraint.activate([
             button.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            button.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 130),
         ])
     }
     
@@ -62,17 +67,6 @@ class GameplayViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    @objc func appMovedToBackground() {
-        print("App foi pro background")
-        multiVM.invalidateGroupSession()
-        notificationCenter.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
-        gameplayVM.timerRound.timer.invalidate()
-        gameplayVM.timerObject.timer.invalidate()
-        multiVM.hostIsStarter = false
-        navigationCoordinator.push(.menu)
-        navigationController?.viewControllers.removeAll()
     }
     
 }

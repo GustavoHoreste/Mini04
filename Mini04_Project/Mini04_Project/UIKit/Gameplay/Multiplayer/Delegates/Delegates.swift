@@ -21,6 +21,7 @@ extension GameplayViewModel {
         timerObject.delegate = self
         special.delegate = self
         powers.delegate = self
+        timerStart.delegate = self
         for power in powers.allPowers {
             power.delegate = self
         }
@@ -55,14 +56,14 @@ extension GameplayViewModel: PhotoButtonDelegate {
                 let returnedTargetColor = try await model.verifyColor(image: cameraImage)
                 print(returnedTargetObject)
                 print(returnedTargetColor)
-                //                if returnedTargetObject == items.toFindObject || returnedTargetColor == items.toFindObject{
-                DispatchQueue.main.async{
-                    self.items.findedObject()
-                    self.objectName.text = self.items.shuffleIsOn ? self.items.toFindShuffled : self.items.toFindObject
-                    self.timerObject.resetTimerObject()
-                    self.items.shuffleIsOn = false
+                if returnedTargetObject == items.toFindObject || returnedTargetColor == items.toFindObject{
+                    DispatchQueue.main.async{
+                        self.items.findedObject()
+                        self.objectName.text = self.items.shuffleIsOn ? self.items.toFindShuffled : self.items.toFindObject
+                        self.timerObject.resetTimerObject()
+                        self.items.shuffleIsOn = false
+                    }
                 }
-                //                }
                 if await special.specialIsOn && (items.specialObject == returnedTargetObject) && multiVM?.configMatch.powerUps == true{
                     items.specialObject = ""
                     let specialObject = SpecialObject(objectName: items.specialObject, isHit: true)
@@ -92,6 +93,17 @@ extension GameplayViewModel: ItemsDelegate {
     
     func upadatePoint(_ value: Int){
         pontos.updateLabel(value)
+    }
+}
+
+extension GameplayViewModel: TimerStartDelegate {
+    func timerStartOver() {
+        fadeBackground.removeFromSuperview()
+        timerRound.playTimer()
+        timerObject.playTimer()
+        configMatch()
+        objectName.isHidden = false
+        controller!.view.isUserInteractionEnabled = true
     }
 }
 
@@ -131,14 +143,19 @@ extension GameplayViewModel: PowersButtonDelegate {
         switch powerType{
         case .freeze:
             powers.freezePower()
+            animatePower(icon: UIImage(systemName: "1.circle.fill")!, name: "Freeze")
         case .subtrac:
             subtractPower()
+            animatePower(icon: UIImage(systemName: "2.circle.fill")!, name: "Subtract")
         case .switchWord:
             changeButtonAction()
+            animatePower(icon: UIImage(systemName: "3.circle.fill")!, name: "Change")
         case .shuffleWord:
             items.shufflePower()
+            animatePower(icon: UIImage(systemName: "4.circle.fill")!, name: "Shuffle")
         case .changeCamera:
             camera.changeCamera()
+            animatePower(icon: UIImage(systemName: "5.circle.fill")!, name: "Switch")
         }
     }
     
@@ -149,23 +166,24 @@ extension GameplayViewModel: PowersButtonDelegate {
         switch powerType{
         case .freeze:
             //Função de congelar a câmera
-            //            self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
-            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
+            self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
+            //            self.reciveHidrance(powerType: .freeze)
         case .switchWord:
             //Função de trocar objeto
-            //            self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
-            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
+            self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
+            //            self.reciveHidrance(powerType: .switchWord)
         case .subtrac:
             //Função de subtrair os pontos
-            //            self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
-            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
+            self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
+            //            self.reciveHidrance(powerType: .subtrac)
         case .changeCamera:
             //Função que troca a câmera
             self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
+            //            self.reciveHidrance(powerType: .changeCamera)
         case .shuffleWord:
             //Função que embaralha o nome do objeto
-            //            self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
-            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
+            self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
+            //            self.reciveHidrance(powerType: .shuffleWord)
         }
     }
     
@@ -173,6 +191,27 @@ extension GameplayViewModel: PowersButtonDelegate {
         multiVM?.localPlayer?.points -= 1
         upadatePoint((multiVM?.localPlayer!.points)!)
         pontos.plusAnimate(color: .red)
+    }
+    
+    func animatePower(icon: UIImage, name: String) {
+        alert.iconPower.image = icon
+        alert.namePower.text = name
+        
+        print("CHEGOU NA ANIMATE POWER")
+        
+        self.alert.translatesAutoresizingMaskIntoConstraints = true
+        
+        UIView.animate(withDuration: 1.0, animations: {
+            self.alert.center.x -= 150
+        }) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+                UIView.animate(withDuration: 1.0, animations: {
+                    self.alert.center.x += 150
+                }) { _ in
+                    
+                }
+            }
+        }
     }
 }
 
@@ -209,7 +248,7 @@ extension GameplayViewModel: PowersStackViewDelegate {
                 power.translatesAutoresizingMaskIntoConstraints = true
                 UIView.animate(withDuration: 1.0, animations: {
                     power.center = self.powers.center
-                    power.center.x = self.powers.center.x + 35
+                    power.center.x = self.powers.center.x + 65
                 }) { _ in
                     power.removeFromSuperview()
                     self.powers.usersPowers.last!.alpha = 1
