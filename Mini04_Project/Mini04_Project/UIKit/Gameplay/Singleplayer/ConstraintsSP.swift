@@ -33,8 +33,9 @@ extension SingleViewController {
         NSLayoutConstraint.activate([
             gameplayVM.cameraImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.cameraImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            gameplayVM.cameraImage.widthAnchor.constraint(equalTo: view.widthAnchor),
-            gameplayVM.cameraImage.heightAnchor.constraint(equalTo: gameplayVM.cameraImage.widthAnchor, multiplier: 4.0/3.0),
+            gameplayVM.cameraImage.heightAnchor.constraint(equalTo: view.heightAnchor),
+            gameplayVM.cameraImage.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 3.0/4.0),
+            
             
             gameplayVM.pointsMold.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
             gameplayVM.pointsMold.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
@@ -51,8 +52,8 @@ extension SingleViewController {
             gameplayVM.objectName.centerXAnchor.constraint(equalTo: gameplayVM.nameObjMold.centerXAnchor),
             gameplayVM.objectName.centerYAnchor.constraint(equalTo: gameplayVM.nameObjMold.centerYAnchor),
             
-            gameplayVM.changeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameplayVM.changeButton.topAnchor.constraint(equalTo: gameplayVM.objectName.bottomAnchor, constant: 10),
+            gameplayVM.changeButton.centerYAnchor.constraint(equalTo: gameplayVM.nameObjMold.centerYAnchor),
+            gameplayVM.changeButton.leadingAnchor.constraint(equalTo: gameplayVM.nameObjMold.trailingAnchor, constant: 5),
             
             gameplayVM.changeCount.trailingAnchor.constraint(equalTo: gameplayVM.changeButton.trailingAnchor),
             gameplayVM.changeCount.bottomAnchor.constraint(equalTo: gameplayVM.changeButton.bottomAnchor),

@@ -13,7 +13,7 @@ class SingleViewModel: NSObject {
     
     var controller: SingleViewController?
     
-    var camera: CameraModel!
+//    var camera: CameraModel!
     var items = ItemsToFindModel()
     var model = MlModel()
     

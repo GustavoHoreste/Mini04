@@ -28,7 +28,7 @@ class ChangeCountLabel: UILabel {
         
         translatesAutoresizingMaskIntoConstraints = false
         font = .systemFont(ofSize: 15, weight: .regular)
-        textColor = .label
+        textColor = .white
         text = "3"
         
     }
