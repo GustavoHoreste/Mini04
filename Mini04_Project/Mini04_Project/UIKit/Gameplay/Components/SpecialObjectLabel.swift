@@ -12,9 +12,10 @@ class SpecialObjectLabel: UILabel {
     init() {
         super.init(frame: .zero)
         
+        guard let customFont = UIFont(name: "FafoSans-Bold", size: 24) else {fatalError()}
+        
         translatesAutoresizingMaskIntoConstraints = false
-        font = .systemFont(ofSize: 20, weight: .bold)
-        text = "Nenhum"
+        font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
         textColor = .label
         
     }

@@ -41,6 +41,7 @@
 		C0393D5E2BACEDBC00E97810 /* CrosshairImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0393D5D2BACEDBC00E97810 /* CrosshairImage.swift */; };
 		C0393D602BACF05900E97810 /* LogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0393D5F2BACF05900E97810 /* LogoImage.swift */; };
 		C0393D842BAD23FB00E97810 /* PreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0393D832BAD23FB00E97810 /* PreViewController.swift */; };
+		C03D09472BBDEEB400D63BA5 /* DelegatesRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D09462BBDEEB400D63BA5 /* DelegatesRC.swift */; };
 		C060E4052BBB32A4009F1250 /* TimerStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4042BBB32A4009F1250 /* TimerStart.swift */; };
 		C060E4072BBB3795009F1250 /* BackgroundFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4062BBB3795009F1250 /* BackgroundFade.swift */; };
 		C060E4092BBB55B7009F1250 /* AlertPowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4082BBB55B7009F1250 /* AlertPowerView.swift */; };
@@ -153,6 +154,7 @@
 		C0393D5D2BACEDBC00E97810 /* CrosshairImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrosshairImage.swift; sourceTree = "<group>"; };
 		C0393D5F2BACF05900E97810 /* LogoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImage.swift; sourceTree = "<group>"; };
 		C0393D832BAD23FB00E97810 /* PreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreViewController.swift; sourceTree = "<group>"; };
+		C03D09462BBDEEB400D63BA5 /* DelegatesRC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegatesRC.swift; sourceTree = "<group>"; };
 		C060E4042BBB32A4009F1250 /* TimerStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStart.swift; sourceTree = "<group>"; };
 		C060E4062BBB3795009F1250 /* BackgroundFade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFade.swift; sourceTree = "<group>"; };
 		C060E4082BBB55B7009F1250 /* AlertPowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPowerView.swift; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 				C0CBCB422BB209010020E594 /* RecordViewController.swift */,
 				C0CBCB442BB2094B0020E594 /* RecordViewModel.swift */,
 				C0CBCB4B2BB20E070020E594 /* ConstraintsRC.swift */,
+				C03D09462BBDEEB400D63BA5 /* DelegatesRC.swift */,
 				C0CBCB462BB20A2B0020E594 /* Components */,
 			);
 			path = Record;
@@ -892,6 +895,7 @@
 				E0A9DA632BB4920A00314E72 /* Haptics.swift in Sources */,
 				C09107002BA8FF0800037EAB /* SpecialObjectLabel.swift in Sources */,
 				D9D181742BB3895700283E2E /* UILableRepresentable.swift in Sources */,
+				C03D09472BBDEEB400D63BA5 /* DelegatesRC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1024,7 +1028,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = 335BRL9A43;
+				DEVELOPMENT_TEAM = SJYF62B3PZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1044,7 +1048,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini4-Proj";
+				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini4-Project0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1065,7 +1069,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = 335BRL9A43;
+				DEVELOPMENT_TEAM = SJYF62B3PZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1085,7 +1089,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini04-Proj";
+				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini04-Project0";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

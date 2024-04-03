@@ -9,8 +9,10 @@ import SwiftUI
 
 struct SingleUIViewControllerRepresentable: UIViewControllerRepresentable {
     
+    var navigationCoordinator: Coordinator
+    
     func makeUIViewController(context: Context) -> UIViewController {
-        return PreSingleViewController()
+        return PreSingleViewController(navigationCoordinator: navigationCoordinator)
     }
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) { }
@@ -22,7 +24,7 @@ struct SingleplayerView: View {
     
     var body: some View {
         VStack {
-            SingleUIViewControllerRepresentable()
+            SingleUIViewControllerRepresentable(navigationCoordinator: navigationCoordinator)
         }
         .navigationBarBackButtonHidden()
     }

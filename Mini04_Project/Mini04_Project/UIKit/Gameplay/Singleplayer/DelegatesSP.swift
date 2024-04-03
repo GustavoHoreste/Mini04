@@ -12,7 +12,7 @@ import CoreImage
 
 extension SingleViewModel {
     func setupDelegate() {
-//        self.camera = CameraModel(delegate: self)
+        self.camera = CameraModel(delegate: self)
         changeButton.delegate = self
         changeCount.delegate = self
         photoButton.delegate = self
@@ -89,7 +89,7 @@ extension SingleViewModel: TimerRoundDelegate {
         UIView.animate(withDuration: 1.0, animations: {
             self.logo.transform = CGAffineTransform(scaleX: 100.0, y: 100.0).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 6))
         }, completion: { _ in
-            let nextScreen = RecordViewController()
+            let nextScreen = RecordViewController(navigationCoordinator: self.controller!.navigationCoordinator)
             nextScreen.recordVM.results.qntd = self.pontos.number
             self.controller?.navigationController!.pushViewController(nextScreen, animated: false)
         })

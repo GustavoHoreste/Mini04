@@ -68,7 +68,7 @@ extension SingleViewController {
             gameplayVM.round.centerXAnchor.constraint(equalTo: gameplayVM.roundMold.centerXAnchor),
             
             gameplayVM.timerRound.centerXAnchor.constraint(equalTo: gameplayVM.round.centerXAnchor),
-            gameplayVM.timerRound.topAnchor.constraint(equalTo: gameplayVM.round.bottomAnchor, constant: 5),
+            gameplayVM.timerRound.topAnchor.constraint(equalTo: gameplayVM.round.bottomAnchor),
             
             gameplayVM.timerObject.centerXAnchor.constraint(equalTo: gameplayVM.timerObjMold.centerXAnchor),
             gameplayVM.timerObject.centerYAnchor.constraint(equalTo: gameplayVM.timerObjMold.centerYAnchor),

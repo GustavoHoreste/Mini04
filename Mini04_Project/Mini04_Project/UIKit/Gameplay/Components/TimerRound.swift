@@ -36,8 +36,10 @@ class TimerRound: UILabel {
     init() {
         super.init(frame: .zero)
         
+        guard let customFont = UIFont(name: "FafoSans-Regular", size: 20) else {fatalError()}
+        
         translatesAutoresizingMaskIntoConstraints = false
-        font = .systemFont(ofSize: 15)
+        font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
         textColor = startColor
         
         showText()

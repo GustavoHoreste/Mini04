@@ -7,8 +7,14 @@
 
 import UIKit
 
+protocol ResultMenuButtonDelegate: AnyObject {
+    func menuAction()
+}
+
 class ResultMenuButton: UIButton {
 
+    weak var delegate: ResultMenuButtonDelegate?
+    
     init(){
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -27,7 +33,7 @@ class ResultMenuButton: UIButton {
     }
     
     @objc func goToMenu() {
-        print("voltar pro menu")
+        delegate?.menuAction()
     }
 
 }

@@ -11,8 +11,8 @@ class TimerSingleRound: UILabel {
 
     var delegate: TimerRoundDelegate?
     
-    var minutos: Int = 2
-    var segundos: Int = 0
+    var minutos: Int = 0
+    var segundos: Int = 20
     
     lazy var timer: Timer = {
         let t = Timer()
@@ -22,8 +22,10 @@ class TimerSingleRound: UILabel {
     init() {
         super.init(frame: .zero)
         
+        guard let customFont = UIFont(name: "FafoSans-Bold", size: 24) else {fatalError()}
+        
         translatesAutoresizingMaskIntoConstraints = false
-        font = .systemFont(ofSize: 15)
+        font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
         textColor = .black
         
         showText()
