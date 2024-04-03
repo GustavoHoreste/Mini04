@@ -37,7 +37,6 @@ extension PartialResultViewModel: ReadyButtonDelegate {
 
         }
     }
-
     
     private func sendUserStatus(){
         print("E para essa valor ser 0 e false pois ja deveriater reiniciado os pontos: \(String(describing: view.multiVM.localPlayer?.userName) ) \(String(describing: view.multiVM.localPlayer?.points) ) - \(String(describing: view.multiVM.localPlayer?.statusUser))")

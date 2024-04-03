@@ -16,12 +16,9 @@ struct LobbyListView: View {
     var body: some View {
         GeometryReader{ proxy in
             ZStack{
-                Image(uiImage: UIImage(named: "LobbyListBack")!)
+                Image("LobbyList")
                     .resizable()
                     .scaledToFill()
-                Image(uiImage: UIImage(named: "LobbyListFront")!)
-                    .resizable()
-                    .scaledToFit()
                 ScrollView{
                     VStack{
                         PlayerListCell(player: player(name: "teste", score: 8))

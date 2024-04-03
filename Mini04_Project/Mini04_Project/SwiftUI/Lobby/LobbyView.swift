@@ -18,6 +18,12 @@ struct LobbyView: View {
     var body: some View {
         GeometryReader{ proxy in
             ZStack {
+                    Image("LobbyBackground")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                    .frame(width: proxy.size.width, height: proxy.size.height, alignment: .center)
+                
                 VStack {
                     //Menu
                     HStack {
@@ -31,21 +37,18 @@ struct LobbyView: View {
                     .foregroundStyle(.gray)
                     .padding()
                     
-                    //Title
-                    LobbyTitle()
-                    
-                    //Grid
+                    //Player list
                     LobbyListView()
-                        .frame(width: proxy.size.width)
-//                        .padding()
+                        .frame(width: proxy.size.width, height: proxy.size.height)
                     
                     Spacer()
                     
-                    
                     //Buttons
                     StartButton()
+                        .padding()
+                        .frame(width: proxy.size.width*0.3, height:  proxy.size.height*0.3)
                     
-                    inviteFriend()
+//                    inviteFriend()
                     
                 }.task {
                     for await session in WhereWhereActivity.sessions(){
@@ -63,9 +66,6 @@ struct LobbyView: View {
                 }
             }
             .navigationBarBackButtonHidden()
-            .background {
-                Image(uiImage: UIImage(named: "LobbyBackground")!)
-            }
         }
     }
     
@@ -102,7 +102,6 @@ extension LobbyView{
                     .clipShape(.capsule)
                     .font(.title)
             }
-            .padding()
         }
     }
 }
