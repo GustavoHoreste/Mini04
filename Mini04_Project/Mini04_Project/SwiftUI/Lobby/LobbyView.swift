@@ -50,17 +50,19 @@ struct LobbyView: View {
                     inviteFriend()
                     
                 }
+                
                 if (isOpenConfigMatch){
                     PopUpConfigMatch(ativouteste: $isOpenConfigMatch)
-                Spacer()
-                
-                }.task {
-                for await session in WhereWhereActivity.sessions(){
-                    multiplayerVM.sharePlayVM.configurationSessin(session)
                 }
+                
             }.onReceive(self.multiplayerVM.$hostIsReadyInLobby){ newValue in
                 if newValue == true{
                     navigationCoordinator.push(.gameplay)
+                }
+            }
+            .task {
+                for await session in WhereWhereActivity.sessions(){
+                    multiplayerVM.sharePlayVM.configurationSessin(session)
                 }
             }
             .navigationBarBackButtonHidden()
