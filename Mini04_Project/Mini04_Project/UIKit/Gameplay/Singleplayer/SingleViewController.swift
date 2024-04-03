@@ -13,9 +13,12 @@ class SingleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         gameplayVM.controller = self
         
+        view.isUserInteractionEnabled = false
+        
         setupView()
+        gameplayVM.timerStart.sizeIncrease()
     }
 }

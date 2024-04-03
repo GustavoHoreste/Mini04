@@ -1,27 +1,24 @@
 //
-//  ObjectName.swift
+//  AnyImageView.swift
 //  Mini04_Project
 //
-//  Created by André Felipe Chinen on 18/03/24.
+//  Created by André Felipe Chinen on 02/04/24.
 //
 
 import UIKit
 
-class ObjectName: UILabel {
+class AnyImageView: UIImageView {
 
-    init() {
+    init(imagem: UIImage?) {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
-        font = .systemFont(ofSize: 20, weight: .bold)
-        text = "Nenhum"
-        textColor = .black
         
-        isHidden = true
-        
+        image = imagem
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }

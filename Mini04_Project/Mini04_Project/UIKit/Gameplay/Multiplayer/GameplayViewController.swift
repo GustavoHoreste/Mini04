@@ -18,14 +18,17 @@ class GameplayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.isUserInteractionEnabled = false
+        
         gameplayVM.controller = self
         gameplayVM.multiVM = multiVM
-        gameplayVM.configMatch()
         gameplayVM.starCombine()
         
+         print("Esse e o valor que deveria aparecer na view: \(self.gameplayVM.round.number)")
+        gameplayVM.configTimeMatch()
         setupView()
+        gameplayVM.timerStart.sizeIncrease()
         
-        print("Esse e o valor que deveria aparecer na view: \(self.gameplayVM.round.number)")
     }
     
     init(multiVM: MultiplayerManagerViewModel, navigationCoordinator: Coordinator) {

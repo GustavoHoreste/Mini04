@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol PowersStackViewDelegate: AnyObject {
+    func animatePower(imagem: UIImage?, power: PowerUps?)
+}
+
 class PowersStackView: UIStackView {
+    
+    weak var delegate: PowersStackViewDelegate?
 
     lazy var freeze = PowersButton(imagem: UIImage(systemName: "1.circle.fill")!, power: .freeze)
     lazy var switcher = PowersButton(imagem: UIImage(systemName: "2.circle.fill")!, power: .switchWord)
@@ -32,14 +38,16 @@ class PowersStackView: UIStackView {
         
         axis = .horizontal
         alignment = .center
-        spacing = 10
+        spacing = 80
     }
     
     func addPowers() {
-        if numberOfPowers < 5 {
+        if numberOfPowers < 2 {
             let power = allPowers.filter{!usersPowers.contains($0)}.randomElement()!
+            power.alpha = 0
             usersPowers.append(power)
-            addArrangedSubview(power)
+            addArrangedSubview(usersPowers.last!)
+            delegate?.animatePower(imagem: usersPowers.last?.currentBackgroundImage, power: usersPowers.last?.powerType)
         }
     }
     

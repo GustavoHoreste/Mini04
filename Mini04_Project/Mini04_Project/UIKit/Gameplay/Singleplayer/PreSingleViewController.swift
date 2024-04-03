@@ -12,7 +12,7 @@ class PreSingleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        Task {
+        DispatchQueue.main.async {
             let gameplay = SingleViewController()
             
             if let navigationController = self.navigationController {

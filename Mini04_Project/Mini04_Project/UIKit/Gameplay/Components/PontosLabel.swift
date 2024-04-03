@@ -12,18 +12,20 @@ class PontosLabel: UILabel {
     var number = 0 {
         didSet {
             DispatchQueue.main.async {
-                self.text = "\(self.number)"
+                self.text = "\(self.number) pts"
             }
         }
     }
+    
+    var isPlusAnimating = false
     
     init() {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
-        font = .systemFont(ofSize: 15, weight: .regular)
-        text = "0"
-        textColor = .label
+        font = .systemFont(ofSize: 25, weight: .regular)
+        text = "0 pts"
+        textColor = .black
         
     }
     
@@ -31,14 +33,33 @@ class PontosLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func subtractPower() {
-        if number >= 1 {
-            number -= 1
-        }
-    }
-    
     public func updateLabel(_ value: Int){
         self.number = value
         print("pontos incrementado: \(value) ")
     }
+    
+    func plusAnimate(color: UIColor) {
+        guard !isPlusAnimating else {
+            layer.removeAllAnimations()
+            transform = .identity
+            textColor = color
+            isPlusAnimating = false
+            plusAnimate(color: color)
+            return
+        }
+        isPlusAnimating = true
+        UIView.animate(withDuration: 0.5, animations: {
+            self.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            self.textColor = color
+        }) { _ in
+            UIView.animate(withDuration: 0.5, animations: {
+                self.transform = .identity
+                self.textColor = .black
+            }) { _ in
+                self.isPlusAnimating = false
+            }
+            
+        }
+    }
+    
 }

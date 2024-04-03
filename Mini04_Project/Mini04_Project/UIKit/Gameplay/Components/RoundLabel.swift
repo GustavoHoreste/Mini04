@@ -22,7 +22,7 @@ class RoundLabel: UILabel {
         translatesAutoresizingMaskIntoConstraints = false
         font = .systemFont(ofSize: 15, weight: .regular)
         text = "Round 1"
-        textColor = .label
+        textColor = .black
         
     }
     
