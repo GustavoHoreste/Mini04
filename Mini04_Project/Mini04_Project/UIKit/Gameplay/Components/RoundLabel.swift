@@ -12,6 +12,7 @@ class RoundLabel: UILabel {
     var number = 1 {
         didSet {
             text = "Round \(number)"
+            print("Round atual: \(number)")
         }
     }
     

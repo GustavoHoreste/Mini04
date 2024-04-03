@@ -11,13 +11,13 @@ class PreViewController: UIViewController {
     
     var multiVM: MultiplayerManagerViewModel
     var navigationCoordinator: Coordinator
+    lazy var gameplay = GameplayViewController(multiVM: multiVM, navigationCoordinator: navigationCoordinator)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DispatchQueue.main.async { [self] in
-            let gameplay = GameplayViewController(multiVM: multiVM, navigationCoordinator: navigationCoordinator)
-            
+        DispatchQueue.main.async { [self] in            
             if let navigationController = self.navigationController {
                 navigationController.pushViewController(gameplay, animated: false)
             }

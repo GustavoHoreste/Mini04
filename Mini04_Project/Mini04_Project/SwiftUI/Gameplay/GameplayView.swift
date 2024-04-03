@@ -14,6 +14,9 @@ struct MyUIViewControllerRepresentable: UIViewControllerRepresentable {
     var navigationCoordinator: Coordinator
     
     func makeUIViewController(context: Context) -> UIViewController {
+        
+        
+        
         return PreViewController(multiVM: multiVM, navigationCoordinator: navigationCoordinator)
     }
     

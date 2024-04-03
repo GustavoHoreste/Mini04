@@ -8,12 +8,14 @@
 import SwiftUI
 import GroupActivities
 
+//var isStarter: Bool = false
 
 struct LobbyView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
     @StateObject var groupStateObserver = GroupStateObserver()
     @State var isOpenConfigMatch = false
+   // @State var isStarter: Bool = false
     
     var body: some View {
         GeometryReader{ proxy in
@@ -47,19 +49,18 @@ struct LobbyView: View {
                     
                     inviteFriend()
                     
-                }.task {
-                    for await session in WhereWhereActivity.sessions(){
-                        multiplayerVM.sharePlayVM.configurationSessin(session)
-                    }
-                }.onReceive(self.multiplayerVM.$hostIsStarter){ newValue in
-                    if newValue == true{
-                        //MARK: Aqui pode estar dando problema
-                        navigationCoordinator.push(.gameplay)
-                    }
                 }
-                
                 if (isOpenConfigMatch){
                     PopUpConfigMatch(ativouteste: $isOpenConfigMatch)
+                Spacer()
+                
+                }.task {
+                for await session in WhereWhereActivity.sessions(){
+                    multiplayerVM.sharePlayVM.configurationSessin(session)
+                }
+            }.onReceive(self.multiplayerVM.$hostIsReadyInLobby){ newValue in
+                if newValue == true{
+                    navigationCoordinator.push(.gameplay)
                 }
             }
             .navigationBarBackButtonHidden()

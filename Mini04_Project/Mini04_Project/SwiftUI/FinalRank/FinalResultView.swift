@@ -63,6 +63,7 @@ struct FinalResultView: View {
         .onAppear{
             vm.data = multiplayerVM.adversaryPlayers
             vm.data.append(multiplayerVM.localPlayer!)
+            let _ = print("Iniciei o rank final")
         }
     }
 }

@@ -17,24 +17,7 @@ class PartialResultViewController: UIViewController {
     var multiVM: MultiplayerManagerViewModel
     var partialResultVM = PartialResultViewModel()
     var navigationCoordinator: Coordinator
-    
-    private var cancellables = Set<AnyCancellable>()
-    private var newFinishGame: FinishGame?{
-        didSet{
-            if newFinishGame != nil{
-                backLobby()
-                newFinishGame = nil
-            }
-        }
-    }
-    private var hostIsStarter: Bool = false{
-        didSet{
-            if hostIsStarter != false{
-                nextRound()
-                hostIsStarter = false
-            }
-        }
-    }
+    var gameplayVM: GameplayViewModel
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Player>
     typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, Player>
@@ -56,28 +39,16 @@ class PartialResultViewController: UIViewController {
     
     var data: [Player]
     
-    init(multiVM: MultiplayerManagerViewModel, navigationCoordinator: Coordinator) {
+    init(multiVM: MultiplayerManagerViewModel, navigationCoordinator: Coordinator, gameplayVM: GameplayViewModel) {
         self.multiVM = multiVM
         self.navigationCoordinator = navigationCoordinator
+        self.gameplayVM = gameplayVM
         self.data = self.multiVM.adversaryPlayers
         self.data.append(self.multiVM.localPlayer!)
         partialResultVM.data = data
-        
         super.init(nibName: nil, bundle: nil)
         
-        self.cinfigureLabelReadyButton()
-        
-        self.multiVM.$newFinishGame
-            .assign(to: \.newFinishGame, on: self)
-            .store(in: &cancellables)
-        
-        self.multiVM.$hostIsStarter
-            .assign(to: \.hostIsStarter, on: self)
-            .store(in: &cancellables)
-        
-        self.verifyIsHost()
-        
-        self.multiVM.resetPointAndStatus()
+        partialResultVM.view = self
     }
     
     required init?(coder: NSCoder) {
@@ -86,18 +57,22 @@ class PartialResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        partialResultVM.view = self
+        
         configureCollectionViewDataSource()
+        
         applySnapshot(players: partialResultVM.data)
+        
+        
+        self.partialResultVM.cinfigureLabelReadyButton()
+        
+        self.partialResultVM.verifyIsHost()
+        
+        self.partialResultVM.funcStartCombine()
+        
         setupView()
         
-        navigationController?.viewControllers.remove(at: (navigationController?.viewControllers.count)! - 2)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.viewControllers.remove(at:  (navigationController?.viewControllers.count)! - 2)
-    }
     
     private func configureCollectionViewDataSource() {
         dataSource = DataSource(collectionView: collection, cellProvider: { (collectionView, indexPath, player) -> PartialResultCell? in
@@ -115,25 +90,4 @@ class PartialResultViewController: UIViewController {
         dataSource.apply(snapshot,animatingDifferences: true)
     }
     
-    
-    private func backLobby(){
-        self.navigationCoordinator.push(.lobby)
-    }
-    
-    private func nextRound(){
-        let nextScreen = GameplayViewController(multiVM: self.multiVM, navigationCoordinator: self.navigationCoordinator)
-        nextScreen.gameplayVM.round.number = partialResultVM.currentRound + 1
-        self.navigationController?.pushViewController(nextScreen, animated: false)
-    }
-    
-    private func verifyIsHost(){
-        if multiVM.localPlayer?.isHost == true{
-            partialResultVM.endGameButton.diableButton()
-        }
-    }
-    
-    private func cinfigureLabelReadyButton(){
-        let userIsHost = self.multiVM.localPlayer?.isHost
-        self.partialResultVM.readyButton.witchLabel(userIsHost!)
-    }
 }

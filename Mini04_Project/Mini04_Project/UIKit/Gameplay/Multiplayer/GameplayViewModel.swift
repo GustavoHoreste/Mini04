@@ -16,9 +16,12 @@ class GameplayViewModel: NSObject {
     //Nao precisa dessa varivel pois a controller ja tem uma referencia de multiVM e esse view tem a referencia da controller
     var multiVM: MultiplayerManagerViewModel?
     
-    var camera: CameraModel!
+    //MARK: - Camera
+//    var camera: CameraModel!
     var items = ItemsToFindModel()
     var model = MlModel()
+    
+//    static var isFinishGame: Bool = false
     
     lazy var objectName = ObjectName()
     lazy var changeButton = ChangeButton()
@@ -91,7 +94,6 @@ class GameplayViewModel: NSObject {
     
     private func configTimeMatch(){
         guard let config = multiVM?.configMatch else {
-            print("sai do configMatch da GamePlayViewModel: \(String(describing: multiVM?.configMatch))")
             return
         }
         
