@@ -13,7 +13,9 @@ struct UILableRepresentable: UIViewRepresentable {
     
     func makeUIView(context: Context) -> UILabel {
         let textView = UILabel()
-        textView.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
+        textView.font = UIFont(name:"FafoSans-Bold",size:15)
+        textView.numberOfLines = 2
+        textView.lineBreakMode = .byClipping
         textView.textAlignment = .justified
         return textView
     }

@@ -9,24 +9,27 @@ import SwiftUI
 
 struct PlayerListCell: View {
     
-    var player: player
+    var player: Player
     
     var body: some View {
-        ZStack{
-//            Image(uiImage: UIImage(named: "CellBall")!)
-//                .resizable()
-//                .scaledToFit()
-//                .zIndex(1)
-            UILableRepresentable(text: player.name)
-                .frame(width: 190,height: 25)
-                .font(.headline)
-                .foregroundStyle(Color.black)
-                .padding()
-                .background {
-                    Image(uiImage: UIImage(named: "Vector")!)
-                        .resizable()
-                        .scaledToFill()
-                }
+        HStack(spacing: -20){
+            Image(.lobbyIcon)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 80,height: 80)
+                .zIndex(3)
+            ZStack{
+                Image(.playerListAsset)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 240,height: 80)
+                UILableRepresentable(text: player.userName)
+                    .padding(.leading,5)
+                    .frame(width: 190,height: 80)
+                    .font(.headline)
+                    .foregroundStyle(Color.black)
+                    .padding()
+            }.zIndex(0)
         }
     }
 }
