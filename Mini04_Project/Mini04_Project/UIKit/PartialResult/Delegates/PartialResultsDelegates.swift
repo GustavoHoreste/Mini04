@@ -11,6 +11,8 @@ extension PartialResultViewModel {
     func setupDelegates() {
         self.endGameButton.delegate = self
         self.readyButton.delegate = self
+        self.exit.delegate = self
+        self.popUpExitVC.delegate = self
     }
 }
 
@@ -19,6 +21,33 @@ extension PartialResultViewModel: EndgameButtonDelegate {
         print("terminar partida")
         self.view.multiVM.sendHostFinish()
         self.view.navigationCoordinator.push(.lobby)
+    }
+}
+
+extension PartialResultViewModel: ExitGameDelegate{
+    func didTabButtun(_ tab: Int) {
+        switch tab{
+        case 1:
+            self.anitionDismiss()
+        case 0:
+            self.anitionDismiss()
+            self.view.navigationCoordinator.push(.menu)
+        default:
+            print("Tag invalid")
+        }
+    }
+    
+    func exitGame() {
+        self.view.present(popUpExitVC, animated: false)
+    }
+    
+    
+    func anitionDismiss(){
+        UIView.animate(withDuration: 1, delay: 0.0,options: .curveEaseOut) {
+            
+        }completion: { _ in
+            self.view.dismiss(animated: false)
+        }
     }
 }
 
@@ -41,25 +70,9 @@ extension PartialResultViewModel: ReadyButtonDelegate {
     private func sendUserStatus(){
         if view.multiVM.localPlayer?.isHost == false{
             self.view.multiVM.sendLocalUserStatus()
-            
         } else if view.multiVM.validateAllUsersStarted() && view.multiVM.localPlayer?.isHost == true{
             self.view.multiVM.sendLocalUserStatus()
-            
-            var nextScreen: GameplayViewController?
-            
-            if let nextScreenNotOpcional = self.view.gameplayVM.controller{
-                 nextScreen = nextScreenNotOpcional
-            } else {
-                 nextScreen = GameplayViewController(multiVM: self.view.multiVM, navigationCoordinator: self.view.navigationCoordinator)
-            }
-            
-            print("Valor antes de incrementar: \(String(describing: nextScreen?.gameplayVM.round.number)) HOST")
-            nextScreen?.gameplayVM.round.number = currentRound + 1
-            print("Valor depois de incrementar:\(String(describing: nextScreen?.gameplayVM.round.number)) HOST")
-
-            self.view.navigationController?.pushViewController(nextScreen!, animated: false)
-//            self.view.dismiss(animated: true)
-//            self.view.navigationController?.dismiss(animated: true)
+            self.view.navigationCoordinator.pop()
             
         }else{
             let alertController = UIAlertController(title: "Jogadores não preparados", message: "Para começar o jogo, todos devem estar prontos.", preferredStyle: .alert)

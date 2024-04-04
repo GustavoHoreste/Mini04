@@ -13,7 +13,7 @@ protocol EndgameButtonDelegate: AnyObject {
 
 class EndGameButton: UIButton {
     
-    weak var delegate:EndgameButtonDelegate?
+    weak var delegate: EndgameButtonDelegate?
     
 //    var background: UIView = {
 //        var background = UIView()
@@ -37,8 +37,10 @@ class EndGameButton: UIButton {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        setBackgroundImage(UIImage(systemName: "squareshape.fill"), for: .normal)
-        setTitle("Terminar Jogo", for: .normal)
+        self.setBackgroundImage(UIImage(resource: .endGameButton), for: .normal)
+        self.setTitle("Termianar partida", for: .normal)
+        self.setTitleColor(.black, for: .normal)
+        self.titleLabel?.font = UIFont(name: "FafoSans-Bold", size: 22)
         isHidden = true
     }
     

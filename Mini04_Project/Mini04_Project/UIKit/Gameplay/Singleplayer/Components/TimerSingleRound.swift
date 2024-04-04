@@ -71,5 +71,4 @@ class TimerSingleRound: UILabel {
             text = "\(minutos):\(segundos)"
         }
     }
-
 }

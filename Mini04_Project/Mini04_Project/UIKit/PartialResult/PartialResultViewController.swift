@@ -25,10 +25,10 @@ class PartialResultViewController: UIViewController {
     var collection: UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.itemSize = CGSize(width: 280, height: 90)
+        layout.itemSize = CGSize(width: 360, height: 120)
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collection.showsVerticalScrollIndicator = false
-        collection.backgroundColor = .systemBackground
+        collection.backgroundColor = .clear
         collection.translatesAutoresizingMaskIntoConstraints = false
         collection.register(PartialResultCell.self, forCellWithReuseIdentifier: PartialResultCell.identifier)
         return collection
@@ -62,7 +62,6 @@ class PartialResultViewController: UIViewController {
         
         applySnapshot(players: partialResultVM.data)
         
-        
         self.partialResultVM.cinfigureLabelReadyButton()
         
         self.partialResultVM.verifyIsHost()
@@ -79,6 +78,7 @@ class PartialResultViewController: UIViewController {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PartialResultCell.identifier, for: indexPath) as! PartialResultCell
             cell.playerName.text = player.userName
             cell.playerScore.text = String(player.points)
+            cell.changePositionBG(indexPath.row)
             return cell
         })
     }

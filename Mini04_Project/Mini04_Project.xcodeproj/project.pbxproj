@@ -91,6 +91,9 @@
 		D9D181742BB3895700283E2E /* UILableRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00C5CD42BB351420020126E /* UILableRepresentable.swift */; };
 		D9D573462BBDDAF300CF46A6 /* FafoSansBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9D573442BBDDAF300CF46A6 /* FafoSansBold.ttf */; };
 		D9D573472BBDDAF300CF46A6 /* FafoSansRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9D573452BBDDAF300CF46A6 /* FafoSansRegular.ttf */; };
+		D9D573492BBDEDB100CF46A6 /* ExitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D573482BBDEDB100CF46A6 /* ExitButton.swift */; };
+		D9D5734B2BBDF28700CF46A6 /* PopUpExitGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D5734A2BBDF28700CF46A6 /* PopUpExitGame.swift */; };
+		D9D5734D2BBE12FD00CF46A6 /* TimerBeforeButtonReady.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D5734C2BBE12FD00CF46A6 /* TimerBeforeButtonReady.swift */; };
 		E009867F2BAB626500E586C6 /* PartialResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E009867E2BAB626500E586C6 /* PartialResultCell.swift */; };
 		E00986822BAB681200E586C6 /* CollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00986812BAB681200E586C6 /* CollectionDelegate.swift */; };
 		E00C5CD32BB349140020126E /* PlayerListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00C5CD22BB349140020126E /* PlayerListCell.swift */; };
@@ -204,6 +207,9 @@
 		D9CD14292BA9D84A003CB0B6 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
 		D9D573442BBDDAF300CF46A6 /* FafoSansBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FafoSansBold.ttf; sourceTree = "<group>"; };
 		D9D573452BBDDAF300CF46A6 /* FafoSansRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FafoSansRegular.ttf; sourceTree = "<group>"; };
+		D9D573482BBDEDB100CF46A6 /* ExitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitButton.swift; sourceTree = "<group>"; };
+		D9D5734A2BBDF28700CF46A6 /* PopUpExitGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpExitGame.swift; sourceTree = "<group>"; };
+		D9D5734C2BBE12FD00CF46A6 /* TimerBeforeButtonReady.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerBeforeButtonReady.swift; sourceTree = "<group>"; };
 		E009867E2BAB626500E586C6 /* PartialResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialResultCell.swift; sourceTree = "<group>"; };
 		E00986812BAB681200E586C6 /* CollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDelegate.swift; sourceTree = "<group>"; };
 		E00C5CD22BB349140020126E /* PlayerListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListCell.swift; sourceTree = "<group>"; };
@@ -531,6 +537,9 @@
 				E0AF6F072BACAB67008BE255 /* EndGameButton.swift */,
 				E0AF6F0B2BACBC63008BE255 /* PartialResultTitle.swift */,
 				E0AF6F0D2BACC6B1008BE255 /* ReadyButton.swift */,
+				D9D573482BBDEDB100CF46A6 /* ExitButton.swift */,
+				D9D5734A2BBDF28700CF46A6 /* PopUpExitGame.swift */,
+				D9D5734C2BBE12FD00CF46A6 /* TimerBeforeButtonReady.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -796,6 +805,7 @@
 				E08782A22BA4D42000FB5ABC /* Coordinator.swift in Sources */,
 				D95398532BACCDA90022F444 /* MultiplayerHubView.swift in Sources */,
 				C09106FA2BA8DECB00037EAB /* CameraImageView.swift in Sources */,
+				D9D5734B2BBDF28700CF46A6 /* PopUpExitGame.swift in Sources */,
 				D92D6BA82BAD30D0006B7E87 /* ToggleConfigComponent.swift in Sources */,
 				E08782BC2BAB565900FB5ABC /* ConstraintsPR.swift in Sources */,
 				E009867F2BAB626500E586C6 /* PartialResultCell.swift in Sources */,
@@ -811,6 +821,7 @@
 				C09106FC2BA8F96A00037EAB /* PontosLabel.swift in Sources */,
 				C0393D5C2BACC9FA00E97810 /* AudioManager.swift in Sources */,
 				C0A8B2A22BA8CD5B0048AC08 /* PhotoButton.swift in Sources */,
+				D9D5734D2BBE12FD00CF46A6 /* TimerBeforeButtonReady.swift in Sources */,
 				C0A8B2A42BA8CE190048AC08 /* Delegates.swift in Sources */,
 				2E3A74692BB34AE30026BE07 /* CreditsButtonPopUp.swift in Sources */,
 				C091070D2BAA243D00037EAB /* TimerObject.swift in Sources */,
@@ -877,6 +888,7 @@
 				E0AF6F0A2BACAEA9008BE255 /* PartialResultsDelegates.swift in Sources */,
 				E0AF6F082BACAB67008BE255 /* EndGameButton.swift in Sources */,
 				2EC1BA772BA8B5F600E1E410 /* GameplayViewModel.swift in Sources */,
+				D9D573492BBDEDB100CF46A6 /* ExitButton.swift in Sources */,
 				2E3A744B2BAB62C20026BE07 /* ThirdPlaceLabel.swift in Sources */,
 				C0A8B2992BA8B6A80048AC08 /* ObjectName.swift in Sources */,
 				C0CBCB512BB2193E0020E594 /* TimerSingleRound.swift in Sources */,

@@ -13,7 +13,7 @@ import CoreImage
 extension GameplayViewModel {
     func setupDelegate() {
         //MARK: - Camera
-        self.camera = CameraModel(delegate: self)
+//        self.camera = CameraModel(delegate: self)
         changeButton.delegate = self
         changeCount.delegate = self
         photoButton.delegate = self
@@ -114,27 +114,35 @@ extension GameplayViewModel: TimerRoundDelegate {
         
         self.multiVM?.resetPowerUpsAndStatus()
         
-        logo.isHidden = false
+//        logo.isHidden = false
         
-        UIView.animate(withDuration: 1.0, animations: {
-            self.logo.transform = CGAffineTransform(scaleX: 100.0, y: 100.0).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 6))
-        }, completion: { [self] _ in
-            self.timerObject.timer.invalidate()
-            self.timerRound.timer.invalidate()
-            print("Esse e o valor da quantidade de rounds\(self.multiVM?.configMatch.amoutRound as Any) e o valor de round e \(self.round.number)")
-            guard let multiVMNotOpcional = self.multiVM else {return}
-            if self.round.number >= multiVMNotOpcional.configMatch.amoutRound{
-                self.controller?.navigationCoordinator.push(.finalRank)
-                return
-            }else{
-                let nextScreen = controller?.parcialRanking
-                nextScreen?.partialResultVM.currentRound = self.round.number
-                print("Essa e o valor que estou enviando para parcial rank: \(nextScreen!.partialResultVM.currentRound)")
-                self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
-            }
-        })
+        self.timerObject.timer.invalidate()
+        self.timerRound.timer.invalidate()
+        
+        print("Esse e o valor da quantidade de rounds\(self.multiVM?.configMatch.amoutRound as Any) e o valor de round e \(self.round.number)")
+        guard let multiVMNotOpcional = self.multiVM else {return}
+        
+        if self.round.number >= multiVMNotOpcional.configMatch.amoutRound{
+            self.controller?.navigationCoordinator.push(.finalRank)
+            return
+        }else{
+            let nextScreen = controller?.parcialRanking
+            nextScreen?.partialResultVM.currentRound = self.round.number
+            
+            nextScreen?.partialResultVM.timerBeforeButtonReady.startCount()
+            nextScreen?.partialResultVM.readyButton.toggleIsHiden()
+            
+            self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
+        }
+        
+//        UIView.animate(withDuration: 1.0, animations: {
+//            self.logo.transform = CGAffineTransform(scaleX: 100.0, y: 100.0).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 6))
+//        }, completion: { [self] _ in
+//            
+//        })
     }
 }
+
 
 extension GameplayViewModel: TimerObjectDelegate {
     func timerObjectOver() {
@@ -145,6 +153,7 @@ extension GameplayViewModel: TimerObjectDelegate {
         items.shuffleIsOn = false
     }
 }
+
 
 //MARK: - Lógica dos poderzinhos
 extension GameplayViewModel: PowersButtonDelegate {
@@ -162,9 +171,10 @@ extension GameplayViewModel: PowersButtonDelegate {
         case .shuffleWord:
             items.shufflePower()
             animatePower(icon: UIImage(systemName: "4.circle.fill")!, name: "Shuffle")
-        case .changeCamera:
-            camera.changeCamera()
-            animatePower(icon: UIImage(systemName: "5.circle.fill")!, name: "Switch")
+        case .changeCamera: break
+            //MARK: - Camera
+//            camera.changeCamera()
+//            animatePower(icon: UIImage(systemName: "5.circle.fill")!, name: "Switch")
         }
     }
     

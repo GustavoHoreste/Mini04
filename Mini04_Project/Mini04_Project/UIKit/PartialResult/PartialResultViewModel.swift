@@ -22,6 +22,26 @@ class PartialResultViewModel {
     lazy var partialResultsTitle = PartialResultTitle()
     lazy var readyButton = ReadyButton()
     lazy var logo = LogoImage(isIncreased: true)
+    lazy var exit = ExitButton()
+    lazy var timerBeforeButtonReady: TimerBeforeButtonReady = {
+        let view = TimerBeforeButtonReady()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    var backGroundImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(resource: .backgroundClaro)
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
+    
+    lazy var popUpExitVC: PopUpExitGame = {
+        let view = PopUpExitGame()
+        view.modalPresentationStyle = .overFullScreen
+        return view
+    }()
     
     private var cancellables = Set<AnyCancellable>()
     private var newFinishGame: FinishGame?{
@@ -50,7 +70,7 @@ class PartialResultViewModel {
     private func nextRound(){
 //        self.cancellables.forEach { $0.cancel() }
         self.view.gameplayVM.round.number += 1
-        self.view.dismiss(animated: true)
+        self.view.navigationCoordinator.pop()
     }
     
     public func funcStartCombine(){

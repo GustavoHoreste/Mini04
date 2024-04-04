@@ -7,14 +7,13 @@
 
 import UIKit
 
-class PartialResultTitle: UILabel {
+class PartialResultTitle: UIImageView {
     
     init(){
         super.init(frame: .zero)
-        self.text = "Round Results"
-        self.font = UIFont.boldSystemFont(ofSize: 40)
         self.translatesAutoresizingMaskIntoConstraints = false
-        self.textAlignment = .center
+        self.image = UIImage(resource: .topsRounds)
+        self.contentMode = .scaleAspectFill
     }
 
     required init?(coder: NSCoder) {
