@@ -39,6 +39,7 @@ class SpecialObjectImage: UIImageView {
         image = UIImage(named: "SpecialObjMold")
         
         addSubview(specialName)
+        addSubview(symbol)
         
         NSLayoutConstraint.activate([
             specialName.centerXAnchor.constraint(equalTo: centerXAnchor),
