@@ -8,30 +8,53 @@
 import SwiftUI
 
 struct PopUpConfigMatch: View {
-    @Binding var ativouteste: Bool
-
+    @StateObject private var matchConfigVM: MatchConfigViewModel = MatchConfigViewModel()
     @State private var offset: CGFloat = 1300
     @EnvironmentObject private var navigationCoordinator: Coordinator
-
-
+    @Binding var ativouteste: Bool
+    
     var body: some View {
         ZStack {
             Color(.black)
-                .opacity(0.9)
+                .opacity(0.5)
                 .onTapGesture {
                     close()
                 }
-
+            
             VStack {
                 ScrollView {
                     MatchConfigView()
                         .padding()
+                        .environmentObject(matchConfigVM)
+                }
+                
+                Button{ matchConfigVM.saveConfigMach()
+                    close()
+                } label: {
+                    Text("Confirmar")
+                        .padding()
+                        .foregroundStyle(.white)
+                        .background(.gray)
+                        .font(.title2)
+                }
+                
+                Button{ matchConfigVM.reset()
+                    close()
+                } label: {
+                    Text("Cancelar")
+                        .padding()
+                        .foregroundStyle(.white)
+                        .background(.gray)
+                        .font(.title2)
                 }
                 
             }
             .fixedSize(horizontal: false, vertical: true)
             .padding()
-            .background(.white)
+            .background(
+                Image("Fundo")
+                    .resizable()
+            )
             .clipShape(RoundedRectangle(cornerRadius: 20))
             .overlay(alignment: .topTrailing) {
                 Button {
@@ -55,7 +78,7 @@ struct PopUpConfigMatch: View {
         }
         .ignoresSafeArea()
     }
-
+    
     func close() {
         withAnimation(.spring()) {
             offset = 1300
