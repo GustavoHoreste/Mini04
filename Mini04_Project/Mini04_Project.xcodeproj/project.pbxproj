@@ -11,7 +11,6 @@
 		2E3A743B2BAB52D40026BE07 /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A743A2BAB52D40026BE07 /* BackButton.swift */; };
 		2E3A743E2BAB58F30026BE07 /* ConfigButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A743D2BAB58F30026BE07 /* ConfigButton.swift */; };
 		2E3A74402BAB5DDF0026BE07 /* StartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A743F2BAB5DDF0026BE07 /* StartButton.swift */; };
-		2E3A74422BAB5FDB0026BE07 /* InviteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A74412BAB5FDB0026BE07 /* InviteButton.swift */; };
 		2E3A74452BAB60CD0026BE07 /* LobbyTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A74442BAB60CD0026BE07 /* LobbyTitle.swift */; };
 		2E3A74472BAB62410026BE07 /* FirstPlaceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A74462BAB62410026BE07 /* FirstPlaceLabel.swift */; };
 		2E3A74492BAB62AD0026BE07 /* SecondPlaceLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3A74482BAB62AD0026BE07 /* SecondPlaceLabel.swift */; };
@@ -126,7 +125,6 @@
 		2E3A743A2BAB52D40026BE07 /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
 		2E3A743D2BAB58F30026BE07 /* ConfigButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigButton.swift; sourceTree = "<group>"; };
 		2E3A743F2BAB5DDF0026BE07 /* StartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartButton.swift; sourceTree = "<group>"; };
-		2E3A74412BAB5FDB0026BE07 /* InviteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteButton.swift; sourceTree = "<group>"; };
 		2E3A74442BAB60CD0026BE07 /* LobbyTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyTitle.swift; sourceTree = "<group>"; };
 		2E3A74462BAB62410026BE07 /* FirstPlaceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPlaceLabel.swift; sourceTree = "<group>"; };
 		2E3A74482BAB62AD0026BE07 /* SecondPlaceLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPlaceLabel.swift; sourceTree = "<group>"; };
@@ -273,7 +271,6 @@
 		2E3A74572BACA9F80026BE07 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
-				2E3A74412BAB5FDB0026BE07 /* InviteButton.swift */,
 				2E3A743F2BAB5DDF0026BE07 /* StartButton.swift */,
 			);
 			path = Buttons;

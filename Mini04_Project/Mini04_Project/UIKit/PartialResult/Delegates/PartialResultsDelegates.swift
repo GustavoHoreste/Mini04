@@ -65,7 +65,6 @@ extension PartialResultViewModel: ReadyButtonDelegate {
             view.present(alertController, animated: true, completion: nil)
         }
     }
-
     
     private func sendUserStatus(){
         if view.multiVM.localPlayer?.isHost == false{

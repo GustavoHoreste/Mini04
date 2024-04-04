@@ -53,24 +53,15 @@ struct StartButton: View {
     @StateObject private var startButtonVM: StartButtonViewModel = StartButtonViewModel()
     
     var body: some View {
-        Group {
+        VStack {
             Button{
                 self.startButtonVM.verifyUserIsHost()
             } label: {
                 ZStack{
-                    
-                    Image(uiImage: UIImage(named: "StartButton")!)
+                    Image("StartButton")
                         .resizable()
-                        .scaledToFit()
-                    
-//                    Circle()
-//                        .foregroundStyle(multiplayerVM.localPlayer?.statusUser == true ? .gray : .orange)
-//                        .frame(width: 130, height: 130)
-//                    
-//                    Text(multiplayerVM.localPlayer?.isHost == true ? "Começar" : "Pronto")
-//                        .padding()
-//                        .foregroundStyle(.white)
-//                        .font(.title)
+                        .scaledToFill()
+                        .padding()
                 }
             }
         }.onAppear{

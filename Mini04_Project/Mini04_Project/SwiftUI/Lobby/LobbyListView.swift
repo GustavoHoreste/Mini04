@@ -5,36 +5,25 @@
 //  Created by Luca Lacerda on 02/04/24.
 //
 
-struct player{
-    var name:String
-    var score:Int
-}
-
 import SwiftUI
 
 struct LobbyListView: View {
+    
+    var players:[Player]
+    
     var body: some View {
-        GeometryReader{ proxy in
-            ZStack{
-                Image(uiImage: UIImage(named: "LobbyListBack")!)
-                    .resizable()
-                    .scaledToFill()
-                Image(uiImage: UIImage(named: "LobbyListFront")!)
-                    .resizable()
-                    .scaledToFit()
-                ScrollView{
-                    VStack{
-                        PlayerListCell(player: player(name: "teste", score: 8))
-                        PlayerListCell(player: player(name: "teste2", score: 2))
-                    }.padding()
-                }
-                .padding(40)
+        ZStack{
+            Image("LobbyList")
+                .resizable()
+                .scaledToFill()
+            ScrollView{
+                VStack{
+                    ForEach(0..<players.count, id: \.self) { i in
+                        PlayerListCell(player: players[i])
+                    }
+                }.padding()
             }
-            .position(x: proxy.size.width/2, y: proxy.size.height/2)
+            .padding(20)
         }
     }
-}
-
-#Preview {
-    LobbyListView()
 }

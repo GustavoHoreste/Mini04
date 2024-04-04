@@ -13,9 +13,11 @@ struct BackButton: View {
     var body: some View {
         VStack{
             Button{navigationCoordinator.popToRoot()}label: {
-                Image("MenuConfig")
+                Image(.lobbyReturnButton)
                     .resizable()
-                    .frame(width: screenWidth * 0.114, height: screenHeight * 0.05284334763)
+                    .scaledToFit()
+                    .frame(width: 70, height: 70)
+//                    .frame(width: screenWidth * 0.114, height: screenHeight * 0.05284334763)
             }
         }
     }

@@ -15,44 +15,46 @@ struct LobbyView: View {
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
     @StateObject var groupStateObserver = GroupStateObserver()
     @State var isOpenConfigMatch = false
+    @State var players:[Player] = []
    // @State var isStarter: Bool = false
     
     var body: some View {
-        GeometryReader{ proxy in
-            ZStack {
-                VStack {
-                    //Menu
-                    HStack {
-                        BackButton()
-                        
-                        Spacer()
-                        
-                        configMatchButton()
-                        
-                    }
-                    .foregroundStyle(.gray)
-                    .padding()
+        ZStack {
+            Image(.lobbyBackground)
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            VStack {
+                //Menu
+                HStack {
                     
-                    //Title
-                    LobbyTitle()
-                    
-                    //Grid
-                    LobbyListView()
-                        .frame(width: proxy.size.width)
-//                        .padding()
+                    BackButton()
                     
                     Spacer()
                     
+                    configMatchButton()
                     
-                    //Buttons
-                    StartButton()
-                    
-                    inviteFriend()
-                    
-                }
+                }.padding()
                 
-                if (isOpenConfigMatch){
-                    PopUpConfigMatch(ativouteste: $isOpenConfigMatch)
+                //Player list
+                LobbyListView(players: players)
+                    .frame(width: screenWidth, height: screenHeight*0.45)
+   
+                //Buttons
+                StartButton()
+                    .frame(width: screenWidth*0.25, height: screenHeight*0.25)
+                
+                //inviteButton
+                inviteFriend()
+                
+            }.task {
+                for await session in WhereWhereActivity.sessions(){
+                    multiplayerVM.sharePlayVM.configurationSessin(session)
+                }
+            }.onReceive(self.multiplayerVM.$hostIsStarter){ newValue in
+                if newValue == true{
+                    //MARK: Aqui pode estar dando problema
+                    navigationCoordinator.push(.gameplay)
                 }
                 
             }.onReceive(self.multiplayerVM.$hostIsReadyInLobby){ newValue in
@@ -65,11 +67,18 @@ struct LobbyView: View {
                     multiplayerVM.sharePlayVM.configurationSessin(session)
                 }
             }
-            .navigationBarBackButtonHidden()
-            .background {
-                Image(uiImage: UIImage(named: "LobbyBackground")!)
+            .onAppear {
+                if let localPlayer = multiplayerVM.localPlayer{
+                    players.append(localPlayer)
+                }
+                players = multiplayerVM.adversaryPlayers
             }
-        }
+            
+            if (isOpenConfigMatch){
+                PopUpConfigMatch(ativouteste: $isOpenConfigMatch)
+            }
+        }.navigationBarBackButtonHidden()
+        
     }
     
     ///funcao que verifica o estado da session - se for desativada inicia a session
@@ -87,8 +96,9 @@ extension LobbyView{
     private func configMatchButton() -> some View{
         if multiplayerVM.localPlayer?.isHost == true {
             Button { isOpenConfigMatch = true} label: {
-                Image(systemName: "gearshape.circle.fill")
+                Image(.lobbyConnfig)
                     .resizable()
+                    .scaledToFit()
                     .frame(width: 70, height: 70)
             }
         }
@@ -98,14 +108,15 @@ extension LobbyView{
     private func inviteFriend() -> some View{
         if multiplayerVM.localPlayer?.isHost == true{
             Button{ verifyStausSession() }label: {
-                Text("Adicione seu amigo")
-                    .padding()
-                    .foregroundStyle(.white)
-                    .background(.gray)
-                    .clipShape(.capsule)
-                    .font(.title)
+                ZStack{
+                    Image("ButtonBack")
+                        .resizable()
+                        .frame(width: screenWidth * 0.651163, height: screenHeight * 0.121245)
+                    Text("Adicione seu amigo")
+                        .font(.custom("FafoSans-Bold", size: 20))
+                        .foregroundStyle(.black)
+                }
             }
-            .padding()
         }
     }
 }
