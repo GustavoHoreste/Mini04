@@ -72,7 +72,7 @@ extension GameplayViewModel: PhotoButtonDelegate {
                         self.special.specialFinded()
                         self.multiVM?.sendEspcialObject(specialObject)
                         self.multiVM?.localPlayer?.points += 2
-                        self.upadatePoint((multiVM?.localPlayer!.points)!)
+                        self.pontos.number += 2
                         self.powers.addPowers()
                     }
                 }
@@ -89,11 +89,7 @@ extension GameplayViewModel: ItemsDelegate {
     func findedObjectAction() {
         pontos.plusAnimate(color: .green)
         multiVM?.localPlayer?.points += 1
-        upadatePoint((multiVM?.localPlayer!.points)!)
-    }
-    
-    func upadatePoint(_ value: Int){
-        pontos.updateLabel(value)
+        pontos.number += 1
     }
 }
 
@@ -116,6 +112,7 @@ extension GameplayViewModel: TimerRoundDelegate {
         print(self.controller?.navigationController?.viewControllers.count as Any)
         
         self.multiVM?.resetPowerUpsAndStatus()
+        self.pontos.number = 0
         
 //        logo.isHidden = false
         
@@ -134,6 +131,7 @@ extension GameplayViewModel: TimerRoundDelegate {
             nextScreen?.partialResultVM.timerBeforeButtonReady.startCount()
             nextScreen?.partialResultVM.readyButton.toggleIsHiden()
             self.round.number += 1
+            self.controller?.parcialRanking.configureParcialVC()
             self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
         }
         
@@ -214,7 +212,7 @@ extension GameplayViewModel: PowersButtonDelegate {
     
     func subtractPower() {
         multiVM?.localPlayer?.points -= 1
-        upadatePoint((multiVM?.localPlayer!.points)!)
+        self.pontos.number -= 1
         pontos.plusAnimate(color: .red)
     }
     

@@ -38,6 +38,7 @@ class PartialResultViewController: UIViewController {
     var snapshot = DataSourceSnapshot()
     
     var data: [Player]
+    var players: [Player]?
     
     init(multiVM: MultiplayerManagerViewModel, navigationCoordinator: Coordinator, gameplayVM: GameplayViewModel) {
         self.multiVM = multiVM
@@ -58,10 +59,6 @@ class PartialResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureCollectionViewDataSource()
-        
-        applySnapshot(players: partialResultVM.data)
-        
         self.partialResultVM.cinfigureLabelReadyButton()
         
         self.partialResultVM.verifyIsHost()
@@ -69,9 +66,25 @@ class PartialResultViewController: UIViewController {
         self.partialResultVM.funcStartCombine()
         
         setupView()
-        
     }
     
+    public func configureParcialVC(){
+        self.players = multiVM.adversaryPlayers
+        self.players?.append(multiVM.localPlayer!)
+        
+        configureCollectionViewDataSource()
+        applySnapshot(players: players!)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 4){ [self] in
+            self.starAnimation()
+        }
+    }
+    
+    public func starAnimation(){
+        let sortData = players?.sorted{$0.points > $1.points}
+        configureCollectionViewDataSource()
+        applySnapshot(players: sortData!)
+    }
     
     private func configureCollectionViewDataSource() {
         dataSource = DataSource(collectionView: collection, cellProvider: { (collectionView, indexPath, player) -> PartialResultCell? in

@@ -35,10 +35,6 @@ class PontosLabel: UILabel {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func updateLabel(_ value: Int){
-        self.number = value
-        print("pontos incrementado: \(value) ")
-    }
     
     func plusAnimate(color: UIColor) {
         guard !isPlusAnimating else {
