@@ -10,6 +10,7 @@ import SwiftUI
 struct SinglePlayerReadyView: View {
     
     @EnvironmentObject private var navigationCoordinator: Coordinator
+    @State var showRecord:Bool = false
     
     var body: some View {
         ZStack{
@@ -19,20 +20,34 @@ struct SinglePlayerReadyView: View {
                 .ignoresSafeArea()
             
             VStack{
-                TopMenu(a1: navigationCoordinator.pop, a2: {print("tocou")})
                 
+                TopMenu(a1: navigationCoordinator.pop, a2: {
+                    withAnimation(){
+                        showRecord.toggle()
+                    }
+                })
+                    .padding(.top,40)
+                    
                 Spacer()
                 
                 Text("Tudo pronto?")
                     .font(.custom("FafoSans-Bold", size: 40))
                     .foregroundStyle(.black)
+                    .padding()
                 
-                Spacer()
                 
                 SingleStartButton(action: {navigationCoordinator.push(.singleplayer)})
                 
                 Spacer()
+                
+                
             }
+            
+            if showRecord == true {
+                
+                RecordPopUp(isOpen: $showRecord)
+            }
+            
         }.navigationBarBackButtonHidden(true)
     }
 }

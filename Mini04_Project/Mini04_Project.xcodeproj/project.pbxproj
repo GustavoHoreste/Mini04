@@ -102,6 +102,7 @@
 		E00C5CD32BB349140020126E /* PlayerListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00C5CD22BB349140020126E /* PlayerListCell.swift */; };
 		E017B8862BBF20EA006B2675 /* SinglePlayerReadyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017B8852BBF20EA006B2675 /* SinglePlayerReadyVM.swift */; };
 		E017B8882BBF232A006B2675 /* SingleStartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017B8872BBF232A006B2675 /* SingleStartButton.swift */; };
+		E017B88A2BBF2893006B2675 /* RecordPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017B8892BBF2893006B2675 /* RecordPopUp.swift */; };
 		E021364A2BBC791A0067D278 /* FianlResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02136492BBC791A0067D278 /* FianlResultViewModel.swift */; };
 		E021364C2BBC7B130067D278 /* NormalRankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021364B2BBC7B130067D278 /* NormalRankCell.swift */; };
 		E021364E2BBC859F0067D278 /* LobbyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021364D2BBC859F0067D278 /* LobbyListView.swift */; };
@@ -226,6 +227,7 @@
 		E00C5CD42BB351420020126E /* UILableRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILableRepresentable.swift; sourceTree = "<group>"; };
 		E017B8852BBF20EA006B2675 /* SinglePlayerReadyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePlayerReadyVM.swift; sourceTree = "<group>"; };
 		E017B8872BBF232A006B2675 /* SingleStartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStartButton.swift; sourceTree = "<group>"; };
+		E017B8892BBF2893006B2675 /* RecordPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPopUp.swift; sourceTree = "<group>"; };
 		E02136492BBC791A0067D278 /* FianlResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FianlResultViewModel.swift; sourceTree = "<group>"; };
 		E021364B2BBC7B130067D278 /* NormalRankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalRankCell.swift; sourceTree = "<group>"; };
 		E021364D2BBC859F0067D278 /* LobbyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyListView.swift; sourceTree = "<group>"; };
@@ -764,6 +766,7 @@
 			children = (
 				E0AB95F22BBF1F7C00443821 /* TopMenu.swift */,
 				E017B8872BBF232A006B2675 /* SingleStartButton.swift */,
+				E017B8892BBF2893006B2675 /* RecordPopUp.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -915,6 +918,7 @@
 				E08782B82BA8C44000FB5ABC /* PlayerData.swift in Sources */,
 				E08782BA2BAA177600FB5ABC /* ProfileViewViewModel.swift in Sources */,
 				D9CD142A2BA9D84A003CB0B6 /* CreditsView.swift in Sources */,
+				E017B88A2BBF2893006B2675 /* RecordPopUp.swift in Sources */,
 				C0CBCB4C2BB20E070020E594 /* ConstraintsRC.swift in Sources */,
 				2E8114112BA4EA16009CCC77 /* GameplayView.swift in Sources */,
 				C019C0362BB9FBD400F5B1F1 /* ChangeCountLabel.swift in Sources */,
