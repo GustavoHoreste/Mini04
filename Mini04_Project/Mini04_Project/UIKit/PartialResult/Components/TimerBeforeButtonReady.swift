@@ -77,6 +77,7 @@ class TimerBeforeButtonReady: UIView {
     private func invalidetTimer(){
         timer?.invalidate()
         count = 5
+        amoutTime.text = "\(count)"
         isHidden = true
     }
 }

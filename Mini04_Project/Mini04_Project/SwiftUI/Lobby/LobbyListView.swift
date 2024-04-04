@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct LobbyListView: View {
-    
-    var players:[Player]
+    @EnvironmentObject private var multiplayerMV: MultiplayerManagerViewModel
     
     var body: some View {
         ZStack{
@@ -18,8 +17,9 @@ struct LobbyListView: View {
                 .scaledToFill()
             ScrollView{
                 VStack{
-                    ForEach(0..<players.count, id: \.self) { i in
-                        PlayerListCell(player: players[i])
+                    PlayerListCell(player: multiplayerMV.localPlayer!)
+                    ForEach(multiplayerMV.adversaryPlayers, id: \.id) { player in
+                        PlayerListCell(player: player)
                     }
                 }.padding()
             }

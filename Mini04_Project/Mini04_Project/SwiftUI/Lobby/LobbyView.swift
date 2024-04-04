@@ -15,7 +15,7 @@ struct LobbyView: View {
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
     @StateObject var groupStateObserver = GroupStateObserver()
     @State var isOpenConfigMatch = false
-    @State var players:[Player] = []
+//    @State var players:[Player] = []
    // @State var isStarter: Bool = false
     
     var body: some View {
@@ -37,7 +37,7 @@ struct LobbyView: View {
                 }.padding()
                 
                 //Player list
-                LobbyListView(players: players)
+                LobbyListView()
                     .frame(width: screenWidth, height: screenHeight*0.45)
    
                 //Buttons
@@ -46,16 +46,6 @@ struct LobbyView: View {
                 
                 //inviteButton
                 inviteFriend()
-                
-            }.task {
-                for await session in WhereWhereActivity.sessions(){
-                    multiplayerVM.sharePlayVM.configurationSessin(session)
-                }
-            }.onReceive(self.multiplayerVM.$hostIsStarter){ newValue in
-                if newValue == true{
-                    //MARK: Aqui pode estar dando problema
-                    navigationCoordinator.push(.gameplay)
-                }
                 
             }.onReceive(self.multiplayerVM.$hostIsReadyInLobby){ newValue in
                 if newValue == true{
@@ -67,16 +57,17 @@ struct LobbyView: View {
                     multiplayerVM.sharePlayVM.configurationSessin(session)
                 }
             }
-            .onAppear {
-                if let localPlayer = multiplayerVM.localPlayer{
-                    players.append(localPlayer)
-                }
-                players = multiplayerVM.adversaryPlayers
-            }
+//            .onAppear {
+//                if let localPlayer = multiplayerVM.localPlayer{
+//                    players.append(localPlayer)
+//                }
+//                players = multiplayerVM.adversaryPlayers
+//            }
             
             if (isOpenConfigMatch){
                 PopUpConfigMatch(ativouteste: $isOpenConfigMatch)
             }
+            
         }.navigationBarBackButtonHidden()
         
     }

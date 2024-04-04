@@ -31,6 +31,7 @@ class ReadyButton: UIButton {
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         addTarget(self, action: #selector(ready), for: .touchUpInside)
+        isHidden = false
     }
 
     required init?(coder: NSCoder) {
@@ -57,7 +58,6 @@ class ReadyButton: UIButton {
     
     public func toggleIsHiden(){
         isHidden = true
-        
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(readyButton), userInfo: nil, repeats: true)
     }
     
@@ -65,6 +65,7 @@ class ReadyButton: UIButton {
     private func readyButton(){
         count -= 1
         if count == 0{
+            count = 6
             isHidden = false
             timer.invalidate()
         }

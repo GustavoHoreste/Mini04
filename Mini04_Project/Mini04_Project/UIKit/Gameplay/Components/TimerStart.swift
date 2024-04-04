@@ -17,7 +17,10 @@ class TimerStart: UIImageView {
     
     var count: Int = 0
     
-    var images: [UIImage?] = [UIImage(named: "Count3"), UIImage(named: "Count2"), UIImage(named: "Count1"), UIImage(named: "CountJa")]
+    var images: [UIImage?] = [UIImage(named: "Count3"),
+                              UIImage(named: "Count2"),
+                              UIImage(named: "Count1"),
+                              UIImage(named: "CountJa")]
     
     init() {
         super.init(frame: .zero)
@@ -54,5 +57,4 @@ class TimerStart: UIImageView {
             self.sizeIncrease()
         })
     }
-
 }
