@@ -26,9 +26,11 @@ class ChangeCountLabel: UILabel {
     init() {
         super.init(frame: .zero)
         
+        guard let customFont = UIFont(name: "FafoSans-Bold", size: 18) else {fatalError()}
+        
         translatesAutoresizingMaskIntoConstraints = false
-        font = .systemFont(ofSize: 15, weight: .regular)
-        textColor = .label
+        font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
+        textColor = .black
         text = "3"
         
     }

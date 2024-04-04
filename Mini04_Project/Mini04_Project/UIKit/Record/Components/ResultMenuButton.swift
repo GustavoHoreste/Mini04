@@ -7,19 +7,19 @@
 
 import UIKit
 
+protocol ResultMenuButtonDelegate: AnyObject {
+    func menuAction()
+}
+
 class ResultMenuButton: UIButton {
 
+    weak var delegate: ResultMenuButtonDelegate?
+    
     init(){
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         addTarget(self, action: #selector(goToMenu), for: .touchUpInside)
-        setBackgroundImage(UIImage(systemName: "squareshape.fill"), for: .normal)
-        setTitle("Back to menu", for: .normal)
-        
-        NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: 200),
-            heightAnchor.constraint(equalToConstant: 100),
-        ])
+        setBackgroundImage(UIImage(named: "SingleLeaveButton"), for: .normal)
     }
 
     required init?(coder: NSCoder) {
@@ -27,7 +27,7 @@ class ResultMenuButton: UIButton {
     }
     
     @objc func goToMenu() {
-        print("voltar pro menu")
+        delegate?.menuAction()
     }
 
 }

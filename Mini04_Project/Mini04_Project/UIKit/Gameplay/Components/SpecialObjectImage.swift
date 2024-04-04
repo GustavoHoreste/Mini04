@@ -22,6 +22,8 @@ class SpecialObjectImage: UIImageView {
         return t
     }()
     
+    var symbol = AnyImageView(imagem: UIImage(named: "SpecialObjSymbol"))
+    
     var tempo: Int = 10
     var timeToAppear: Int = 0
     var specialIsOn = false
@@ -34,15 +36,16 @@ class SpecialObjectImage: UIImageView {
         translatesAutoresizingMaskIntoConstraints = false
         
         isHidden = true
-        image = UIImage(systemName: "square")
+        image = UIImage(named: "SpecialObjMold")
         
         addSubview(specialName)
+        addSubview(symbol)
         
         NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: 220),
-            heightAnchor.constraint(equalToConstant: 50),
             specialName.centerXAnchor.constraint(equalTo: centerXAnchor),
             specialName.centerYAnchor.constraint(equalTo: centerYAnchor),
+            symbol.centerXAnchor.constraint(equalTo: trailingAnchor),
+            symbol.centerYAnchor.constraint(equalTo: topAnchor),
         ])
         
         playTimer()

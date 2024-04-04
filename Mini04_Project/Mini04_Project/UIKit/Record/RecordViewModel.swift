@@ -6,15 +6,23 @@
 //
 
 import Foundation
+import UIKit
 
 class RecordViewModel {
         
-    lazy var results = SingleResultLabel()
-    lazy var highscore = HighscoreLabel()
-    lazy var menu = ResultMenuButton()
-    lazy var logo = LogoImage(isIncreased: true)
+    weak var controller: RecordViewController?
+    
+    var results = SingleResultLabel()
+    var highscore = HighscoreLabel()
+    var menu = ResultMenuButton()
+    var logo = LogoImage(isIncreased: true)
+//    var restart = SingleRecButton()
+    
+    var background = AnyImageView(imagem: UIImage(named: "SingleBackground"))
+    var scoreMold = AnyImageView(imagem: UIImage(named: "SingleScoreMold"))
     
     init() {
+        setupDelegate()
         logo.sizeDecrease()
     }
     
