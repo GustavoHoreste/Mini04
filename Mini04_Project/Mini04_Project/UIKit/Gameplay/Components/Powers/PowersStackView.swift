@@ -33,13 +33,26 @@ class PowersStackView: UIImageView {
     }
     var numberOfPowers = 0
     var freezeIsOn = false
+    var firstMold: PowerUps? = nil
+    var secondMold: PowerUps? = nil
     
     init() {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
+        isUserInteractionEnabled = true
         
         image = UIImage(named: "PowersStackMold")
+        
+        addSubview(powerMold1)
+        addSubview(powerMold2)
+        
+        NSLayoutConstraint.activate([
+            powerMold1.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 30),
+            powerMold1.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -80),
+            powerMold2.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 30),
+            powerMold2.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 80),
+        ])
     }
     
     func addPowers() {
@@ -47,8 +60,9 @@ class PowersStackView: UIImageView {
             let power = allPowers.filter{!usersPowers.contains($0)}.randomElement()!
             power.alpha = 0
             usersPowers.append(power)
-//            addArrangedSubview(usersPowers.last!)
-            delegate?.animatePower(imagem: usersPowers.last?.currentBackgroundImage, power: usersPowers.last?.powerType)
+            putPowerInMold(power: power)
+            delegate?.animatePower(imagem: power.currentBackgroundImage, power: power.powerType)
+            holdPowerType(type: power.powerType)
         }
     }
     
@@ -56,9 +70,16 @@ class PowersStackView: UIImageView {
         for power in usersPowers {
             if power.powerType == powerType {
                 usersPowers.removeAll(where: {$0 == power})
-//                removeArrangedSubview(power)
                 power.removeFromSuperview()
             }
+        }
+        if powerType == firstMold {
+            firstMold = nil
+        }
+        else if powerType == secondMold {
+            secondMold = nil
+        }else {
+            print("DEU RUIM NO REMOVEPOWER")
         }
     }
     
@@ -67,6 +88,30 @@ class PowersStackView: UIImageView {
         DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
             self.freezeIsOn = false
         }
+    }
+    
+    func holdPowerType(type: PowerUps?) {
+        if firstMold == nil {
+            firstMold = type
+            return
+        }
+        secondMold = type
+    }
+    
+    func putPowerInMold(power: PowersButton) {
+        switch numberOfPowers {
+        case 1:
+            addSubview(power)
+            power.centerXAnchor.constraint(equalTo: powerMold1.centerXAnchor).isActive = true
+            power.centerYAnchor.constraint(equalTo: powerMold1.centerYAnchor).isActive = true
+        case 2:
+            addSubview(power)
+            power.centerXAnchor.constraint(equalTo: powerMold2.centerXAnchor).isActive = true
+            power.centerYAnchor.constraint(equalTo: powerMold2.centerYAnchor).isActive = true
+        default:
+            print("Nao colocou o poder no Mold")
+        }
+        
     }
     
     required init(coder: NSCoder) {

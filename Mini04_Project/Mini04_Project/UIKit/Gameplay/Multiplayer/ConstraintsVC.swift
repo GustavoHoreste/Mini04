@@ -35,10 +35,10 @@ extension GameplayViewController {
         view.addSubview(gameplayVM.alert)
                 
         NSLayoutConstraint.activate([
+            gameplayVM.cameraImage.heightAnchor.constraint(equalToConstant: view.frame.height * 0.85),
+            gameplayVM.cameraImage.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 3.0/4.0),
             gameplayVM.cameraImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameplayVM.cameraImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            gameplayVM.cameraImage.widthAnchor.constraint(equalTo: view.widthAnchor),
-            gameplayVM.cameraImage.heightAnchor.constraint(equalTo: gameplayVM.cameraImage.widthAnchor, multiplier: 4.0/3.0),
+            gameplayVM.cameraImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -view.frame.height * 0.05),
             
             //--------Constraints das molduras--------
             gameplayVM.pointsMold.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
@@ -63,9 +63,6 @@ extension GameplayViewController {
             gameplayVM.changeCount.trailingAnchor.constraint(equalTo: gameplayVM.changeButton.trailingAnchor),
             gameplayVM.changeCount.bottomAnchor.constraint(equalTo: gameplayVM.changeButton.bottomAnchor),
             
-            gameplayVM.photoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameplayVM.photoButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -80),
-            
             gameplayVM.pontos.centerXAnchor.constraint(equalTo: gameplayVM.pointsMold.centerXAnchor),
             gameplayVM.pontos.centerYAnchor.constraint(equalTo: gameplayVM.pointsMold.centerYAnchor),
             
@@ -82,7 +79,10 @@ extension GameplayViewController {
             gameplayVM.timerObject.centerYAnchor.constraint(equalTo: gameplayVM.timerObjMold.centerYAnchor),
             
             gameplayVM.powers.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameplayVM.powers.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            gameplayVM.powers.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 20),
+            
+            gameplayVM.photoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            gameplayVM.photoButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -90),
             
             gameplayVM.crosshair.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.crosshair.centerYAnchor.constraint(equalTo: view.centerYAnchor),
