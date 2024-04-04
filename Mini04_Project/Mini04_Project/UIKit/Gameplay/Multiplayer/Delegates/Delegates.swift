@@ -126,15 +126,18 @@ extension GameplayViewModel: TimerRoundDelegate {
         guard let multiVMNotOpcional = self.multiVM else {return}
         
         if self.round.number >= multiVMNotOpcional.configMatch.amoutRound{
-            self.controller?.navigationCoordinator.push(.finalRank)
+            let nextScreen = controller?.finalRanking
+            self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
             return
         }else{
-            let nextScreen = controller?.parcialRanking
-            nextScreen?.partialResultVM.currentRound = self.round.number
-            
-            nextScreen?.partialResultVM.timerBeforeButtonReady.startCount()
-            nextScreen?.partialResultVM.readyButton.toggleIsHiden()
-            
+//            let nextScreen = controller?.parcialRanking
+//            nextScreen?.partialResultVM.currentRound = self.round.number
+//            
+//            nextScreen?.partialResultVM.timerBeforeButtonReady.startCount()
+//            nextScreen?.partialResultVM.readyButton.toggleIsHiden()
+//            
+//            self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
+            let nextScreen = controller?.finalRanking
             self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
         }
         

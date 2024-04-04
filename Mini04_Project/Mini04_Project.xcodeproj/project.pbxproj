@@ -42,6 +42,11 @@
 		C0393D842BAD23FB00E97810 /* PreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0393D832BAD23FB00E97810 /* PreViewController.swift */; };
 		C03D09472BBDEEB400D63BA5 /* DelegatesRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D09462BBDEEB400D63BA5 /* DelegatesRC.swift */; };
 		C03D09492BBF0AF700D63BA5 /* SingleRecButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D09482BBF0AF700D63BA5 /* SingleRecButton.swift */; };
+		C03D094C2BBF464100D63BA5 /* FinalRakingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D094B2BBF464100D63BA5 /* FinalRakingViewController.swift */; };
+		C03D094E2BBF468700D63BA5 /* FinalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D094D2BBF468700D63BA5 /* FinalViewModel.swift */; };
+		C03D09502BBF46C000D63BA5 /* ConstraintsFR.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D094F2BBF46C000D63BA5 /* ConstraintsFR.swift */; };
+		C03D09522BBF4A8D00D63BA5 /* DelegatesFR.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D09512BBF4A8D00D63BA5 /* DelegatesFR.swift */; };
+		C03D09552BBF4BBC00D63BA5 /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D09542BBF4BBC00D63BA5 /* UserImageView.swift */; };
 		C060E4052BBB32A4009F1250 /* TimerStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4042BBB32A4009F1250 /* TimerStart.swift */; };
 		C060E4072BBB3795009F1250 /* BackgroundFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4062BBB3795009F1250 /* BackgroundFade.swift */; };
 		C060E4092BBB55B7009F1250 /* AlertPowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4082BBB55B7009F1250 /* AlertPowerView.swift */; };
@@ -158,6 +163,11 @@
 		C0393D832BAD23FB00E97810 /* PreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreViewController.swift; sourceTree = "<group>"; };
 		C03D09462BBDEEB400D63BA5 /* DelegatesRC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegatesRC.swift; sourceTree = "<group>"; };
 		C03D09482BBF0AF700D63BA5 /* SingleRecButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRecButton.swift; sourceTree = "<group>"; };
+		C03D094B2BBF464100D63BA5 /* FinalRakingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalRakingViewController.swift; sourceTree = "<group>"; };
+		C03D094D2BBF468700D63BA5 /* FinalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalViewModel.swift; sourceTree = "<group>"; };
+		C03D094F2BBF46C000D63BA5 /* ConstraintsFR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsFR.swift; sourceTree = "<group>"; };
+		C03D09512BBF4A8D00D63BA5 /* DelegatesFR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegatesFR.swift; sourceTree = "<group>"; };
+		C03D09542BBF4BBC00D63BA5 /* UserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
 		C060E4042BBB32A4009F1250 /* TimerStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStart.swift; sourceTree = "<group>"; };
 		C060E4062BBB3795009F1250 /* BackgroundFade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFade.swift; sourceTree = "<group>"; };
 		C060E4082BBB55B7009F1250 /* AlertPowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPowerView.swift; sourceTree = "<group>"; };
@@ -345,6 +355,26 @@
 				C0393D5B2BACC9FA00E97810 /* AudioManager.swift */,
 			);
 			path = Audio;
+			sourceTree = "<group>";
+		};
+		C03D094A2BBF461900D63BA5 /* FinalRanking */ = {
+			isa = PBXGroup;
+			children = (
+				C03D094B2BBF464100D63BA5 /* FinalRakingViewController.swift */,
+				C03D094D2BBF468700D63BA5 /* FinalViewModel.swift */,
+				C03D094F2BBF46C000D63BA5 /* ConstraintsFR.swift */,
+				C03D09512BBF4A8D00D63BA5 /* DelegatesFR.swift */,
+				C03D09532BBF4B8B00D63BA5 /* Components */,
+			);
+			path = FinalRanking;
+			sourceTree = "<group>";
+		};
+		C03D09532BBF4B8B00D63BA5 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				C03D09542BBF4BBC00D63BA5 /* UserImageView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		C09107072BAA05F800037EAB /* Powers */ = {
@@ -596,6 +626,7 @@
 		E05410B42BA4CE1500046661 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				C03D094A2BBF461900D63BA5 /* FinalRanking */,
 				E05410B62BA4CE4600046661 /* PartialResult */,
 				C0CBCB412BB208D40020E594 /* Record */,
 				E05410B52BA4CE1E00046661 /* Gameplay */,
@@ -840,6 +871,7 @@
 				C060E4092BBB55B7009F1250 /* AlertPowerView.swift in Sources */,
 				2E3A74552BAB7F5E0026BE07 /* MultiplayerButton.swift in Sources */,
 				C0CBCB402BAE2A9B0020E594 /* PreSingleViewController.swift in Sources */,
+				C03D09522BBF4A8D00D63BA5 /* DelegatesFR.swift in Sources */,
 				2EC1BA742BA8737100E1E410 /* ProfileView.swift in Sources */,
 				E08782A82BA4D44200FB5ABC /* MLModel.swift in Sources */,
 				E0AF6F042BACA948008BE255 /* PartialResultViewModel.swift in Sources */,
@@ -877,7 +909,6 @@
 				C09107062BAA056300037EAB /* PowersStackView.swift in Sources */,
 				2E3A74652BB348D90026BE07 /* HapticsOff.swift in Sources */,
 				2E3A74492BAB62AD0026BE07 /* SecondPlaceLabel.swift in Sources */,
-				2E3A74422BAB5FDB0026BE07 /* InviteButton.swift in Sources */,
 				C060E4072BBB3795009F1250 /* BackgroundFade.swift in Sources */,
 				2E3A74672BB34ACE0026BE07 /* ProfileButtonPopUp.swift in Sources */,
 				E08782AA2BA4D46900FB5ABC /* PartialResultViewController.swift in Sources */,
@@ -900,10 +931,14 @@
 				2E3A74612BB348790026BE07 /* SoundOffButton.swift in Sources */,
 				2E3A744F2BAB733D0026BE07 /* InfoButton.swift in Sources */,
 				E00C5CD32BB349140020126E /* PlayerListCell.swift in Sources */,
+				C03D094E2BBF468700D63BA5 /* FinalViewModel.swift in Sources */,
 				C09106FE2BA8FD7800037EAB /* RoundLabel.swift in Sources */,
 				E021364E2BBC859F0067D278 /* LobbyListView.swift in Sources */,
+				C03D09502BBF46C000D63BA5 /* ConstraintsFR.swift in Sources */,
 				C0CBCB382BAE142B0020E594 /* SingleViewModel.swift in Sources */,
 				2E3A74402BAB5DDF0026BE07 /* StartButton.swift in Sources */,
+				C03D094C2BBF464100D63BA5 /* FinalRakingViewController.swift in Sources */,
+				C03D09552BBF4BBC00D63BA5 /* UserImageView.swift in Sources */,
 				C0393D602BACF05900E97810 /* LogoImage.swift in Sources */,
 				E0A9DA632BB4920A00314E72 /* Haptics.swift in Sources */,
 				C09107002BA8FF0800037EAB /* SpecialObjectLabel.swift in Sources */,
