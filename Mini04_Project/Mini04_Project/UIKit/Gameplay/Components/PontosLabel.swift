@@ -22,8 +22,10 @@ class PontosLabel: UILabel {
     init() {
         super.init(frame: .zero)
         
+        guard let customFont = UIFont(name: "FafoSans-Bold", size: 24) else {fatalError()}
+
         translatesAutoresizingMaskIntoConstraints = false
-        font = .systemFont(ofSize: 25, weight: .regular)
+        font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
         text = "0 pts"
         textColor = .black
         

@@ -11,12 +11,14 @@ struct HapticsOff: View {
     @Binding var isHapticsOn: Bool
     
     var body: some View {
-        Toggle("SoundOff", systemImage: isHapticsOn ? "iphone.gen3.radiowaves.left.and.right.circle.fill" : "iphone.gen1.radiowaves.left.and.right", isOn: $isHapticsOn )
-            .font(.title)
-            .tint(.purple)
-            .toggleStyle(.button)
-            .labelStyle(.iconOnly)
-            .contentTransition(.symbolEffect)
+        Button(action: {
+            self.isHapticsOn.toggle()
+        }) {
+            
+            Image(self.isHapticsOn == true ? "HapticsOn" : "HapticsOff")
+                            .resizable()
+                            .frame(width: 60, height: 60)
+        }
         
     }
 }

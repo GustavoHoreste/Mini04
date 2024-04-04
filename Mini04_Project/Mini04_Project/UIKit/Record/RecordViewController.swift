@@ -10,13 +10,25 @@ import UIKit
 class RecordViewController: UIViewController {
 
     var recordVM = RecordViewModel()
-    
+    var navigationCoordinator: Coordinator
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        recordVM.controller = self
+        
         setupView()
         
         recordVM.highscore.verifyHighScore(points: recordVM.results.qntd)
+    }
+    
+    init(navigationCoordinator: Coordinator) {
+        self.navigationCoordinator = navigationCoordinator
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 }

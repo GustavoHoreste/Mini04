@@ -11,9 +11,12 @@ protocol PowersStackViewDelegate: AnyObject {
     func animatePower(imagem: UIImage?, power: PowerUps?)
 }
 
-class PowersStackView: UIStackView {
+class PowersStackView: UIImageView {
     
     weak var delegate: PowersStackViewDelegate?
+    
+    var powerMold1 = AnyImageView(imagem: UIImage(named: "PowersMold"))
+    var powerMold2 = AnyImageView(imagem: UIImage(named: "PowersMold"))
 
     lazy var freeze = PowersButton(imagem: UIImage(systemName: "1.circle.fill")!, power: .freeze)
     lazy var switcher = PowersButton(imagem: UIImage(systemName: "2.circle.fill")!, power: .switchWord)
@@ -36,9 +39,7 @@ class PowersStackView: UIStackView {
         
         translatesAutoresizingMaskIntoConstraints = false
         
-        axis = .horizontal
-        alignment = .center
-        spacing = 80
+        image = UIImage(named: "PowersStackMold")
     }
     
     func addPowers() {
@@ -46,7 +47,7 @@ class PowersStackView: UIStackView {
             let power = allPowers.filter{!usersPowers.contains($0)}.randomElement()!
             power.alpha = 0
             usersPowers.append(power)
-            addArrangedSubview(usersPowers.last!)
+//            addArrangedSubview(usersPowers.last!)
             delegate?.animatePower(imagem: usersPowers.last?.currentBackgroundImage, power: usersPowers.last?.powerType)
         }
     }
@@ -55,7 +56,7 @@ class PowersStackView: UIStackView {
         for power in usersPowers {
             if power.powerType == powerType {
                 usersPowers.removeAll(where: {$0 == power})
-                removeArrangedSubview(power)
+//                removeArrangedSubview(power)
                 power.removeFromSuperview()
             }
         }

@@ -27,7 +27,6 @@ class GameplayViewModel: NSObject {
     var photoButton = PhotoButton()
     var cameraImage = CameraImageView()
     var pontos = PontosLabel()
-    var profile = ProfileImage()
     var round = RoundLabel()
     var special = SpecialObjectImage()
     var timerRound = TimerRound()
@@ -38,6 +37,11 @@ class GameplayViewModel: NSObject {
     var timerStart = TimerStart()
     var fadeBackground = BackgroundFade()
     var alert = AlertPowerView(icon: UIImage(), name: "")
+
+    var pointsMold = AnyImageView(imagem: UIImage(named: "PntsMold"))
+    var roundMold = AnyImageView(imagem: UIImage(named: "PntsMold"))
+    var timerObjMold = AnyImageView(imagem: UIImage(named: "TimerObjMold"))
+    var nameObjMold = AnyImageView(imagem: UIImage(named: "NameObjMold"))
     
     var context: CIContext = CIContext()
     

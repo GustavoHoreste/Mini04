@@ -39,7 +39,7 @@ class TimerStart: UIImageView {
         image = images[count]
         count += 1
         UIView.animate(withDuration: 0.5, animations: {
-            self.transform = CGAffineTransform(scaleX: 4, y: 4)
+            self.transform = CGAffineTransform(scaleX: 3, y: 3)
         }, completion: { [self] _ in
             if count == 4 {
                 delegate?.timerStartOver()
@@ -52,7 +52,7 @@ class TimerStart: UIImageView {
     
     func sizeDecrease() {
         UIView.animate(withDuration: 0.5, animations: {
-            self.transform = CGAffineTransform(scaleX: 0.25, y: 0.25)
+            self.transform = CGAffineTransform(scaleX: 0.33, y: 0.33)
         }, completion: { _ in
             self.sizeIncrease()
         })

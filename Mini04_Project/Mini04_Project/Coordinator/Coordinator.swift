@@ -31,7 +31,7 @@ enum Sheet: String, Identifiable {
 }
 
 enum FullScreenCover: String, Identifiable {
-    case config, credits, profile
+    case config, credits, profile, howToPlay
     
     var id: String {
         self.rawValue
@@ -132,6 +132,8 @@ class Coordinator: ObservableObject {
             CreditsView()
         case .profile:
             ProfileView()
+        case .howToPlay:
+            HowToPlayView()
         }
     }
 }
