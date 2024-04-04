@@ -13,12 +13,16 @@ struct SingleButton: View {
     
     var body: some View {
         Button(action: {navigationCoordinator.push(.singleplayer)}, label: {
-            Text("Single")
-                .padding()
-                .foregroundStyle(.white)
-                .background(.gray)
-                .clipShape(.capsule)
-                .font(.title)
+            ZStack {
+                Image("MultiBackground")
+                .resizable()
+                .frame(width: screenWidth * 0.651163, height: screenHeight * 0.121245)
+                
+                Text("SinglePlayer")
+                    .padding()
+                    .font(.title)
+                    .foregroundStyle(.black)
+            }
         })
     }
 }

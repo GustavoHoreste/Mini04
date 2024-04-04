@@ -16,12 +16,16 @@ struct MultiplayerButton: View {
             multiplayerVM.creatLocalUser()
             navigationCoordinator.push(.multiplayerHub)
         } label: {
-            Text("MultiPlayer")
-                .padding()
-                .foregroundStyle(.white)
-                .background(.gray)
-                .clipShape(.capsule)
-                .font(.title)
+            ZStack {
+                Image("MultiBackground")
+                .resizable()
+                .frame(width: screenWidth * 0.651163, height: screenHeight * 0.121245)
+                
+                Text("MultiPlayer")
+                    .padding()
+                    .font(.title)
+                    .foregroundStyle(.black)
+            }
         }
     }
 }

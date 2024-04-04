@@ -12,52 +12,80 @@ struct MultiplayerHubView: View {
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
     
     var body: some View {
-        VStack{
-            Text("Hub Multiplayer")
-                .font(.title)
-                .fontWeight(.black)
-                .padding()
-            
-            //Menu
-            HStack {
-                BackButton()
-                Spacer()
-            }
-            .foregroundStyle(.gray)
-            .padding()
-            
-            Spacer()
-            
-            Button{ 
-                multiplayerVM.defineLocalPlayerHost(true)
-                navigationCoordinator.push(.lobby)
-            }label: {
-                Text("Criar Jogo")
+        GeometryReader{ proxy in
+            ZStack {
+                
+                Image("Background")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                    .frame(width: proxy.size.width, height: proxy.size.height, alignment: .center)
+                
+                VStack{
+                    
+                    HStack {
+                        BackButton()
+                        Spacer()
+                    }
+                    .foregroundStyle(.gray)
                     .padding()
-                    .foregroundStyle(.white)
-                    .background(.gray)
-                    .font(.title)
-                    .clipShape(.capsule)
-            }
-            
-            Button{
-                multiplayerVM.defineLocalPlayerHost(false)
-                multiplayerVM.sendLocalPlayerData()
-                navigationCoordinator.push(.lobby)
-            }label: {
-                Text("Entrar na partida")
-                    .padding()
-                    .foregroundStyle(.white)
-                    .background(multiplayerVM.sessionActivityIsWaiting ? .gray : .gray.opacity(0.5))
-                    .font(.title)
-                    .clipShape(.capsule)
-            }.navigationBarBackButtonHidden()
-                .disabled(!multiplayerVM.sessionActivityIsWaiting)
-//                .disabled(multiplayerVM.localPlayer?.isHost ?? false)
-            
-        }.task {
-            for await session in WhereWhereActivity.sessions(){
-                multiplayerVM.sharePlayVM.configurationSessin(session)
+                    
+                    Spacer()
+                    
+                    Button{
+                        multiplayerVM.defineLocalPlayerHost(true)
+                        navigationCoordinator.push(.lobby)
+                    }label: {
+                        ZStack {
+                            Image("MultiBackground")
+                                .resizable()
+                                .frame(width: screenWidth * 0.651163, height: screenHeight * 0.121245)
+                            
+                            Text("Criar Jogo")
+                                .padding()
+                                .foregroundStyle(.black)
+                                .font(.title)
+                        }
+                    }
+                    
+                    Button{
+                        multiplayerVM.defineLocalPlayerHost(false)
+                        multiplayerVM.sendLocalPlayerData()
+                        navigationCoordinator.push(.lobby)
+                    }label: {
+                        
+                        ZStack {
+                            if multiplayerVM.sessionActivityIsWaiting {
+                                Image("MultiBackground")
+                                    .resizable()
+                                    .frame(width: screenWidth * 0.651163, height: screenHeight * 0.121245)
+                            } else {
+                                Image("MultiBackgroundPressed")
+                                    .resizable()
+                                    .frame(width: screenWidth * 0.651163, height: screenHeight * 0.121245)
+                            }
+                            
+                            Text("Entrar na partida")
+                                .padding()
+                                .foregroundStyle(.black)
+                                .font(.title)
+                        }
+                        
+                        
+                        
+                    }.navigationBarBackButtonHidden()
+                        .disabled(!multiplayerVM.sessionActivityIsWaiting)
+                    //                .disabled(multiplayerVM.localPlayer?.isHost ?? false)
+                    
+                    Spacer()
+                    
+                    HowToPlayButton()
+                    
+                }.task {
+                    for await session in WhereWhereActivity.sessions(){
+                        multiplayerVM.sharePlayVM.configurationSessin(session)
+                    }
+                }
             }
         }
     }

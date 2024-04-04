@@ -67,7 +67,7 @@ class MatchConfigViewModel: ObservableObject{
 }
 
 struct MatchConfigView: View {
-    @StateObject private var matchConfigVM: MatchConfigViewModel = MatchConfigViewModel()
+    @EnvironmentObject private var matchConfigVM: MatchConfigViewModel
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
     @EnvironmentObject private var coordinator: Coordinator
     
@@ -106,22 +106,6 @@ struct MatchConfigView: View {
             Toggle("Cores", isOn: $matchConfigVM.coresIsChoise)
             
             Spacer()
-            
-            Button{ matchConfigVM.saveConfigMach()} label: {
-                Text("Confirmar")
-                    .padding()
-                    .foregroundStyle(.white)
-                    .background(.gray)
-                    .font(.title2)
-            }
-            
-            Button{ matchConfigVM.reset()} label: {
-                Text("Cancelar")
-                    .padding()
-                    .foregroundStyle(.white)
-                    .background(.gray)
-                    .font(.title2)
-            }
             
         }.padding()
             .onAppear{
