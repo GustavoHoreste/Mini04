@@ -53,6 +53,7 @@ class TimerRound: UILabel {
     
     func pauseTimer() {
         timer.invalidate()
+        
     }
     
     public func config(_ amouthTimer: Double){

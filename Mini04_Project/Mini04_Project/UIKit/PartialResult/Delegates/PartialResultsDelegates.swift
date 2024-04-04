@@ -71,8 +71,9 @@ extension PartialResultViewModel: ReadyButtonDelegate {
             self.view.multiVM.sendLocalUserStatus()
         } else if view.multiVM.validateAllUsersStarted() && view.multiVM.localPlayer?.isHost == true{
             self.view.multiVM.sendLocalUserStatus()
-            self.view.navigationCoordinator.pop()
-            
+            self.view.gameplayVM.timerStartOver()
+//            self.view.navigationCoordinator.pop()
+            self.view.navigationController?.popViewController(animated: true)
         }else{
             let alertController = UIAlertController(title: "Jogadores não preparados", message: "Para começar o jogo, todos devem estar prontos.", preferredStyle: .alert)
 

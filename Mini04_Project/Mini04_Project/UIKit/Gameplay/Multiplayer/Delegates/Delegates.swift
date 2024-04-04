@@ -13,7 +13,7 @@ import CoreImage
 extension GameplayViewModel {
     func setupDelegate() {
         //MARK: - Camera
-//        self.camera = CameraModel(delegate: self)
+        self.camera = CameraModel(delegate: self)
         changeButton.delegate = self
         changeCount.delegate = self
         photoButton.delegate = self
@@ -97,6 +97,7 @@ extension GameplayViewModel: ItemsDelegate {
     }
 }
 
+//srtar gameplay
 extension GameplayViewModel: TimerStartDelegate {
     func timerStartOver() {
         fadeBackground.removeFromSuperview()
@@ -104,6 +105,8 @@ extension GameplayViewModel: TimerStartDelegate {
         timerObject.playTimer()
         configMatch()
         objectName.isHidden = false
+        self.configMatch()
+        self.configTimeMatch()
         controller!.view.isUserInteractionEnabled = true
     }
 }
@@ -119,7 +122,6 @@ extension GameplayViewModel: TimerRoundDelegate {
         self.timerObject.timer.invalidate()
         self.timerRound.timer.invalidate()
         
-        print("Esse e o valor da quantidade de rounds\(self.multiVM?.configMatch.amoutRound as Any) e o valor de round e \(self.round.number)")
         guard let multiVMNotOpcional = self.multiVM else {return}
         
         if self.round.number >= multiVMNotOpcional.configMatch.amoutRound{
@@ -131,7 +133,7 @@ extension GameplayViewModel: TimerRoundDelegate {
             
             nextScreen?.partialResultVM.timerBeforeButtonReady.startCount()
             nextScreen?.partialResultVM.readyButton.toggleIsHiden()
-            
+            self.round.number += 1
             self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
         }
         
@@ -140,6 +142,10 @@ extension GameplayViewModel: TimerRoundDelegate {
 //        }, completion: { [self] _ in
 //            
 //        })
+    }
+    
+    public func reseatGame(){
+        
     }
 }
 
@@ -171,10 +177,10 @@ extension GameplayViewModel: PowersButtonDelegate {
         case .shuffleWord:
             items.shufflePower()
             animatePower(icon: UIImage(systemName: "4.circle.fill")!, name: "Shuffle")
-        case .changeCamera: break
+        case .changeCamera:
             //MARK: - Camera
-//            camera.changeCamera()
-//            animatePower(icon: UIImage(systemName: "5.circle.fill")!, name: "Switch")
+            camera.changeCamera()
+            animatePower(icon: UIImage(systemName: "5.circle.fill")!, name: "Switch")
         }
     }
     

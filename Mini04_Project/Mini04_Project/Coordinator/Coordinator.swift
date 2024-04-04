@@ -83,9 +83,6 @@ class Coordinator: ObservableObject {
         case .finalRank:
             FinalResultView()
         case .gameplay:
-            //
-            
-            
             GameplayView()
         case .multiplayerHub:
             MultiplayerHubView()
