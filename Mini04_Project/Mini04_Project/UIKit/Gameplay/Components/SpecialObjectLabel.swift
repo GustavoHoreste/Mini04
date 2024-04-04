@@ -16,7 +16,7 @@ class SpecialObjectLabel: UILabel {
         
         translatesAutoresizingMaskIntoConstraints = false
         font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
-        textColor = .label
+        textColor = .black
         
     }
     

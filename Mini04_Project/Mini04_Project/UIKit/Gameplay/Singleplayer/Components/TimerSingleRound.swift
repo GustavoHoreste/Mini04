@@ -12,7 +12,7 @@ class TimerSingleRound: UILabel {
     var delegate: TimerRoundDelegate?
     
     var minutos: Int = 0
-    var segundos: Int = 20
+    var segundos: Int = 5
     
     lazy var timer: Timer = {
         let t = Timer()
@@ -62,6 +62,7 @@ class TimerSingleRound: UILabel {
         }
         
         if minutos == 0 && segundos == 0 {
+            pauseTimer()
             delegate?.timerRoundOver()
         }
     }

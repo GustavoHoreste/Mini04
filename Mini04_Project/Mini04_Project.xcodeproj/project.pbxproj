@@ -42,6 +42,7 @@
 		C0393D602BACF05900E97810 /* LogoImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0393D5F2BACF05900E97810 /* LogoImage.swift */; };
 		C0393D842BAD23FB00E97810 /* PreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0393D832BAD23FB00E97810 /* PreViewController.swift */; };
 		C03D09472BBDEEB400D63BA5 /* DelegatesRC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D09462BBDEEB400D63BA5 /* DelegatesRC.swift */; };
+		C03D09492BBF0AF700D63BA5 /* SingleRecButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D09482BBF0AF700D63BA5 /* SingleRecButton.swift */; };
 		C060E4052BBB32A4009F1250 /* TimerStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4042BBB32A4009F1250 /* TimerStart.swift */; };
 		C060E4072BBB3795009F1250 /* BackgroundFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4062BBB3795009F1250 /* BackgroundFade.swift */; };
 		C060E4092BBB55B7009F1250 /* AlertPowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4082BBB55B7009F1250 /* AlertPowerView.swift */; };
@@ -155,6 +156,7 @@
 		C0393D5F2BACF05900E97810 /* LogoImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoImage.swift; sourceTree = "<group>"; };
 		C0393D832BAD23FB00E97810 /* PreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreViewController.swift; sourceTree = "<group>"; };
 		C03D09462BBDEEB400D63BA5 /* DelegatesRC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegatesRC.swift; sourceTree = "<group>"; };
+		C03D09482BBF0AF700D63BA5 /* SingleRecButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleRecButton.swift; sourceTree = "<group>"; };
 		C060E4042BBB32A4009F1250 /* TimerStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStart.swift; sourceTree = "<group>"; };
 		C060E4062BBB3795009F1250 /* BackgroundFade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFade.swift; sourceTree = "<group>"; };
 		C060E4082BBB55B7009F1250 /* AlertPowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPowerView.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				C0CBCB472BB20A610020E594 /* HighscoreLabel.swift */,
 				C0CBCB492BB20BDE0020E594 /* SingleResultLabel.swift */,
 				C0CBCB4D2BB20F4C0020E594 /* ResultMenuButton.swift */,
+				C03D09482BBF0AF700D63BA5 /* SingleRecButton.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -849,6 +852,7 @@
 				C0CBCB4A2BB20BDE0020E594 /* SingleResultLabel.swift in Sources */,
 				C0CBCB452BB2094B0020E594 /* RecordViewModel.swift in Sources */,
 				C0CBCB3C2BAE14870020E594 /* DelegatesSP.swift in Sources */,
+				C03D09492BBF0AF700D63BA5 /* SingleRecButton.swift in Sources */,
 				2E3A74472BAB62410026BE07 /* FirstPlaceLabel.swift in Sources */,
 				C09107092BAA066900037EAB /* PowersButton.swift in Sources */,
 				2E3A74392BAA126A0026BE07 /* TimerRound.swift in Sources */,

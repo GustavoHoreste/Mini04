@@ -12,9 +12,11 @@ class HighscoreLabel: UILabel {
     init() {
         super.init(frame: .zero)
         
+        guard let customFont = UIFont(name: "FafoSans-Bold", size: 64) else {fatalError()}
+        
         translatesAutoresizingMaskIntoConstraints = false
-        font = .systemFont(ofSize: 30, weight: .semibold)
-        textColor = .white
+        font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
+        textColor = .black
         textAlignment = .center
         numberOfLines = 0
         
@@ -25,7 +27,7 @@ class HighscoreLabel: UILabel {
         if points > UserDefaults.standard.integer(forKey: "highscore") {
             UserDefaults.standard.setValue(points, forKey: "highscore")
         }
-        text = "Highscore: \n\(UserDefaults.standard.integer(forKey: "highscore"))"
+        text = "\(UserDefaults.standard.integer(forKey: "highscore"))"
     }
     
     required init?(coder: NSCoder) {

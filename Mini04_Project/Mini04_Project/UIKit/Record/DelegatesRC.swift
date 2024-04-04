@@ -10,11 +10,18 @@ import Foundation
 extension RecordViewModel {
     func setupDelegate() {
         menu.delegate = self
+//        restart.delegate = self
     }
 }
 
 extension RecordViewModel: ResultMenuButtonDelegate {
     func menuAction() {
         controller?.navigationCoordinator.push(.menu)
+    }
+}
+
+extension RecordViewModel: SingleRecButtonDelegate {
+    func recomecarAction() {
+        print("recACtion")
     }
 }

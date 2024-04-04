@@ -22,9 +22,9 @@ class RoundLabel: UILabel {
         guard let customFont = UIFont(name: "FafoSans-Regular", size: 24) else {fatalError()}
         
         translatesAutoresizingMaskIntoConstraints = false
-        font = .systemFont(ofSize: 15, weight: .regular)
         font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
         textColor = .black
+        text = "Round \(number)"
         
     }
     

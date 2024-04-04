@@ -18,18 +18,20 @@ class SingleResultLabel: UILabel {
     lazy var pointsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 30, weight: .semibold)
+        label.font = .systemFont(ofSize: 64, weight: .semibold)
         label.textColor = .white
-        label.text = "Score:"
+        label.text = ""
         return label
     }()
     
     init() {
         super.init(frame: .zero)
         
+        guard let customFont = UIFont(name: "FafoSans-Bold", size: 64) else {fatalError()}
+        
         translatesAutoresizingMaskIntoConstraints = false
-        font = .systemFont(ofSize: 30, weight: .regular)
-        textColor = .white
+        font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
+        textColor = .black
         
         addSubview(pointsLabel)
         

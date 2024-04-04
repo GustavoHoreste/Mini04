@@ -37,7 +37,7 @@ class GameplayViewModel: NSObject {
     var timerStart = TimerStart()
     var fadeBackground = BackgroundFade()
     var alert = AlertPowerView(icon: UIImage(), name: "")
-    
+
     var pointsMold = AnyImageView(imagem: UIImage(named: "PntsMold"))
     var roundMold = AnyImageView(imagem: UIImage(named: "PntsMold"))
     var timerObjMold = AnyImageView(imagem: UIImage(named: "TimerObjMold"))

@@ -27,7 +27,7 @@ class TimerRound: UILabel {
     
     var currentSaturation: CGFloat = 0 {
         didSet {
-            textColor = UIColor(hue: 0.0, saturation: currentSaturation, brightness: 1.0, alpha: 1.0)
+            textColor = UIColor(hue: 0.0, saturation: currentSaturation, brightness: 0.0, alpha: 1.0)
         }
     }
     
@@ -36,7 +36,7 @@ class TimerRound: UILabel {
     init() {
         super.init(frame: .zero)
         
-        guard let customFont = UIFont(name: "FafoSans-Regular", size: 20) else {fatalError()}
+        guard let customFont = UIFont(name: "FafoSans-Bold", size: 20) else {fatalError()}
         
         translatesAutoresizingMaskIntoConstraints = false
         font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
