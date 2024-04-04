@@ -109,7 +109,7 @@ extension LobbyView{
         if multiplayerVM.localPlayer?.isHost == true{
             Button{ verifyStausSession() }label: {
                 ZStack{
-                    Image("ButtonBack")
+                    Image(.buttonBack)
                         .resizable()
                         .frame(width: screenWidth * 0.651163, height: screenHeight * 0.121245)
                     Text("Adicione seu amigo")

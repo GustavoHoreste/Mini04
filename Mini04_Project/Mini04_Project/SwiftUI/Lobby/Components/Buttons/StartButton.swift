@@ -58,7 +58,7 @@ struct StartButton: View {
                 self.startButtonVM.verifyUserIsHost()
             } label: {
                 ZStack{
-                    Image("StartButton")
+                    Image(.startButton)
                         .resizable()
                         .scaledToFill()
                         .padding()
