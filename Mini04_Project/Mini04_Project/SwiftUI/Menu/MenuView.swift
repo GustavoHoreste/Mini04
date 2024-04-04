@@ -13,42 +13,53 @@ struct MenuView: View {
     @State var isActive: Bool = false
     
     var body: some View {
-        ZStack {
-            VStack {
-                HStack {
+        GeometryReader { geo in
+            ZStack {
+                Image("Background")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
+                    .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
+                
+                VStack {
+                    HStack {
+                        
+                        Spacer()
+                        
+                        Button {
+                            isActive = true
+                        } label: {
+                            ZStack {
+                                Image("ConfigBackground")
+                                    .resizable()
+                                    .frame(width: screenWidth * 0.114, height: screenHeight * 0.05284334763)
+                                Image("ConfigIcon")
+                                    .resizable()
+                                    .frame(width: screenWidth * 0.077116, height: screenHeight * 0.034785)
+                            }
+                        }
+                        
+                    }.padding()
                     
                     Spacer()
                     
-                    Button {
-                        isActive = true
-                    } label: {
-                        Image(systemName: "gearshape.circle.fill")
-                            .resizable()
-                            .frame(width: 70, height: 70)
-                    }
+                    Circle()
+                        .foregroundStyle(.red)
+                        .frame(width: 310, height: 310)
                     
-                }.padding()
+                    Spacer()
+                    
+                    MultiplayerButton()
+                    
+                    SingleButton()
+                    
+                    Spacer()
+                }
+                .navigationBarBackButtonHidden()
                 
-                Spacer()
-                
-            
-                
-                Circle()
-                    .foregroundStyle(.red)
-                    .frame(width: 310, height: 310)
-                
-                Spacer()
-                
-                MultiplayerButton()
-                
-                SingleButton()
-                
-                Spacer()
-            }
-            .navigationBarBackButtonHidden()
-        
-            if isActive {
-                PopUpConfig(isActive: $isActive)
+                if isActive {
+                    PopUpConfig(isActive: $isActive)
+                }
             }
         }
         

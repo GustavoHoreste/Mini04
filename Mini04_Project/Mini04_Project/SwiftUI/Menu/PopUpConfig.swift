@@ -11,26 +11,35 @@ struct PopUpConfig: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     
     @State private var offset: CGFloat = 1000
-    @State var isSoundOn = false
-    @State var isSoundEffectsOn = false
-    @State var isHapticsOn = false
+    @State var isMusicOn = true
+    @State var isSoundEffectsOn = true
+    @State var isHapticsOn = true
     
     @Binding var isActive: Bool
-
-
+    
+    
     var body: some View {
         ZStack {
             Color(.black)
-                .opacity(0.9)
+                .opacity(0.5)
                 .onTapGesture {
                     close()
                 }
-
+            
+            Image("PopUpBackground") 
+                .offset(x: 0, y: offset)
+                .onAppear {
+                withAnimation(.spring()) {
+                    offset = 0
+                }
+            }
+                
+            
             VStack {
-
+                
                 HStack {
                     Spacer()
-                    SoundOffButton(isSoundOn: $isSoundOn)
+                    SoundOffButton(isMusicOn: $isMusicOn)
                     Spacer()
                     SoundEffectsOff(isSoundEffectsOn: $isSoundEffectsOn)
                     Spacer()
@@ -39,7 +48,7 @@ struct PopUpConfig: View {
                 }
                 .padding()
                 .transition(.opacity)
-
+                
                 ProfileButtonPopUp()
                 
                 Spacer()
@@ -48,23 +57,20 @@ struct PopUpConfig: View {
                 
             }
             .fixedSize(horizontal: false, vertical: true)
-            .padding()
-            .background(.white)
-            .clipShape(RoundedRectangle(cornerRadius: 20))
+            .padding(40)
             .overlay(alignment: .topTrailing) {
                 Button {
                     close()
                 } label: {
-                    Image(systemName: "xmark.circle")
-                        .font(.title)
-                        .fontWeight(.medium)
+                    Image("CloseButton")
                 }
                 .tint(.black)
                 .padding()
+                .padding(.trailing, 30)
             }
-            .shadow(radius: 20)
+            .shadow(radius: 100)
             .padding(30)
-            .offset(x: 0, y: offset)
+
             .onAppear {
                 withAnimation(.spring()) {
                     offset = 0
@@ -73,10 +79,10 @@ struct PopUpConfig: View {
         }
         .ignoresSafeArea()
     }
-
+    
     func close() {
         withAnimation(.spring()) {
-            offset = 500
+            offset = 800
             isActive = false
         }
     }

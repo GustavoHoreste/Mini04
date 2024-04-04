@@ -9,16 +9,20 @@ import SwiftUI
 
 struct SoundOffButton: View {
     
-    @Binding var isSoundOn: Bool
+    @Binding var isMusicOn: Bool
     
     var body: some View {
         
-        Toggle("SoundOff", systemImage: isSoundOn ? "music.quarternote.3" : "music.note", isOn: $isSoundOn )
-            .font(.title)
-            .tint(.purple)
-            .toggleStyle(.button)
-            .labelStyle(.iconOnly)
-            .contentTransition(.symbolEffect)
+        Button(action: {
+            self.isMusicOn.toggle()
+        }) {
+            
+            Image(self.isMusicOn == true ? "MusicOn" : "MusicOff")
+                            .resizable()
+                            .frame(width: 60, height: 60)
+        }
+        
     }
+    
 }
 

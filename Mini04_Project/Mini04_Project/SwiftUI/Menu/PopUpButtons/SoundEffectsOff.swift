@@ -11,12 +11,14 @@ struct SoundEffectsOff: View {
     @Binding var isSoundEffectsOn: Bool
     
     var body: some View {
-        Toggle("SoundOff", systemImage: isSoundEffectsOn ? "speaker.wave.2.circle.fill" : "speaker.slash.fill", isOn: $isSoundEffectsOn )
-            .font(.title)
-            .tint(.purple)
-            .toggleStyle(.button)
-            .labelStyle(.iconOnly)
-            .contentTransition(.symbolEffect)
+        Button(action: {
+            self.isSoundEffectsOn.toggle()
+        }) {
+            
+            Image(self.isSoundEffectsOn == true ? "SoundOn" : "SoundOff")
+                            .resizable()
+                            .frame(width: 60, height: 60)
+        }
     }
 }
 
