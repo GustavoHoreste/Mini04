@@ -13,7 +13,7 @@ import CoreImage
 extension GameplayViewModel {
     func setupDelegate() {
         //MARK: - Camera
-//        self.camera = CameraModel(delegate: self)
+        self.camera = CameraModel(delegate: self)
         changeButton.delegate = self
         changeCount.delegate = self
         photoButton.delegate = self
@@ -29,6 +29,7 @@ extension GameplayViewModel {
     }
 }
 
+//MARK: - CHANGE OBJETO QUANDO APERTA NO BOTAO HAPTICS AQUI
 extension GameplayViewModel: ChangeButtonDelegate {
     func changeButtonAction() {
         items.chooseObject()
@@ -57,6 +58,7 @@ extension GameplayViewModel: PhotoButtonDelegate {
                 let returnedTargetColor = try await model.verifyColor(image: cameraImage)
                 print(returnedTargetObject)
                 print(returnedTargetColor)
+                //MARK: - QUANDO A PESSOA ACERTA UM OBJETO HAPTICS AQUI
                 if returnedTargetObject == items.toFindObject || returnedTargetColor == items.toFindObject{
                     DispatchQueue.main.async{
                         self.items.findedObject()
@@ -65,6 +67,7 @@ extension GameplayViewModel: PhotoButtonDelegate {
                         self.items.shuffleIsOn = false
                     }
                 }
+                //MARK: - QUANDO A PESSOA ACERTA O OBJETO ESPECIAL HAPTICS AQUI
                 if await special.specialIsOn && (items.specialObject == returnedTargetObject) && multiVM?.configMatch.powerUps == true{
                     items.specialObject = ""
                     let specialObject = SpecialObject(objectName: items.specialObject, isHit: true)
@@ -143,7 +146,7 @@ extension GameplayViewModel: TimerRoundDelegate {
     }
 }
 
-
+//MARK: - CHANGE OBJETO QUANDO OBJETO ACABA HAPTICS AQUI
 extension GameplayViewModel: TimerObjectDelegate {
     func timerObjectOver() {
         items.chooseObject()
@@ -171,10 +174,10 @@ extension GameplayViewModel: PowersButtonDelegate {
         case .shuffleWord:
             items.shufflePower()
             animatePower(icon: UIImage(systemName: "4.circle.fill")!, name: "Shuffle")
-        case .changeCamera: break
+        case .changeCamera:
             //MARK: - Camera
-//            camera.changeCamera()
-//            animatePower(icon: UIImage(systemName: "5.circle.fill")!, name: "Switch")
+            camera.changeCamera()
+            animatePower(icon: UIImage(systemName: "5.circle.fill")!, name: "Switch")
         }
     }
     
@@ -185,24 +188,24 @@ extension GameplayViewModel: PowersButtonDelegate {
         switch powerType{
         case .freeze:
             //Função de congelar a câmera
-            self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
-            //            self.reciveHidrance(powerType: .freeze)
+//            self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
+                        self.reciveHidrance(powerType: .freeze)
         case .switchWord:
             //Função de trocar objeto
-            self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
-            //            self.reciveHidrance(powerType: .switchWord)
+//            self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
+                        self.reciveHidrance(powerType: .switchWord)
         case .subtrac:
             //Função de subtrair os pontos
-            self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
-            //            self.reciveHidrance(powerType: .subtrac)
+//            self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
+                        self.reciveHidrance(powerType: .subtrac)
         case .changeCamera:
             //Função que troca a câmera
-            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
-            //            self.reciveHidrance(powerType: .changeCamera)
+//            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
+                        self.reciveHidrance(powerType: .changeCamera)
         case .shuffleWord:
             //Função que embaralha o nome do objeto
-            self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
-            //            self.reciveHidrance(powerType: .shuffleWord)
+//            self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
+                        self.reciveHidrance(powerType: .shuffleWord)
         }
     }
     
@@ -227,13 +230,14 @@ extension GameplayViewModel: PowersButtonDelegate {
                 UIView.animate(withDuration: 1.0, animations: {
                     self.alert.center.x += 150
                 }) { _ in
-                    
+                    self.alert.translatesAutoresizingMaskIntoConstraints = false
                 }
             }
         }
     }
 }
 
+//MARK: - QUANDO O OBJETO ESPECIAL APARECE HAPTICS AQUI
 extension GameplayViewModel: SpecialObjectImageDelegate {
     func specialAppeared() {
         //Precisar fazer algo quando o Objeto Especial aparecer
@@ -260,29 +264,34 @@ extension GameplayViewModel: PowersStackViewDelegate {
             power.centerYAnchor.constraint(equalTo: controller.view.centerYAnchor, constant: -80),
         ])
         
-        if powers.numberOfPowers == 2 {
+        if powers.firstMold == nil {
+//            powers.firstMold = power.powerType
             UIView.animate(withDuration: 1.0, animations: {
                 power.alpha = 1
             }) { _ in
                 power.translatesAutoresizingMaskIntoConstraints = true
                 UIView.animate(withDuration: 1.0, animations: {
-                    power.center = self.powers.center
-                    power.center.x = self.powers.center.x + 65
+                    power.center.y = self.powers.center.y + 30
+                    power.center.x = self.powers.center.x - 80
                 }) { _ in
+                    print("CHEGOU FIRSTMOLD")
                     power.removeFromSuperview()
-                    self.powers.usersPowers.last!.alpha = 1
+                    self.powers.usersPowers.first!.alpha = 1
                 }
             }
             return
         }
         
+//        powers.secondMold = power.powerType
         UIView.animate(withDuration: 1.0, animations: {
             power.alpha = 1
         }) { _ in
             power.translatesAutoresizingMaskIntoConstraints = true
             UIView.animate(withDuration: 1.0, animations: {
-                power.center = self.powers.center
+                power.center.y = self.powers.center.y + 30
+                power.center.x = self.powers.center.x + 80
             }) { _ in
+                print("CHEGOU SECONDMOLD")
                 power.removeFromSuperview()
                 self.powers.usersPowers.last!.alpha = 1
             }

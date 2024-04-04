@@ -14,6 +14,21 @@ class GameplayViewController: UIViewController {
     var multiVM: MultiplayerManagerViewModel
     var navigationCoordinator: Coordinator
     
+    lazy var testButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.configuration = .filled()
+        button.configuration?.baseBackgroundColor = .systemPink
+        button.configuration?.title = "Add Power"
+        button.addTarget(self, action: #selector(testAction), for: .touchUpInside)
+        button.widthAnchor.constraint(equalToConstant: 100).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 100).isActive = true
+        return button
+    }()
+    
+    @objc func testAction() {
+        gameplayVM.powers.addPowers()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +43,9 @@ class GameplayViewController: UIViewController {
         setupView()
         gameplayVM.timerStart.sizeIncrease()
         
+        view.addSubview(testButton)
+        testButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        testButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     
     init(multiVM: MultiplayerManagerViewModel, navigationCoordinator: Coordinator) {

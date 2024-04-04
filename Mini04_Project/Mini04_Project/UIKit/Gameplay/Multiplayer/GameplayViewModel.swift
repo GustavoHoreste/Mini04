@@ -17,7 +17,7 @@ class GameplayViewModel: NSObject {
     var multiVM: MultiplayerManagerViewModel?
     
     //MARK: - Camera
-//    var camera: CameraModel!
+    var camera: CameraModel!
     var items = ItemsToFindModel()
     var model = MlModel()
     
@@ -33,7 +33,7 @@ class GameplayViewModel: NSObject {
     var timerObject = TimerObject()
     var powers = PowersStackView()
     var crosshair = CrosshairImage()
-//    var logo = LogoImage(isIncreased: false)
+    var logo = LogoImage(isIncreased: false)
     var timerStart = TimerStart()
     var fadeBackground = BackgroundFade()
     var alert = AlertPowerView(icon: UIImage(), name: "")
