@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "PhotoButton.pdf",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

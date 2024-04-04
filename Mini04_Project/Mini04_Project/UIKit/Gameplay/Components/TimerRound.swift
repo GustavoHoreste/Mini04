@@ -23,13 +23,15 @@ class TimerRound: UILabel {
         return t
     }()
     
-    let startColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 1.0, alpha: 1.0)
+    let startColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.0, alpha: 1.0)
     
     var currentSaturation: CGFloat = 0 {
         didSet {
             textColor = UIColor(hue: 0.0, saturation: currentSaturation, brightness: 1.0, alpha: 1.0)
         }
     }
+    
+    var currentBrightness: CGFloat = 0
     
     init() {
         super.init(frame: .zero)
@@ -65,7 +67,7 @@ class TimerRound: UILabel {
             self.segundos = Int(amouthTimer)
         }
         
-        playTimer()
+        showText()
     }
     
     @objc func step() {
@@ -96,7 +98,10 @@ class TimerRound: UILabel {
     }
     
     func showText() {
-        if segundos >= 0 && segundos < 10 {
+        if segundos == 60 {
+            text = "\(minutos+1):00"
+        }
+        else if segundos >= 0 && segundos < 10 {
             text = "\(minutos):0\(segundos)"
         } else {
             text = "\(minutos):\(segundos)"
@@ -105,6 +110,7 @@ class TimerRound: UILabel {
     
     func changeColor() {
         // Calcula a próxima etapa da transição de cor
+        currentBrightness += 1.0 / 20.0
         currentSaturation += 1.0 / 20.0 // 20 etapas no total
     }
     

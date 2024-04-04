@@ -17,17 +17,24 @@ class SingleViewModel: NSObject {
     var items = ItemsToFindModel()
     var model = MlModel()
     
-    lazy var objectName = ObjectName()
-    lazy var changeButton = ChangeButton()
-    lazy var photoButton = PhotoButton()
-    lazy var cameraImage = CameraImageView()
-    lazy var pontos = PontosLabel()
-    lazy var profile = ProfileImage()
-    lazy var round = RoundLabel()
-    lazy var timerRound = TimerSingleRound()
-    lazy var timerObject = TimerObject()
-    lazy var crosshair = CrosshairImage()
-    lazy var logo = LogoImage(isIncreased: false)
+    var objectName = ObjectName()
+    var changeButton = ChangeButton()
+    var changeCount = ChangeCountLabel()
+    var photoButton = PhotoButton()
+    var cameraImage = CameraImageView()
+    var pontos = PontosLabel()
+    var round = RoundLabel()
+    var timerRound = TimerSingleRound()
+    var timerObject = TimerObject()
+    var crosshair = CrosshairImage()
+    var logo = LogoImage(isIncreased: false)
+    var timerStart = TimerStart()
+    var fadeBackground = BackgroundFade()
+    
+    var pointsMold = AnyImageView(imagem: UIImage(named: "PntsMold"))
+    var roundMold = AnyImageView(imagem: UIImage(named: "PntsMold"))
+    var timerObjMold = AnyImageView(imagem: UIImage(named: "TimerObjMold"))
+    var nameObjMold = AnyImageView(imagem: UIImage(named: "NameObjMold"))
     
     var context: CIContext = CIContext()
     
@@ -35,7 +42,6 @@ class SingleViewModel: NSObject {
         super.init()
         setupDelegate()
         
-        objectName.text = items.toFindObject
-        round.text = "Round Time"
+        round.text = "Tempo"
     }
 }

@@ -15,7 +15,9 @@ class ObjectName: UILabel {
         translatesAutoresizingMaskIntoConstraints = false
         font = .systemFont(ofSize: 20, weight: .bold)
         text = "Nenhum"
-        textColor = .label
+        textColor = .black
+        
+        isHidden = true
         
     }
     

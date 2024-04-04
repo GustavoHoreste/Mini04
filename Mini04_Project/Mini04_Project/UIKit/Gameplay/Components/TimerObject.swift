@@ -23,13 +23,15 @@ class TimerObject: UILabel {
         return t
     }()
     
-    let startColor = UIColor(hue: 120.0/360.0, saturation: 1.0, brightness: 1.0, alpha: 1.0) // Verde
+    let startColor = UIColor(hue: 0.0, saturation: 0.0, brightness: 0.0, alpha: 1.0)
     
-    var currentHue: CGFloat = 120.0/360.0{
+    var currentSaturation: CGFloat = 120.0/360.0{
         didSet {
-            textColor = UIColor(hue: currentHue, saturation: 1.0, brightness: 1.0, alpha: 1.0)
+            textColor = UIColor(hue: 0.0, saturation: currentSaturation, brightness: currentBrightness, alpha: 1.0)
         }
     }
+    
+    var currentBrightness: CGFloat = 0
     
     init() {
         super.init(frame: .zero)
@@ -39,7 +41,6 @@ class TimerObject: UILabel {
         textColor = startColor
         
         showText()
-        playTimer()
     }
     
     required init?(coder: NSCoder) {
@@ -56,7 +57,8 @@ class TimerObject: UILabel {
     func resetTimerObject() {
         segundos = 20
         showText()
-        currentHue = 120.0/360.0
+        currentBrightness = 0.0
+        currentSaturation = 0.0
     }
     
     @objc func step() {
@@ -98,6 +100,7 @@ class TimerObject: UILabel {
     
     func changeColor() {
         // Calcula a próxima etapa da transição de cor
-        currentHue -= (120.0/360.0 - 0.0/360.0) / 10.0 // 10 etapas no total
+        currentBrightness += 1.0 / 10.0
+        currentSaturation += 1.0 / 10.0 // 15 etapas no total
     }
 }

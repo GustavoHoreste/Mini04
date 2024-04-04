@@ -14,6 +14,7 @@ extension GameplayViewController {
         view.addSubview(gameplayVM.cameraImage)
         view.addSubview(gameplayVM.objectName)
         view.addSubview(gameplayVM.changeButton)
+        view.addSubview(gameplayVM.changeCount)
         view.addSubview(gameplayVM.photoButton)
         view.addSubview(gameplayVM.profile)
         view.addSubview(gameplayVM.pontos)
@@ -24,6 +25,9 @@ extension GameplayViewController {
         view.addSubview(gameplayVM.powers)
         view.addSubview(gameplayVM.crosshair)
         view.addSubview(gameplayVM.logo)
+        view.addSubview(gameplayVM.fadeBackground)
+        view.addSubview(gameplayVM.timerStart)
+        view.addSubview(gameplayVM.alert)
                 
         NSLayoutConstraint.activate([
             gameplayVM.objectName.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -32,8 +36,11 @@ extension GameplayViewController {
             gameplayVM.changeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.changeButton.topAnchor.constraint(equalTo: gameplayVM.objectName.bottomAnchor, constant: 10),
             
+            gameplayVM.changeCount.trailingAnchor.constraint(equalTo: gameplayVM.changeButton.trailingAnchor),
+            gameplayVM.changeCount.bottomAnchor.constraint(equalTo: gameplayVM.changeButton.bottomAnchor),
+            
             gameplayVM.photoButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameplayVM.photoButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
+            gameplayVM.photoButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -80),
             
             gameplayVM.cameraImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.cameraImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
@@ -59,13 +66,25 @@ extension GameplayViewController {
             gameplayVM.timerObject.bottomAnchor.constraint(equalTo: gameplayVM.objectName.topAnchor, constant: -10),
             
             gameplayVM.powers.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameplayVM.powers.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            gameplayVM.powers.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             
             gameplayVM.crosshair.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.crosshair.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
             gameplayVM.logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.logo.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            gameplayVM.fadeBackground.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            gameplayVM.fadeBackground.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            gameplayVM.fadeBackground.widthAnchor.constraint(equalTo: view.widthAnchor),
+            gameplayVM.fadeBackground.heightAnchor.constraint(equalTo: view.heightAnchor),
+            
+            gameplayVM.timerStart.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            gameplayVM.timerStart.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            gameplayVM.alert.leadingAnchor.constraint(equalTo: view.trailingAnchor),
+            gameplayVM.alert.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -80),
+        
         ])
     }
     

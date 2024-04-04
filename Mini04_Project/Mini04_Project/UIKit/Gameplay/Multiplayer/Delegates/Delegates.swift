@@ -12,13 +12,17 @@ import CoreImage
 
 extension GameplayViewModel {
     func setupDelegate() {
+        //MARK: - Camera
         self.camera = CameraModel(delegate: self)
         changeButton.delegate = self
+        changeCount.delegate = self
         photoButton.delegate = self
         items.delegate = self
         timerRound.delegate = self
         timerObject.delegate = self
         special.delegate = self
+        powers.delegate = self
+        timerStart.delegate = self
         for power in powers.allPowers {
             power.delegate = self
         }
@@ -31,8 +35,16 @@ extension GameplayViewModel: ChangeButtonDelegate {
         objectName.text = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
         timerObject.resetTimerObject()
         items.shuffleIsOn = false
-        changeButton.subtractCount()
+        changeCount.subtractCount()
+        changeButton.rotateAnimate()
         print("Change Touched")
+    }
+}
+
+extension GameplayViewModel: ChangeCountLabelDelegate {
+    func countEnded() {
+        changeButton.alpha = 0.3
+        changeButton.isUserInteractionEnabled = false
     }
 }
 
@@ -46,8 +58,8 @@ extension GameplayViewModel: PhotoButtonDelegate {
                 print(returnedTargetObject)
                 print(returnedTargetColor)
                 if returnedTargetObject == items.toFindObject || returnedTargetColor == items.toFindObject{
-                    items.findedObject()
                     DispatchQueue.main.async{
+                        self.items.findedObject()
                         self.objectName.text = self.items.shuffleIsOn ? self.items.toFindShuffled : self.items.toFindObject
                         self.timerObject.resetTimerObject()
                         self.items.shuffleIsOn = false
@@ -75,6 +87,7 @@ extension GameplayViewModel: PhotoButtonDelegate {
 //MARK: - Incrementa pontos do jogador
 extension GameplayViewModel: ItemsDelegate {
     func findedObjectAction() {
+        pontos.plusAnimate(color: .green)
         multiVM?.localPlayer?.points += 1
         upadatePoint((multiVM?.localPlayer!.points)!)
     }
@@ -84,21 +97,40 @@ extension GameplayViewModel: ItemsDelegate {
     }
 }
 
+extension GameplayViewModel: TimerStartDelegate {
+    func timerStartOver() {
+        fadeBackground.removeFromSuperview()
+        timerRound.playTimer()
+        timerObject.playTimer()
+        configMatch()
+        objectName.isHidden = false
+        controller!.view.isUserInteractionEnabled = true
+    }
+}
+
 extension GameplayViewModel: TimerRoundDelegate {
     func timerRoundOver() {
+        print(self.controller?.navigationController?.viewControllers.count as Any)
+        
+        self.multiVM?.resetPowerUpsAndStatus()
+        
         logo.isHidden = false
+        
         UIView.animate(withDuration: 1.0, animations: {
             self.logo.transform = CGAffineTransform(scaleX: 100.0, y: 100.0).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 6))
-        }, completion: { _ in
+        }, completion: { [self] _ in
             self.timerObject.timer.invalidate()
-            print("Esse e o valor da quantidade de rpunds\(self.multiVM?.configMatch.amoutRound as Any)")
-            if self.round.number == self.multiVM?.configMatch.amoutRound{
+            self.timerRound.timer.invalidate()
+            print("Esse e o valor da quantidade de rounds\(self.multiVM?.configMatch.amoutRound as Any) e o valor de round e \(self.round.number)")
+            guard let multiVMNotOpcional = self.multiVM else {return}
+            if self.round.number >= multiVMNotOpcional.configMatch.amoutRound{
                 self.controller?.navigationCoordinator.push(.finalRank)
                 return
             }else{
-                let nextScreen = PartialResultViewController(multiVM: self.multiVM!, navigationCoordinator: self.controller!.navigationCoordinator)
-                nextScreen.partialResultVM.currentRound = self.round.number
-                self.controller?.navigationController!.pushViewController(nextScreen, animated: false)
+                let nextScreen = controller?.parcialRanking
+                nextScreen?.partialResultVM.currentRound = self.round.number
+                print("Essa e o valor que estou enviando para parcial rank: \(nextScreen!.partialResultVM.currentRound)")
+                self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
             }
         })
     }
@@ -109,6 +141,7 @@ extension GameplayViewModel: TimerObjectDelegate {
         items.chooseObject()
         objectName.text = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
         timerObject.resetTimerObject()
+        changeButton.rotateAnimate()
         items.shuffleIsOn = false
     }
 }
@@ -119,14 +152,19 @@ extension GameplayViewModel: PowersButtonDelegate {
         switch powerType{
         case .freeze:
             powers.freezePower()
+            animatePower(icon: UIImage(systemName: "1.circle.fill")!, name: "Freeze")
         case .subtrac:
-            pontos.subtractPower()
+            subtractPower()
+            animatePower(icon: UIImage(systemName: "2.circle.fill")!, name: "Subtract")
         case .switchWord:
             changeButtonAction()
+            animatePower(icon: UIImage(systemName: "3.circle.fill")!, name: "Change")
         case .shuffleWord:
             items.shufflePower()
+            animatePower(icon: UIImage(systemName: "4.circle.fill")!, name: "Shuffle")
         case .changeCamera:
             camera.changeCamera()
+            animatePower(icon: UIImage(systemName: "5.circle.fill")!, name: "Switch")
         }
     }
     
@@ -137,23 +175,51 @@ extension GameplayViewModel: PowersButtonDelegate {
         switch powerType{
         case .freeze:
             //Função de congelar a câmera
-//            self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
-            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
+            self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
+            //            self.reciveHidrance(powerType: .freeze)
         case .switchWord:
             //Função de trocar objeto
-//            self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
-            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
+            self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
+            //            self.reciveHidrance(powerType: .switchWord)
         case .subtrac:
             //Função de subtrair os pontos
-//            self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
-            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
+            self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
+            //            self.reciveHidrance(powerType: .subtrac)
         case .changeCamera:
             //Função que troca a câmera
             self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
+            //            self.reciveHidrance(powerType: .changeCamera)
         case .shuffleWord:
             //Função que embaralha o nome do objeto
-//            self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
-            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
+            self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
+            //            self.reciveHidrance(powerType: .shuffleWord)
+        }
+    }
+    
+    func subtractPower() {
+        multiVM?.localPlayer?.points -= 1
+        upadatePoint((multiVM?.localPlayer!.points)!)
+        pontos.plusAnimate(color: .red)
+    }
+    
+    func animatePower(icon: UIImage, name: String) {
+        alert.iconPower.image = icon
+        alert.namePower.text = name
+        
+        print("CHEGOU NA ANIMATE POWER")
+        
+        self.alert.translatesAutoresizingMaskIntoConstraints = true
+        
+        UIView.animate(withDuration: 1.0, animations: {
+            self.alert.center.x -= 150
+        }) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+                UIView.animate(withDuration: 1.0, animations: {
+                    self.alert.center.x += 150
+                }) { _ in
+                    
+                }
+            }
         }
     }
 }
@@ -164,6 +230,52 @@ extension GameplayViewModel: SpecialObjectImageDelegate {
         if multiVM?.configMatch.powerUps == true {
             special.specialIsOn = true
             special.isHidden = false
+        }
+        
+    }
+}
+
+extension GameplayViewModel: PowersStackViewDelegate {
+    func animatePower(imagem: UIImage?, power: PowerUps?) {
+        guard let controller = controller else { return }
+        
+        let power = PowersButton(imagem: imagem!, power: power!)
+        
+        power.alpha = 0
+        
+        controller.view.addSubview(power)
+        
+        NSLayoutConstraint.activate([
+            power.centerXAnchor.constraint(equalTo: controller.view.centerXAnchor),
+            power.centerYAnchor.constraint(equalTo: controller.view.centerYAnchor, constant: -80),
+        ])
+        
+        if powers.numberOfPowers == 2 {
+            UIView.animate(withDuration: 1.0, animations: {
+                power.alpha = 1
+            }) { _ in
+                power.translatesAutoresizingMaskIntoConstraints = true
+                UIView.animate(withDuration: 1.0, animations: {
+                    power.center = self.powers.center
+                    power.center.x = self.powers.center.x + 65
+                }) { _ in
+                    power.removeFromSuperview()
+                    self.powers.usersPowers.last!.alpha = 1
+                }
+            }
+            return
+        }
+        
+        UIView.animate(withDuration: 1.0, animations: {
+            power.alpha = 1
+        }) { _ in
+            power.translatesAutoresizingMaskIntoConstraints = true
+            UIView.animate(withDuration: 1.0, animations: {
+                power.center = self.powers.center
+            }) { _ in
+                power.removeFromSuperview()
+                self.powers.usersPowers.last!.alpha = 1
+            }
         }
         
     }

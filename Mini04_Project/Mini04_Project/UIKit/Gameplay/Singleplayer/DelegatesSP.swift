@@ -14,10 +14,12 @@ extension SingleViewModel {
     func setupDelegate() {
         self.camera = CameraModel(delegate: self)
         changeButton.delegate = self
+        changeCount.delegate = self
         photoButton.delegate = self
         items.delegate = self
         timerRound.delegate = self
         timerObject.delegate = self
+        timerStart.delegate = self
     }
 }
 
@@ -26,8 +28,16 @@ extension SingleViewModel: ChangeButtonDelegate {
         items.chooseObject()
         objectName.text = items.toFindObject
         timerObject.resetTimerObject()
-        changeButton.subtractCount()
+        changeCount.subtractCount()
+        changeButton.rotateAnimate()
         print("Change Touched")
+    }
+}
+
+extension SingleViewModel: ChangeCountLabelDelegate {
+    func countEnded() {
+        changeButton.alpha = 0.3
+        changeButton.isUserInteractionEnabled = false
     }
 }
 
@@ -40,8 +50,8 @@ extension SingleViewModel: PhotoButtonDelegate {
                 print(returnedTargetObject)
                 print(returnedTargetColor)
                 if returnedTargetObject == items.toFindObject || returnedTargetColor == items.toFindObject{
-                    items.findedObject()
                     DispatchQueue.main.async{
+                        self.items.findedObject()
                         self.objectName.text = self.items.toFindObject
                         self.timerObject.resetTimerObject()
                     }
@@ -56,12 +66,24 @@ extension SingleViewModel: PhotoButtonDelegate {
 
 extension SingleViewModel: ItemsDelegate {
     func findedObjectAction() {
+        pontos.plusAnimate(color: .green)
         pontos.number += 1
     }
 }
 
+extension SingleViewModel: TimerStartDelegate {
+    func timerStartOver() {
+        fadeBackground.removeFromSuperview()
+        timerRound.playTimer()
+        timerObject.playTimer()
+        items.chooseObject()
+        objectName.text = items.toFindObject
+        objectName.isHidden = false
+        controller!.view.isUserInteractionEnabled = true
+    }
+}
+
 extension SingleViewModel: TimerRoundDelegate {
-    
     func timerRoundOver() {
         logo.isHidden = false
         UIView.animate(withDuration: 1.0, animations: {
@@ -79,11 +101,11 @@ extension SingleViewModel: TimerObjectDelegate {
         items.chooseObject()
         objectName.text = items.toFindObject
         timerObject.resetTimerObject()
+        changeButton.rotateAnimate()
     }
 }
 
 extension SingleViewModel: AVCaptureVideoDataOutputSampleBufferDelegate {
-    
     //Captura o buffer da imagem e armazena a UIimage dele na variavel frames
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
         guard let uiImage = imageFromSampleBuffer(sampleBuffer: sampleBuffer) else { return }

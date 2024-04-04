@@ -12,6 +12,7 @@ class RoundLabel: UILabel {
     var number = 1 {
         didSet {
             text = "Round \(number)"
+            print("Round atual: \(number)")
         }
     }
     
@@ -21,7 +22,7 @@ class RoundLabel: UILabel {
         translatesAutoresizingMaskIntoConstraints = false
         font = .systemFont(ofSize: 15, weight: .regular)
         text = "Round 1"
-        textColor = .label
+        textColor = .black
         
     }
     

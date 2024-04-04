@@ -20,11 +20,7 @@ class PhotoButton: UIButton {
         
         translatesAutoresizingMaskIntoConstraints = false
         
-        let image = UIImage(systemName: "circle.inset.filled")
-        let symbolConfig = UIImage.SymbolConfiguration(pointSize: 60)
-        let resizedImage = image?.withConfiguration(symbolConfig)
-
-        setImage(resizedImage, for: .normal)
+        setImage(UIImage(named: "PhotoButton"), for: .normal)
         addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         
     }
