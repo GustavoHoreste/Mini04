@@ -117,7 +117,7 @@ extension GameplayViewModel: TimerRoundDelegate {
         self.multiVM?.resetPowerUpsAndStatus()
         self.pontos.number = 0
         
-//        logo.isHidden = false
+        //        logo.isHidden = false
         
         self.timerObject.timer.invalidate()
         self.timerRound.timer.invalidate()
@@ -136,17 +136,17 @@ extension GameplayViewModel: TimerRoundDelegate {
             // nextScreen?.partialResultVM.readyButton.toggleIsHiden()
             // self.round.number += 1
             // self.controller?.parcialRanking.configureParcialVC()
-//            self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
-
+            //            self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
+            
             let nextScreen = controller?.finalRanking
             self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
         }
         
-//        UIView.animate(withDuration: 1.0, animations: {
-//            self.logo.transform = CGAffineTransform(scaleX: 100.0, y: 100.0).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 6))
-//        }, completion: { [self] _ in
-//            
-//        })
+        //        UIView.animate(withDuration: 1.0, animations: {
+        //            self.logo.transform = CGAffineTransform(scaleX: 100.0, y: 100.0).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 6))
+        //        }, completion: { [self] _ in
+        //
+        //        })
     }
     
     public func reseatGame(){
@@ -171,7 +171,7 @@ extension GameplayViewModel: PowersButtonDelegate {
     func reciveHidrance(powerType: PowerUps) {
         switch powerType{
         case .freeze:
-            powers.freezePower()
+            freezePower()
             animatePower(icon: UIImage(systemName: "1.circle.fill")!, name: "Freeze")
         case .subtrac:
             subtractPower()
@@ -196,24 +196,24 @@ extension GameplayViewModel: PowersButtonDelegate {
         switch powerType{
         case .freeze:
             //Função de congelar a câmera
-//            self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
-                        self.reciveHidrance(powerType: .freeze)
+            //            self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
+            self.reciveHidrance(powerType: .freeze)
         case .switchWord:
             //Função de trocar objeto
-//            self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
-                        self.reciveHidrance(powerType: .switchWord)
+            //            self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
+            self.reciveHidrance(powerType: .switchWord)
         case .subtrac:
             //Função de subtrair os pontos
-//            self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
-                        self.reciveHidrance(powerType: .subtrac)
+            //            self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
+            self.reciveHidrance(powerType: .subtrac)
         case .changeCamera:
             //Função que troca a câmera
-//            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
-                        self.reciveHidrance(powerType: .changeCamera)
+            //            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
+            self.reciveHidrance(powerType: .changeCamera)
         case .shuffleWord:
             //Função que embaralha o nome do objeto
-//            self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
-                        self.reciveHidrance(powerType: .shuffleWord)
+            //            self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
+            self.reciveHidrance(powerType: .shuffleWord)
         }
     }
     
@@ -223,22 +223,91 @@ extension GameplayViewModel: PowersButtonDelegate {
         pontos.plusAnimate(color: .red)
     }
     
+    func freezePower() {
+        guard let controller = controller else {return}
+        
+        powers.freezeIsOn = true
+        
+        let layer = CAEmitterLayer()
+        layer.emitterPosition = CGPoint(x: controller.view.center.x, y: -100)
+        
+        let colors: [UIColor] = [
+            .white
+        ]
+        
+        let cells: [CAEmitterCell] = colors.compactMap{
+            let cell = CAEmitterCell()
+            cell.scale = 0.05
+            cell.emissionRange = .pi * 2
+            cell.lifetime = 10
+            cell.birthRate = 50
+            cell.velocity = 150
+            cell.color = $0.cgColor
+            cell.contents = UIImage(named: "CircleFreeze")!.cgImage
+            return cell
+        }
+        
+        layer.emitterCells = cells
+        
+        powers.freezeBG.alpha = 0
+        
+        controller.view.addSubview(powers.freezeBG)
+        controller.view.layer.addSublayer(layer)
+        
+        NSLayoutConstraint.activate([
+            powers.freezeBG.centerXAnchor.constraint(equalTo: controller.view.centerXAnchor),
+            powers.freezeBG.centerYAnchor.constraint(equalTo: controller.view.centerYAnchor),
+        ])
+        
+        UIView.animate(withDuration: 1.0, animations: {
+            self.powers.freezeBG.alpha = 1
+        })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
+            self.powers.freezeIsOn = false
+            UIView.animate(withDuration: 1.0, animations: {
+                self.powers.freezeBG.alpha = 0
+            }){ _ in
+                self.powers.freezeBG.removeFromSuperview()
+                layer.removeFromSuperlayer()
+            }
+        }
+        
+    }
+    
     func animatePower(icon: UIImage, name: String) {
+        guard let controller = controller else {return}
+        
+        alert.center.x = alert.centerX
+        
+        guard !alert.isAlertAnimating else {
+            alert.layer.removeAllAnimations()
+            alert.center.x = alert.centerX
+            alert.isAlertAnimating = false
+            animatePower(icon: icon, name: name)
+            return
+        }
+        
+        alert.isAlertAnimating = true
+        
         alert.iconPower.image = icon
         alert.namePower.text = name
         
-        print("CHEGOU NA ANIMATE POWER")
+        controller.view.bringSubviewToFront(alert)
+        
+        print("CENTER DO ALERT: \(alert.center)")
         
         self.alert.translatesAutoresizingMaskIntoConstraints = true
         
         UIView.animate(withDuration: 1.0, animations: {
-            self.alert.center.x -= 150
+            self.alert.center.x -= 210
         }) { _ in
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4.0) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 UIView.animate(withDuration: 1.0, animations: {
-                    self.alert.center.x += 150
+                    self.alert.center.x += 210
                 }) { _ in
                     self.alert.translatesAutoresizingMaskIntoConstraints = false
+                    self.alert.isAlertAnimating = false
                 }
             }
         }
@@ -273,7 +342,6 @@ extension GameplayViewModel: PowersStackViewDelegate {
         ])
         
         if powers.firstMold == nil {
-//            powers.firstMold = power.powerType
             UIView.animate(withDuration: 1.0, animations: {
                 power.alpha = 1
             }) { _ in
@@ -290,7 +358,6 @@ extension GameplayViewModel: PowersStackViewDelegate {
             return
         }
         
-//        powers.secondMold = power.powerType
         UIView.animate(withDuration: 1.0, animations: {
             power.alpha = 1
         }) { _ in

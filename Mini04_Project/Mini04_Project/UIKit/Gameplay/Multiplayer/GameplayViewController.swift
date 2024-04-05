@@ -45,7 +45,7 @@ class GameplayViewController: UIViewController {
         gameplayVM.timerStart.sizeIncrease()
         
 //        view.addSubview(testButton)
-//        testButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        testButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
 //        testButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
     }
     

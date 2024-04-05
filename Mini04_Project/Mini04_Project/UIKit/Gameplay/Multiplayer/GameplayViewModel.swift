@@ -79,6 +79,7 @@ class GameplayViewModel: NSObject {
     }
     
      public func configMatch(){
+         alert.centerX = alert.center.x
          if multiVM?.configMatch.powerUps == true {
              if multiVM?.localPlayer?.isHost == true{
                  items.chooseSpecialObject()
