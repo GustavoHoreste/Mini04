@@ -31,6 +31,9 @@ class PowersStackView: UIImageView {
             numberOfPowers = usersPowers.count
         }
     }
+    
+    var freezeBG = AnyImageView(imagem: UIImage(named: "Freeze"))
+    
     var numberOfPowers = 0
     var freezeIsOn = false
     var firstMold: PowerUps? = nil {
@@ -88,13 +91,6 @@ class PowersStackView: UIImageView {
             secondMold = nil
         }else {
             print("DEU RUIM NO REMOVEPOWER")
-        }
-    }
-    
-    func freezePower() {
-        freezeIsOn = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10.0) {
-            self.freezeIsOn = false
         }
     }
     

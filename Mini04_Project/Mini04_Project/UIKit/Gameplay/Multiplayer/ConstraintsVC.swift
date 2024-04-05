@@ -99,7 +99,7 @@ extension GameplayViewController {
             gameplayVM.timerStart.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
             gameplayVM.alert.leadingAnchor.constraint(equalTo: view.trailingAnchor),
-            gameplayVM.alert.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -80),
+            gameplayVM.alert.topAnchor.constraint(equalTo: gameplayVM.changeButton.bottomAnchor, constant: -10),
         
         ])
     }
