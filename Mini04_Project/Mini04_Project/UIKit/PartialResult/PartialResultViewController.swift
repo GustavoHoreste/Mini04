@@ -101,5 +101,5 @@ class PartialResultViewController: UIViewController {
         snapshot.appendSections([Section.main])
         snapshot.appendItems(players)
         dataSource.apply(snapshot,animatingDifferences: true)
-    }    
+    }
 }

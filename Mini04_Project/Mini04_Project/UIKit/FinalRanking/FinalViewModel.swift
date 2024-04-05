@@ -18,15 +18,21 @@ class FinalViewModel {
             return data
         }
     }
+    var view: FinalRakingViewController?
     
     var podio = AnyImageView(imagem: UIImage(named: "FinalPodio"))
     var tops = AnyImageView(imagem: UIImage(named: "FinalTops"))
     var userFirst = UserImageView(distancia: 170)
     var userSecond = UserImageView(distancia: 125)
     var userThird = UserImageView(distancia: 80)
-    var leave = ResultMenuButton()
     var recomecar = SingleRecButton()
     var background = AnyImageView(imagem: UIImage(named: "FinalBackground"))
+    lazy var leave = ExitButton()
+    lazy var popUp: PopUpExitGame = {
+        let view = PopUpExitGame()
+        view.modalPresentationStyle = .overFullScreen
+        return view
+    }()
     
     
     

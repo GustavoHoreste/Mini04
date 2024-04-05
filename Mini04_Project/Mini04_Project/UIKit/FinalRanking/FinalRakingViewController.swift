@@ -9,6 +9,7 @@ import UIKit
 
 class FinalRakingViewController: UIViewController {
 
+    var navigationCoordinator: Coordinator
     var finalVM = FinalViewModel()
     var multiVM: MultiplayerManagerViewModel
     var navigationCoordinator: Coordinator
@@ -48,6 +49,9 @@ class FinalRakingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        finalVM.view = self
+        
         setupView()
         configureCollectionViewDataSource()
         applySnapshot(players: finalVM.dataForCollection)
@@ -68,6 +72,13 @@ class FinalRakingViewController: UIViewController {
         snapshot.appendSections([Section.main])
         snapshot.appendItems(players)
         dataSource.apply(snapshot,animatingDifferences: true)
-    }
+
+    // init(navigationCoordinator: Coordinator){
+    //     self.navigationCoordinator = navigationCoordinator
+    //     super.init(nibName: nil, bundle: nil)    }
+    
+    // required init?(coder: NSCoder) {
+    //     fatalError("init(coder:) has not been implemented")
+    // }
     
 }
