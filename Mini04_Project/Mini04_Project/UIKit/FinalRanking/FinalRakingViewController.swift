@@ -12,7 +12,6 @@ class FinalRakingViewController: UIViewController {
     var navigationCoordinator: Coordinator
     var finalVM = FinalViewModel()
     var multiVM: MultiplayerManagerViewModel
-    var navigationCoordinator: Coordinator
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Player>
     typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, Player>
@@ -72,7 +71,8 @@ class FinalRakingViewController: UIViewController {
         snapshot.appendSections([Section.main])
         snapshot.appendItems(players)
         dataSource.apply(snapshot,animatingDifferences: true)
-
+    }
+    
     // init(navigationCoordinator: Coordinator){
     //     self.navigationCoordinator = navigationCoordinator
     //     super.init(nibName: nil, bundle: nil)    }
@@ -80,5 +80,4 @@ class FinalRakingViewController: UIViewController {
     // required init?(coder: NSCoder) {
     //     fatalError("init(coder:) has not been implemented")
     // }
-    
 }
