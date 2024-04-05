@@ -73,8 +73,6 @@ struct MatchConfigView: View {
     
     var body: some View {
         VStack{
-            Spacer()
-
                 HStack {
                     Text("Rodadas")
                     Spacer()
@@ -84,7 +82,7 @@ struct MatchConfigView: View {
                         }
                     }.pickerStyle(.menu)
                         .tint(.black)
-                        .background(.yellow)
+                        .background(.orange)
                 }
                 
                 
@@ -97,15 +95,15 @@ struct MatchConfigView: View {
                         }
                     }.pickerStyle(.menu)
                         .tint(.black)
-                        .background(.gray)
+                        .background(.orange)
                 }
             
             
             Toggle("Bônus de habilidade", isOn: $matchConfigVM.selectPowerUps)
+                .tint(.orange)
             
             Toggle("Cores", isOn: $matchConfigVM.coresIsChoise)
-            
-            Spacer()
+                .tint(.orange)
             
         }.padding()
             .onAppear{

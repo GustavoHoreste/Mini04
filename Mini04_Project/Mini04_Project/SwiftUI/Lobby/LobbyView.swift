@@ -31,8 +31,10 @@ struct LobbyView: View {
                     BackButton()
                     
                     Spacer()
-                    
-                    configMatchButton()
+                    withAnimation() {
+                        configMatchButton()
+                    }
+
                     
                 }.padding()
                 
@@ -59,7 +61,9 @@ struct LobbyView: View {
             }
             
             if (isOpenConfigMatch){
-                PopUpConfigMatch(ativouteste: $isOpenConfigMatch)
+                withAnimation() {
+                    PopUpConfigMatch(ativouteste: $isOpenConfigMatch)
+                }
             }
             
         }.navigationBarBackButtonHidden()
@@ -81,10 +85,12 @@ extension LobbyView{
     private func configMatchButton() -> some View{
         if multiplayerVM.localPlayer?.isHost == true {
             Button { isOpenConfigMatch = true} label: {
-                Image(.lobbyConnfig)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 70, height: 70)
+                withAnimation() {
+                    Image(.lobbyConnfig)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 70, height: 70)
+                }
             }
         }
     }

@@ -69,14 +69,8 @@ struct PopUpConfig: View {
                     }
                     .padding(.horizontal, 80)
                     .padding(.trailing, 15)
+                    .padding(.bottom, 30)
                 }
             }
-    }
-    
-    func close() {
-        withAnimation() {
-            offset = 800
-            isActive = false
-        }
     }
 }
