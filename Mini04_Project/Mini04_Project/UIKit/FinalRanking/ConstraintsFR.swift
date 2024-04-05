@@ -50,8 +50,8 @@ extension FinalRakingViewController {
             finalVM.tops.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             collection.widthAnchor.constraint(equalTo: view.widthAnchor),
-            collection.topAnchor.constraint(equalTo: finalVM.podio.bottomAnchor),
-            collection.bottomAnchor.constraint(equalTo: finalVM.recomecar.topAnchor),
+            collection.topAnchor.constraint(equalTo: finalVM.podio.bottomAnchor, constant: 20),
+            collection.bottomAnchor.constraint(equalTo: finalVM.recomecar.topAnchor, constant: -20),
 
         ])
     }
