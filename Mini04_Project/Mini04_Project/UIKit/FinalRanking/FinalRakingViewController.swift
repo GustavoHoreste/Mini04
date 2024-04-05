@@ -57,11 +57,11 @@ class FinalRakingViewController: UIViewController {
     }
 
     private func configureCollectionViewDataSource() {
-        dataSource = DataSource(collectionView: collection, cellProvider: { (collectionView, indexPath, player) -> PartialResultCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NormalListCell.identifier, for: indexPath) as! PartialResultCell
+        dataSource = DataSource(collectionView: collection, cellProvider: { (collectionView, indexPath, player) -> NormalListCell? in
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NormalListCell.identifier, for: indexPath) as! NormalListCell
             cell.playerName.text = player.userName
             cell.playerScore.text = String(player.points)
-            cell.changePositionBG(indexPath.row + 4)
+//            cell.changePositionBG(indexPath.row + 4)
             return cell
         })
     }
