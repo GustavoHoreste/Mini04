@@ -12,6 +12,16 @@ struct RecordPopUp: View {
     @State var highScore:Int = 0
     var body: some View {
         ZStack{
+            Color(.black)
+                .opacity(0.4)
+                .ignoresSafeArea()
+                .onTapGesture {
+                    withAnimation(){
+                        isOpen.toggle()
+                    }
+                }
+            
+            
             Image(.singleRecordPopUp)
                 .resizable()
                 .scaledToFit()

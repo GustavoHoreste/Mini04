@@ -25,17 +25,19 @@ struct MenuView: View {
                     HStack {
                         
                         Spacer()
-                        
+
                         Button {
-                            isActive = true
+                            withAnimation() {
+                                isActive = true
+                            }
                         } label: {
                             ZStack {
-                                Image("ConfigBackground")
+                                Image(.configBackground)
                                     .resizable()
-                                    .frame(width: screenWidth * 0.114, height: screenHeight * 0.05284334763)
-                                Image("ConfigIcon")
+                                    .frame(width: 70, height: 70)
+                                Image(.configIcon)
                                     .resizable()
-                                    .frame(width: screenWidth * 0.077116, height: screenHeight * 0.034785)
+                                    .frame(width: 70, height: 70)
                             }
                         }
                         
@@ -43,9 +45,10 @@ struct MenuView: View {
                     
                     Spacer()
                     
-                    Circle()
-                        .foregroundStyle(.red)
-                        .frame(width: 310, height: 310)
+                    Image("Logo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 399, height: 231)
                     
                     Spacer()
                     
