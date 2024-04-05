@@ -68,6 +68,7 @@ class PartialResultViewModel {
     }
     
     private func nextRound(){
+        self.view.gameplayVM.fadeBackground.isHidden = false
         self.view.gameplayVM.timerStart.sizeIncrease()
         self.view.navigationController?.popViewController(animated: true)
     }

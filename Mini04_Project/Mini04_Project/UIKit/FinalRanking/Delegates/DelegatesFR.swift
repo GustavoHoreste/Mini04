@@ -45,8 +45,7 @@ extension FinalViewModel: ExitGameDelegate {
 
 extension FinalViewModel: SingleRecButtonDelegate {
     func recomecarAction() {
-        view?.navigationCoordinator.popToRoot()
+        self.view?.multiVM.resetPowerUpsAndStatus()
+        view?.navigationCoordinator.push(.lobby)
     }
-    
-    
 }

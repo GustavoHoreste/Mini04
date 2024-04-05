@@ -57,12 +57,6 @@ struct LobbyView: View {
                     multiplayerVM.sharePlayVM.configurationSessin(session)
                 }
             }
-//            .onAppear {
-//                if let localPlayer = multiplayerVM.localPlayer{
-//                    players.append(localPlayer)
-//                }
-//                players = multiplayerVM.adversaryPlayers
-//            }
             
             if (isOpenConfigMatch){
                 PopUpConfigMatch(ativouteste: $isOpenConfigMatch)

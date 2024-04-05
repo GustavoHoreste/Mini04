@@ -100,7 +100,7 @@ extension GameplayViewModel: ItemsDelegate {
 //srtar gameplay
 extension GameplayViewModel: TimerStartDelegate {
     func timerStartOver() {
-        fadeBackground.removeFromSuperview()
+        fadeBackground.isHidden = true
         timerRound.playTimer()
         timerObject.playTimer()
         objectName.isHidden = false
@@ -109,13 +109,14 @@ extension GameplayViewModel: TimerStartDelegate {
         self.changeCount.number = 3
         self.changeCount.alpha = 1
         self.changeButton.alpha = 1
+        self.objectName.isHidden = false
         self.changeButton.isUserInteractionEnabled = true
         controller!.view.isUserInteractionEnabled = true
     }
 }
 
 extension GameplayViewModel: TimerRoundDelegate {
-    func timerRoundOver() {        
+    func timerRoundOver() {
         self.multiVM?.resetPowerUpsAndStatus()
         self.pontos.number = 0
 //        logo.isHidden = false
