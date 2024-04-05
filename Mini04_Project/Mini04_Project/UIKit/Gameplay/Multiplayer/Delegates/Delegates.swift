@@ -125,16 +125,20 @@ extension GameplayViewModel: TimerRoundDelegate {
         guard let multiVMNotOpcional = self.multiVM else {return}
         
         if self.round.number >= multiVMNotOpcional.configMatch.amoutRound{
-            self.controller?.navigationCoordinator.push(.finalRank)
+            let nextScreen = controller?.finalRanking
+            self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
             return
         }else{
-            let nextScreen = controller?.parcialRanking
-            nextScreen?.partialResultVM.currentRound = self.round.number
+            // let nextScreen = controller?.parcialRanking
+            // nextScreen?.partialResultVM.currentRound = self.round.number
             
-            nextScreen?.partialResultVM.timerBeforeButtonReady.startCount()
-            nextScreen?.partialResultVM.readyButton.toggleIsHiden()
-            self.round.number += 1
-            self.controller?.parcialRanking.configureParcialVC()
+            // nextScreen?.partialResultVM.timerBeforeButtonReady.startCount()
+            // nextScreen?.partialResultVM.readyButton.toggleIsHiden()
+            // self.round.number += 1
+            // self.controller?.parcialRanking.configureParcialVC()
+//            self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
+
+            let nextScreen = controller?.finalRanking
             self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
         }
         
@@ -171,24 +175,24 @@ extension GameplayViewModel: PowersButtonDelegate {
             animatePower(icon: UIImage(systemName: "1.circle.fill")!, name: "Freeze")
         case .subtrac:
             subtractPower()
-            animatePower(icon: UIImage(systemName: "2.circle.fill")!, name: "Subtract")
+            animatePower(icon: UIImage(systemName: "3.circle.fill")!, name: "Subtract")
         case .switchWord:
             changeButtonAction()
-            animatePower(icon: UIImage(systemName: "3.circle.fill")!, name: "Change")
+            animatePower(icon: UIImage(systemName: "2.circle.fill")!, name: "Change")
         case .shuffleWord:
             items.shufflePower()
-            animatePower(icon: UIImage(systemName: "4.circle.fill")!, name: "Shuffle")
+            animatePower(icon: UIImage(systemName: "5.circle.fill")!, name: "Shuffle")
         case .changeCamera:
             //MARK: - Camera
             camera.changeCamera()
-            animatePower(icon: UIImage(systemName: "5.circle.fill")!, name: "Switch")
+            animatePower(icon: UIImage(systemName: "4.circle.fill")!, name: "Switch")
         }
     }
     
     
     func powerButtonAction(powerType: PowerUps) {
         powers.removePower(powerType: powerType)
-        print(powerType)
+        print("ACAO PODER \(powerType)")
         switch powerType{
         case .freeze:
             //Função de congelar a câmera
@@ -280,7 +284,7 @@ extension GameplayViewModel: PowersStackViewDelegate {
                 }) { _ in
                     print("CHEGOU FIRSTMOLD")
                     power.removeFromSuperview()
-                    self.powers.usersPowers.first!.alpha = 1
+                    self.powers.usersPowers.last!.alpha = 1
                 }
             }
             return

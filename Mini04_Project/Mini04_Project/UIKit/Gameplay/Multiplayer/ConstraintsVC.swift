@@ -35,7 +35,7 @@ extension GameplayViewController {
         view.addSubview(gameplayVM.alert)
                 
         NSLayoutConstraint.activate([
-            gameplayVM.cameraImage.heightAnchor.constraint(equalToConstant: view.frame.height * 0.85),
+            gameplayVM.cameraImage.heightAnchor.constraint(equalToConstant: view.frame.height * 0.9),
             gameplayVM.cameraImage.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 3.0/4.0),
             gameplayVM.cameraImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.cameraImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -view.frame.height * 0.05),
