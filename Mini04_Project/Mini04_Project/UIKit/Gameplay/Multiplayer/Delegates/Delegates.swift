@@ -51,6 +51,7 @@ extension GameplayViewModel: ChangeCountLabelDelegate {
 
 extension GameplayViewModel: PhotoButtonDelegate {
     func photoButtonAction() {
+        print("entrei no photoButtonAction")
         Task{
             do{
                 guard let cameraImage = await self.cameraImage.image else {return}
@@ -196,24 +197,24 @@ extension GameplayViewModel: PowersButtonDelegate {
         switch powerType{
         case .freeze:
             //Função de congelar a câmera
-//            self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
-                        self.reciveHidrance(powerType: .freeze)
+            self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
+//                        self.reciveHidrance(powerType: .freeze)
         case .switchWord:
             //Função de trocar objeto
-//            self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
-                        self.reciveHidrance(powerType: .switchWord)
+            self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
+//                        self.reciveHidrance(powerType: .switchWord)
         case .subtrac:
             //Função de subtrair os pontos
-//            self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
-                        self.reciveHidrance(powerType: .subtrac)
+            self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
+//                        self.reciveHidrance(powerType: .subtrac)
         case .changeCamera:
             //Função que troca a câmera
-//            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
-                        self.reciveHidrance(powerType: .changeCamera)
+            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
+//                        self.reciveHidrance(powerType: .changeCamera)
         case .shuffleWord:
             //Função que embaralha o nome do objeto
-//            self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
-                        self.reciveHidrance(powerType: .shuffleWord)
+            self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
+//                        self.reciveHidrance(powerType: .shuffleWord)
         }
     }
     
