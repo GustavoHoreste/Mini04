@@ -10,11 +10,16 @@ import UIKit
 
 extension FinalRakingViewController {
     func setupView() {
+        
+        collection.dataSource = dataSource
+        collection.delegate = self
+        
         view.addSubview(finalVM.background)
         view.addSubview(finalVM.userFirst)
         view.addSubview(finalVM.userSecond)
         view.addSubview(finalVM.userThird)
         view.addSubview(finalVM.podio)
+        view.addSubview(collection)
         view.addSubview(finalVM.leave)
         view.addSubview(finalVM.recomecar)
         view.addSubview(finalVM.tops)
@@ -43,6 +48,10 @@ extension FinalRakingViewController {
             
             finalVM.tops.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             finalVM.tops.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            collection.widthAnchor.constraint(equalTo: view.widthAnchor),
+            collection.topAnchor.constraint(equalTo: finalVM.podio.bottomAnchor),
+            collection.bottomAnchor.constraint(equalTo: finalVM.recomecar.topAnchor),
 
         ])
     }
