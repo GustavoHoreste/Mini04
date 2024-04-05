@@ -33,8 +33,16 @@ class PowersStackView: UIImageView {
     }
     var numberOfPowers = 0
     var freezeIsOn = false
-    var firstMold: PowerUps? = nil
-    var secondMold: PowerUps? = nil
+    var firstMold: PowerUps? = nil {
+        didSet {
+            print("FIRST MUDOU PARA \(String(describing: firstMold))")
+        }
+    }
+    var secondMold: PowerUps? = nil {
+        didSet {
+            print("SECOND MUDOU PARA \(String(describing: secondMold))")
+        }
+    }
     
     init() {
         super.init(frame: .zero)
@@ -99,18 +107,16 @@ class PowersStackView: UIImageView {
     }
     
     func putPowerInMold(power: PowersButton) {
-        switch numberOfPowers {
-        case 1:
+        if firstMold == nil {
             addSubview(power)
             power.centerXAnchor.constraint(equalTo: powerMold1.centerXAnchor).isActive = true
             power.centerYAnchor.constraint(equalTo: powerMold1.centerYAnchor).isActive = true
-        case 2:
-            addSubview(power)
-            power.centerXAnchor.constraint(equalTo: powerMold2.centerXAnchor).isActive = true
-            power.centerYAnchor.constraint(equalTo: powerMold2.centerYAnchor).isActive = true
-        default:
-            print("Nao colocou o poder no Mold")
+            return
         }
+        
+        addSubview(power)
+        power.centerXAnchor.constraint(equalTo: powerMold2.centerXAnchor).isActive = true
+        power.centerYAnchor.constraint(equalTo: powerMold2.centerYAnchor).isActive = true
         
     }
     
