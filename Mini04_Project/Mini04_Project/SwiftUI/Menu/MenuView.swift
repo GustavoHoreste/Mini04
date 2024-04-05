@@ -10,7 +10,7 @@ import SwiftUI
 struct MenuView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
-    var haptics = HapticManager()
+    var haptics = Haptics()
     @State var isActive: Bool = false
     
     var body: some View {
@@ -54,9 +54,6 @@ struct MenuView: View {
                     Spacer()
                     
                     MultiplayerButton()
-                        .onTapGesture {
-                            haptics?.playSlice()
-                        }
                     
                     SingleButton()
                     
