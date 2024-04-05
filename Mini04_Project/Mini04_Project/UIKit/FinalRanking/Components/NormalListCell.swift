@@ -113,8 +113,8 @@ class NormalListCell: UICollectionViewCell {
         background.addSubview(position)
         
         NSLayoutConstraint.activate([
-            rankingBg.bottomAnchor.constraint(equalTo: background.centerYAnchor, constant: 10),
-            rankingBg.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 10),
+            rankingBg.bottomAnchor.constraint(equalTo: background.centerYAnchor),
+            rankingBg.leadingAnchor.constraint(equalTo: background.leadingAnchor),
             rankingBg.widthAnchor.constraint(equalToConstant: self.frame.width * 0.3),
             rankingBg.widthAnchor.constraint(equalToConstant: self.frame.height * 0.3),
             
