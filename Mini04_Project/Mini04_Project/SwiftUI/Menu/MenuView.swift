@@ -14,64 +14,55 @@ struct MenuView: View {
     @State var isActive: Bool = false
     
     var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                Image(.background)
+        ZStack {
+            Image("Background")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            
+            VStack {
+                Spacer()
+                
+                Image("Logo")
                     .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
-                    .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
+                    .scaledToFit()
+                    .padding(.horizontal, 20)
                 
-                VStack {
-                    HStack {
-                        
-                        Spacer()
-
-                        Button {
-                            withAnimation() {
-                                isActive = true
-                            }
-                        } label: {
-                            ZStack {
-                                Image(.configBackground)
-                                    .resizable()
-                                    .frame(width: 70, height: 70)
-                                Image(.configIcon)
-                                    .resizable()
-                                    .frame(width: 70, height: 70)
-                            }
-                        }
-                        
-                    }.padding()
-                    
-                    Spacer()
-                    
-                    Image("Logo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 399, height: 231)
-                    
-                    Spacer()
-                    
-                    MultiplayerButton()
-                        .onTapGesture {
-                            haptics?.playSlice()
-                        }
-                    
-                    SingleButton()
-                    
-                    Spacer()
-                }
-                .navigationBarBackButtonHidden()
                 
-                if isActive {
-                    PopUpConfig(isActive: $isActive)
+                Spacer()
+                
+                MultiplayerButton()
+                
+                SingleButton()
+                
+                Spacer()
+            }
+            .navigationBarBackButtonHidden()
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        withAnimation() {
+                            isActive = true
+                        }
+                    } label: {
+                        ZStack {
+                            Image(.configBackground)
+                                .resizable()
+                                .frame(width: 70, height: 70)
+                            Image(.configIcon)
+                                .resizable()
+                                .frame(width: 70, height: 70)
+                        }
+                    }
+                    .padding(.top)
                 }
             }
+            
+            if isActive {
+                PopUpConfig(isActive: $isActive)
+            }
         }
-        
     }
-    
 }
 
 #Preview {
