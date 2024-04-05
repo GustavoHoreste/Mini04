@@ -11,7 +11,7 @@ struct HowToPlayButton: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     
     var body: some View {
-        Button(action: {navigationCoordinator.present(fullScreenCover: .howToPlay)}, label: {
+        Button(action: {navigationCoordinator.present(sheet: .howToPlay)}, label: {
             ZStack {
                 Image("InviteFriendsButton")
                 .resizable()

@@ -11,7 +11,7 @@ class GameplayViewController: UIViewController {
     
     var gameplayVM = GameplayViewModel()
     lazy var parcialRanking = PartialResultViewController(multiVM: self.multiVM, navigationCoordinator: self.navigationCoordinator, gameplayVM: self.gameplayVM)
-    lazy var finalRanking = FinalRakingViewController(navigationCoordinator: navigationCoordinator)
+    lazy var finalRanking = FinalRakingViewController(multiVM: self.multiVM, navigationCoordinator: self.navigationCoordinator)
     var multiVM: MultiplayerManagerViewModel
     var navigationCoordinator: Coordinator
     

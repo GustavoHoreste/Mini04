@@ -9,6 +9,15 @@ import Foundation
 import UIKit
 
 class FinalViewModel {
+    
+    var data: [Player] = []
+    var dataForCollection:[Player]{
+        get{
+            var data = self.data
+            data.removeFirst(3)
+            return data
+        }
+    }
     var view: FinalRakingViewController?
     
     var podio = AnyImageView(imagem: UIImage(named: "FinalPodio"))
@@ -24,6 +33,8 @@ class FinalViewModel {
         view.modalPresentationStyle = .overFullScreen
         return view
     }()
+    
+    
     
     init() {
         setupDelegates()

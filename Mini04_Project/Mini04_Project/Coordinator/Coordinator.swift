@@ -24,7 +24,7 @@ enum Page: String, Identifiable {
 }
 
 enum Sheet: String, Identifiable {
-    case config, profile, credits, shareplay, matchConfigView
+    case config, profile, credits, shareplay, matchConfigView, howToPlay
     
     var id: String {
         self.rawValue
@@ -120,6 +120,10 @@ class Coordinator: ObservableObject {
         case .matchConfigView:
             NavigationStack{
                 MatchConfigView()
+            }
+        case .howToPlay:
+            NavigationStack{
+                HowToPlayView()
             }
         }
     }

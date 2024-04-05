@@ -10,12 +10,13 @@ import SwiftUI
 struct MenuView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
+    var haptics = HapticManager()
     @State var isActive: Bool = false
     
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Image("Background")
+                Image(.background)
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
@@ -53,6 +54,9 @@ struct MenuView: View {
                     Spacer()
                     
                     MultiplayerButton()
+                        .onTapGesture {
+                            haptics?.playSlice()
+                        }
                     
                     SingleButton()
                     

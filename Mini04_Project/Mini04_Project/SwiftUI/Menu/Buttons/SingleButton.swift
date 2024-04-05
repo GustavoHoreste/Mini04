@@ -12,9 +12,11 @@ struct SingleButton: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     
     var body: some View {
-        Button(action: {navigationCoordinator.push(.singleReady)}, label: {
+        Button(action: {
+            navigationCoordinator.push(.singleReady)
+        }, label: {
             ZStack {
-                Image("MultiBackground")
+                Image(.multiBackground)
                 .resizable()
                 .frame(width: screenWidth * 0.651163, height: screenHeight * 0.121245)
                 
