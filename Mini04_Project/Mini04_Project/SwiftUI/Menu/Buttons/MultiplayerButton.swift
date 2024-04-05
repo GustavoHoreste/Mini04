@@ -21,9 +21,9 @@ struct MultiplayerButton: View {
                 .resizable()
                 .frame(width: screenWidth * 0.651163, height: screenHeight * 0.121245)
                 
-                Text("MultiPlayer")
+                Text("Juntar a galera")
+                    .font(.custom("FafoSans-Bold", size: 30))
                     .padding()
-                    .font(.title)
                     .foregroundStyle(.black)
             }
         }

@@ -84,7 +84,7 @@ struct MatchConfigView: View {
                         }
                     }.pickerStyle(.menu)
                         .tint(.black)
-                        .background(.gray)
+                        .background(.yellow)
                 }
                 
                 

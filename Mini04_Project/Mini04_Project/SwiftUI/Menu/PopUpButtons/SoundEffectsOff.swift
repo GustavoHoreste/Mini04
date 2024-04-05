@@ -17,7 +17,7 @@ struct SoundEffectsOff: View {
             
             Image(self.isSoundEffectsOn == true ? "SoundOn" : "SoundOff")
                             .resizable()
-                            .frame(width: 60, height: 60)
+                            .frame(width: 66, height: 66)
         }
     }
 }

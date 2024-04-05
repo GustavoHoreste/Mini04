@@ -19,7 +19,7 @@ struct SoundOffButton: View {
             
             Image(self.isMusicOn == true ? "MusicOn" : "MusicOff")
                             .resizable()
-                            .frame(width: 60, height: 60)
+                            .frame(width: 66, height: 66)
         }
         
     }
