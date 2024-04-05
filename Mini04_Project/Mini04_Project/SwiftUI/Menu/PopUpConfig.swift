@@ -21,67 +21,60 @@ struct PopUpConfig: View {
     var body: some View {
         ZStack {
             Color(.black)
-                .opacity(0.5)
+                .opacity(0.4)
+                .ignoresSafeArea()
                 .onTapGesture {
-                    close()
+                    withAnimation() {
+                        isActive.toggle()
+                    }
                 }
-            
-            Image("PopUpBackground") 
-                .offset(x: 0, y: offset)
-                .onAppear {
-                withAnimation(.spring()) {
-                    offset = 0
-                }
-            }
+    
+                Image(.popUpBackground)
+                    .resizable()
+                    .frame(width: 371, height: 371)
+                    .scaledToFit()
                 
-            
-            VStack {
-                
-                HStack {
-                    Spacer()
-                    SoundOffButton(isMusicOn: $isMusicOn)
-                    Spacer()
-                    SoundEffectsOff(isSoundEffectsOn: $isSoundEffectsOn)
-                    Spacer()
-                    HapticsOff(isHapticsOn: $isHapticsOn)
-                    Spacer()
-                }
-                .padding()
-                .transition(.opacity)
-                
-                ProfileButtonPopUp()
-                
-                Spacer()
-                
-                CreditsButtonPopUp()
-                
-            }
-            .fixedSize(horizontal: false, vertical: true)
-            .padding(40)
-            .overlay(alignment: .topTrailing) {
-                Button {
-                    close()
-                } label: {
-                    Image("CloseButton")
-                }
-                .tint(.black)
-                .padding()
-                .padding(.trailing, 30)
-            }
-            .shadow(radius: 100)
-            .padding(30)
-
-            .onAppear {
-                withAnimation(.spring()) {
-                    offset = 0
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button {
+                            withAnimation() {
+                                isActive.toggle()
+                            }
+                        } label: {
+                            Image(.closeButton)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 45, height: 45)
+                        }
+                        .tint(.black)
+                        .padding(.trailing, 95)
+                        .padding(.bottom)
+                    }
+                    
+                    HStack {
+                        SoundOffButton(isMusicOn: $isMusicOn)
+                            .padding(.horizontal)
+                        SoundEffectsOff(isSoundEffectsOn: $isSoundEffectsOn)
+                            .padding(.horizontal)
+                        HapticsOff(isHapticsOn: $isHapticsOn)
+                            .padding(.horizontal)
+                    }
+                    .padding(.horizontal, 30)
+                    .padding(.trailing, 15)
+                    .transition(.opacity)
+                    
+                    VStack {
+                        ProfileButtonPopUp()
+                    }
+                    .padding(.horizontal, 80)
+                    .padding(.trailing, 15)
                 }
             }
-        }
-        .ignoresSafeArea()
     }
     
     func close() {
-        withAnimation(.spring()) {
+        withAnimation() {
             offset = 800
             isActive = false
         }

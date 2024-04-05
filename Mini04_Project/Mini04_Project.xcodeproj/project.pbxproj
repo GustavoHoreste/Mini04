@@ -30,6 +30,7 @@
 		2E614AE72BBC7E0400ECD34E /* GetSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E614AE62BBC7E0400ECD34E /* GetSize.swift */; };
 		2E614AEA2BBEDF4A00ECD34E /* HowToPlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E614AE92BBEDF4A00ECD34E /* HowToPlayButton.swift */; };
 		2E614AEC2BBEDF5700ECD34E /* HowToPlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E614AEB2BBEDF5700ECD34E /* HowToPlayView.swift */; };
+		2E614AEE2BBF294800ECD34E /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E614AED2BBF294800ECD34E /* CloseButton.swift */; };
 		2E81140A2BA4E263009CCC77 /* ConfigView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8114092BA4E263009CCC77 /* ConfigView.swift */; };
 		2E81140D2BA4E3C2009CCC77 /* CoordinatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E81140C2BA4E3C2009CCC77 /* CoordinatorView.swift */; };
 		2E8114112BA4EA16009CCC77 /* GameplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8114102BA4EA16009CCC77 /* GameplayView.swift */; };
@@ -160,6 +161,7 @@
 		2E614AE62BBC7E0400ECD34E /* GetSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSize.swift; sourceTree = "<group>"; };
 		2E614AE92BBEDF4A00ECD34E /* HowToPlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayButton.swift; sourceTree = "<group>"; };
 		2E614AEB2BBEDF5700ECD34E /* HowToPlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowToPlayView.swift; sourceTree = "<group>"; };
+		2E614AED2BBF294800ECD34E /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		2E8114092BA4E263009CCC77 /* ConfigView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigView.swift; sourceTree = "<group>"; };
 		2E81140C2BA4E3C2009CCC77 /* CoordinatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorView.swift; sourceTree = "<group>"; };
 		2E8114102BA4EA16009CCC77 /* GameplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameplayView.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				2E3A74642BB348D90026BE07 /* HapticsOff.swift */,
 				2E3A74662BB34ACE0026BE07 /* ProfileButtonPopUp.swift */,
 				2E3A74682BB34AE30026BE07 /* CreditsButtonPopUp.swift */,
+				2E614AED2BBF294800ECD34E /* CloseButton.swift */,
 			);
 			path = PopUpButtons;
 			sourceTree = "<group>";
@@ -986,6 +989,7 @@
 				D92885B42B9668D100C73B6E /* Mini04_ProjectApp.swift in Sources */,
 				C0CBCB432BB209010020E594 /* RecordViewController.swift in Sources */,
 				C0CBCB4E2BB20F4C0020E594 /* ResultMenuButton.swift in Sources */,
+				2E614AEE2BBF294800ECD34E /* CloseButton.swift in Sources */,
 				E0AF6F0A2BACAEA9008BE255 /* PartialResultsDelegates.swift in Sources */,
 				E0AF6F082BACAB67008BE255 /* EndGameButton.swift in Sources */,
 				2EC1BA772BA8B5F600E1E410 /* GameplayViewModel.swift in Sources */,
