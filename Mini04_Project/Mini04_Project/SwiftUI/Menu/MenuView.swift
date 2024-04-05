@@ -10,12 +10,13 @@ import SwiftUI
 struct MenuView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
+    var haptics = HapticManager()
     @State var isActive: Bool = false
     
     var body: some View {
         GeometryReader { geo in
             ZStack {
-                Image("Background")
+                Image(.background)
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
@@ -30,10 +31,10 @@ struct MenuView: View {
                             isActive = true
                         } label: {
                             ZStack {
-                                Image("ConfigBackground")
+                                Image(.configBackground)
                                     .resizable()
                                     .frame(width: screenWidth * 0.114, height: screenHeight * 0.05284334763)
-                                Image("ConfigIcon")
+                                Image(.configIcon)
                                     .resizable()
                                     .frame(width: screenWidth * 0.077116, height: screenHeight * 0.034785)
                             }
@@ -50,6 +51,9 @@ struct MenuView: View {
                     Spacer()
                     
                     MultiplayerButton()
+                        .onTapGesture {
+                            haptics?.playSlice()
+                        }
                     
                     SingleButton()
                     

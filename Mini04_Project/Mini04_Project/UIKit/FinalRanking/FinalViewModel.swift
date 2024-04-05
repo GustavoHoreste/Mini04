@@ -9,6 +9,16 @@ import Foundation
 import UIKit
 
 class FinalViewModel {
+    
+    var data: [Player] = []
+    var dataForCollection:[Player]{
+        get{
+            var data = self.data
+            data.removeFirst(3)
+            return data
+        }
+    }
+    
     var podio = AnyImageView(imagem: UIImage(named: "FinalPodio"))
     var tops = AnyImageView(imagem: UIImage(named: "FinalTops"))
     var userFirst = UserImageView(distancia: 170)
@@ -17,6 +27,8 @@ class FinalViewModel {
     var leave = ResultMenuButton()
     var recomecar = SingleRecButton()
     var background = AnyImageView(imagem: UIImage(named: "FinalBackground"))
+    
+    
     
     init() {
         setupDelegates()

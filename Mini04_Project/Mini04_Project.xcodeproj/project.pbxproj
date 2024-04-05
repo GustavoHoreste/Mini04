@@ -108,6 +108,8 @@
 		E017B8862BBF20EA006B2675 /* SinglePlayerReadyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017B8852BBF20EA006B2675 /* SinglePlayerReadyVM.swift */; };
 		E017B8882BBF232A006B2675 /* SingleStartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017B8872BBF232A006B2675 /* SingleStartButton.swift */; };
 		E017B88A2BBF2893006B2675 /* RecordPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017B8892BBF2893006B2675 /* RecordPopUp.swift */; };
+		E017B88C2BC043FD006B2675 /* NormalListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017B88B2BC043FD006B2675 /* NormalListCell.swift */; };
+		E017B88F2BC06F5E006B2675 /* FinalCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017B88E2BC06F5E006B2675 /* FinalCollectionDelegate.swift */; };
 		E021364A2BBC791A0067D278 /* FianlResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02136492BBC791A0067D278 /* FianlResultViewModel.swift */; };
 		E021364C2BBC7B130067D278 /* NormalRankCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021364B2BBC7B130067D278 /* NormalRankCell.swift */; };
 		E021364E2BBC859F0067D278 /* LobbyListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E021364D2BBC859F0067D278 /* LobbyListView.swift */; };
@@ -238,6 +240,8 @@
 		E017B8852BBF20EA006B2675 /* SinglePlayerReadyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePlayerReadyVM.swift; sourceTree = "<group>"; };
 		E017B8872BBF232A006B2675 /* SingleStartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStartButton.swift; sourceTree = "<group>"; };
 		E017B8892BBF2893006B2675 /* RecordPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPopUp.swift; sourceTree = "<group>"; };
+		E017B88B2BC043FD006B2675 /* NormalListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalListCell.swift; sourceTree = "<group>"; };
+		E017B88E2BC06F5E006B2675 /* FinalCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalCollectionDelegate.swift; sourceTree = "<group>"; };
 		E02136492BBC791A0067D278 /* FianlResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FianlResultViewModel.swift; sourceTree = "<group>"; };
 		E021364B2BBC7B130067D278 /* NormalRankCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalRankCell.swift; sourceTree = "<group>"; };
 		E021364D2BBC859F0067D278 /* LobbyListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyListView.swift; sourceTree = "<group>"; };
@@ -386,7 +390,7 @@
 				C03D094B2BBF464100D63BA5 /* FinalRakingViewController.swift */,
 				C03D094D2BBF468700D63BA5 /* FinalViewModel.swift */,
 				C03D094F2BBF46C000D63BA5 /* ConstraintsFR.swift */,
-				C03D09512BBF4A8D00D63BA5 /* DelegatesFR.swift */,
+				E017B88D2BC06F3F006B2675 /* Delegates */,
 				C03D09532BBF4B8B00D63BA5 /* Components */,
 			);
 			path = FinalRanking;
@@ -396,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				C03D09542BBF4BBC00D63BA5 /* UserImageView.swift */,
+				E017B88B2BC043FD006B2675 /* NormalListCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -617,6 +622,15 @@
 				E00C5CD22BB349140020126E /* PlayerListCell.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		E017B88D2BC06F3F006B2675 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				C03D09512BBF4A8D00D63BA5 /* DelegatesFR.swift */,
+				E017B88E2BC06F5E006B2675 /* FinalCollectionDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		E05410B22BA4CDEF00046661 /* Menu */ = {
@@ -885,6 +899,7 @@
 				D95398532BACCDA90022F444 /* MultiplayerHubView.swift in Sources */,
 				C09106FA2BA8DECB00037EAB /* CameraImageView.swift in Sources */,
 				D9D5734B2BBDF28700CF46A6 /* PopUpExitGame.swift in Sources */,
+				E017B88C2BC043FD006B2675 /* NormalListCell.swift in Sources */,
 				D92D6BA82BAD30D0006B7E87 /* ToggleConfigComponent.swift in Sources */,
 				E08782BC2BAB565900FB5ABC /* ConstraintsPR.swift in Sources */,
 				E009867F2BAB626500E586C6 /* PartialResultCell.swift in Sources */,
@@ -986,6 +1001,7 @@
 				C03D094E2BBF468700D63BA5 /* FinalViewModel.swift in Sources */,
 				C09106FE2BA8FD7800037EAB /* RoundLabel.swift in Sources */,
 				E021364E2BBC859F0067D278 /* LobbyListView.swift in Sources */,
+				E017B88F2BC06F5E006B2675 /* FinalCollectionDelegate.swift in Sources */,
 				C03D09502BBF46C000D63BA5 /* ConstraintsFR.swift in Sources */,
 				C0CBCB382BAE142B0020E594 /* SingleViewModel.swift in Sources */,
 				2E3A74402BAB5DDF0026BE07 /* StartButton.swift in Sources */,
@@ -1128,7 +1144,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = 335BRL9A43;
+				DEVELOPMENT_TEAM = SRXHT55569;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1148,7 +1164,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini4-Proj";
+				PRODUCT_BUNDLE_IDENTIFIER = "group7.Mini4-Projct";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
