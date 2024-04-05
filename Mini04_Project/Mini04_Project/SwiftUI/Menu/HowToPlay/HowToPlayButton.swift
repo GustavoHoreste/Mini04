@@ -18,8 +18,8 @@ struct HowToPlayButton: View {
                 .frame(width: screenWidth * 0.682698, height: screenHeight * 0.070536)
                 
                 Text("Como Jogar?")
+                    .font(.custom("FafoSans-Bold", size: 20))
                     .padding()
-                    .font(.title)
                     .foregroundStyle(.black)
             }
         })

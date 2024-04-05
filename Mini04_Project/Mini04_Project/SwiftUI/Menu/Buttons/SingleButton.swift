@@ -20,9 +20,9 @@ struct SingleButton: View {
                 .resizable()
                 .frame(width: screenWidth * 0.651163, height: screenHeight * 0.121245)
                 
-                Text("SinglePlayer")
+                Text("Sozinho")
+                    .font(.custom("FafoSans-Bold", size: 30))
                     .padding()
-                    .font(.title)
                     .foregroundStyle(.black)
             }
         })

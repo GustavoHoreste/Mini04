@@ -42,9 +42,9 @@ struct MultiplayerHubView: View {
                                 .frame(width: screenWidth * 0.651163, height: screenHeight * 0.121245)
                             
                             Text("Criar Jogo")
+                                .font(.custom("FafoSans-Bold", size: 30))
                                 .padding()
                                 .foregroundStyle(.black)
-                                .font(.title)
                         }
                     }
                     
@@ -65,10 +65,10 @@ struct MultiplayerHubView: View {
                                     .frame(width: screenWidth * 0.651163, height: screenHeight * 0.121245)
                             }
                             
-                            Text("Entrar na partida")
+                            Text("Participar")
+                                .font(.custom("FafoSans-Bold", size: 30))
                                 .padding()
                                 .foregroundStyle(.black)
-                                .font(.title)
                         }
                         
                         

@@ -88,6 +88,24 @@ class NormalListCell: UICollectionViewCell {
         ])
     }
     
+    public func changePositionBG(_ position: Int){
+        switch position{
+        case 0:
+            rankingBg.image = UIImage(resource: .bkouro)
+            self.position.text = "\(position+1)"
+        case 1:
+            rankingBg.image = UIImage(resource: .bkprata)
+            self.position.text = "\(position+1)"
+        case 2:
+            rankingBg.image = UIImage(resource: .bkbronze)
+            self.position.text = "\(position+1)"
+        default:
+            rankingBg.image = UIImage(resource: .bkroxo)
+            self.position.text = "\(position+1)"
+        }
+    }
+    
+    
     private func setupLabels() {
         background.addSubview(rankingBg)
         background.addSubview(playerName)
@@ -95,8 +113,8 @@ class NormalListCell: UICollectionViewCell {
         background.addSubview(position)
         
         NSLayoutConstraint.activate([
-            rankingBg.bottomAnchor.constraint(equalTo: background.centerYAnchor, constant: 10),
-            rankingBg.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 10),
+            rankingBg.bottomAnchor.constraint(equalTo: background.centerYAnchor),
+            rankingBg.leadingAnchor.constraint(equalTo: background.leadingAnchor),
             rankingBg.widthAnchor.constraint(equalToConstant: self.frame.width * 0.3),
             rankingBg.widthAnchor.constraint(equalToConstant: self.frame.height * 0.3),
             

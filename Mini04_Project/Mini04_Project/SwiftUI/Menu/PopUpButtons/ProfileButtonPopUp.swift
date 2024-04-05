@@ -14,13 +14,14 @@ struct ProfileButtonPopUp: View {
     var body: some View {
         Button(action: {navigationCoordinator.present(fullScreenCover: .profile)}, label: {
             ZStack {
-                RoundedRectangle(cornerRadius: 20)
-                    .foregroundColor(.red)
+                Image("MultiBackground")
+                    .resizable()
+                    .frame(width: 210, height: 85)
 
                 Text("Editar perfil")
-                    .font(.system(size: 16, weight: .bold))
-                    .foregroundColor(.white)
+                    .font(.custom("FafoSans-Bold", size: 24))
                     .padding()
+                    .foregroundStyle(.black)
             }
             
         })

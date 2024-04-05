@@ -54,6 +54,7 @@ class FinalRakingViewController: UIViewController {
         setupView()
         configureCollectionViewDataSource()
         applySnapshot(players: finalVM.dataForCollection)
+        finalVM.setupTopRanks()
     }
 
     private func configureCollectionViewDataSource() {
@@ -61,7 +62,7 @@ class FinalRakingViewController: UIViewController {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NormalListCell.identifier, for: indexPath) as! NormalListCell
             cell.playerName.text = player.userName
             cell.playerScore.text = String(player.points)
-//            cell.changePositionBG(indexPath.row + 4)
+            cell.changePositionBG(indexPath.row + 4)
             return cell
         })
     }
