@@ -75,10 +75,14 @@ struct MatchConfigView: View {
         VStack{
                 HStack {
                     Text("Rodadas")
+                        .font(.custom("FafoSans-Bold", size: 20))
+                        .foregroundStyle(.black)
                     Spacer()
                     Picker("Round", selection: $matchConfigVM.selectedRound) {
                         ForEach(Round.allCases, id: \.self) { round in
                             Text("\(round.rawValue)")
+                                .font(.custom("FafoSans-Bold", size: 20))
+                                .foregroundStyle(.black)
                         }
                     }.pickerStyle(.menu)
                         .tint(.black)
@@ -88,10 +92,14 @@ struct MatchConfigView: View {
                 
                 HStack {
                     Text("Tempo")
+                        .font(.custom("FafoSans-Bold", size: 20))
+                        .foregroundStyle(.black)
                     Spacer()
                     Picker("Round", selection: $matchConfigVM.selectedRoundTime) {
                         ForEach(RoundTime.allCases, id: \.self) { roundTime in
                             Text("\(roundTime.minutes)")
+                                .font(.custom("FafoSans-Bold", size: 20))
+                                .foregroundStyle(.black)
                         }
                     }.pickerStyle(.menu)
                         .tint(.black)
@@ -100,9 +108,13 @@ struct MatchConfigView: View {
             
             
             Toggle("Bônus de habilidade", isOn: $matchConfigVM.selectPowerUps)
+                .font(.custom("FafoSans-Bold", size: 20))
+                .foregroundStyle(.black)
                 .tint(.orange)
             
             Toggle("Cores", isOn: $matchConfigVM.coresIsChoise)
+                .font(.custom("FafoSans-Bold", size: 20))
+                .foregroundStyle(.black)
                 .tint(.orange)
             
         }.padding()

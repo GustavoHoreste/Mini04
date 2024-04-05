@@ -58,12 +58,11 @@ struct PopUpConfigMatch: View {
                     ZStack {
                         Image("SingleBackgroundButton")
                             .resizable()
-                            .scaledToFit()
                             .frame(width: 246, height: 50)
                         
                         Text("Confirmar")
-                            .tint(.black)
-                            .font(.title2)
+                            .font(.custom("FafoSans-Bold", size: 20))
+                            .foregroundStyle(.black)
                     }
                 }
                 
@@ -75,12 +74,11 @@ struct PopUpConfigMatch: View {
                     ZStack {
                         Image("SingleBackgroundButton")
                             .resizable()
-                            .scaledToFit()
                             .frame(width: 246, height: 50)
                         
                         Text("Cancelar")
-                            .tint(.black)
-                            .font(.title2)
+                            .font(.custom("FafoSans-Bold", size: 20))
+                            .foregroundStyle(.black)
                     }
                 }
                                
