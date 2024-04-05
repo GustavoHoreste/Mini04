@@ -28,6 +28,7 @@ class TimerStart: UIImageView {
         translatesAutoresizingMaskIntoConstraints = false
         
         transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+        isHidden = false
     }
     
     required init?(coder: NSCoder) {
@@ -35,15 +36,17 @@ class TimerStart: UIImageView {
     }
     
     func sizeIncrease() {
+        isHidden = false
         print("\(count)")
-        image = images[count]
+        self.image = images[count]
         count += 1
         UIView.animate(withDuration: 0.5, animations: {
             self.transform = CGAffineTransform(scaleX: 3, y: 3)
         }, completion: { [self] _ in
             if count == 4 {
                 delegate?.timerStartOver()
-                removeFromSuperview()
+                count = 0
+                isHidden = true
                 return
             }
             sizeDecrease()

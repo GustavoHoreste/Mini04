@@ -52,5 +52,4 @@ class ChangeCountLabel: UILabel {
             delegate?.countEnded()
         }
     }
-    
 }

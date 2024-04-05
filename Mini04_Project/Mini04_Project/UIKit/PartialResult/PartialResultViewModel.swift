@@ -68,11 +68,8 @@ class PartialResultViewModel {
     }
     
     private func nextRound(){
-//        self.cancellables.forEach { $0.cancel() }
-//        self.view.gameplayVM.round.number += 1
-        self.view.gameplayVM.timerStartOver()
+        self.view.gameplayVM.timerStart.sizeIncrease()
         self.view.navigationController?.popViewController(animated: true)
-//        self.view.navigationCoordinator.pop()
     }
     
     public func funcStartCombine(){
