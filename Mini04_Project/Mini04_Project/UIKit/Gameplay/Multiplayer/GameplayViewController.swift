@@ -39,7 +39,6 @@ class GameplayViewController: UIViewController {
         gameplayVM.controller = self
         gameplayVM.multiVM = multiVM
         gameplayVM.starCombine()
-         print("Esse e o valor que deveria aparecer na view: \(self.gameplayVM.round.number)")
         gameplayVM.configTimeMatch()
         setupView()
         gameplayVM.timerStart.sizeIncrease()

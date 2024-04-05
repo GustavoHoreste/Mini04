@@ -103,21 +103,21 @@ extension GameplayViewModel: TimerStartDelegate {
         fadeBackground.removeFromSuperview()
         timerRound.playTimer()
         timerObject.playTimer()
-        configMatch()
         objectName.isHidden = false
         self.configMatch()
         self.configTimeMatch()
+        self.changeCount.number = 3
+        self.changeCount.alpha = 1
+        self.changeButton.alpha = 1
+        self.changeButton.isUserInteractionEnabled = true
         controller!.view.isUserInteractionEnabled = true
     }
 }
 
 extension GameplayViewModel: TimerRoundDelegate {
-    func timerRoundOver() {
-        print(self.controller?.navigationController?.viewControllers.count as Any)
-        
+    func timerRoundOver() {        
         self.multiVM?.resetPowerUpsAndStatus()
         self.pontos.number = 0
-        
 //        logo.isHidden = false
         
         self.timerObject.timer.invalidate()
@@ -130,16 +130,11 @@ extension GameplayViewModel: TimerRoundDelegate {
             self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
             return
         }else{
-            // let nextScreen = controller?.parcialRanking
-            // nextScreen?.partialResultVM.currentRound = self.round.number
-            
-            // nextScreen?.partialResultVM.timerBeforeButtonReady.startCount()
-            // nextScreen?.partialResultVM.readyButton.toggleIsHiden()
-            // self.round.number += 1
-            // self.controller?.parcialRanking.configureParcialVC()
-//            self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
-
-            let nextScreen = controller?.finalRanking
+            self.round.number += 1
+            let nextScreen = controller?.parcialRanking
+            nextScreen?.configureParcialVC()
+            nextScreen?.partialResultVM.timerBeforeButtonReady.startCount()
+            nextScreen?.partialResultVM.readyButton.toggleIsHiden()
             self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
         }
         
@@ -148,10 +143,6 @@ extension GameplayViewModel: TimerRoundDelegate {
 //        }, completion: { [self] _ in
 //            
 //        })
-    }
-    
-    public func reseatGame(){
-        
     }
 }
 
