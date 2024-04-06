@@ -10,56 +10,83 @@ import SwiftUI
 struct ProfileView: View {
     
     @EnvironmentObject private var navigationCoordinator: Coordinator
-    @EnvironmentObject private var vm: ProfileViewViewModel 
+    @EnvironmentObject private var vm: ProfileViewViewModel
     
     var body: some View {
-        VStack {
-            Circle()
-                .foregroundStyle(.gray)
-                .frame(width: 278, height: 278)
-                .padding()
-            
-            TextField(vm.textField, text: $vm.textField)
-                .disabled(vm.canEdit)
-                .padding()
-                .font(.system(size: 64))
-                .bold()
-                .multilineTextAlignment(.center)
-            
-            Spacer()
-            
-            Button{
-                if !vm.canEdit {
-                    vm.addUserName()
-                    vm.canEdit.toggle()
-                } else if vm.canEdit{
-                    vm.canEdit.toggle()
-                }
-            }label: {
-                if vm.canEdit {
-                    Text("Edit")
+        
+        ZStack {
+            Image("Background")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            VStack {
+                Spacer()
+                
+                Image(.imagePicker)
+                    .resizable()
+                    .frame(width: 128, height: 128)
+                
+                ZStack {
+                    Image(.textFieldClean)
+                        .resizable()
+                        .frame(width: 245, height: 43)
+                    
+                    TextField(vm.textField, text: $vm.textField)
+                        .disabled(vm.canEdit)
+                        .font(.custom("FafoSans-Bold", size: 20))
                         .padding()
-                        .font(.system(size: 40))
-                        .bold()
-                        .foregroundStyle(.white)
-                        .background(.gray)
-                        .clipShape(.capsule)
-                } else if !vm.canEdit {
-                    Text("Save")
-                        .padding()
-                        .font(.system(size: 40))
-                        .bold()
-                        .foregroundStyle(.white)
-                        .background(.gray)
-                        .clipShape(.capsule)
+                        .foregroundStyle(.black)
+                        .multilineTextAlignment(.center)
                 }
-            }
-            
-            Spacer()
-            
-            
-            Button("Dismiss") {
-                navigationCoordinator.dismissFullScreenCover()
+                
+                Spacer()
+                
+                Button{
+                    if !vm.canEdit {
+                        vm.addUserName()
+                        vm.canEdit.toggle()
+                    } else if vm.canEdit{
+                        vm.canEdit.toggle()
+                    }
+                }label: {
+                    if vm.canEdit {
+                        ZStack {
+                            Image("SingleBackgroundButton")
+                                .resizable()
+                                .frame(width: 246, height: 80)
+                            
+                            Text("Editar")
+                                .font(.custom("FafoSans-Bold", size: 30))
+                                .foregroundStyle(.black)
+                        }
+                    } else if !vm.canEdit {
+                        ZStack {
+                            Image("SingleBackgroundButton")
+                                .resizable()
+                                .frame(width: 246, height: 80)
+                            
+                            Text("Salvar")
+                                .font(.custom("FafoSans-Bold", size: 30))
+                                .foregroundStyle(.black)
+                        }
+                    }
+                }
+                
+                Button {
+                    navigationCoordinator.dismissFullScreenCover()
+                } label: {
+                    ZStack {
+                        Image("SingleBackgroundButton")
+                            .resizable()
+                            .frame(width: 246, height: 80)
+                        
+                        Text("Fechar")
+                            .font(.custom("FafoSans-Bold", size: 30))
+                            .foregroundStyle(.black)
+                    }
+                }
+                
+                Spacer()
             }
         }
         .navigationBarBackButtonHidden()

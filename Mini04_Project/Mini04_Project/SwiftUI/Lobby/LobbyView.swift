@@ -32,8 +32,10 @@ struct LobbyView: View {
                     BackButton()
                     
                     Spacer()
-                    
-                    configMatchButton()
+                    withAnimation() {
+                        configMatchButton()
+                    }
+
                     
                 }.padding()
                 
@@ -58,15 +60,11 @@ struct LobbyView: View {
                     multiplayerVM.sharePlayVM.configurationSessin(session)
                 }
             }
-//            .onAppear {
-//                if let localPlayer = multiplayerVM.localPlayer{
-//                    players.append(localPlayer)
-//                }
-//                players = multiplayerVM.adversaryPlayers
-//            }
             
             if (isOpenConfigMatch){
-                PopUpConfigMatch(ativouteste: $isOpenConfigMatch)
+                withAnimation() {
+                    PopUpConfigMatch(ativouteste: $isOpenConfigMatch)
+                }
             }
             
         }.navigationBarBackButtonHidden()
@@ -91,10 +89,12 @@ extension LobbyView{
                 self.haptics.doHaptic(type: .button)
                 isOpenConfigMatch = true
             } label: {
-                Image(.lobbyConnfig)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 70, height: 70)
+                withAnimation() {
+                    Image(.lobbyConnfig)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 70, height: 70)
+                }
             }
         }
     }

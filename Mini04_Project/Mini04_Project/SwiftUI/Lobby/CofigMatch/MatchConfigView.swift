@@ -16,7 +16,7 @@ enum Round: Int, CaseIterable, Identifiable {
 enum RoundTime: Double, CaseIterable, Identifiable, Codable {
     case thirtySeconds = 30.0
     case oneMinute = 60.0
-    case oneThirtyMinutes = 05.0
+    case oneThirtyMinutes = 90.0
     case twoMinutes = 120.0
     case twoThirtyMinutes = 150.0
     case threeMinutes = 180.0
@@ -73,39 +73,49 @@ struct MatchConfigView: View {
     
     var body: some View {
         VStack{
-            Spacer()
-
                 HStack {
                     Text("Rodadas")
+                        .font(.custom("FafoSans-Bold", size: 20))
+                        .foregroundStyle(.black)
                     Spacer()
                     Picker("Round", selection: $matchConfigVM.selectedRound) {
                         ForEach(Round.allCases, id: \.self) { round in
                             Text("\(round.rawValue)")
+                                .font(.custom("FafoSans-Bold", size: 20))
+                                .foregroundStyle(.black)
                         }
                     }.pickerStyle(.menu)
                         .tint(.black)
-                        .background(.yellow)
+                        .background(.orange)
                 }
                 
                 
                 HStack {
                     Text("Tempo")
+                        .font(.custom("FafoSans-Bold", size: 20))
+                        .foregroundStyle(.black)
                     Spacer()
                     Picker("Round", selection: $matchConfigVM.selectedRoundTime) {
                         ForEach(RoundTime.allCases, id: \.self) { roundTime in
                             Text("\(roundTime.minutes)")
+                                .font(.custom("FafoSans-Bold", size: 20))
+                                .foregroundStyle(.black)
                         }
                     }.pickerStyle(.menu)
                         .tint(.black)
-                        .background(.gray)
+                        .background(.orange)
                 }
             
             
             Toggle("Bônus de habilidade", isOn: $matchConfigVM.selectPowerUps)
+                .font(.custom("FafoSans-Bold", size: 20))
+                .foregroundStyle(.black)
+                .tint(.orange)
             
             Toggle("Cores", isOn: $matchConfigVM.coresIsChoise)
-            
-            Spacer()
+                .font(.custom("FafoSans-Bold", size: 20))
+                .foregroundStyle(.black)
+                .tint(.orange)
             
         }.padding()
             .onAppear{

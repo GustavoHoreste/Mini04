@@ -8,6 +8,12 @@
 import UIKit
 
 class ObjectName: UILabel {
+    
+    var name = "" {
+        didSet {
+            text = name
+        }
+    }
 
     init() {
         super.init(frame: .zero)
@@ -16,7 +22,6 @@ class ObjectName: UILabel {
         
         translatesAutoresizingMaskIntoConstraints = false
         font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
-        text = "Nenhum"
         textColor = .black
         
         isHidden = true

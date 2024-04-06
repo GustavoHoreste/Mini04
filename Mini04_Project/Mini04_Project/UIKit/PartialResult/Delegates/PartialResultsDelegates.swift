@@ -74,6 +74,8 @@ extension PartialResultViewModel: ReadyButtonDelegate {
         } else if view.multiVM.validateAllUsersStarted() && view.multiVM.localPlayer?.isHost == true{
             self.haptics.doHaptic(type: .button)
             self.view.multiVM.sendLocalUserStatus()
+            self.view.gameplayVM.fadeBackground.isHidden = false
+            self.view.gameplayVM.objectName.isHidden = true
             self.view.gameplayVM.timerStart.sizeIncrease()
             self.view.navigationController?.popViewController(animated: true)
         }else{

@@ -11,8 +11,8 @@ class TimerSingleRound: UILabel {
 
     var delegate: TimerRoundDelegate?
     
-    var minutos: Int = 0
-    var segundos: Int = 5
+    var minutos: Int = 2
+    var segundos: Int = 0
     
     lazy var timer: Timer = {
         let t = Timer()

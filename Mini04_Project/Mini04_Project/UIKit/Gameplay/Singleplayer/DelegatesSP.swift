@@ -27,7 +27,7 @@ extension SingleViewModel: ChangeButtonDelegate {
     func changeButtonAction() {
         self.haptics.doHaptic(type: .objectChange)
         items.chooseObject()
-        objectName.text = items.toFindObject
+        objectName.name = items.toFindObject
         timerObject.resetTimerObject()
         changeCount.subtractCount()
         changeButton.rotateAnimate()
@@ -54,7 +54,7 @@ extension SingleViewModel: PhotoButtonDelegate {
                     DispatchQueue.main.async{
                         self.haptics.doHaptic(type: .rightObject)
                         self.items.findedObject()
-                        self.objectName.text = self.items.toFindObject
+                        self.objectName.name = self.items.toFindObject
                         self.timerObject.resetTimerObject()
                     }
                 }
@@ -79,7 +79,7 @@ extension SingleViewModel: TimerStartDelegate {
         timerRound.playTimer()
         timerObject.playTimer()
         items.chooseObject()
-        objectName.text = items.toFindObject
+        objectName.name = items.toFindObject
         objectName.isHidden = false
         controller!.view.isUserInteractionEnabled = true
     }
@@ -102,7 +102,7 @@ extension SingleViewModel: TimerObjectDelegate {
     func timerObjectOver() {
         self.haptics.doHaptic(type: .objectTimeOver)
         items.chooseObject()
-        objectName.text = items.toFindObject
+        objectName.name = items.toFindObject
         timerObject.resetTimerObject()
         changeButton.rotateAnimate()
     }

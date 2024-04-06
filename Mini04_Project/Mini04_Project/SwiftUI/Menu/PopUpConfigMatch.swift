@@ -16,73 +16,74 @@ struct PopUpConfigMatch: View {
     var body: some View {
         ZStack {
             Color(.black)
-                .opacity(0.5)
+                .opacity(0.4)
                 .onTapGesture {
-                    close()
+                    withAnimation() {
+                        ativouteste.toggle()
+                    }
                 }
+                .ignoresSafeArea()
+            
+            Image("BackgroundConfigMatch")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 371, height: 504)
             
             VStack {
-                ScrollView {
-                    MatchConfigView()
-                        .padding()
-                        .environmentObject(matchConfigVM)
+                HStack() {
+                    Spacer()
+                    Button {
+                        withAnimation() {
+                            ativouteste.toggle()
+                        }
+                    } label: {
+                        Image(.closeButton)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 45, height: 45)
+                            .tint(.black)
+                            .padding(.trailing, 75)
+                    }
                 }
                 
+                    MatchConfigView()
+                        .padding(.horizontal, 70)
+                        .environmentObject(matchConfigVM)
+                
                 Button{ matchConfigVM.saveConfigMach()
-                    close()
+                    withAnimation() {
+                        ativouteste.toggle()
+                    }
                 } label: {
-                    Text("Confirmar")
-                        .padding()
-                        .foregroundStyle(.white)
-                        .background(.gray)
-                        .font(.title2)
+                    ZStack {
+                        Image("SingleBackgroundButton")
+                            .resizable()
+                            .frame(width: 246, height: 50)
+                        
+                        Text("Confirmar")
+                            .font(.custom("FafoSans-Bold", size: 20))
+                            .foregroundStyle(.black)
+                    }
                 }
                 
                 Button{ matchConfigVM.reset()
-                    close()
+                    withAnimation() {
+                        ativouteste.toggle()
+                    }
                 } label: {
-                    Text("Cancelar")
-                        .padding()
-                        .foregroundStyle(.white)
-                        .background(.gray)
-                        .font(.title2)
+                    ZStack {
+                        Image("SingleBackgroundButton")
+                            .resizable()
+                            .frame(width: 246, height: 50)
+                        
+                        Text("Cancelar")
+                            .font(.custom("FafoSans-Bold", size: 20))
+                            .foregroundStyle(.black)
+                    }
                 }
-                
+                               
             }
-            .fixedSize(horizontal: false, vertical: true)
-            .padding()
-            .background(
-                Image("Fundo")
-                    .resizable()
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 20))
-            .overlay(alignment: .topTrailing) {
-                Button {
-                    close()
-                } label: {
-                    Image(systemName: "xmark.circle")
-                        .font(.title)
-                        .fontWeight(.medium)
-                }
-                .tint(.black)
-                .padding()
-            }
-            .shadow(radius: 20)
-            .padding(30)
-            .offset(x: 0, y: offset)
-            .onAppear {
-                withAnimation(.spring()) {
-                    offset = 0
-                }
-            }
-        }
-        .ignoresSafeArea()
-    }
-    
-    func close() {
-        withAnimation(.spring()) {
-            offset = 1300
-            ativouteste = false
+            .padding(.trailing, 35)
         }
     }
 }

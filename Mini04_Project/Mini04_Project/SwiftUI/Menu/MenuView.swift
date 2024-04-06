@@ -15,76 +15,55 @@ struct MenuView: View {
     @State var isActive: Bool = false
     
     var body: some View {
-        GeometryReader { geo in
-            ZStack {
-                Image(.background)
+        ZStack {
+            Image("Background")
+                .resizable()
+                .scaledToFill()
+                .ignoresSafeArea()
+            
+            VStack {
+                Spacer()
+                
+                Image("Logo")
                     .resizable()
-                    .scaledToFill()
-                    .ignoresSafeArea()
-                    .frame(width: geo.size.width, height: geo.size.height, alignment: .center)
+                    .scaledToFit()
+                    .padding(.horizontal, 20)
                 
-                VStack {
-                    HStack {
-                        
-                        Spacer()
-                        
-                        Button {
-                            haptics.doHaptic(type: .button)
-                            withAnimation() {
-                                isActive = true
-                            }
-                        } label: {
-                            ZStack {
-                                Image(.configBackground)
-                                    .resizable()
-                                    .frame(width: 70, height: 70)
-                                Image(.configIcon)
-                                    .resizable()
-                                    .frame(width: 70, height: 70)
-                            }
+                
+                Spacer()
+                
+                MultiplayerButton()
+                
+                SingleButton()
+                
+                Spacer()
+            }
+            .navigationBarBackButtonHidden()
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button {
+                        withAnimation() {
+                            isActive = true
                         }
-                        
-                    }.padding()
-                    
-                    Spacer()
-                    
-                    Image("Logo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 399, height: 231)
-                    
-                    Spacer()
-                    
-                    MultiplayerButton()
-                    
-                    SingleButton()
-                    
-                    Spacer()
-                }
-                .navigationBarBackButtonHidden()
-                
-                if isActive {
-                    PopUpConfig(isActive: $isActive)
+                    } label: {
+                        ZStack {
+                            Image(.configBackground)
+                                .resizable()
+                                .frame(width: 70, height: 70)
+                            Image(.configIcon)
+                                .resizable()
+                                .frame(width: 70, height: 70)
+                        }
+                    }
+                    .padding(.top)
                 }
             }
-            .onAppear {
-                switch AVCaptureDevice.authorizationStatus(for: .video) {
-                case .authorized:
-                    print("authorized camera")
-                    
-                case .notDetermined:
-                    AVCaptureDevice.requestAccess(for: .video) { permission in
-                        print("permission")
-                    }
-                        
-                default:
-                    print("permission denied")
-                }
+            
+            if isActive {
+                PopUpConfig(isActive: $isActive)
             }
         }
-        
     }
-    
 }
 
 #Preview {
