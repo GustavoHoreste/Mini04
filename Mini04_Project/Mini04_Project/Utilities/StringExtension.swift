@@ -13,4 +13,15 @@ extension String {
         characters.shuffle()
         return String(characters)
     }
+    
+    func verifyObj() -> String {
+        switch self {
+        case "Livro:Caderno":
+            return "Livro"
+        case "Shorts:Calca":
+            return "Shorts"
+        default:
+            return self
+        }
+    }
 }

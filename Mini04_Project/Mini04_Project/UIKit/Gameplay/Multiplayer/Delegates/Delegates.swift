@@ -33,7 +33,7 @@ extension GameplayViewModel {
 extension GameplayViewModel: ChangeButtonDelegate {
     func changeButtonAction() {
         items.chooseObject()
-        objectName.text = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
+        objectName.name = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
         timerObject.resetTimerObject()
         items.shuffleIsOn = false
         changeCount.subtractCount()
@@ -63,7 +63,7 @@ extension GameplayViewModel: PhotoButtonDelegate {
                 if returnedTargetObject == items.toFindObject || returnedTargetColor == items.toFindObject{
                     DispatchQueue.main.async{
                         self.items.findedObject()
-                        self.objectName.text = self.items.shuffleIsOn ? self.items.toFindShuffled : self.items.toFindObject
+                        self.objectName.name = self.items.shuffleIsOn ? self.items.toFindShuffled : self.items.toFindObject
                         self.timerObject.resetTimerObject()
                         self.items.shuffleIsOn = false
                     }
@@ -151,7 +151,7 @@ extension GameplayViewModel: TimerRoundDelegate {
 extension GameplayViewModel: TimerObjectDelegate {
     func timerObjectOver() {
         items.chooseObject()
-        objectName.text = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
+        objectName.name = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
         timerObject.resetTimerObject()
         changeButton.rotateAnimate()
         items.shuffleIsOn = false
