@@ -11,7 +11,7 @@ class ObjectName: UILabel {
     
     var name = "" {
         didSet {
-            text = name.verifyObj()
+            text = name
         }
     }
 

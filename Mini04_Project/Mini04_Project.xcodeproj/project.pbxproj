@@ -51,6 +51,7 @@
 		C03D09522BBF4A8D00D63BA5 /* DelegatesFR.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D09512BBF4A8D00D63BA5 /* DelegatesFR.swift */; };
 		C03D09552BBF4BBC00D63BA5 /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D09542BBF4BBC00D63BA5 /* UserImageView.swift */; };
 		C03D09572BC08A0F00D63BA5 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D09562BC08A0F00D63BA5 /* UIViewExtension.swift */; };
+		C03D09592BC0D58600D63BA5 /* NewHomeObjects.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C03D09582BC0D58600D63BA5 /* NewHomeObjects.mlmodel */; };
 		C060E4052BBB32A4009F1250 /* TimerStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4042BBB32A4009F1250 /* TimerStart.swift */; };
 		C060E4072BBB3795009F1250 /* BackgroundFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4062BBB3795009F1250 /* BackgroundFade.swift */; };
 		C060E4092BBB55B7009F1250 /* AlertPowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4082BBB55B7009F1250 /* AlertPowerView.swift */; };
@@ -65,7 +66,6 @@
 		C091070D2BAA243D00037EAB /* TimerObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C091070C2BAA243D00037EAB /* TimerObject.swift */; };
 		C09107112BAB563A00037EAB /* SpecialObjectImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09107102BAB563A00037EAB /* SpecialObjectImage.swift */; };
 		C09107132BAB730700037EAB /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09107122BAB730700037EAB /* StringExtension.swift */; };
-		C0A8B2932BA8A1970048AC08 /* NewHomeObjects.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B2912BA8A1970048AC08 /* NewHomeObjects.mlmodel */; };
 		C0A8B2992BA8B6A80048AC08 /* ObjectName.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B2982BA8B6A80048AC08 /* ObjectName.swift */; };
 		C0A8B29B2BA8BA450048AC08 /* ItemsToFindModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B29A2BA8BA450048AC08 /* ItemsToFindModel.swift */; };
 		C0A8B29E2BA8C1320048AC08 /* ConstraintsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A8B29D2BA8C1320048AC08 /* ConstraintsVC.swift */; };
@@ -183,6 +183,7 @@
 		C03D09512BBF4A8D00D63BA5 /* DelegatesFR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegatesFR.swift; sourceTree = "<group>"; };
 		C03D09542BBF4BBC00D63BA5 /* UserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
 		C03D09562BC08A0F00D63BA5 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		C03D09582BC0D58600D63BA5 /* NewHomeObjects.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = NewHomeObjects.mlmodel; sourceTree = "<group>"; };
 		C060E4042BBB32A4009F1250 /* TimerStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStart.swift; sourceTree = "<group>"; };
 		C060E4062BBB3795009F1250 /* BackgroundFade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFade.swift; sourceTree = "<group>"; };
 		C060E4082BBB55B7009F1250 /* AlertPowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPowerView.swift; sourceTree = "<group>"; };
@@ -197,7 +198,6 @@
 		C091070C2BAA243D00037EAB /* TimerObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerObject.swift; sourceTree = "<group>"; };
 		C09107102BAB563A00037EAB /* SpecialObjectImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialObjectImage.swift; sourceTree = "<group>"; };
 		C09107122BAB730700037EAB /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		C0A8B2912BA8A1970048AC08 /* NewHomeObjects.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = NewHomeObjects.mlmodel; sourceTree = "<group>"; };
 		C0A8B2982BA8B6A80048AC08 /* ObjectName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectName.swift; sourceTree = "<group>"; };
 		C0A8B29A2BA8BA450048AC08 /* ItemsToFindModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsToFindModel.swift; sourceTree = "<group>"; };
 		C0A8B29D2BA8C1320048AC08 /* ConstraintsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsVC.swift; sourceTree = "<group>"; };
@@ -422,8 +422,8 @@
 		C0A8B2902BA8A1460048AC08 /* CoreMLModels */ = {
 			isa = PBXGroup;
 			children = (
+				C03D09582BC0D58600D63BA5 /* NewHomeObjects.mlmodel */,
 				C09107012BA9058200037EAB /* ColorClassifier.mlmodel */,
-				C0A8B2912BA8A1970048AC08 /* NewHomeObjects.mlmodel */,
 			);
 			path = CoreMLModels;
 			sourceTree = "<group>";
@@ -953,6 +953,7 @@
 				E08782AF2BA4D49E00FB5ABC /* FinalResultView.swift in Sources */,
 				2E3A743B2BAB52D40026BE07 /* BackButton.swift in Sources */,
 				C09107022BA9058200037EAB /* ColorClassifier.mlmodel in Sources */,
+				C03D09592BC0D58600D63BA5 /* NewHomeObjects.mlmodel in Sources */,
 				D91D65132BAB2871003D7DBA /* MultiplayerManagerViewModel.swift in Sources */,
 				E0AB95EE2BBF1DBE00443821 /* SinglePlayerReadyView.swift in Sources */,
 				C09107112BAB563A00037EAB /* SpecialObjectImage.swift in Sources */,
@@ -967,7 +968,6 @@
 				C09107092BAA066900037EAB /* PowersButton.swift in Sources */,
 				2E3A74392BAA126A0026BE07 /* TimerRound.swift in Sources */,
 				2E3A74632BB348870026BE07 /* SoundEffectsOff.swift in Sources */,
-				C0A8B2932BA8A1970048AC08 /* NewHomeObjects.mlmodel in Sources */,
 				C09107132BAB730700037EAB /* StringExtension.swift in Sources */,
 				E08782B82BA8C44000FB5ABC /* PlayerData.swift in Sources */,
 				E08782BA2BAA177600FB5ABC /* ProfileViewViewModel.swift in Sources */,
