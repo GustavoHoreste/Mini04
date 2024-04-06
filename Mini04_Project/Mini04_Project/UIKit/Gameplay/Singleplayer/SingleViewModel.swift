@@ -16,6 +16,7 @@ class SingleViewModel: NSObject {
     var camera: CameraModel!
     var items = ItemsToFindModel()
     var model = MlModel()
+    var haptics = Haptics()
     
     var objectName = ObjectName()
     var changeButton = ChangeButton()

@@ -16,6 +16,7 @@ extension RecordViewModel {
 
 extension RecordViewModel: ResultMenuButtonDelegate {
     func menuAction() {
+        self.haptics.doHaptic(type: .button)
         controller?.navigationCoordinator.push(.menu)
     }
 }

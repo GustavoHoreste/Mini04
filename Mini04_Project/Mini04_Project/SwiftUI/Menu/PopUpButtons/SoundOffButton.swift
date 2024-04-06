@@ -10,10 +10,12 @@ import SwiftUI
 struct SoundOffButton: View {
     
     @Binding var isMusicOn: Bool
+    var haptic = Haptics()
     
     var body: some View {
         
         Button(action: {
+            haptic.doHaptic(type: .button)
             self.isMusicOn.toggle()
         }) {
             

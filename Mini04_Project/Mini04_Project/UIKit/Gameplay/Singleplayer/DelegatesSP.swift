@@ -25,6 +25,7 @@ extension SingleViewModel {
 
 extension SingleViewModel: ChangeButtonDelegate {
     func changeButtonAction() {
+        self.haptics.doHaptic(type: .objectChange)
         items.chooseObject()
         objectName.text = items.toFindObject
         timerObject.resetTimerObject()
@@ -51,6 +52,7 @@ extension SingleViewModel: PhotoButtonDelegate {
                 print(returnedTargetColor)
                 if returnedTargetObject == items.toFindObject || returnedTargetColor == items.toFindObject{
                     DispatchQueue.main.async{
+                        self.haptics.doHaptic(type: .rightObject)
                         self.items.findedObject()
                         self.objectName.text = self.items.toFindObject
                         self.timerObject.resetTimerObject()
@@ -98,6 +100,7 @@ extension SingleViewModel: TimerRoundDelegate {
 
 extension SingleViewModel: TimerObjectDelegate {
     func timerObjectOver() {
+        self.haptics.doHaptic(type: .objectTimeOver)
         items.chooseObject()
         objectName.text = items.toFindObject
         timerObject.resetTimerObject()

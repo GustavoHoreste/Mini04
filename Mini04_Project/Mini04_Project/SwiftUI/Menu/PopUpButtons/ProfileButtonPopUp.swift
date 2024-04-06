@@ -9,10 +9,13 @@ import SwiftUI
 
 struct ProfileButtonPopUp: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
-    
+    var haptic  = Haptics()
     
     var body: some View {
-        Button(action: {navigationCoordinator.present(fullScreenCover: .profile)}, label: {
+        Button(action: {
+            haptic.doHaptic(type: .button)
+            navigationCoordinator.present(fullScreenCover: .profile)
+        }, label: {
             ZStack {
                 Image("MultiBackground")
                     .resizable()

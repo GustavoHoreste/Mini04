@@ -37,7 +37,9 @@ class FinalViewModel {
             return data
         }
     }
+    
     var view: FinalRakingViewController?
+    var haptics = Haptics()
     
     var podio = AnyImageView(imagem: UIImage(named: "FinalPodio"))
     var tops = AnyImageView(imagem: UIImage(named: "FinalTops"))

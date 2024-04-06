@@ -9,9 +9,11 @@ import SwiftUI
 
 struct SoundEffectsOff: View {
     @Binding var isSoundEffectsOn: Bool
+    var haptic = Haptics()
     
     var body: some View {
         Button(action: {
+            haptic.doHaptic(type: .button)
             self.isSoundEffectsOn.toggle()
         }) {
             

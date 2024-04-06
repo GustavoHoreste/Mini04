@@ -13,7 +13,9 @@ struct PopUpConfig: View {
     @State private var offset: CGFloat = 1000
     @State var isMusicOn = true
     @State var isSoundEffectsOn = true
-    @State var isHapticsOn = true
+    @State var isHapticsOn = Haptics.hasHaptic
+    
+    var haptic = Haptics()
     
     @Binding var isActive: Bool
     
@@ -38,6 +40,7 @@ struct PopUpConfig: View {
                     HStack {
                         Spacer()
                         Button {
+                            haptic.doHaptic(type: .button)
                             withAnimation() {
                                 isActive.toggle()
                             }

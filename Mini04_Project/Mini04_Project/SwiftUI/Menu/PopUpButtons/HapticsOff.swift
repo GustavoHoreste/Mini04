@@ -9,9 +9,12 @@ import SwiftUI
 
 struct HapticsOff: View {
     @Binding var isHapticsOn: Bool
+    var haptic = Haptics()
     
     var body: some View {
         Button(action: {
+            Haptics.hasHaptic.toggle()
+            haptic.doHaptic(type: .button)
             self.isHapticsOn.toggle()
         }) {
             

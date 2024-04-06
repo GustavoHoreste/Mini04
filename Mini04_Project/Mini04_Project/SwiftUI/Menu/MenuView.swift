@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct MenuView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
@@ -26,8 +27,9 @@ struct MenuView: View {
                     HStack {
                         
                         Spacer()
-
+                        
                         Button {
+                            haptics.doHaptic(type: .button)
                             withAnimation() {
                                 isActive = true
                             }
@@ -63,6 +65,20 @@ struct MenuView: View {
                 
                 if isActive {
                     PopUpConfig(isActive: $isActive)
+                }
+            }
+            .onAppear {
+                switch AVCaptureDevice.authorizationStatus(for: .video) {
+                case .authorized:
+                    print("authorized camera")
+                    
+                case .notDetermined:
+                    AVCaptureDevice.requestAccess(for: .video) { permission in
+                        print("permission")
+                    }
+                        
+                default:
+                    print("permission denied")
                 }
             }
         }

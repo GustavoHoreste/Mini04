@@ -30,6 +30,7 @@ extension FinalViewModel: ExitGameDelegate {
     }
     
     func exitGame() {
+        self.haptics.doHaptic(type: .button)
         self.view?.present(popUp, animated: false)
     }
     

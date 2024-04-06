@@ -10,10 +10,12 @@ import SwiftUI
 struct SingleStartButton: View {
     
     var action: () -> Void
+    var haptics = Haptics()
     
     var body: some View {
         VStack{
             Button{
+                haptics.doHaptic(type: .button)
                 action()
             }label: {
                 Image("StartButton")

@@ -26,6 +26,8 @@ enum HapticsCase{
 class Haptics {
     var engine: CHHapticEngine?
     
+    static var hasHaptic:Bool = true
+    
     init() {
         guard CHHapticEngine.capabilitiesForHardware().supportsHaptics else { return }
         do {
@@ -34,6 +36,7 @@ class Haptics {
         } catch {
             print("Error was an error: \(error.localizedDescription)")
         }
+        
 //        engine?.stoppedHandler = { reason in
 //            print("Engine stopped: \(reason)")
 //        }
@@ -50,31 +53,33 @@ class Haptics {
     }
     
     func doHaptic(type: HapticsCase) {
-        switch type{
-        case .button:
-            self.createEvent(intensity: 0.3, sharpness: 1, parameter: .hapticTransient)
-        case .toggle:
-            self.createEvent(intensity: 0.2, sharpness: 1, parameter: .hapticContinuous)
-        case .startGame:
-            self.startGameAndEndGame()
-        case .objectChange:
-            self.createEvent(intensity: 0.3, sharpness: 0.5, parameter: .hapticTransient)
-        case .rightObject:
-            self.createEvent(intensity: 0.5, sharpness: 0.3, parameter: .hapticTransient)
-        case .specialObject:
-            self.createEvent(intensity: 0.6, sharpness: 0.3, parameter: .hapticTransient)
-        case .gotPower:
-            self.createEvent(intensity: 0.4, sharpness: 0.3, parameter: .hapticTransient)
-        case .usePower:
-            self.createReceivePower()
-        case .objectTimeOver:
-            self.objectChange()
-        case .roundOver:
-            self.startGameAndEndGame()
-        case .receivedPower:
-            self.createReceivePower()
-        case .appearsOnTops:
-            self.tops()
+        if Haptics.hasHaptic{
+            switch type{
+            case .button:
+                self.createEvent(intensity: 0.6, sharpness: 1, parameter: .hapticTransient)
+            case .toggle:
+                self.createEvent(intensity: 0.2, sharpness: 1, parameter: .hapticContinuous)
+            case .startGame:
+                self.startGameAndEndGame()
+            case .objectChange:
+                self.createEvent(intensity: 0.3, sharpness: 0.5, parameter: .hapticTransient)
+            case .rightObject:
+                self.createEvent(intensity: 0.5, sharpness: 0.3, parameter: .hapticTransient)
+            case .specialObject:
+                self.createEvent(intensity: 0.6, sharpness: 0.3, parameter: .hapticTransient)
+            case .gotPower:
+                self.createEvent(intensity: 0.4, sharpness: 0.3, parameter: .hapticTransient)
+            case .usePower:
+                self.createReceivePower()
+            case .objectTimeOver:
+                self.objectChange()
+            case .roundOver:
+                self.startGameAndEndGame()
+            case .receivedPower:
+                self.createReceivePower()
+            case .appearsOnTops:
+                self.tops()
+            }
         }
     }
     
@@ -104,10 +109,11 @@ class Haptics {
         let short1 = CHHapticEvent(eventType: .hapticTransient, parameters: [], relativeTime: 0)
         let short2 = CHHapticEvent(eventType: .hapticTransient, parameters: [], relativeTime: 1.0)
         let short3 = CHHapticEvent(eventType: .hapticTransient, parameters: [], relativeTime: 2.0)
+        let short4 = CHHapticEvent(eventType: .hapticContinuous, parameters: [], relativeTime: 3.0, duration: 1.0)
         
         do {
             try engine?.start()
-            let pattern = try CHHapticPattern(events: [short1,short2,short3], parameters: [])
+            let pattern = try CHHapticPattern(events: [short1,short2,short3,short4], parameters: [])
             let player = try engine?.makePlayer(with: pattern)
             try player?.start(atTime: 0)
         } catch {

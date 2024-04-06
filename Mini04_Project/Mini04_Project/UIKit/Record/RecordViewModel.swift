@@ -12,6 +12,7 @@ class RecordViewModel {
         
     weak var controller: RecordViewController?
     
+    var haptics = Haptics()
     var results = SingleResultLabel()
     var highscore = HighscoreLabel()
     var menu = ResultMenuButton()

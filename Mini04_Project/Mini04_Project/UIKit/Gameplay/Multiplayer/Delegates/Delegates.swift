@@ -32,6 +32,7 @@ extension GameplayViewModel {
 //MARK: - CHANGE OBJETO QUANDO APERTA NO BOTAO HAPTICS AQUI
 extension GameplayViewModel: ChangeButtonDelegate {
     func changeButtonAction() {
+        self.haptics.doHaptic(type: .objectChange)
         items.chooseObject()
         objectName.text = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
         timerObject.resetTimerObject()
@@ -44,6 +45,7 @@ extension GameplayViewModel: ChangeButtonDelegate {
 
 extension GameplayViewModel: ChangeCountLabelDelegate {
     func countEnded() {
+        self.haptics.doHaptic(type: .roundOver)
         changeButton.alpha = 0.3
         changeButton.isUserInteractionEnabled = false
     }
@@ -62,6 +64,7 @@ extension GameplayViewModel: PhotoButtonDelegate {
                 //MARK: - QUANDO A PESSOA ACERTA UM OBJETO HAPTICS AQUI
                 if returnedTargetObject == items.toFindObject || returnedTargetColor == items.toFindObject{
                     DispatchQueue.main.async{
+                        self.haptics.doHaptic(type: .rightObject)
                         self.items.findedObject()
                         self.objectName.text = self.items.shuffleIsOn ? self.items.toFindShuffled : self.items.toFindObject
                         self.timerObject.resetTimerObject()
@@ -73,6 +76,7 @@ extension GameplayViewModel: PhotoButtonDelegate {
                     items.specialObject = ""
                     let specialObject = SpecialObject(objectName: items.specialObject, isHit: true)
                     DispatchQueue.main.async { [self] in
+                        self.haptics.doHaptic(type: .specialObject)
                         self.special.specialFinded()
                         self.multiVM?.sendEspcialObject(specialObject)
                         self.multiVM?.localPlayer?.points += 2
@@ -149,6 +153,7 @@ extension GameplayViewModel: TimerRoundDelegate {
 //MARK: - CHANGE OBJETO QUANDO OBJETO ACABA HAPTICS AQUI
 extension GameplayViewModel: TimerObjectDelegate {
     func timerObjectOver() {
+        self.haptics.doHaptic(type: .objectChange)
         items.chooseObject()
         objectName.text = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
         timerObject.resetTimerObject()
@@ -161,6 +166,7 @@ extension GameplayViewModel: TimerObjectDelegate {
 //MARK: - Lógica dos poderzinhos
 extension GameplayViewModel: PowersButtonDelegate {
     func reciveHidrance(powerType: PowerUps) {
+        self.haptics.doHaptic(type: .receivedPower)
         switch powerType{
         case .freeze:
             powers.freezePower()
@@ -183,8 +189,10 @@ extension GameplayViewModel: PowersButtonDelegate {
     
     
     func powerButtonAction(powerType: PowerUps) {
+        self.haptics.doHaptic(type: .usePower)
         powers.removePower(powerType: powerType)
         print("ACAO PODER \(powerType)")
+        self.haptics.doHaptic(type: .usePower)
         switch powerType{
         case .freeze:
             //Função de congelar a câmera
@@ -241,6 +249,7 @@ extension GameplayViewModel: PowersButtonDelegate {
 extension GameplayViewModel: SpecialObjectImageDelegate {
     func specialAppeared() {
         //Precisar fazer algo quando o Objeto Especial aparecer
+        self.haptics.doHaptic(type: .specialObject)
         if multiVM?.configMatch.powerUps == true {
             special.specialIsOn = true
             special.isHidden = false

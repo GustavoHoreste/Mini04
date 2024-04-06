@@ -38,6 +38,7 @@ extension PartialResultViewModel: ExitGameDelegate{
     }
     
     func exitGame() {
+        self.haptics.doHaptic(type: .button)
         self.view.present(popUpExitVC, animated: false)
     }
     
@@ -55,6 +56,7 @@ extension PartialResultViewModel: ExitGameDelegate{
 extension PartialResultViewModel: ReadyButtonDelegate {
     func ready() {
         if view.multiVM.localPlayer?.statusUser == false{
+            self.haptics.doHaptic(type: .button)
             sendUserStatus()
         }else{
             let alertController = UIAlertController(title: "Você já deu ready", message: "Você já realizou esta ação anteriormente.", preferredStyle: .alert)
@@ -70,6 +72,7 @@ extension PartialResultViewModel: ReadyButtonDelegate {
         if view.multiVM.localPlayer?.isHost == false{
             self.view.multiVM.sendLocalUserStatus()
         } else if view.multiVM.validateAllUsersStarted() && view.multiVM.localPlayer?.isHost == true{
+            self.haptics.doHaptic(type: .button)
             self.view.multiVM.sendLocalUserStatus()
             self.view.gameplayVM.timerStart.sizeIncrease()
             self.view.navigationController?.popViewController(animated: true)

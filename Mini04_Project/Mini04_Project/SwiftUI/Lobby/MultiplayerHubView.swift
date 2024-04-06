@@ -10,6 +10,7 @@ import SwiftUI
 struct MultiplayerHubView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
+    var haptics = Haptics()
     
     var body: some View {
         GeometryReader{ proxy in
@@ -33,6 +34,7 @@ struct MultiplayerHubView: View {
                     Spacer()
                     
                     Button{
+                        haptics.doHaptic(type: .button)
                         multiplayerVM.defineLocalPlayerHost(true)
                         navigationCoordinator.push(.lobby)
                     }label: {
@@ -49,6 +51,7 @@ struct MultiplayerHubView: View {
                     }
                     
                     Button{
+                        haptics.doHaptic(type: .button)
                         multiplayerVM.defineLocalPlayerHost(false)
                         multiplayerVM.sendLocalPlayerData()
                         navigationCoordinator.push(.lobby)

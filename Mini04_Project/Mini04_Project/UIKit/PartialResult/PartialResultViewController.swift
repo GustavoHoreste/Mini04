@@ -18,6 +18,7 @@ class PartialResultViewController: UIViewController {
     var partialResultVM = PartialResultViewModel()
     var navigationCoordinator: Coordinator
     var gameplayVM: GameplayViewModel
+    var haptics = Haptics()
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Player>
     typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, Player>

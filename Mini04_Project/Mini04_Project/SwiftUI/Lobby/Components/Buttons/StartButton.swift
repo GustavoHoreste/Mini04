@@ -51,17 +51,26 @@ struct StartButton: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
     @StateObject private var startButtonVM: StartButtonViewModel = StartButtonViewModel()
+    var haptics = Haptics()
     
     var body: some View {
         VStack {
             Button{
+                self.haptics.doHaptic(type: .button)
                 self.startButtonVM.verifyUserIsHost()
             } label: {
                 ZStack{
-                    Image(.startButton)
-                        .resizable()
-                        .scaledToFill()
-                        .padding()
+                    if multiplayerVM.localPlayer?.isHost == true{
+                        Image(.startButton)
+                            .resizable()
+                            .scaledToFill()
+                            .padding()
+                    } else {
+                        Image(.isReadyButton)
+                            .resizable()
+                            .scaledToFill()
+                            .padding()
+                    }
                 }
             }
         }.onAppear{

@@ -9,10 +9,14 @@ import SwiftUI
 
 struct BackButton: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
+    var haptics = Haptics()
 
     var body: some View {
         VStack{
-            Button{navigationCoordinator.popToRoot()}label: {
+            Button{
+                haptics.doHaptic(type: .button)
+                navigationCoordinator.popToRoot()
+            }label: {
                 Image(.lobbyReturnButton)
                     .resizable()
                     .scaledToFit()

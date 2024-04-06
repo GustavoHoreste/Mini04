@@ -15,6 +15,7 @@ struct LobbyView: View {
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
     @StateObject var groupStateObserver = GroupStateObserver()
     @State var isOpenConfigMatch = false
+    var haptics = Haptics()
 //    @State var players:[Player] = []
    // @State var isStarter: Bool = false
     
@@ -86,7 +87,10 @@ extension LobbyView{
     @ViewBuilder
     private func configMatchButton() -> some View{
         if multiplayerVM.localPlayer?.isHost == true {
-            Button { isOpenConfigMatch = true} label: {
+            Button { 
+                self.haptics.doHaptic(type: .button)
+                isOpenConfigMatch = true
+            } label: {
                 Image(.lobbyConnfig)
                     .resizable()
                     .scaledToFit()
@@ -98,7 +102,10 @@ extension LobbyView{
     @ViewBuilder
     private func inviteFriend() -> some View{
         if multiplayerVM.localPlayer?.isHost == true{
-            Button{ verifyStausSession() }label: {
+            Button{
+                self.haptics.doHaptic(type: .button)
+                verifyStausSession()
+            }label: {
                 ZStack{
                     Image(.buttonBack)
                         .resizable()

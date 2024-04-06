@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct RecordPopUp: View {
+    
     @Binding var isOpen:Bool
     @State var highScore:Int = 0
+    var haptics = Haptics()
+    
     var body: some View {
         ZStack{
             Color(.black)
@@ -29,6 +32,7 @@ struct RecordPopUp: View {
                 HStack{
                     Spacer()
                     Button{
+                        haptics.doHaptic(type: .button)
                         withAnimation(){
                             isOpen.toggle()
                         }

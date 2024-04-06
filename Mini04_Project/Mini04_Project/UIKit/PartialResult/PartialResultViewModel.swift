@@ -17,6 +17,7 @@ class PartialResultViewModel {
     
     var currentRound: Int = 0
     var isFinishGame: Bool = false
+    var haptics = Haptics()
     
     lazy var endGameButton = EndGameButton()
     lazy var partialResultsTitle = PartialResultTitle()
@@ -68,6 +69,7 @@ class PartialResultViewModel {
     }
     
     private func nextRound(){
+        self.haptics.doHaptic(type: .button)
         self.view.gameplayVM.timerStart.sizeIncrease()
         self.view.navigationController?.popViewController(animated: true)
     }

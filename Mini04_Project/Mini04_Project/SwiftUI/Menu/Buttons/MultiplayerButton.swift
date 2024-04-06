@@ -10,9 +10,11 @@ import SwiftUI
 struct MultiplayerButton: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
+    var haptics = Haptics()
     
     var body: some View {
         Button{
+            haptics.doHaptic(type: .button)
             multiplayerVM.creatLocalUser()
             navigationCoordinator.push(.multiplayerHub)
         } label: {

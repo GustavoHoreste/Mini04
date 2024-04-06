@@ -13,6 +13,8 @@ protocol TimerStartDelegate: AnyObject {
 
 class TimerStart: UIImageView {
 
+    var haptics = Haptics()
+    
     var delegate: TimerStartDelegate?
     
     var count: Int = 0
@@ -21,6 +23,8 @@ class TimerStart: UIImageView {
                               UIImage(named: "Count2"),
                               UIImage(named: "Count1"),
                               UIImage(named: "CountJa")]
+    
+    var firstTime = true
     
     init() {
         super.init(frame: .zero)
@@ -36,6 +40,10 @@ class TimerStart: UIImageView {
     }
     
     func sizeIncrease() {
+        if firstTime == true{
+            haptics.doHaptic(type: .startGame)
+            firstTime = false
+        }
         isHidden = false
         print("\(count)")
         self.image = images[count]
