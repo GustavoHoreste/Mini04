@@ -29,10 +29,10 @@ extension GameplayViewController {
         view.addSubview(gameplayVM.powers)
         view.addSubview(gameplayVM.crosshair)
 //        view.addSubview(gameplayVM.logo)
-        view.addSubview(gameplayVM.fadeBackground)
-        view.addSubview(gameplayVM.timerStart)
         view.addSubview(gameplayVM.alert)
         view.addSubview(gameplayVM.photoButton)
+        view.addSubview(gameplayVM.fadeBackground)
+        view.addSubview(gameplayVM.timerStart)
                 
         NSLayoutConstraint.activate([
             gameplayVM.cameraImage.heightAnchor.constraint(equalToConstant: view.frame.height * 0.9),
