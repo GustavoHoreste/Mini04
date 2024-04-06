@@ -58,6 +58,19 @@ struct MenuView: View {
                     .padding(.top)
                 }
             }
+            .onAppear {
+                switch AVCaptureDevice.authorizationStatus(for: .video) {
+                case .authorized:
+                    print("permission camera true")
+                    
+                case .notDetermined:
+                    AVCaptureDevice.requestAccess(for: .video) { permission in
+                            print(permission)
+                    }
+                default:
+                    print("permission denied")
+                }
+            }
             
             if isActive {
                 PopUpConfig(isActive: $isActive)
