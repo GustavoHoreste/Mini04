@@ -26,7 +26,7 @@ extension SingleViewModel {
 extension SingleViewModel: ChangeButtonDelegate {
     func changeButtonAction() {
         items.chooseObject()
-        objectName.text = items.toFindObject
+        objectName.name = items.toFindObject.verifyObj()
         timerObject.resetTimerObject()
         changeCount.subtractCount()
         changeButton.rotateAnimate()
@@ -52,7 +52,7 @@ extension SingleViewModel: PhotoButtonDelegate {
                 if returnedTargetObject == items.toFindObject || returnedTargetColor == items.toFindObject{
                     DispatchQueue.main.async{
                         self.items.findedObject()
-                        self.objectName.text = self.items.toFindObject
+                        self.objectName.name = self.items.toFindObject.verifyObj()
                         self.timerObject.resetTimerObject()
                     }
                 }
@@ -77,7 +77,7 @@ extension SingleViewModel: TimerStartDelegate {
         timerRound.playTimer()
         timerObject.playTimer()
         items.chooseObject()
-        objectName.text = items.toFindObject
+        objectName.name = items.toFindObject.verifyObj()
         objectName.isHidden = false
         controller!.view.isUserInteractionEnabled = true
     }
@@ -99,7 +99,7 @@ extension SingleViewModel: TimerRoundDelegate {
 extension SingleViewModel: TimerObjectDelegate {
     func timerObjectOver() {
         items.chooseObject()
-        objectName.text = items.toFindObject
+        objectName.name = items.toFindObject.verifyObj()
         timerObject.resetTimerObject()
         changeButton.rotateAnimate()
     }

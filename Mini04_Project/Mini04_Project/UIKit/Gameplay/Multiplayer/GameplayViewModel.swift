@@ -94,7 +94,7 @@ class GameplayViewModel: NSObject {
          }
          
          items.chooseObject()
-         objectName.text = items.toFindObject
+         objectName.name = items.toFindObject
     }
     
     public func configTimeMatch(){
@@ -110,7 +110,7 @@ class GameplayViewModel: NSObject {
         guard let valueNotOpcional = value else {return}
         DispatchQueue.main.async { [self] in
             print("acertou? \(String(describing: value))")
-            special.specialName.text = valueNotOpcional.objectName
+            special.specialName.text = valueNotOpcional.objectName.verifyObj()
             items.specialObject = valueNotOpcional.objectName
             if valueNotOpcional.isHit{
                 special.specialFinded()
