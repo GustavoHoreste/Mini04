@@ -15,7 +15,7 @@ class ItemsToFindModel {
     
     weak var delegate: ItemsDelegate?
     
-    var objects: [String] = [/*"Armario", "Bicicleta", "Bone", "Cadeira", "Calçados", "Cama", "Camisa", "Caneca", "Caneta", "Chave de fenda", "Chuveiro", "Clipe de papel", "Cola Bastao", "Colher", "Cortina","Espatula", "Flauta", "Frigideira", "Geladeira", "Impressora",*/ "Livro:Caderno", "Lixeira", "Martelo", /*"Mesa", "Mochila", "Oculos", "Papel higienico", "Parafusadeira", "Pente", "Pilha", "Porta", "Regua", */"Shorts:Calca"/*, "Sofa", "TV", "Teclado", "Tesoura", "Toalha", "Vaso sanitario", "Ventilador"*/]
+    var objects: [String] = ["Armario", "Bicicleta", "Bone", "Cadeira", "Calçados", "Cama", "Camisa", "Caneca", "Caneta", "Chave de fenda", "Chuveiro", "Clipe de papel", "Cola Bastao", "Colher", "Cortina","Espatula", "Flauta", "Frigideira", "Geladeira", "Impressora", "Livro:Caderno", "Lixeira", "Martelo", "Mesa", "Mochila", "Oculos", "Papel higienico", "Parafusadeira", "Pente", "Pilha", "Porta", "Regua", "Shorts:Calca", "Sofa", "TV", "Teclado", "Tesoura", "Toalha", "Vaso sanitario", "Ventilador"]
     
     var toFindObject: String = ""
     var toFindShuffled: String = ""
