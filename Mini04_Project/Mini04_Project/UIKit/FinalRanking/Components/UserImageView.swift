@@ -15,7 +15,7 @@ class UserImageView: UIImageView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
         label.textColor = .black
-        label.text = "Teste"
+        label.text = ""
         return label
     }()
     
@@ -25,7 +25,7 @@ class UserImageView: UIImageView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
         label.textColor = .black
-        label.text = "Teste"
+        label.text = ""
         return label
     }()
     
@@ -45,6 +45,11 @@ class UserImageView: UIImageView {
             pointsUser.topAnchor.constraint(equalTo: bottomAnchor, constant: distancia)
         ])
         
+        self.isHidden = false
+    }
+    
+    public func isHiden(){
+        self.isHidden.toggle()
     }
     
     required init?(coder: NSCoder) {
