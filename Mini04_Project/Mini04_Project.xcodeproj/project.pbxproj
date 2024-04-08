@@ -52,6 +52,7 @@
 		C03D09552BBF4BBC00D63BA5 /* UserImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D09542BBF4BBC00D63BA5 /* UserImageView.swift */; };
 		C03D09572BC08A0F00D63BA5 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D09562BC08A0F00D63BA5 /* UIViewExtension.swift */; };
 		C03D09592BC0D58600D63BA5 /* NewHomeObjects.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C03D09582BC0D58600D63BA5 /* NewHomeObjects.mlmodel */; };
+		C03D095B2BC468E700D63BA5 /* OldHomeObjects.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C03D095A2BC468E700D63BA5 /* OldHomeObjects.mlmodel */; };
 		C060E4052BBB32A4009F1250 /* TimerStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4042BBB32A4009F1250 /* TimerStart.swift */; };
 		C060E4072BBB3795009F1250 /* BackgroundFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4062BBB3795009F1250 /* BackgroundFade.swift */; };
 		C060E4092BBB55B7009F1250 /* AlertPowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4082BBB55B7009F1250 /* AlertPowerView.swift */; };
@@ -184,6 +185,7 @@
 		C03D09542BBF4BBC00D63BA5 /* UserImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserImageView.swift; sourceTree = "<group>"; };
 		C03D09562BC08A0F00D63BA5 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		C03D09582BC0D58600D63BA5 /* NewHomeObjects.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = NewHomeObjects.mlmodel; sourceTree = "<group>"; };
+		C03D095A2BC468E700D63BA5 /* OldHomeObjects.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = OldHomeObjects.mlmodel; sourceTree = "<group>"; };
 		C060E4042BBB32A4009F1250 /* TimerStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStart.swift; sourceTree = "<group>"; };
 		C060E4062BBB3795009F1250 /* BackgroundFade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFade.swift; sourceTree = "<group>"; };
 		C060E4082BBB55B7009F1250 /* AlertPowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPowerView.swift; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 		C0A8B2902BA8A1460048AC08 /* CoreMLModels */ = {
 			isa = PBXGroup;
 			children = (
+				C03D095A2BC468E700D63BA5 /* OldHomeObjects.mlmodel */,
 				C03D09582BC0D58600D63BA5 /* NewHomeObjects.mlmodel */,
 				C09107012BA9058200037EAB /* ColorClassifier.mlmodel */,
 			);
@@ -984,6 +987,7 @@
 				2E3A74672BB34ACE0026BE07 /* ProfileButtonPopUp.swift in Sources */,
 				E08782AA2BA4D46900FB5ABC /* PartialResultViewController.swift in Sources */,
 				C0CBCB3E2BAE2A0E0020E594 /* SingleplayerView.swift in Sources */,
+				C03D095B2BC468E700D63BA5 /* OldHomeObjects.mlmodel in Sources */,
 				E017B8862BBF20EA006B2675 /* SinglePlayerReadyVM.swift in Sources */,
 				2E3A74532BAB7ED90026BE07 /* SingleButton.swift in Sources */,
 				2E3A746B2BB48EB50026BE07 /* PopUpConfigMatch.swift in Sources */,
