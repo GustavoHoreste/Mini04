@@ -13,7 +13,7 @@ import CoreImage
 extension GameplayViewModel {
     func setupDelegate() {
         //MARK: - Camera
-        self.camera = CameraModel(delegate: self)
+//        self.camera = CameraModel(delegate: self)
         changeButton.delegate = self
         changeCount.delegate = self
         photoButton.delegate = self
@@ -72,7 +72,7 @@ extension GameplayViewModel: PhotoButtonDelegate {
                     }
                 }
                 //MARK: - QUANDO A PESSOA ACERTA O OBJETO ESPECIAL HAPTICS AQUI
-                if await special.specialIsOn && (items.specialObject == returnedTargetObject) && multiVM?.configMatch.powerUps == true{
+                if items.specialObject == returnedTargetObject && multiVM?.configMatch.powerUps == true{
                     items.specialObject = ""
                     let specialObject = SpecialObject(objectName: items.specialObject, isHit: true)
                     DispatchQueue.main.async { [self] in
@@ -108,12 +108,12 @@ extension GameplayViewModel: TimerStartDelegate {
         timerRound.playTimer()
         timerObject.playTimer()
         objectName.isHidden = false
+        special.configTimerAppeerEspecialObject((multiVM?.configMatch.roundTime)!)
         self.configMatch()
         self.configTimeMatch()
         self.changeCount.number = 3
         self.changeCount.alpha = 1
         self.changeButton.alpha = 1
-        self.objectName.isHidden = false
         self.changeButton.isUserInteractionEnabled = true
         controller!.view.isUserInteractionEnabled = true
     }
@@ -122,6 +122,7 @@ extension GameplayViewModel: TimerStartDelegate {
 extension GameplayViewModel: TimerRoundDelegate {
     func timerRoundOver() {
         self.multiVM?.resetPowerUpsAndStatus()
+        special.specialFinded()
         self.pontos.number = 0
 //        logo.isHidden = false
         
@@ -181,10 +182,10 @@ extension GameplayViewModel: PowersButtonDelegate {
         case .shuffleWord:
             items.shufflePower()
             animatePower(icon: UIImage(systemName: "5.circle.fill")!, name: "Shuffle")
-        case .changeCamera:
+        case .changeCamera: break
             //MARK: - Camera
-            camera.changeCamera()
-            animatePower(icon: UIImage(systemName: "4.circle.fill")!, name: "Switch")
+//            camera.changeCamera()
+//            animatePower(icon: UIImage(systemName: "4.circle.fill")!, name: "Switch")
         }
     }
     
@@ -320,11 +321,9 @@ extension GameplayViewModel: SpecialObjectImageDelegate {
     func specialAppeared() {
         //Precisar fazer algo quando o Objeto Especial aparecer
         self.haptics.doHaptic(type: .specialObject)
-        if multiVM?.configMatch.powerUps == true {
-            special.specialIsOn = true
+        if multiVM?.configMatch.powerUps == true{
             special.isHidden = false
         }
-        
     }
 }
 
