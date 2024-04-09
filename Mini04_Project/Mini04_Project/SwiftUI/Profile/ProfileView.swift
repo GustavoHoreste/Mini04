@@ -11,6 +11,7 @@ struct ProfileView: View {
     
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var vm: ProfileViewViewModel
+    var haptics = Haptics()
     
     var body: some View {
         
@@ -43,9 +44,11 @@ struct ProfileView: View {
                 
                 Button{
                     if !vm.canEdit {
+                        haptics.doHaptic(type: .button)
                         vm.addUserName()
                         vm.canEdit.toggle()
                     } else if vm.canEdit{
+                        haptics.doHaptic(type: .button)
                         vm.canEdit.toggle()
                     }
                 }label: {
@@ -73,6 +76,7 @@ struct ProfileView: View {
                 }
                 
                 Button {
+                    haptics.doHaptic(type: .button)
                     navigationCoordinator.dismissFullScreenCover()
                 } label: {
                     ZStack {

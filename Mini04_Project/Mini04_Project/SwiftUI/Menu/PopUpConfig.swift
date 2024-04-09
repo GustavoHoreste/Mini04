@@ -26,6 +26,7 @@ struct PopUpConfig: View {
                 .opacity(0.4)
                 .ignoresSafeArea()
                 .onTapGesture {
+                    haptic.doHaptic(type: .button)
                     withAnimation() {
                         isActive.toggle()
                     }
