@@ -26,17 +26,17 @@ class SpecialObjectImage: UIImageView {
     
     var tempo: Int = 10
     var timeToAppear: Int = 0
-    var specialIsOn = false
+//    var specialIsOn = true
     
     init() {
         super.init(frame: .zero)
         
-        timeToAppear = tempo/2
-        
         translatesAutoresizingMaskIntoConstraints = false
         
-        isHidden = true
+//        isHidden = false
         image = UIImage(named: "SpecialObjMold")
+        
+//        configTimerAppeerEspecialObject()
         
         addSubview(specialName)
         addSubview(symbol)
@@ -47,8 +47,14 @@ class SpecialObjectImage: UIImageView {
             symbol.centerXAnchor.constraint(equalTo: trailingAnchor),
             symbol.centerYAnchor.constraint(equalTo: topAnchor),
         ])
+    }
+    
+    public func configTimerAppeerEspecialObject(_ timer: Double){
+        tempo = Int(timer)
+        timeToAppear = tempo/2
         
         playTimer()
+        self.isHidden = true
     }
     
     required init?(coder: NSCoder) {
@@ -61,14 +67,14 @@ class SpecialObjectImage: UIImageView {
     
     @objc func step() {
         tempo -= 1
+        print(tempo)
         if tempo == timeToAppear {
             delegate?.specialAppeared()
         }
     }
-
     
     func specialFinded() {
-        removeFromSuperview()
+        isHidden = true
         timer.invalidate()
     }
 }

@@ -11,7 +11,8 @@ import UIKit
 extension GameplayViewController {
     
     func setupView() {
-        view.addSubview(gameplayVM.cameraImage)
+        //MARK: - Camera Removi
+//        view.addSubview(gameplayVM.cameraImage)
         
         view.addSubview(gameplayVM.pointsMold)
         view.addSubview(gameplayVM.roundMold)
@@ -23,7 +24,6 @@ extension GameplayViewController {
         view.addSubview(gameplayVM.changeCount)
         view.addSubview(gameplayVM.pontos)
         view.addSubview(gameplayVM.round)
-        view.addSubview(gameplayVM.special)
         view.addSubview(gameplayVM.timerRound)
         view.addSubview(gameplayVM.timerObject)
         view.addSubview(gameplayVM.powers)
@@ -31,14 +31,16 @@ extension GameplayViewController {
 //        view.addSubview(gameplayVM.logo)
         view.addSubview(gameplayVM.alert)
         view.addSubview(gameplayVM.photoButton)
+        view.addSubview(gameplayVM.special)
         view.addSubview(gameplayVM.fadeBackground)
         view.addSubview(gameplayVM.timerStart)
                 
         NSLayoutConstraint.activate([
-            gameplayVM.cameraImage.heightAnchor.constraint(equalToConstant: view.frame.height * 0.9),
-            gameplayVM.cameraImage.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 3.0/4.0),
-            gameplayVM.cameraImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameplayVM.cameraImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -view.frame.height * 0.05),
+            //MARK: - Camera Removi
+//            gameplayVM.cameraImage.heightAnchor.constraint(equalToConstant: view.frame.height * 0.9),
+//            gameplayVM.cameraImage.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 3.0/4.0),
+//            gameplayVM.cameraImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            gameplayVM.cameraImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -view.frame.height * 0.05),
             
             //--------Constraints das molduras--------
             gameplayVM.pointsMold.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
