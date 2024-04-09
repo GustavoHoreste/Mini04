@@ -20,9 +20,10 @@ extension PartialResultViewController {
         view.addSubview(partialResultVM.endGameButton)
         view.addSubview(partialResultVM.partialResultsTitle)
         view.addSubview(partialResultVM.readyButton)
-        view.addSubview(partialResultVM.logo)
         
         view.addSubview(partialResultVM.timerBeforeButtonReady)
+        
+        view.addSubview(partialResultVM.logo)
         
         NSLayoutConstraint.activate([
             

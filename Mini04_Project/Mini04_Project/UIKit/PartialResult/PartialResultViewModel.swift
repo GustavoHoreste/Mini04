@@ -65,7 +65,6 @@ class PartialResultViewModel {
     
     init() {        
         setupDelegates()
-        logo.sizeDecrease()
     }
     
     private func nextRound(){

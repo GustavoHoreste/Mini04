@@ -14,19 +14,19 @@ class MlModel {
     
     //Variaveis que vao receber os modelos
     private var colorModel: ColorClassifier!
-    private var objectsModel: OldHomeObjects!
+    private var objectsModel: NewHomeObjects!
     
     //MARK: - Funcoes internas para uso dos modelos
     //funcao que utiliza o modelo para classificar o objeto
-    private func objectVerify(buffer:CVPixelBuffer) -> OldHomeObjectsOutput {
+    private func objectVerify(buffer:CVPixelBuffer) -> NewHomeObjectsOutput {
         do{
-            self.objectsModel = try OldHomeObjects(configuration: MLModelConfiguration())
+            self.objectsModel = try NewHomeObjects(configuration: MLModelConfiguration())
             let prediction = try objectsModel.prediction(image: buffer)
             return prediction
         }catch {
             print(error)
         }
-        return OldHomeObjectsOutput(target: "", targetProbability: ["": 0.0])
+        return NewHomeObjectsOutput(target: "", targetProbability: ["": 0.0])
     }
     
     //funcao que utiliza o modelo para classificar a cor

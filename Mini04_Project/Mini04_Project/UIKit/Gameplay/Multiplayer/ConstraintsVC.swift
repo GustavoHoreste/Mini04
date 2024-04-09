@@ -28,11 +28,11 @@ extension GameplayViewController {
         view.addSubview(gameplayVM.timerObject)
         view.addSubview(gameplayVM.powers)
         view.addSubview(gameplayVM.crosshair)
-//        view.addSubview(gameplayVM.logo)
         view.addSubview(gameplayVM.alert)
         view.addSubview(gameplayVM.photoButton)
         view.addSubview(gameplayVM.fadeBackground)
         view.addSubview(gameplayVM.timerStart)
+        view.addSubview(gameplayVM.logo)
                 
         NSLayoutConstraint.activate([
             gameplayVM.cameraImage.heightAnchor.constraint(equalToConstant: view.frame.height * 0.9),
@@ -87,8 +87,8 @@ extension GameplayViewController {
             gameplayVM.crosshair.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.crosshair.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
-//            gameplayVM.logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            gameplayVM.logo.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            gameplayVM.logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            gameplayVM.logo.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
             gameplayVM.fadeBackground.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.fadeBackground.centerYAnchor.constraint(equalTo: view.centerYAnchor),
