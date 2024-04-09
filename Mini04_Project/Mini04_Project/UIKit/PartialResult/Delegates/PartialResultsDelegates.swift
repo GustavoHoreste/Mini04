@@ -72,7 +72,6 @@ extension PartialResultViewModel: ReadyButtonDelegate {
         if view.multiVM.localPlayer?.isHost == false{
             self.view.multiVM.sendLocalUserStatus()
         } else if view.multiVM.validateAllUsersStarted() && view.multiVM.localPlayer?.isHost == true{
-            self.haptics.doHaptic(type: .button)
             self.view.multiVM.sendLocalUserStatus()
             self.view.gameplayVM.fadeBackground.isHidden = false
             self.view.gameplayVM.objectName.isHidden = true
