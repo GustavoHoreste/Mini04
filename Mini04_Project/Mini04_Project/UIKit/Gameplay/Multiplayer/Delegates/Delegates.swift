@@ -173,16 +173,14 @@ extension GameplayViewModel: PowersButtonDelegate {
             freezePower()
             animatePower(icon: UIImage(systemName: "1.circle.fill")!, name: "Freeze")
         case .subtrac:
-//            subtractPower()
-//            animatePower(icon: UIImage(systemName: "3.circle.fill")!, name: "Subtract")
-            freezePower()
-            animatePower(icon: UIImage(systemName: "1.circle.fill")!, name: "Freeze")
+            subtractPower()
+            animatePower(icon: UIImage(systemName: "3.circle.fill")!, name: "Subtract")
         case .switchWord:
-            camera.changeCamera()
-            animatePower(icon: UIImage(systemName: "4.circle.fill")!, name: "Switch")
+            changeButtonAction()
+            animatePower(icon: UIImage(systemName: "2.circle.fill")!, name: "Change")
         case .shuffleWord:
-            camera.changeCamera()
-            animatePower(icon: UIImage(systemName: "4.circle.fill")!, name: "Switch")
+            items.shufflePower()
+            animatePower(icon: UIImage(systemName: "5.circle.fill")!, name: "Shuffle")
         case .changeCamera:
             //MARK: - Camera
             camera.changeCamera()

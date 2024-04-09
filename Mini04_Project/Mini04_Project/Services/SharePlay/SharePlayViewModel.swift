@@ -193,6 +193,7 @@ final class SharePlayViewModel{
     ///funcao que verifica o estado da session: False = nao participa de nunhma session
     public func statusSession(_ groupSession: GroupSession<WhereWhereActivity>){
         groupSession.$state
+            .removeDuplicates()
             .sink{ state in
                 if case .invalidated = state{
                     self.reset()
