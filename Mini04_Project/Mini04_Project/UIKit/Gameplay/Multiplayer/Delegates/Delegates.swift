@@ -92,6 +92,26 @@ extension GameplayViewModel: PhotoButtonDelegate {
     }
 }
 
+extension CGFloat {
+    func converterPontos(tempoObj: Int)-> Int {
+        switch self {
+        case let value where value >= 0 && value <= CGFloat(tempoObj) * 0.2:
+            return 5
+        case let value where value > CGFloat(tempoObj) * 0.2 && value <= CGFloat(tempoObj) * 0.4:
+            return 10
+        case let value where value > CGFloat(tempoObj) * 0.4 && value <= CGFloat(tempoObj) * 0.6:
+            return 15
+        case let value where value > CGFloat(tempoObj) * 0.6 && value <= CGFloat(tempoObj) * 0.8:
+            return 20
+        case let value where value > CGFloat(tempoObj) * 0.8 && value <= CGFloat(tempoObj) * 1:
+            return 25
+        default:
+            print("NENHUMA CONDICAO PONTOS")
+            return 0
+        }
+    }
+}
+
 //MARK: - Incrementa pontos do jogador
 extension GameplayViewModel: ItemsDelegate {
     func findedObjectAction() {
