@@ -9,22 +9,9 @@ import UIKit
 import SwiftUI
 import GroupActivities
 
-//struct ShareInviteSheet: UIViewControllerRepresentable {
-//    func makeUIViewController(context: Context) -> UIActivityViewController {
-//        let itemProvider = NSItemProvider()
-//        itemProvider.registerGroupActivity(WhereWhereActivity())
-//
-//        let configuration = UIActivityItemsConfiguration(itemProviders: [itemProvider])
-//        return UIActivityViewController(activityItemsConfiguration: configuration)
-//    }
-//
-//    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) { }
-//}
-
 struct ShareInviteSheet: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> GroupActivitySharingController {
         return try! GroupActivitySharingController(WhereWhereActivity())
-        //GroupActivityTransferRepresentation
     }
 
     func updateUIViewController(_ uiViewController: GroupActivitySharingController, context: Context) { }

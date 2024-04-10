@@ -126,7 +126,6 @@
 		E08782B12BA4D4A600FB5ABC /* LobbyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B02BA4D4A600FB5ABC /* LobbyView.swift */; };
 		E08782B32BA4ED1600FB5ABC /* CameraDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B22BA4ED1600FB5ABC /* CameraDelegate.swift */; };
 		E08782B52BA8C31400FB5ABC /* CoreMlErrorsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B42BA8C31400FB5ABC /* CoreMlErrorsEnum.swift */; };
-		E08782B82BA8C44000FB5ABC /* PlayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B72BA8C44000FB5ABC /* PlayerData.swift */; };
 		E08782BA2BAA177600FB5ABC /* ProfileViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782B92BAA177500FB5ABC /* ProfileViewViewModel.swift */; };
 		E08782BC2BAB565900FB5ABC /* ConstraintsPR.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08782BB2BAB565900FB5ABC /* ConstraintsPR.swift */; };
 		E0A9DA632BB4920A00314E72 /* Haptics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A9DA622BB4920A00314E72 /* Haptics.swift */; };
@@ -261,7 +260,6 @@
 		E08782B02BA4D4A600FB5ABC /* LobbyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyView.swift; sourceTree = "<group>"; };
 		E08782B22BA4ED1600FB5ABC /* CameraDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraDelegate.swift; sourceTree = "<group>"; };
 		E08782B42BA8C31400FB5ABC /* CoreMlErrorsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMlErrorsEnum.swift; sourceTree = "<group>"; };
-		E08782B72BA8C44000FB5ABC /* PlayerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerData.swift; sourceTree = "<group>"; };
 		E08782B92BAA177500FB5ABC /* ProfileViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewViewModel.swift; sourceTree = "<group>"; };
 		E08782BB2BAB565900FB5ABC /* ConstraintsPR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintsPR.swift; sourceTree = "<group>"; };
 		E0A9DA622BB4920A00314E72 /* Haptics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptics.swift; sourceTree = "<group>"; };
@@ -789,7 +787,6 @@
 		E08782B62BA8C42500FB5ABC /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				E08782B72BA8C44000FB5ABC /* PlayerData.swift */,
 				D9CD141E2BA8FA49003CB0B6 /* WhereWhereActivity.swift */,
 				D9CD14202BA8FABB003CB0B6 /* ShareInviteSheet.swift */,
 				D91D650F2BAA1074003D7DBA /* SharePlayAllModels.swift */,
@@ -972,7 +969,6 @@
 				2E3A74392BAA126A0026BE07 /* TimerRound.swift in Sources */,
 				2E3A74632BB348870026BE07 /* SoundEffectsOff.swift in Sources */,
 				C09107132BAB730700037EAB /* StringExtension.swift in Sources */,
-				E08782B82BA8C44000FB5ABC /* PlayerData.swift in Sources */,
 				E08782BA2BAA177600FB5ABC /* ProfileViewViewModel.swift in Sources */,
 				D9CD142A2BA9D84A003CB0B6 /* CreditsView.swift in Sources */,
 				E017B88A2BBF2893006B2675 /* RecordPopUp.swift in Sources */,

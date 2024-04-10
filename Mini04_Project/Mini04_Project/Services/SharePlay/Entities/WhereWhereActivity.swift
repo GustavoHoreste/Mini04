@@ -16,7 +16,7 @@ struct WhereWhereActivity: GroupActivity{
         var metadata = GroupActivityMetadata()
         metadata.title = NSLocalizedString("Procurem juntos", comment: "Title of group Activity")
         metadata.subtitle = Date().formatted()
-        metadata.previewImage = UIImage(resource: .imageActivityGroup).cgImage
+        metadata.previewImage = UIImage(resource: .logo).cgImage
         metadata.type = .generic
         return metadata
     }
