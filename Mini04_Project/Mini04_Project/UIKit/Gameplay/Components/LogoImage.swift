@@ -9,23 +9,21 @@ import UIKit
 
 class LogoImage: UIImageView {
     
-    init(isIncreased: Bool) {
+    var altura: CGFloat?
+    
+    init(isIncreased: Bool, altura: CGFloat?) {
+        self.altura = altura
+        
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
-        image = UIImage(named: "logo2")
-        
-        NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: 1024/4),
-            heightAnchor.constraint(equalToConstant: 1024/4)
-        ])
+        image = UIImage(named: "bonequinho")
         
         if isIncreased {
             isHidden = false
-            self.transform = CGAffineTransform(scaleX: 10, y: 10).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 4))
+//            center.y -= (altura! + altura! * 0.3)
         }else {
             isHidden = true
-            self.transform = CGAffineTransform(scaleX: 0.1, y: 0.01).concatenating(CGAffineTransform(rotationAngle: CGFloat.pi / 4))
         }
         
     }
@@ -35,24 +33,18 @@ class LogoImage: UIImageView {
     }
     
     func sizeDecrease() {
-        let rad: Double = atan2( Double(transform.b), Double(transform.a))
-        let deg: CGFloat = CGFloat(rad) * (CGFloat(180) / CGFloat.pi )
-        print(deg)
-        self.isHidden = false
-        UIView.animate(withDuration: 1.5, animations: {
-            self.transform = CGAffineTransform(scaleX: 0.1, y: 0.1).concatenating(CGAffineTransform(rotationAngle: CGFloat.pi / 8))
+        isHidden = false
+        translatesAutoresizingMaskIntoConstraints = true
+        UIView.animate(withDuration: 2.0, animations: {
+            self.center.y += (self.altura! + self.altura! * 0.4)
         }, completion: { _ in
             self.isHidden = true
-            self.resetAnimationPartial()
+            self.center.y -= (self.altura! + self.altura! * 0.4)
         })
     }
     
-    func resetAnimationPartial() {
-        self.transform = CGAffineTransform(scaleX: 10, y: 10).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 4))
-    }
-    
     func resetAnimationGameplay() {
-        self.transform = CGAffineTransform(scaleX: 0.05, y: 0.05).concatenating(CGAffineTransform(rotationAngle: CGFloat.pi / 8))
+        center.y += (altura! + altura! * 0.4)
     }
     
 }

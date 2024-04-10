@@ -16,7 +16,7 @@ class RecordViewModel {
     var results = SingleResultLabel()
     var highscore = HighscoreLabel()
     var menu = ResultMenuButton()
-    var logo = LogoImage(isIncreased: true)
+    lazy var logo = LogoImage(isIncreased: true, altura: controller?.view.frame.height)
 //    var restart = SingleRecButton()
     
     var background = AnyImageView(imagem: UIImage(named: "SingleBackground"))
@@ -24,7 +24,6 @@ class RecordViewModel {
     
     init() {
         setupDelegate()
-        logo.sizeDecrease()
     }
     
 }

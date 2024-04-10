@@ -20,6 +20,10 @@ class RecordViewController: UIViewController {
         setupView()
         
         recordVM.highscore.verifyHighScore(points: recordVM.results.qntd)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5){ [self] in
+            recordVM.logo.sizeDecrease()
+        }
     }
     
     init(navigationCoordinator: Coordinator) {

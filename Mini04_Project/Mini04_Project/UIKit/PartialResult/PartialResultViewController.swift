@@ -69,6 +69,11 @@ class PartialResultViewController: UIViewController {
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        partialResultVM.logo.isHidden = false
+    }
+    
     public func configureParcialVC(){
         self.players = multiVM.adversaryPlayers
         self.players?.append(multiVM.localPlayer!)
@@ -76,8 +81,13 @@ class PartialResultViewController: UIViewController {
         configureCollectionViewDataSource()
         applySnapshot(players: players!)
         
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5){ [self] in
+            partialResultVM.logo.sizeDecrease()
+        }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 4){ [self] in
             self.starAnimation()
+            partialResultVM.logo.sizeDecrease()
         }
     }
     

@@ -140,16 +140,12 @@ extension GameplayViewModel: TimerRoundDelegate {
             nextScreen?.configureParcialVC()
             nextScreen?.partialResultVM.timerBeforeButtonReady.startCount()
             nextScreen?.partialResultVM.readyButton.toggleIsHiden()
-//            self.logo.translatesAutoresizingMaskIntoConstraints = true
-            UIView.animate(withDuration: 1.5, animations: {
-                self.logo.transform = CGAffineTransform(scaleX: 10.0, y: 10.0).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 4))
+            self.logo.translatesAutoresizingMaskIntoConstraints = true
+            UIView.animate(withDuration: 2.0, animations: {
+                self.logo.center.y -= (self.controller!.view.frame.height + self.controller!.view.frame.height * 0.4)
             }, completion: {_ in
-                let rad: Double = atan2( Double(self.logo.transform.b), Double(self.logo.transform.a))
-                let deg: CGFloat = CGFloat(rad) * (CGFloat(180) / CGFloat.pi )
-                print(deg)
                 self.logo.isHidden = true
                 self.logo.resetAnimationGameplay()
-                nextScreen?.partialResultVM.logo.sizeDecrease()
                 self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
             })
         }

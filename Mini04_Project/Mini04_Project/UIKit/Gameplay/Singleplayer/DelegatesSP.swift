@@ -88,8 +88,9 @@ extension SingleViewModel: TimerStartDelegate {
 extension SingleViewModel: TimerRoundDelegate {
     func timerRoundOver() {
         logo.isHidden = false
-        UIView.animate(withDuration: 1.0, animations: {
-            self.logo.transform = CGAffineTransform(scaleX: 100.0, y: 100.0).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 6))
+        logo.translatesAutoresizingMaskIntoConstraints = true
+        UIView.animate(withDuration: 2.0, animations: {
+            self.logo.center.y -= (self.controller!.view.frame.height + self.controller!.view.frame.height * 0.4)
         }, completion: { _ in
             let nextScreen = RecordViewController(navigationCoordinator: self.controller!.navigationCoordinator)
             nextScreen.recordVM.results.qntd = self.pontos.number
