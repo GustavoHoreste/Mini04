@@ -12,7 +12,7 @@ struct LobbyListView: View {
     
     var body: some View {
         ZStack{
-            Image("LobbyList")
+            Image(.lobbyList)
                 .resizable()
                 .scaledToFill()
             ScrollView{
@@ -23,7 +23,7 @@ struct LobbyListView: View {
                     }
                 }.padding()
             }
-            .padding(20)
+            .padding(30)
         }
     }
 }
