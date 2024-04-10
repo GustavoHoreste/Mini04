@@ -77,7 +77,7 @@ extension SingleViewController {
             gameplayVM.crosshair.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             
             gameplayVM.logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            gameplayVM.logo.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            gameplayVM.logo.topAnchor.constraint(equalTo: view.bottomAnchor),
             
             gameplayVM.fadeBackground.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.fadeBackground.centerYAnchor.constraint(equalTo: view.centerYAnchor),

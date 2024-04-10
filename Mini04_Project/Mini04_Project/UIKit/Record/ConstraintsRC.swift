@@ -41,7 +41,7 @@ extension RecordViewController {
 //            recordVM.restart.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
 
             recordVM.logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            recordVM.logo.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            recordVM.logo.topAnchor.constraint(equalTo: view.bottomAnchor, constant: -(view.frame.height + view.frame.height * 0.4)),
         ])
 
     }

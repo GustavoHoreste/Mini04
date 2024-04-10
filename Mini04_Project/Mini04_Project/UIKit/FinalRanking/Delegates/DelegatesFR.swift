@@ -18,6 +18,7 @@ extension FinalViewModel {
 
 extension FinalViewModel: ExitGameDelegate {
     func didTabButtun(_ tab: Int) {
+        haptics.doHaptic(type: .button)
         switch tab{
         case 1:
             self.anitionDismiss()

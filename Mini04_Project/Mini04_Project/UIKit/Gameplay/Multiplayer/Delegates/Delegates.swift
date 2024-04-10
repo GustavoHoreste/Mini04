@@ -92,6 +92,26 @@ extension GameplayViewModel: PhotoButtonDelegate {
     }
 }
 
+extension CGFloat {
+    func converterPontos(tempoObj: Int)-> Int {
+        switch self {
+        case let value where value >= 0 && value <= CGFloat(tempoObj) * 0.2:
+            return 5
+        case let value where value > CGFloat(tempoObj) * 0.2 && value <= CGFloat(tempoObj) * 0.4:
+            return 10
+        case let value where value > CGFloat(tempoObj) * 0.4 && value <= CGFloat(tempoObj) * 0.6:
+            return 15
+        case let value where value > CGFloat(tempoObj) * 0.6 && value <= CGFloat(tempoObj) * 0.8:
+            return 20
+        case let value where value > CGFloat(tempoObj) * 0.8 && value <= CGFloat(tempoObj) * 1:
+            return 25
+        default:
+            print("NENHUMA CONDICAO PONTOS")
+            return 0
+        }
+    }
+}
+
 //MARK: - Incrementa pontos do jogador
 extension GameplayViewModel: ItemsDelegate {
     func findedObjectAction() {
@@ -124,7 +144,7 @@ extension GameplayViewModel: TimerRoundDelegate {
         self.multiVM?.resetPowerUpsAndStatus()
         special.specialFinded()
         self.pontos.number = 0
-//        logo.isHidden = false
+        logo.isHidden = false
         
         self.timerObject.timer.invalidate()
         self.timerRound.timer.invalidate()
@@ -141,14 +161,16 @@ extension GameplayViewModel: TimerRoundDelegate {
             nextScreen?.configureParcialVC()
             nextScreen?.partialResultVM.timerBeforeButtonReady.startCount()
             nextScreen?.partialResultVM.readyButton.toggleIsHiden()
-            self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
+            self.logo.translatesAutoresizingMaskIntoConstraints = true
+            UIView.animate(withDuration: 2.0, animations: {
+                self.logo.center.y -= (self.controller!.view.frame.height + self.controller!.view.frame.height * 0.4)
+            }, completion: {_ in
+                self.logo.isHidden = true
+                self.logo.resetAnimationGameplay()
+                self.controller?.navigationController?.pushViewController(nextScreen!, animated: false)
+            })
         }
         
-        //        UIView.animate(withDuration: 1.0, animations: {
-        //            self.logo.transform = CGAffineTransform(scaleX: 100.0, y: 100.0).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 6))
-        //        }, completion: { [self] _ in
-        //
-        //        })
     }
 }
 

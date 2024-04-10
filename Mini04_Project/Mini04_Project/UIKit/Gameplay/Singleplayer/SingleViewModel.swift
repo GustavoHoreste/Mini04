@@ -29,7 +29,7 @@ class SingleViewModel: NSObject {
     var timerRound = TimerSingleRound()
     var timerObject = TimerObject()
     var crosshair = CrosshairImage()
-    var logo = LogoImage(isIncreased: false)
+    lazy var logo = LogoImage(isIncreased: false, altura: controller?.view.frame.height)
     var timerStart = TimerStart()
     var fadeBackground = BackgroundFade()
     

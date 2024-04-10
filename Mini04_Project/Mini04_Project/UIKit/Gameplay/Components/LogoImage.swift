@@ -9,20 +9,19 @@ import UIKit
 
 class LogoImage: UIImageView {
     
-    init(isIncreased: Bool) {
+    var altura: CGFloat?
+    
+    init(isIncreased: Bool, altura: CGFloat?) {
+        self.altura = altura
+        
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
-        image = UIImage(named: "imageActivityGroup")
-        
-        NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: 10),
-            heightAnchor.constraint(equalToConstant: 10),
-        ])
+        image = UIImage(named: "bonequinho")
         
         if isIncreased {
             isHidden = false
-            transform = CGAffineTransform(scaleX: 100.0, y: 100.0).concatenating(CGAffineTransform(rotationAngle: -CGFloat.pi / 6))
+//            center.y -= (altura! + altura! * 0.3)
         }else {
             isHidden = true
         }
@@ -34,11 +33,18 @@ class LogoImage: UIImageView {
     }
     
     func sizeDecrease() {
-        UIView.animate(withDuration: 1.0, animations: {
-            self.transform = CGAffineTransform(scaleX: 0.001, y: 0.001).concatenating(CGAffineTransform(rotationAngle: CGFloat.pi / 4))
+        isHidden = false
+        translatesAutoresizingMaskIntoConstraints = true
+        UIView.animate(withDuration: 2.0, animations: {
+            self.center.y += (self.altura! + self.altura! * 0.4)
         }, completion: { _ in
-            self.removeFromSuperview()
+            self.isHidden = true
+            self.center.y -= (self.altura! + self.altura! * 0.4)
         })
+    }
+    
+    func resetAnimationGameplay() {
+        center.y += (altura! + altura! * 0.4)
     }
     
 }

@@ -42,6 +42,7 @@ struct MenuView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
+                        haptics.doHaptic(type: .button)
                         withAnimation() {
                             isActive = true
                         }

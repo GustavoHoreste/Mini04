@@ -22,7 +22,7 @@ class PartialResultViewModel {
     lazy var endGameButton = EndGameButton()
     lazy var partialResultsTitle = PartialResultTitle()
     lazy var readyButton = ReadyButton()
-    lazy var logo = LogoImage(isIncreased: true)
+    lazy var logo = LogoImage(isIncreased: true, altura: view.view.frame.height)
     lazy var exit = ExitButton()
     lazy var timerBeforeButtonReady: TimerBeforeButtonReady = {
         let view = TimerBeforeButtonReady()
@@ -65,7 +65,6 @@ class PartialResultViewModel {
     
     init() {        
         setupDelegates()
-        logo.sizeDecrease()
     }
     
     private func nextRound(){

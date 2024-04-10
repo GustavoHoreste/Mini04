@@ -62,7 +62,7 @@ class TimerRound: UILabel {
         
         if amouthTimer > 60{
             let minutos = Int(amouthTimer/60)
-            let segundos = minutos % Int(60)
+            let segundos = Int(amouthTimer) - minutos * 60
             
             self.minutos = minutos
             self.segundos = segundos
