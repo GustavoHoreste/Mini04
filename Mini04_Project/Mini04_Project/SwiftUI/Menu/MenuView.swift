@@ -15,7 +15,7 @@ struct MenuView: View {
     @State var isActive: Bool = false
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .center) {
             Image("Background")
                 .resizable()
                 .scaledToFill()

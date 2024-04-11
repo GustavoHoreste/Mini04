@@ -15,13 +15,12 @@ struct BackButton: View {
         VStack{
             Button{
                 haptics.doHaptic(type: .button)
-                navigationCoordinator.popToRoot()
+                navigationCoordinator.push(.menu)
             }label: {
                 Image(.lobbyReturnButton)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 70, height: 70)
-//                    .frame(width: screenWidth * 0.114, height: screenHeight * 0.05284334763)
             }
         }
     }

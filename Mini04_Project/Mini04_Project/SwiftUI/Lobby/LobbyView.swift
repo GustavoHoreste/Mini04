@@ -8,7 +8,6 @@
 import SwiftUI
 import GroupActivities
 
-//var isStarter: Bool = false
 
 struct LobbyView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
@@ -16,8 +15,6 @@ struct LobbyView: View {
     @StateObject var groupStateObserver = GroupStateObserver()
     @State var isOpenConfigMatch = false
     var haptics = Haptics()
-//    @State var players:[Player] = []
-   // @State var isStarter: Bool = false
     
     var body: some View {
         ZStack {
@@ -59,6 +56,9 @@ struct LobbyView: View {
                 for await session in WhereWhereActivity.sessions(){
                     multiplayerVM.sharePlayVM.configurationSessin(session)
                 }
+            }
+            .onAppear {
+                self.multiplayerVM.hostIsReadyInLobby = false
             }
             
             if (isOpenConfigMatch){
