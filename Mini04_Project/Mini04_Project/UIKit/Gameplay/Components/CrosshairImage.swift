@@ -13,12 +13,7 @@ class CrosshairImage: UIImageView {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
-        image = UIImage(systemName: "plus")
-        
-        NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: 15),
-            heightAnchor.constraint(equalToConstant: 15),
-        ])
+        image = UIImage(resource: .crosshair)
         
     }
     
