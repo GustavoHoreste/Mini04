@@ -19,6 +19,7 @@ struct MenuView: View {
             Image("Background")
                 .resizable()
                 .scaledToFill()
+                .frame(width: screenWidth, height: screenHeight)
                 .ignoresSafeArea()
             
             VStack {
@@ -50,11 +51,12 @@ struct MenuView: View {
                         ZStack {
                             Image(.configBackground)
                                 .resizable()
-                                .frame(width: 70, height: 70)
+                                .frame(width: screenWidth * 0.114, height: screenHeight * 0.05284334763)
                             Image(.configIcon)
                                 .resizable()
-                                .frame(width: 70, height: 70)
+                                .frame(width: screenWidth * 0.114, height: screenHeight * 0.05284334763)
                         }
+                        .padding(20)
                     }
                     .padding(.top)
                 }

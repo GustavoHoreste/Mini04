@@ -20,7 +20,8 @@ struct BackButton: View {
                 Image(.lobbyReturnButton)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 70, height: 70)
+//                    .frame(width: 70, height: 70)
+                    .frame(width: screenWidth * 0.114, height: screenHeight * 0.05284334763)
             }
         }
     }

@@ -54,6 +54,9 @@ struct StartButton: View {
     var haptics = Haptics()
     
     var body: some View {
+        
+        var isReady:Bool = false
+        
         VStack {
             Button{
                 self.haptics.doHaptic(type: .button)
@@ -66,10 +69,23 @@ struct StartButton: View {
                             .scaledToFill()
                             .padding()
                     } else {
-                        Image(.isReadyButton)
-                            .resizable()
-                            .scaledToFill()
-                            .padding()
+                        
+                        if isReady == false{
+                            
+                            Image(.isReadyButton)
+                                .resizable()
+                                .scaledToFill()
+                                .padding()
+                            
+                        } else {
+                            
+                            Image(.readyPressed)
+                                .resizable()
+                                .scaledToFill()
+                                .padding()
+                            
+                        }
+                        
                     }
                 }
             }

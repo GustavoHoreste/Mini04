@@ -13,7 +13,7 @@ import CoreImage
 extension GameplayViewModel {
     func setupDelegate() {
         //MARK: - Camera
-//        self.camera = CameraModel(delegate: self)
+        self.camera = CameraModel(delegate: self)
         changeButton.delegate = self
         changeCount.delegate = self
         photoButton.delegate = self
@@ -79,8 +79,8 @@ extension GameplayViewModel: PhotoButtonDelegate {
                         self.haptics.doHaptic(type: .specialObject)
                         self.special.specialFinded()
                         self.multiVM?.sendEspcialObject(specialObject)
-                        self.multiVM?.localPlayer?.points += 2
-                        self.pontos.number += 2
+                        self.multiVM?.localPlayer?.points += 30
+                        self.pontos.number += 30
                         self.powers.addPowers()
                     }
                 }
@@ -92,32 +92,14 @@ extension GameplayViewModel: PhotoButtonDelegate {
     }
 }
 
-extension CGFloat {
-    func converterPontos(tempoObj: Int)-> Int {
-        switch self {
-        case let value where value >= 0 && value <= CGFloat(tempoObj) * 0.2:
-            return 5
-        case let value where value > CGFloat(tempoObj) * 0.2 && value <= CGFloat(tempoObj) * 0.4:
-            return 10
-        case let value where value > CGFloat(tempoObj) * 0.4 && value <= CGFloat(tempoObj) * 0.6:
-            return 15
-        case let value where value > CGFloat(tempoObj) * 0.6 && value <= CGFloat(tempoObj) * 0.8:
-            return 20
-        case let value where value > CGFloat(tempoObj) * 0.8 && value <= CGFloat(tempoObj) * 1:
-            return 25
-        default:
-            print("NENHUMA CONDICAO PONTOS")
-            return 0
-        }
-    }
-}
-
 //MARK: - Incrementa pontos do jogador
 extension GameplayViewModel: ItemsDelegate {
     func findedObjectAction() {
+        print(timerObject.segundos)
+        let convertedPts = timerObject.segundos.converterPontos(tempoObj: 20)
         pontos.plusAnimate(color: .green)
-        multiVM?.localPlayer?.points += 1
-        pontos.number += 1
+        multiVM?.localPlayer?.points += convertedPts
+        pontos.number += convertedPts
     }
 }
 
@@ -136,6 +118,26 @@ extension GameplayViewModel: TimerStartDelegate {
         self.changeButton.alpha = 1
         self.changeButton.isUserInteractionEnabled = true
         controller!.view.isUserInteractionEnabled = true
+        verifyUsersToPowers()
+    }
+    
+    func verifyUsersToPowers() {
+        print("AMOUTROUND \(round.number)")
+        if round.number > 1 {
+            var players = multiVM?.adversaryPlayers
+            players?.append((multiVM?.localPlayer)!)
+            if let doisMenoresValores = players?.sorted(by: {$0.points < $1.points}).prefix(2) {
+                print("DOIS MENORES VALORES: \(doisMenoresValores[0].userName) - [\(doisMenoresValores[0].points)]\n\(doisMenoresValores[1].userName) - [\(doisMenoresValores[1].points)]")
+                for player in doisMenoresValores{
+                    if player.id == multiVM?.localPlayer?.id{
+                        print("PASSOU NO IF")
+                        self.powers.addPowers()
+                        break
+                    }
+                    print("nao e igual")
+                }
+            }
+        }
     }
 }
 
@@ -204,10 +206,10 @@ extension GameplayViewModel: PowersButtonDelegate {
         case .shuffleWord:
             items.shufflePower()
             animatePower(icon: UIImage(systemName: "5.circle.fill")!, name: "Shuffle")
-        case .changeCamera: break
+        case .changeCamera:
             //MARK: - Camera
-//            camera.changeCamera()
-//            animatePower(icon: UIImage(systemName: "4.circle.fill")!, name: "Switch")
+            camera.changeCamera()
+            animatePower(icon: UIImage(systemName: "4.circle.fill")!, name: "Switch")
         }
     }
     
@@ -242,8 +244,8 @@ extension GameplayViewModel: PowersButtonDelegate {
     }
     
     func subtractPower() {
-        multiVM?.localPlayer?.points -= 1
-        self.pontos.number -= 1
+        multiVM?.localPlayer?.points -= 15
+        self.pontos.number -= 15
         pontos.plusAnimate(color: .red)
     }
     
