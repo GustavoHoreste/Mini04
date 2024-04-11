@@ -23,22 +23,10 @@ struct LobbyView: View {
         ZStack {
             Image(.lobbyBackground)
                 .resizable()
-                .scaledToFill()
                 .ignoresSafeArea()
+                .scaledToFill()
+            
             VStack {
-                //Menu
-                HStack {
-                    
-                    BackButton()
-                    
-                    Spacer()
-                    withAnimation() {
-                        configMatchButton()
-                    }
-
-                    
-                }.padding()
-                
                 //Player list
                 LobbyListView()
                     .frame(width: screenWidth, height: screenHeight*0.45)
@@ -58,6 +46,22 @@ struct LobbyView: View {
             .task {
                 for await session in WhereWhereActivity.sessions(){
                     multiplayerVM.sharePlayVM.configurationSessin(session)
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                        BackButton()
+                        
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                        
+                        withAnimation() {
+                            configMatchButton()
+                        }
+
+//                        
+//                    }.padding()
                 }
             }
             
@@ -93,7 +97,7 @@ extension LobbyView{
                     Image(.lobbyConnfig)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 70, height: 70)
+                        .frame(width: 50, height: 50)
                 }
             }
         }
