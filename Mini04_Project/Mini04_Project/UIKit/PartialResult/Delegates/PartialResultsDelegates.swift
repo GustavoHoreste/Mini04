@@ -71,6 +71,8 @@ extension PartialResultViewModel: ReadyButtonDelegate {
     private func sendUserStatus(){
         if view.multiVM.localPlayer?.isHost == false{
             self.view.multiVM.sendLocalUserStatus()
+            self.readyButton.setBackgroundImage(UIImage(resource: .didReadyButton), for: .normal)
+            self.readyButton.labelTime.text = "Preparado!"
         } else if view.multiVM.validateAllUsersStarted() && view.multiVM.localPlayer?.isHost == true{
             self.view.multiVM.sendLocalUserStatus()
             self.view.gameplayVM.fadeBackground.isHidden = false

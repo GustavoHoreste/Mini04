@@ -11,27 +11,45 @@ protocol ChangeCountLabelDelegate: AnyObject {
     func countEnded()
 }
 
-class ChangeCountLabel: UILabel {
+class ChangeCountLabel: UIImageView {
 
     weak var delegate: ChangeCountLabelDelegate?
     
     var number = 3 {
         didSet {
             DispatchQueue.main.async {
-                self.text = "\(self.number)"
+                self.label.text = "\(self.number)"
             }
         }
     }
     
+    lazy var countMold: UIImageView = {
+        let mold = UIImageView(image: UIImage(resource: .changeCountMold))
+        mold.translatesAutoresizingMaskIntoConstraints = false
+        return mold
+    }()
+    
+    lazy var label: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont(name: "FafoSans-Bold", size: 18)
+        label.textColor = .black
+        label.text = "3"
+        return label
+    }()
+    
     init() {
         super.init(frame: .zero)
         
-        guard let customFont = UIFont(name: "FafoSans-Bold", size: 18) else {fatalError()}
-        
         translatesAutoresizingMaskIntoConstraints = false
-        font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
-        textColor = .black
-        text = "3"
+        image = UIImage(resource: .changeCountMold)
+        
+        addSubview(label)
+        
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: centerYAnchor),
+        ])
         
     }
     

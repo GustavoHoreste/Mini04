@@ -17,6 +17,7 @@ class TimerBeforeButtonReady: UIView {
         label.text = "Próxima rodada em:"
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.textColor = .black
         label.font = UIFont(name: "FafoSans-Bold", size: 24)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
