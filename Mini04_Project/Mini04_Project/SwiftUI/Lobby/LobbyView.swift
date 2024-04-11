@@ -69,7 +69,7 @@ struct LobbyView: View {
                 withAnimation() {
                     PopUpConfigMatch(ativouteste: $isOpenConfigMatch)
                 }
-            }
+            } 
             
         }.navigationBarBackButtonHidden()
         

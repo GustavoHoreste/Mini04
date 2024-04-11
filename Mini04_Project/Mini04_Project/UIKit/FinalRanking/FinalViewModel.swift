@@ -24,8 +24,9 @@ class FinalViewModel {
     }
     var topPlayers: [Player]{
         get{
-            var data:[Player] = []
             
+            var data:[Player] = []
+    
             if self.data.count >= 3{
                 for i in stride(from: 0, to: 2, by: 1){
                     data.append(self.data[i])
@@ -33,7 +34,6 @@ class FinalViewModel {
             }else {
                 data = self.data
             }
-            
             return data
         }
     }
@@ -70,7 +70,6 @@ class FinalViewModel {
         case 2:
             userFirst.nameUser.text = topPlayers[0].userName
             userFirst.pointsUser.text = String(topPlayers[0].points)
-            
             userSecond.nameUser.text = topPlayers[1].userName
             userSecond.pointsUser.text = String(topPlayers[1].points)
             self.userThird.isHiden()
