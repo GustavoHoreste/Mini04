@@ -18,19 +18,11 @@ struct MultiplayerHubView: View {
                 
                 Image("Background")
                     .resizable()
-                    .scaledToFill()
                     .ignoresSafeArea()
+                    .scaledToFill()
                     .frame(width: proxy.size.width, height: proxy.size.height, alignment: .center)
                 
                 VStack{
-                    
-                    HStack {
-                        BackButton()
-                        Spacer()
-                    }
-                    .foregroundStyle(.gray)
-                    .padding()
-                    
                     Spacer()
                     
                     Button{
@@ -76,8 +68,9 @@ struct MultiplayerHubView: View {
                         
                         
                         
-                    }.navigationBarBackButtonHidden()
-                        .disabled(!multiplayerVM.sessionActivityIsWaiting)
+                    }
+                    .navigationBarBackButtonHidden()
+                    .disabled(!multiplayerVM.sessionActivityIsWaiting)
                     //                .disabled(multiplayerVM.localPlayer?.isHost ?? false)
                     
                     Spacer()
@@ -87,6 +80,12 @@ struct MultiplayerHubView: View {
                 }.task {
                     for await session in WhereWhereActivity.sessions(){
                         multiplayerVM.sharePlayVM.configurationSessin(session)
+                    }
+                }
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        BackButton()
+                            .padding(20)
                     }
                 }
             }
