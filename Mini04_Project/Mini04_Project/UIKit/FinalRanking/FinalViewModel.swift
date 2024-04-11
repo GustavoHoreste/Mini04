@@ -55,10 +55,6 @@ class FinalViewModel {
         return view
     }()
     
-    init() {
-        setupDelegates()
-    }
-    
     func setupTopRanks() {
         switch topPlayers.count{
         case 3:
