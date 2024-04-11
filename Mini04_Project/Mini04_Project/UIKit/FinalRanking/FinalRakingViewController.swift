@@ -37,8 +37,10 @@ class FinalRakingViewController: UIViewController {
         self.navigationCoordinator = navigationCoordinator
         self.data = self.multiVM.adversaryPlayers
         self.data.append(self.multiVM.localPlayer!)
+        print("\(data)")
         self.finalVM.data = data.sorted(by: {$0.points > $1.points})
         super.init(nibName: nil, bundle: nil)
+        finalVM.setupTopRanks()
         
     }
     
@@ -55,6 +57,7 @@ class FinalRakingViewController: UIViewController {
         configureCollectionViewDataSource()
         applySnapshot(players: finalVM.dataForCollection)
         finalVM.setupTopRanks()
+        print("THIRD ISHIDDEN \(finalVM.userThird.isHidden.description)")
     }
 
     private func configureCollectionViewDataSource() {
