@@ -60,7 +60,7 @@ class PartialResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.partialResultVM.cinfigureLabelReadyButton()
+//        self.partialResultVM.cinfigureLabelReadyButton()
         
         self.partialResultVM.verifyIsHost()
         

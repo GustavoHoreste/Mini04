@@ -15,7 +15,7 @@ class FinalRakingViewController: UIViewController {
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Player>
     typealias DataSourceSnapshot = NSDiffableDataSourceSnapshot<Section, Player>
-    
+     
     var collection: UICollectionView = {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
@@ -38,8 +38,11 @@ class FinalRakingViewController: UIViewController {
         self.data = self.multiVM.adversaryPlayers
         self.data.append(self.multiVM.localPlayer!)
         self.finalVM.data = data.sorted(by: {$0.points > $1.points})
+        print(finalVM.topPlayers)
         super.init(nibName: nil, bundle: nil)
+        finalVM.setupTopRanks()
         
+        self.finalVM.starCombine()
     }
     
     required init?(coder: NSCoder) {
@@ -55,6 +58,7 @@ class FinalRakingViewController: UIViewController {
         configureCollectionViewDataSource()
         applySnapshot(players: finalVM.dataForCollection)
         finalVM.setupTopRanks()
+        print("THIRD ISHIDDEN \(finalVM.userThird.isHidden.description)")
     }
 
     private func configureCollectionViewDataSource() {
@@ -73,12 +77,4 @@ class FinalRakingViewController: UIViewController {
         snapshot.appendItems(players)
         dataSource.apply(snapshot,animatingDifferences: true)
     }
-    
-    // init(navigationCoordinator: Coordinator){
-    //     self.navigationCoordinator = navigationCoordinator
-    //     super.init(nibName: nil, bundle: nil)    }
-    
-    // required init?(coder: NSCoder) {
-    //     fatalError("init(coder:) has not been implemented")
-    // }
 }

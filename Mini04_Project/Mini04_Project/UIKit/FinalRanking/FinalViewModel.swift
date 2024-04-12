@@ -7,12 +7,14 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class FinalViewModel {
     
     var data: [Player] = []
     var dataForCollection:[Player]{
         get{
+            
             var data = self.data
             
             if self.data.count > 3{
@@ -21,25 +23,39 @@ class FinalViewModel {
             
             return data
         }
+        
     }
     var topPlayers: [Player]{
         get{
-            var data:[Player] = []
             
+            var data:[Player] = []
+    
             if self.data.count >= 3{
-                for i in stride(from: 0, to: 2, by: 1){
+                for i in stride(from: 0, to: 3, by: 1){
                     data.append(self.data[i])
                 }
+                return data
             }else {
                 data = self.data
             }
-            
             return data
+            
         }
     }
     
+    var finishGame: Bool = false{
+        didSet{
+            if finishGame{
+                backToHome()
+                finishGame = false
+            }
+        }
+    }
+
     var view: FinalRakingViewController?
     var haptics = Haptics()
+    
+    private var cancellables = Set<AnyCancellable>()
     
     var podio = AnyImageView(imagem: UIImage(named: "FinalPodio"))
     var tops = AnyImageView(imagem: UIImage(named: "FinalTops"))
@@ -49,6 +65,7 @@ class FinalViewModel {
     var recomecar = SingleRecButton()
     var background = AnyImageView(imagem: UIImage(named: "FinalBackground"))
     lazy var leave = ExitButton()
+    
     lazy var popUp: PopUpExitGame = {
         let view = PopUpExitGame()
         view.modalPresentationStyle = .overFullScreen
@@ -57,6 +74,12 @@ class FinalViewModel {
     
     init() {
         setupDelegates()
+    }
+    
+    func starCombine(){
+        self.view?.multiVM.$hostIsStarter
+            .assign(to: \.finishGame, on: self)
+            .store(in: &cancellables)
     }
     
     func setupTopRanks() {
@@ -74,7 +97,6 @@ class FinalViewModel {
         case 2:
             userFirst.nameUser.text = topPlayers[0].userName
             userFirst.pointsUser.text = String(topPlayers[0].points)
-            
             userSecond.nameUser.text = topPlayers[1].userName
             userSecond.pointsUser.text = String(topPlayers[1].points)
             self.userThird.isHiden()
@@ -92,5 +114,10 @@ class FinalViewModel {
     
     public func isHidenColletion(){
         self.view?.collection.isHidden.toggle()
+    }
+    
+    public func backToHome(){
+        self.view?.multiVM.resetGame()
+        self.view?.navigationCoordinator.push(.lobby)
     }
 }

@@ -17,9 +17,13 @@ class SingleRecButton: UIButton {
     
     init(){
         super.init(frame: .zero)
+        guard let customFont = UIFont(name: "FafoSans-Bold", size: 24) else {fatalError()}
         self.translatesAutoresizingMaskIntoConstraints = false
         addTarget(self, action: #selector(recAction), for: .touchUpInside)
-        setBackgroundImage(UIImage(named: "SingleRecButton"), for: .normal)
+        setBackgroundImage(UIImage(resource: .buttonBack), for: .normal)
+        self.setTitle("Recomeçar", for: .normal)
+        self.setTitleColor(.black, for: .normal)
+        self.titleLabel?.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
     }
 
     required init?(coder: NSCoder) {
@@ -29,5 +33,4 @@ class SingleRecButton: UIButton {
     @objc func recAction() {
         delegate?.recomecarAction()
     }
-
 }

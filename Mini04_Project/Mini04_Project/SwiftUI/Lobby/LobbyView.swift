@@ -8,7 +8,6 @@
 import SwiftUI
 import GroupActivities
 
-//var isStarter: Bool = false
 
 struct LobbyView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
@@ -16,8 +15,6 @@ struct LobbyView: View {
     @StateObject var groupStateObserver = GroupStateObserver()
     @State var isOpenConfigMatch = false
     var haptics = Haptics()
-//    @State var players:[Player] = []
-   // @State var isStarter: Bool = false
     
     var body: some View {
         ZStack {
@@ -48,19 +45,19 @@ struct LobbyView: View {
                     multiplayerVM.sharePlayVM.configurationSessin(session)
                 }
             }
+            .onAppear {
+                self.multiplayerVM.hostIsReadyInLobby = false
+            }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                         BackButton()
                         
                 }
                 
-                ToolbarItem(placement: .topBarTrailing) {
-                        
-                        withAnimation() {
-                            configMatchButton()
-                        }
-
-//                        
+                ToolbarItem(placement: .topBarTrailing) {    
+                    withAnimation() {
+                        configMatchButton()
+                    }  
 //                    }.padding()
                 }
             }
@@ -69,7 +66,7 @@ struct LobbyView: View {
                 withAnimation() {
                     PopUpConfigMatch(ativouteste: $isOpenConfigMatch)
                 }
-            }
+            } 
             
         }.navigationBarBackButtonHidden()
         

@@ -44,12 +44,13 @@ class Coordinator: ObservableObject {
     @Published var path = NavigationPath()
     @Published var sheet: Sheet?
     @Published var fullScreenCover: FullScreenCover?
-    
-    
+        
     func push(_ page: Page) {
         path.append(page)
+        print("Quantidade de path: " , path.count, "\n\(path)")
     }
     
+
     func present(sheet: Sheet) {
         self.sheet = sheet
     }
