@@ -118,7 +118,7 @@ extension GameplayViewModel: TimerStartDelegate {
         self.changeButton.alpha = 1
         self.changeButton.isUserInteractionEnabled = true
         controller!.view.isUserInteractionEnabled = true
-        verifyUsersToPowers()
+//        verifyUsersToPowers()
     }
     
     func verifyUsersToPowers() {
@@ -163,6 +163,7 @@ extension GameplayViewModel: TimerRoundDelegate {
             nextScreen?.configureParcialVC()
             nextScreen?.partialResultVM.timerBeforeButtonReady.startCount()
             nextScreen?.partialResultVM.readyButton.toggleIsHiden()
+            nextScreen?.partialResultVM.cinfigureLabelReadyButton()
             self.logo.translatesAutoresizingMaskIntoConstraints = true
             UIView.animate(withDuration: 2.0, animations: {
                 self.logo.center.y -= (self.controller!.view.frame.height + self.controller!.view.frame.height * 0.4)

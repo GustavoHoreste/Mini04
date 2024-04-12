@@ -16,7 +16,7 @@ struct MenuView: View {
     
     var body: some View {
         ZStack(alignment: .center) {
-            Image("Background")
+            Image("fundoGeral")
                 .resizable()
                 .scaledToFill()
                 .frame(width: screenWidth, height: screenHeight)
@@ -48,17 +48,14 @@ struct MenuView: View {
                             isActive = true
                         }
                     } label: {
-                        ZStack {
-                            Image(.configBackground)
+                        withAnimation() {
+                            Image(.lobbyConnfig)
                                 .resizable()
-                                .frame(width: screenWidth * 0.114, height: screenHeight * 0.05284334763)
-                            Image(.configIcon)
-                                .resizable()
+                                .scaledToFit()
                                 .frame(width: screenWidth * 0.114, height: screenHeight * 0.05284334763)
                         }
                         .padding(20)
                     }
-                    .padding(.top)
                 }
             }
             .onAppear {

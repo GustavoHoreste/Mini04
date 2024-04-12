@@ -46,14 +46,17 @@ struct StartButton: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
     @StateObject private var startButtonVM: StartButtonViewModel = StartButtonViewModel()
+    @State var isReady:Bool = false
     var haptics = Haptics()
+    
     
     var body: some View {
         
-        var isReady:Bool = false
-        
         VStack {
             Button{
+                if isReady == false{
+                    isReady.toggle()
+                }
                 self.haptics.doHaptic(type: .button)
                 self.startButtonVM.verifyUserIsHost()
             } label: {

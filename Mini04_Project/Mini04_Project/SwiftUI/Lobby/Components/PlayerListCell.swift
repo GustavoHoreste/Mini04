@@ -4,7 +4,6 @@
 //
 //  Created by Luca Lacerda on 26/03/24.
 //
-
 import SwiftUI
 
 struct PlayerListCell: View {

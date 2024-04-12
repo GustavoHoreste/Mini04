@@ -37,8 +37,8 @@ class FinalRakingViewController: UIViewController {
         self.navigationCoordinator = navigationCoordinator
         self.data = self.multiVM.adversaryPlayers
         self.data.append(self.multiVM.localPlayer!)
-        print("\(data)")
         self.finalVM.data = data.sorted(by: {$0.points > $1.points})
+        print(finalVM.topPlayers)
         super.init(nibName: nil, bundle: nil)
         finalVM.setupTopRanks()
     }

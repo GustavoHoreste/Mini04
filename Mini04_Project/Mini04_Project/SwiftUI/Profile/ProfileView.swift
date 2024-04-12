@@ -16,7 +16,7 @@ struct ProfileView: View {
     var body: some View {
         
         ZStack {
-            Image("Background")
+            Image("fundoGeral")
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()

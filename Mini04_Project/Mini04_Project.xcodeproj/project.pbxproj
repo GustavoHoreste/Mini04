@@ -109,6 +109,7 @@
 		E009867F2BAB626500E586C6 /* PartialResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E009867E2BAB626500E586C6 /* PartialResultCell.swift */; };
 		E00986822BAB681200E586C6 /* CollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00986812BAB681200E586C6 /* CollectionDelegate.swift */; };
 		E00C5CD32BB349140020126E /* PlayerListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00C5CD22BB349140020126E /* PlayerListCell.swift */; };
+		E01244182BC725DB0006599D /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E01244172BC725DA0006599D /* OnboardView.swift */; };
 		E017B8862BBF20EA006B2675 /* SinglePlayerReadyVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017B8852BBF20EA006B2675 /* SinglePlayerReadyVM.swift */; };
 		E017B8882BBF232A006B2675 /* SingleStartButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017B8872BBF232A006B2675 /* SingleStartButton.swift */; };
 		E017B88A2BBF2893006B2675 /* RecordPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E017B8892BBF2893006B2675 /* RecordPopUp.swift */; };
@@ -244,6 +245,7 @@
 		E00986812BAB681200E586C6 /* CollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDelegate.swift; sourceTree = "<group>"; };
 		E00C5CD22BB349140020126E /* PlayerListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListCell.swift; sourceTree = "<group>"; };
 		E00C5CD42BB351420020126E /* UILableRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILableRepresentable.swift; sourceTree = "<group>"; };
+		E01244172BC725DA0006599D /* OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
 		E017B8852BBF20EA006B2675 /* SinglePlayerReadyVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePlayerReadyVM.swift; sourceTree = "<group>"; };
 		E017B8872BBF232A006B2675 /* SingleStartButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStartButton.swift; sourceTree = "<group>"; };
 		E017B8892BBF2893006B2675 /* RecordPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordPopUp.swift; sourceTree = "<group>"; };
@@ -632,6 +634,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		E01244162BC725CA0006599D /* Onboard */ = {
+			isa = PBXGroup;
+			children = (
+				E01244172BC725DA0006599D /* OnboardView.swift */,
+			);
+			path = Onboard;
+			sourceTree = "<group>";
+		};
 		E017B88D2BC06F3F006B2675 /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
@@ -657,6 +667,7 @@
 		E05410B32BA4CE0300046661 /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				E01244162BC725CA0006599D /* Onboard */,
 				E0AB95EC2BBF1D9100443821 /* SinglePlayerReady */,
 				2E3A743C2BAB52EB0026BE07 /* Components */,
 				D9CD14282BA9D825003CB0B6 /* Credits */,
@@ -958,6 +969,7 @@
 				C09107022BA9058200037EAB /* ColorClassifier.mlmodel in Sources */,
 				C03D09592BC0D58600D63BA5 /* NewHomeObjects.mlmodel in Sources */,
 				D91D65132BAB2871003D7DBA /* MultiplayerManagerViewModel.swift in Sources */,
+				E01244182BC725DB0006599D /* OnboardView.swift in Sources */,
 				E0AB95EE2BBF1DBE00443821 /* SinglePlayerReadyView.swift in Sources */,
 				C09107112BAB563A00037EAB /* SpecialObjectImage.swift in Sources */,
 				2E81140D2BA4E3C2009CCC77 /* CoordinatorView.swift in Sources */,
