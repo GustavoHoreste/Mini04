@@ -46,19 +46,17 @@ struct LobbyView: View {
                 }
             }
             .onAppear {
-                self.multiplayerVM.hostIsReadyInLobby = false
+                print("DEFINE HOST READY COMO FALSE")
+//                self.multiplayerVM.hostIsReadyInLobby = false
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                        BackButton()
-                        
+                    BackButton()
                 }
-                
                 ToolbarItem(placement: .topBarTrailing) {    
                     withAnimation() {
                         configMatchButton()
                     }  
-//                    }.padding()
                 }
             }
             

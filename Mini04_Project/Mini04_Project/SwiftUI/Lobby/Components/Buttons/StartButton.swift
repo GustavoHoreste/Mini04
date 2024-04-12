@@ -12,12 +12,6 @@ class StartButtonViewModel: ObservableObject{
     var multiplayerVM: MultiplayerManagerViewModel?
     var navigationCoordinator: Coordinator?
     
-    
-//    init(multiplayer: MultiplayerManagerViewModel) {
-//        self.multiplayer = multiplayer
-//    }
-//    
-    
     public func addObjectMultiPlayer(_ multiplayerVM: MultiplayerManagerViewModel, _ coordinator: Coordinator){
         self.multiplayerVM = multiplayerVM
         self.navigationCoordinator = coordinator
@@ -28,18 +22,19 @@ class StartButtonViewModel: ObservableObject{
             if multiplayerVM?.validateAllUsersStarted() == true{
                 self.multiplayerVM?.sendLocalUserStatus()
                 self.navigationCoordinator?.push(.gameplay)
-            }else{
-                if let multiplayerVM = multiplayerVM {
-                    let notReadyPlayers = multiplayerVM.adversaryPlayers.filter { !$0.statusUser }
-                    
-                    if !notReadyPlayers.isEmpty {
-                        print("Alguem não está pronto:")
-                        for player in notReadyPlayers {
-                            print("userName: \(player.userName)")
-                        }
-                    }
-                }
             }
+//            else{
+//                if let multiplayerVM = multiplayerVM {
+//                    let notReadyPlayers = multiplayerVM.adversaryPlayers.filter { !$0.statusUser }
+//                    
+//                    if !notReadyPlayers.isEmpty {
+//                        print("Alguem não está pronto:")
+//                        for player in notReadyPlayers {
+//                            print("userName: \(player.userName)")
+//                        }
+//                    }
+//                }
+//            }
         }else{
             self.multiplayerVM?.sendLocalUserStatus()
         }

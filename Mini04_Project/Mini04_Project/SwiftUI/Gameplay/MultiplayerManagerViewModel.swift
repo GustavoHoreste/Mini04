@@ -74,6 +74,7 @@ class MultiplayerManagerViewModel: ObservableObject{
         }
     }
     @Published var hostIsReadyInLobby: Bool = false
+    @Published var countReadyGame: Bool = false
     @Published var starActionHidrance: PowerUps?
     @Published var newFinishGame: FinishGame?
     {
@@ -244,8 +245,9 @@ class MultiplayerManagerViewModel: ObservableObject{
         if let hostID = self.adversaryPlayers.first(where: { $0.isHost })?.id {
             if valueNotOpcional.localPlayerID == hostID {
                 DispatchQueue.main.async {
-                    if self.hostIsReadyInLobby == false{
+                    if self.countReadyGame == false{
                         self.hostIsReadyInLobby = true
+                        self.countReadyGame = true
                     }else{
                         self.hostIsStarter = true
                     }
@@ -270,7 +272,6 @@ class MultiplayerManagerViewModel: ObservableObject{
             let status = StatusUsers(localPlayerID: playerLocal.id, status: playerLocal.statusUser)
             self.sharePlayVM.sendStatus(status)
         }
-        //Fazer validacao de cancelar status?
     }
     
     
@@ -303,12 +304,22 @@ class MultiplayerManagerViewModel: ObservableObject{
             adversaryPlayers[index].statusUser = false
         }
         self.localPlayer?.statusUser = false
-        self.starActionHidrance = nil
-        self.hostIsStarter = false
+        DispatchQueue.main.async {
+            self.starActionHidrance = nil
+            self.hostIsStarter = false
+        }
         self.newStatus = nil
     }
     
-    public func resetGame() {
+    public func newGame(){
+        self.countReadyGame = false
+        for index in adversaryPlayers.indices{
+            adversaryPlayers[index].points = 0
+        }
+        resetPowerUpsAndStatus()
+    }
+    
+    private func resetGame() {
         newPlayer = nil
         newPoint = nil
         newHidrance = nil

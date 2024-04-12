@@ -13,7 +13,7 @@ import CoreImage
 extension SingleViewModel {
     func setupDelegate() {
         //MARK: - Camera Removi
-        self.camera = CameraModel(delegate: self)
+//        self.camera = CameraModel(delegate: self)
         changeButton.delegate = self
         changeCount.delegate = self
         photoButton.delegate = self

@@ -30,7 +30,7 @@ class FinalRakingViewController: UIViewController {
     
     var dataSource: DataSource!
     var snapshot = DataSourceSnapshot()
-    var data:[Player]
+    var data: [Player]
     
     init(multiVM: MultiplayerManagerViewModel, navigationCoordinator: Coordinator) {
         self.multiVM = multiVM
@@ -41,12 +41,16 @@ class FinalRakingViewController: UIViewController {
         self.finalVM.data = data.sorted(by: {$0.points > $1.points})
         super.init(nibName: nil, bundle: nil)
         finalVM.setupTopRanks()
-        
-        self.finalVM.starCombine()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func readyButtonIsHiden(){
+        if multiVM.localPlayer?.isHost == false {
+            self.finalVM.recomecar.isHidden = true
+        }
     }
     
     override func viewDidLoad() {
@@ -59,6 +63,9 @@ class FinalRakingViewController: UIViewController {
         applySnapshot(players: finalVM.dataForCollection)
         finalVM.setupTopRanks()
         print("THIRD ISHIDDEN \(finalVM.userThird.isHidden.description)")
+        
+        self.finalVM.starCombine()
+        self.readyButtonIsHiden()
     }
 
     private func configureCollectionViewDataSource() {

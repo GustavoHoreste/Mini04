@@ -14,7 +14,7 @@ class SingleViewModel: NSObject {
     var controller: SingleViewController?
     
     //MARK: - Camera Removi
-    var camera: CameraModel!
+//    var camera: CameraModel!
     var items = ItemsToFindModel()
     var model = MlModel()
     var haptics = Haptics()

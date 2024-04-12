@@ -38,11 +38,11 @@ class FinalViewModel {
         }
     }
     
-    var finishGame: Bool = false{
+    private var newFinishGame: FinishGame?{
         didSet{
-            if finishGame{
+            if newFinishGame != nil{
                 backToHome()
-                finishGame = false
+                newFinishGame = nil
             }
         }
     }
@@ -72,8 +72,8 @@ class FinalViewModel {
     }
     
     func starCombine(){
-        self.view?.multiVM.$hostIsStarter
-            .assign(to: \.finishGame, on: self)
+        self.view?.multiVM.$newFinishGame
+            .assign(to: \.newFinishGame, on: self)
             .store(in: &cancellables)
     }
     
@@ -112,8 +112,10 @@ class FinalViewModel {
         self.view?.collection.isHidden.toggle()
     }
     
+    //Nao host volta a lobby
     public func backToHome(){
-        self.view?.multiVM.resetGame()
+        self.view?.multiVM.newGame()
+        self.view?.multiVM.sendHostFinish()
         self.view?.navigationCoordinator.push(.lobby)
     }
 }

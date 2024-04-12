@@ -13,7 +13,7 @@ import CoreImage
 extension GameplayViewModel {
     func setupDelegate() {
         //MARK: - Camera
-        self.camera = CameraModel(delegate: self)
+//        self.camera = CameraModel(delegate: self)
         changeButton.delegate = self
         changeCount.delegate = self
         photoButton.delegate = self
@@ -206,10 +206,10 @@ extension GameplayViewModel: PowersButtonDelegate {
         case .shuffleWord:
             items.shufflePower()
             animatePower(icon: UIImage(systemName: "5.circle.fill")!, name: "Shuffle")
-        case .changeCamera:
+        case .changeCamera: break
             //MARK: - Camera
-            camera.changeCamera()
-            animatePower(icon: UIImage(systemName: "4.circle.fill")!, name: "Switch")
+//            camera.changeCamera()
+//            animatePower(icon: UIImage(systemName: "4.circle.fill")!, name: "Switch")
         }
     }
     
