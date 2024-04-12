@@ -16,7 +16,7 @@ struct MultiplayerHubView: View {
         GeometryReader{ proxy in
             ZStack {
                 
-                Image("Background")
+                Image("fundoGeral")
                     .resizable()
                     .ignoresSafeArea()
                     .scaledToFill()

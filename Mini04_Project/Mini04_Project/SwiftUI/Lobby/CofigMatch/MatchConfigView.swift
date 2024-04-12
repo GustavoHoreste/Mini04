@@ -86,7 +86,7 @@ struct MatchConfigView: View {
                         }
                     }.pickerStyle(.menu)
                         .tint(.black)
-                        .background(.orange)
+                        .background(.white)
                 }
                 
                 
@@ -103,19 +103,19 @@ struct MatchConfigView: View {
                         }
                     }.pickerStyle(.menu)
                         .tint(.black)
-                        .background(.orange)
+                        .background(.white)
                 }
             
             
             Toggle("Bônus de habilidade", isOn: $matchConfigVM.selectPowerUps)
                 .font(.custom("FafoSans-Bold", size: 20))
                 .foregroundStyle(.black)
-                .tint(.orange)
+                .tint(.green)
             
             Toggle("Cores", isOn: $matchConfigVM.coresIsChoise)
                 .font(.custom("FafoSans-Bold", size: 20))
                 .foregroundStyle(.black)
-                .tint(.orange)
+                .tint(.green)
             
         }.padding()
             .onAppear{

@@ -18,7 +18,7 @@ struct LobbyView: View {
     
     var body: some View {
         ZStack {
-            Image(.lobbyBackground)
+            Image("fundoGeral")
                 .resizable()
                 .ignoresSafeArea()
                 .scaledToFill()
@@ -51,13 +51,15 @@ struct LobbyView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                         BackButton()
+                        .padding(20)
                         
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {    
                     withAnimation() {
                         configMatchButton()
-                    }  
+                            .padding(20)
+                    }
 //                    }.padding()
                 }
             }
@@ -94,7 +96,7 @@ extension LobbyView{
                     Image(.lobbyConnfig)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 50, height: 50)
+                        .frame(width: screenWidth * 0.114, height: screenHeight * 0.05284334763)
                 }
             }
         }
