@@ -23,24 +23,26 @@ class FinalViewModel {
             
             return data
         }
-        
     }
-    var topPlayers: [Player]{
-        get{
-            
-            var data:[Player] = []
     
-            if self.data.count >= 3{
-                for i in stride(from: 0, to: 3, by: 1){
-                    data.append(self.data[i])
-                }
-                return data
-            }else {
-                data = self.data
-            }
-            return data
+    var topPlayers: [Player]{
+
+        get{
+            var data:[Player] = []
             
+            if self.data.count <= 3{
+                
+                data = Array(self.data.prefix(self.data.count))
+                return data
+                
+            }else {
+                
+                data = Array(self.data.prefix(3))
+                return data
+                
+            }
         }
+        
     }
     
     private var newFinishGame: FinishGame?{
