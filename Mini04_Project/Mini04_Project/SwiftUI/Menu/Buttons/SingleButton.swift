@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SingleButton: View {
-    
     @EnvironmentObject private var navigationCoordinator: Coordinator
     var haptic = Haptics()
     

@@ -26,18 +26,14 @@ class SpecialObjectImage: UIImageView {
     
     var tempo: Int = 10
     var timeToAppear: Int = 0
-//    var specialIsOn = true
     
     init() {
         super.init(frame: .zero)
         
         translatesAutoresizingMaskIntoConstraints = false
         
-//        isHidden = false
         image = UIImage(named: "SpecialObjMold")
-        
-//        configTimerAppeerEspecialObject()
-        
+                
         addSubview(specialName)
         addSubview(symbol)
         

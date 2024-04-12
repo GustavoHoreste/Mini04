@@ -17,11 +17,11 @@ class ReadyButton: UIButton {
     var timer: Timer = Timer()
     var count = 6
     
-    private lazy var labelTime: UILabel = {
+    public lazy var labelTime: UILabel = {
         let label = UILabel()
-        label.text = "Está preparado?"
         label.numberOfLines = 0
         label.textAlignment = .center
+        label.textColor = .black
         label.font = UIFont(name: "FafoSans-Bold", size: 24)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -32,6 +32,7 @@ class ReadyButton: UIButton {
         self.translatesAutoresizingMaskIntoConstraints = false
         addTarget(self, action: #selector(ready), for: .touchUpInside)
         isHidden = false
+        setupConstrains()
     }
 
     required init?(coder: NSCoder) {
@@ -42,14 +43,15 @@ class ReadyButton: UIButton {
         self.addSubview(labelTime)
         
         NSLayoutConstraint.activate([
-            labelTime.bottomAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-            labelTime.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+            labelTime.bottomAnchor.constraint(equalTo: self.topAnchor, constant: 15),
+            labelTime.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
     
     public func witchLabel(_ value: Bool){
         if !value{
             self.setBackgroundImage(UIImage(resource: .isReadyButton), for: .normal)
+            labelTime.text = "Está preparado?"
             return
         }
         self.setBackgroundImage(UIImage(resource: .startGame), for: .normal)

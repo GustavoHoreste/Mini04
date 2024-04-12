@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import Combine
 
 class FinalViewModel {
     
@@ -42,8 +43,19 @@ class FinalViewModel {
         }
     }
     
+    var finishGame: Bool = false{
+        didSet{
+            if finishGame{
+                backToHome()
+                finishGame = false
+            }
+        }
+    }
+
     var view: FinalRakingViewController?
     var haptics = Haptics()
+    
+    private var cancellables = Set<AnyCancellable>()
     
     var podio = AnyImageView(imagem: UIImage(named: "FinalPodio"))
     var tops = AnyImageView(imagem: UIImage(named: "FinalTops"))
@@ -53,11 +65,22 @@ class FinalViewModel {
     var recomecar = SingleRecButton()
     var background = AnyImageView(imagem: UIImage(named: "FinalBackground"))
     lazy var leave = ExitButton()
+    
     lazy var popUp: PopUpExitGame = {
         let view = PopUpExitGame()
         view.modalPresentationStyle = .overFullScreen
         return view
     }()
+    
+    init() {
+        setupDelegates()
+    }
+    
+    func starCombine(){
+        self.view?.multiVM.$hostIsStarter
+            .assign(to: \.finishGame, on: self)
+            .store(in: &cancellables)
+    }
     
     func setupTopRanks() {
         switch topPlayers.count{
@@ -91,5 +114,10 @@ class FinalViewModel {
     
     public func isHidenColletion(){
         self.view?.collection.isHidden.toggle()
+    }
+    
+    public func backToHome(){
+        self.view?.multiVM.resetGame()
+        self.view?.navigationCoordinator.push(.lobby)
     }
 }
