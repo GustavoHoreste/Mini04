@@ -45,14 +45,7 @@ class PartialResultViewModel {
     }()
     
     private var cancellables = Set<AnyCancellable>()
-//    private var newFinishGame: FinishGame?{
-//        didSet{
-//            if newFinishGame != nil{
-//                backLobby()
-//                newFinishGame = nil
-//            }
-//        }
-//    }
+
     
     private var hostIsStarter: Bool = false{
         didSet{
@@ -74,18 +67,10 @@ class PartialResultViewModel {
         self.view.navigationController?.popViewController(animated: true)
     }
     
-    public func funcStartCombine(){
-//        self.view.multiVM.$newFinishGame
-//            .assign(to: \.newFinishGame, on: self)
-//            .store(in: &cancellables)
-        
+    public func funcStartCombine(){        
         self.view.multiVM.$hostIsStarter
             .assign(to: \.hostIsStarter, on: self)
             .store(in: &cancellables)
-    }
-    
-    public func backLobby(){
-        self.view.navigationCoordinator.push(.lobby)
     }
 
     

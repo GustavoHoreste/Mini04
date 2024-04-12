@@ -35,7 +35,7 @@ struct LobbyView: View {
                 //inviteButton
                 inviteFriend()
                 
-            }.onReceive(self.multiplayerVM.$hostIsReadyInLobby){ newValue in
+            }.onReceive(self.multiplayerVM.$countReadyGame){ newValue in
                 if newValue == true{
                     navigationCoordinator.push(.gameplay)
                 }
@@ -44,10 +44,6 @@ struct LobbyView: View {
                 for await session in WhereWhereActivity.sessions(){
                     multiplayerVM.sharePlayVM.configurationSessin(session)
                 }
-            }
-            .onAppear {
-                print("DEFINE HOST READY COMO FALSE")
-//                self.multiplayerVM.hostIsReadyInLobby = false
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
@@ -60,7 +56,6 @@ struct LobbyView: View {
                         configMatchButton()
                             .padding(20)
                     }
-//                    }.padding()
                 }
             }
             

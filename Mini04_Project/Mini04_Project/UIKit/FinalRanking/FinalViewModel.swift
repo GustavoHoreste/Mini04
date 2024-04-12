@@ -118,8 +118,12 @@ class FinalViewModel {
     
     //Nao host volta a lobby
     public func backToHome(){
-        self.view?.multiVM.newGame()
-        self.view?.multiVM.sendHostFinish()
-        self.view?.navigationCoordinator.push(.lobby)
+        self.view?.multiVM.countReadyGame = false
+        self.view?.multiVM.newFinishGame = nil
+//        self.view?.multiVM.sendHostFinish()
+        DispatchQueue.main.async {
+            self.view?.multiVM.newGame()
+            self.view?.navigationCoordinator.push(.lobby)
+        }
     }
 }

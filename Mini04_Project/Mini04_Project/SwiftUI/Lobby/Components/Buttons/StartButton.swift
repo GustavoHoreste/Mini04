@@ -23,18 +23,18 @@ class StartButtonViewModel: ObservableObject{
                 self.multiplayerVM?.sendLocalUserStatus()
                 self.navigationCoordinator?.push(.gameplay)
             }
-//            else{
-//                if let multiplayerVM = multiplayerVM {
-//                    let notReadyPlayers = multiplayerVM.adversaryPlayers.filter { !$0.statusUser }
-//                    
-//                    if !notReadyPlayers.isEmpty {
-//                        print("Alguem não está pronto:")
-//                        for player in notReadyPlayers {
-//                            print("userName: \(player.userName)")
-//                        }
-//                    }
-//                }
-//            }
+            else{
+                if let multiplayerVM = multiplayerVM {
+                    let notReadyPlayers = multiplayerVM.adversaryPlayers.filter { !$0.statusUser }
+                    
+                    if !notReadyPlayers.isEmpty {
+                        print("Alguem não está pronto:")
+                        for player in notReadyPlayers {
+                            print("userName: \(player.userName)")
+                        }
+                    }
+                }
+            }
         }else{
             self.multiplayerVM?.sendLocalUserStatus()
         }
@@ -48,7 +48,6 @@ struct StartButton: View {
     @StateObject private var startButtonVM: StartButtonViewModel = StartButtonViewModel()
     @State var isReady:Bool = false
     var haptics = Haptics()
-    
     
     var body: some View {
         
@@ -67,23 +66,17 @@ struct StartButton: View {
                             .scaledToFill()
                             .padding()
                     } else {
-                        
                         if isReady == false{
-                            
                             Image(.isReadyButton)
                                 .resizable()
                                 .scaledToFill()
                                 .padding()
-                            
                         } else {
-                            
                             Image(.readyPressed)
                                 .resizable()
                                 .scaledToFill()
                                 .padding()
-                            
                         }
-                        
                     }
                 }
             }

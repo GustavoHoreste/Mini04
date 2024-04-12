@@ -47,10 +47,8 @@ class Coordinator: ObservableObject {
         
     func push(_ page: Page) {
         path.append(page)
-        print("Quantidade de path: " , path.count, "\n\(path)")
     }
     
-
     func present(sheet: Sheet) {
         self.sheet = sheet
     }
