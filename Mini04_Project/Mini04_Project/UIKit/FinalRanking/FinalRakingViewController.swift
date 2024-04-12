@@ -38,10 +38,10 @@ class FinalRakingViewController: UIViewController {
         self.data = self.multiVM.adversaryPlayers
         self.data.append(self.multiVM.localPlayer!)
         self.finalVM.data = data.sorted(by: {$0.points > $1.points})
-        print(finalVM.data)
+        print(finalVM.topPlayers)
         super.init(nibName: nil, bundle: nil)
         finalVM.setupTopRanks()
-        }
+               }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
