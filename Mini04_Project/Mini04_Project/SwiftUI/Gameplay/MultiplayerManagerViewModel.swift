@@ -10,7 +10,7 @@ import Combine
 
 
 struct MocaData{
-    static let config = MatchConfig(roundTime: 5, amoutRound: 1, powerUps: true, coresIsChoise: false)
+    static let config = MatchConfig(roundTime: 30, amoutRound: 2, powerUps: true, coresIsChoise: false)
     static let playerForPreview = Player(id: UUID(),
                                          userName: "Gustavo",
                                          playerImage: 1,
