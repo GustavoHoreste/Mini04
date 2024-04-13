@@ -75,6 +75,7 @@ extension GameplayViewModel: PhotoButtonDelegate {
                 if items.specialObject == returnedTargetObject && multiVM?.configMatch.powerUps == true{
                     items.specialObject = ""
                     let specialObject = SpecialObject(objectName: items.specialObject, isHit: true)
+                    await self.feedback.animateAppear(isGreen: true)
                     DispatchQueue.main.async { [self] in
                         self.haptics.doHaptic(type: .specialObject)
                         self.special.specialFinded()
@@ -98,6 +99,7 @@ extension GameplayViewModel: ItemsDelegate {
         print(timerObject.segundos)
         let convertedPts = timerObject.segundos.converterPontos(tempoObj: 20)
         pontos.plusAnimate(color: .green)
+        feedback.animateAppear(isGreen: true)
         multiVM?.localPlayer?.points += convertedPts
         pontos.number += convertedPts
     }
@@ -185,6 +187,7 @@ extension GameplayViewModel: TimerObjectDelegate {
         objectName.name = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
         timerObject.resetTimerObject()
         changeButton.rotateAnimate()
+        feedback.animateAppear(isGreen: false)
         items.shuffleIsOn = false
     }
 }

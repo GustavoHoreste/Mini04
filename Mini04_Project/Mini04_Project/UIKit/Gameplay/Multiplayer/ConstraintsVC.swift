@@ -31,6 +31,7 @@ extension GameplayViewController {
         view.addSubview(gameplayVM.alert)
         view.addSubview(gameplayVM.photoButton)
         view.addSubview(gameplayVM.special)
+        view.addSubview(gameplayVM.feedback)
         view.addSubview(gameplayVM.fadeBackground)
         view.addSubview(gameplayVM.timerStart)
         view.addSubview(gameplayVM.logo)
@@ -102,7 +103,11 @@ extension GameplayViewController {
             
             gameplayVM.alert.leadingAnchor.constraint(equalTo: view.trailingAnchor),
             gameplayVM.alert.topAnchor.constraint(equalTo: gameplayVM.changeButton.bottomAnchor, constant: -10),
-        
+            
+            gameplayVM.feedback.topAnchor.constraint(equalTo: view.topAnchor),
+            gameplayVM.feedback.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            gameplayVM.feedback.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            gameplayVM.feedback.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
     

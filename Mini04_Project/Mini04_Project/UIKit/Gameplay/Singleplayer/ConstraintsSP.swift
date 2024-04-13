@@ -26,6 +26,7 @@ extension SingleViewController {
         view.addSubview(gameplayVM.timerRound)
         view.addSubview(gameplayVM.timerObject)
         view.addSubview(gameplayVM.crosshair)
+        view.addSubview(gameplayVM.feedback)
         view.addSubview(gameplayVM.logo)
         view.addSubview(gameplayVM.fadeBackground)
         view.addSubview(gameplayVM.timerStart)
@@ -86,6 +87,11 @@ extension SingleViewController {
             
             gameplayVM.timerStart.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.timerStart.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            gameplayVM.feedback.topAnchor.constraint(equalTo: view.topAnchor),
+            gameplayVM.feedback.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            gameplayVM.feedback.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            gameplayVM.feedback.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
 }

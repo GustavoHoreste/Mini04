@@ -32,6 +32,7 @@ class SingleViewModel: NSObject {
     lazy var logo = LogoImage(isIncreased: false, altura: controller?.view.frame.height)
     var timerStart = TimerStart()
     var fadeBackground = BackgroundFade()
+    var feedback = FeedbackGreen()
     
     var pointsMold = AnyImageView(imagem: UIImage(named: "PntsMold"))
     var roundMold = AnyImageView(imagem: UIImage(named: "PntsMold"))
