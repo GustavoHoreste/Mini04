@@ -69,8 +69,10 @@ extension SingleViewModel: PhotoButtonDelegate {
 
 extension SingleViewModel: ItemsDelegate {
     func findedObjectAction() {
+        let convertedPts = timerObject.segundos.converterPontos(tempoObj: 20)
         pontos.plusAnimate(color: .green)
-        pontos.number += 1
+        feedback.animateAppear(isGreen: true)
+        pontos.number += convertedPts
     }
 }
 
@@ -107,6 +109,7 @@ extension SingleViewModel: TimerObjectDelegate {
         objectName.name = items.toFindObject
         timerObject.resetTimerObject()
         changeButton.rotateAnimate()
+        feedback.animateAppear(isGreen: false)
     }
 }
 
