@@ -13,7 +13,7 @@ import CoreImage
 extension SingleViewModel {
     func setupDelegate() {
         //MARK: - Camera Removi
-//        self.camera = CameraModel(delegate: self)
+        self.camera = CameraModel(delegate: self)
         changeButton.delegate = self
         changeCount.delegate = self
         photoButton.delegate = self
@@ -71,7 +71,7 @@ extension SingleViewModel: ItemsDelegate {
     func findedObjectAction() {
         let convertedPts = timerObject.segundos.converterPontos(tempoObj: 20)
         pontos.plusAnimate(color: .green)
-        feedback.animateAppear(isGreen: true)
+        feedback.animateAppear(type: .green)
         pontos.number += convertedPts
     }
 }
@@ -109,7 +109,7 @@ extension SingleViewModel: TimerObjectDelegate {
         objectName.name = items.toFindObject
         timerObject.resetTimerObject()
         changeButton.rotateAnimate()
-        feedback.animateAppear(isGreen: false)
+        feedback.animateAppear(type: .yellow)
     }
 }
 

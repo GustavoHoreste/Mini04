@@ -12,7 +12,7 @@ extension GameplayViewController {
     
     func setupView() {
         //MARK: - Camera Removi
-//        view.addSubview(gameplayVM.cameraImage)
+        view.addSubview(gameplayVM.cameraImage)
         
         view.addSubview(gameplayVM.pointsMold)
         view.addSubview(gameplayVM.roundMold)
@@ -38,10 +38,10 @@ extension GameplayViewController {
                 
         NSLayoutConstraint.activate([
             //MARK: - Camera Removi
-//            gameplayVM.cameraImage.heightAnchor.constraint(equalToConstant: view.frame.height * 0.9),
-//            gameplayVM.cameraImage.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 3.0/4.0),
-//            gameplayVM.cameraImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            gameplayVM.cameraImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -view.frame.height * 0.05),
+            gameplayVM.cameraImage.heightAnchor.constraint(equalToConstant: view.frame.height * 0.9),
+            gameplayVM.cameraImage.widthAnchor.constraint(equalTo: view.heightAnchor, multiplier: 3.0/4.0),
+            gameplayVM.cameraImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            gameplayVM.cameraImage.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -view.frame.height * 0.05),
             
             //--------Constraints das molduras--------
             gameplayVM.pointsMold.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),

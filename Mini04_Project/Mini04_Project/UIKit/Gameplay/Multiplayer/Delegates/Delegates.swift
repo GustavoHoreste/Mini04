@@ -13,7 +13,7 @@ import CoreImage
 extension GameplayViewModel {
     func setupDelegate() {
         //MARK: - Camera
-//        self.camera = CameraModel(delegate: self)
+        self.camera = CameraModel(delegate: self)
         changeButton.delegate = self
         changeCount.delegate = self
         photoButton.delegate = self
@@ -75,7 +75,7 @@ extension GameplayViewModel: PhotoButtonDelegate {
                 if items.specialObject == returnedTargetObject && multiVM?.configMatch.powerUps == true{
                     items.specialObject = ""
                     let specialObject = SpecialObject(objectName: items.specialObject, isHit: true)
-                    await self.feedback.animateAppear(isGreen: true)
+                    await self.feedback.animateAppear(type: .green)
                     DispatchQueue.main.async { [self] in
                         self.haptics.doHaptic(type: .specialObject)
                         self.special.specialFinded()
@@ -99,7 +99,7 @@ extension GameplayViewModel: ItemsDelegate {
         print(timerObject.segundos)
         let convertedPts = timerObject.segundos.converterPontos(tempoObj: 20)
         pontos.plusAnimate(color: .green)
-        feedback.animateAppear(isGreen: true)
+        feedback.animateAppear(type: .green)
         multiVM?.localPlayer?.points += convertedPts
         pontos.number += convertedPts
     }
@@ -187,7 +187,7 @@ extension GameplayViewModel: TimerObjectDelegate {
         objectName.name = items.shuffleIsOn ? items.toFindShuffled : items.toFindObject
         timerObject.resetTimerObject()
         changeButton.rotateAnimate()
-        feedback.animateAppear(isGreen: false)
+        feedback.animateAppear(type: .yellow)
         items.shuffleIsOn = false
     }
 }
@@ -210,10 +210,10 @@ extension GameplayViewModel: PowersButtonDelegate {
         case .shuffleWord:
             items.shufflePower()
             animatePower(icon: UIImage(systemName: "5.circle.fill")!, name: "Shuffle")
-        case .changeCamera: break
+        case .changeCamera:
             //MARK: - Camera
-//            camera.changeCamera()
-//            animatePower(icon: UIImage(systemName: "4.circle.fill")!, name: "Switch")
+            camera.changeCamera()
+            animatePower(icon: UIImage(systemName: "4.circle.fill")!, name: "Switch")
         }
     }
     
@@ -250,6 +250,7 @@ extension GameplayViewModel: PowersButtonDelegate {
     func subtractPower() {
         multiVM?.localPlayer?.points -= 15
         self.pontos.number -= 15
+        feedback.animateAppear(type: .red)
         pontos.plusAnimate(color: .red)
     }
     

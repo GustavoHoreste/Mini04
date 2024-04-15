@@ -7,6 +7,12 @@
 
 import UIKit
 
+enum FeedbackTypes {
+    case red
+    case yellow
+    case green
+}
+
 class FeedbackGreen: UIImageView {
 
     var isFeedbackAnimating = false
@@ -20,16 +26,24 @@ class FeedbackGreen: UIImageView {
         
     }
     
-    func animateAppear(isGreen: Bool) {
+    func animateAppear(type: FeedbackTypes) {
+        //Esse guard é para evitar da animação acontecer enquanto outra da mesma também esteja acontecendo
         guard !isFeedbackAnimating else {
             layer.removeAllAnimations()
             alpha = 0
             isFeedbackAnimating = false
-            animateAppear(isGreen: isGreen)
+            animateAppear(type: type)
             return
         }
+        
+        let feedback = [
+            FeedbackTypes.green: UIImage(resource: .feedbackGreen),
+            FeedbackTypes.yellow: UIImage(resource: .feedbackYellow),
+            FeedbackTypes.red: UIImage(resource: .feedbackRed)
+        ][type, default: UIImage(resource: .feedbackYellow)]
+        
         self.isFeedbackAnimating = true
-        image = isGreen ? UIImage(resource: .feedbackGreen) : UIImage(resource: .feedbackRed)
+        image = feedback
         UIView.animate(withDuration: 0.8, animations: {
             self.alpha = 1
         }){ _ in
