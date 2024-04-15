@@ -74,6 +74,7 @@ struct MenuView: View {
             
             if isActive {
                 PopUpConfig(isActive: $isActive)
+                    .toolbar(.hidden)
             }
         }
     }

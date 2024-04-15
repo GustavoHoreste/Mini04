@@ -14,6 +14,7 @@ struct LobbyView: View {
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
     @StateObject var groupStateObserver = GroupStateObserver()
     @State var isOpenConfigMatch = false
+    @State private var isToolbarHidden = false
     var haptics = Haptics()
     
     var body: some View {
@@ -59,11 +60,14 @@ struct LobbyView: View {
                 }
             }
             
+            
             if (isOpenConfigMatch){
                 withAnimation() {
                     PopUpConfigMatch(ativouteste: $isOpenConfigMatch)
+                        .toolbar(.hidden)
                 }
-            } 
+            
+            }
             
         }.navigationBarBackButtonHidden()
         
