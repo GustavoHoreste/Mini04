@@ -32,7 +32,7 @@ class PartialResultViewModel {
     
     var backGroundImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(resource: .backgroundClaro)
+        image.image = UIImage(named: "fundoGeral")
         image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
@@ -45,6 +45,14 @@ class PartialResultViewModel {
     }()
     
     private var cancellables = Set<AnyCancellable>()
+    private var newFinishGame: FinishGame?{
+        didSet{
+            if newFinishGame?.status == true{
+                backLobby()
+                newFinishGame = nil
+            }
+        }
+    }
 
     
     private var hostIsStarter: Bool = false{
@@ -67,7 +75,11 @@ class PartialResultViewModel {
         self.view.navigationController?.popViewController(animated: true)
     }
     
-    public func funcStartCombine(){        
+    public func funcStartCombine(){ 
+        self.view.multiVM.$newFinishGame
+            .assign(to: \.newFinishGame, on: self)
+            .store(in: &cancellables)
+        
         self.view.multiVM.$hostIsStarter
             .assign(to: \.hostIsStarter, on: self)
             .store(in: &cancellables)
@@ -84,4 +96,13 @@ class PartialResultViewModel {
         let userIsHost = self.view.multiVM.localPlayer?.isHost
         self.readyButton.witchLabel(userIsHost!)
     }
+    
+    public func backLobby(){
+        DispatchQueue.main.async {
+            self.view?.multiVM.countReadyGame = false
+            self.view?.multiVM.newFinishGame = nil
+            self.view.multiVM.newGame()
+            self.view.navigationCoordinator.push(.lobby)
+        }
+   }
 }

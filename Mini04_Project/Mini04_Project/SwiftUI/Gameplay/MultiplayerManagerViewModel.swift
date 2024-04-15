@@ -312,13 +312,12 @@ class MultiplayerManagerViewModel: ObservableObject{
     }
     
     public func newGame(){
-        DispatchQueue.main.async { [self] in
-            self.countReadyGame = false
-            for index in self.adversaryPlayers.indices{
-                adversaryPlayers[index].points = 0
-            }
-            self.resetPowerUpsAndStatus()
+        self.countReadyGame = false
+        for index in self.adversaryPlayers.indices{
+            adversaryPlayers[index].points = 0
         }
+        self.resetPowerUpsAndStatus()
+        self.localPlayer?.points = 0
     }
     
     private func resetGame() {

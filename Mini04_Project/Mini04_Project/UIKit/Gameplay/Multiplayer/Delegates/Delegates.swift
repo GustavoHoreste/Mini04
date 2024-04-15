@@ -39,6 +39,7 @@ extension GameplayViewModel: ChangeButtonDelegate {
         items.shuffleIsOn = false
         changeCount.subtractCount()
         changeButton.rotateAnimate()
+        feedback.animateAppear(type: .yellow)
         print("Change Touched")
     }
 }

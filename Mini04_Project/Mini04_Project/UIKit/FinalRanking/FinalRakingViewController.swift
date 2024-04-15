@@ -67,6 +67,13 @@ class FinalRakingViewController: UIViewController {
         self.finalVM.starCombine()
         self.readyButtonIsHiden()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.finalVM.starCombine()
+    }
+    
 
     private func configureCollectionViewDataSource() {
         dataSource = DataSource(collectionView: collection, cellProvider: { (collectionView, indexPath, player) -> NormalListCell? in

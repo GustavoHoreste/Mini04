@@ -14,22 +14,17 @@ class FinalViewModel {
     var data: [Player] = []
     var dataForCollection:[Player]{
         get{
-            
             var data = self.data
-            
             if self.data.count > 3{
                 data.removeFirst(3)
             }
-            
             return data
         }
     }
     
     var topPlayers: [Player]{
-
         get{
-            var data:[Player] = []
-            
+            var data: [Player] = []
             if self.data.count <= 3{
                 data = Array(self.data.prefix(self.data.count))
                 return data
@@ -107,6 +102,7 @@ class FinalViewModel {
             self.isHidenColletion()
         default:
             print("Erros nos tops finais da partida")
+            self.view?.collection.isHidden = false
         }
     }
     
@@ -116,13 +112,13 @@ class FinalViewModel {
     
     //Nao host volta a lobby
     public func backToHome(){
-        DispatchQueue.main.async {
-            self.view?.multiVM.countReadyGame = false
-            self.view?.multiVM.newFinishGame = nil
-        }
+        cancellables.removeAll()
+        self.view?.multiVM.countReadyGame = false
+        self.view?.multiVM.newFinishGame = nil
+        self.view?.multiVM.newGame()
+        
 //        self.view?.multiVM.sendHostFinish()
-        DispatchQueue.main.async {
-            self.view?.multiVM.newGame()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
             self.view?.navigationCoordinator.push(.lobby)
         }
     }

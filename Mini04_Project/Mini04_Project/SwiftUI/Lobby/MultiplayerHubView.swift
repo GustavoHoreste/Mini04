@@ -16,7 +16,6 @@ struct MultiplayerHubView: View {
     var body: some View {
         GeometryReader{ proxy in
             ZStack {
-                
                 Image("fundoGeral")
                     .resizable()
                     .ignoresSafeArea()
@@ -41,7 +40,7 @@ struct MultiplayerHubView: View {
                                 .padding()
                                 .foregroundStyle(.black)
                         }
-                    }.disabled(isHost)
+                    }.disabled(multiplayerVM.sessionActivityIsJoined)
                     
                     Button{
                         haptics.doHaptic(type: .button)
@@ -49,7 +48,6 @@ struct MultiplayerHubView: View {
                         multiplayerVM.sendLocalPlayerData()
                         navigationCoordinator.push(.lobby)
                     }label: {
-                        
                         ZStack {
                             if multiplayerVM.sessionActivityIsWaiting {
                                 Image("MultiBackground")
@@ -66,9 +64,6 @@ struct MultiplayerHubView: View {
                                 .padding()
                                 .foregroundStyle(.black)
                         }
-                        
-                        
-                        
                     }
                     .navigationBarBackButtonHidden()
                     .disabled(!multiplayerVM.sessionActivityIsWaiting)
@@ -85,7 +80,7 @@ struct MultiplayerHubView: View {
                 }
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
-                        BackButton()
+                        BackButtonHUBMenu()
                             .padding(20)
                     }
                 }

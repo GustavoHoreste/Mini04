@@ -15,7 +15,7 @@ class UserImageView: UIImageView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
         label.textColor = .black
-        label.text = "Teste"
+        label.text = ""
         return label
     }()
     
@@ -25,7 +25,7 @@ class UserImageView: UIImageView {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
         label.textColor = .black
-        label.text = "Teste"
+        label.text = ""
         return label
     }()
     

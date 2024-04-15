@@ -47,7 +47,7 @@ struct LobbyView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
-                        BackButton()
+                    BackToHome()
                         .padding(20)
                         
                 }
