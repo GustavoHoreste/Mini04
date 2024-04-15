@@ -10,6 +10,7 @@ import SwiftUI
 struct MultiplayerHubView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var multiplayerVM: MultiplayerManagerViewModel
+    @State private var isHost: Bool = false
     var haptics = Haptics()
     
     var body: some View {
@@ -40,7 +41,7 @@ struct MultiplayerHubView: View {
                                 .padding()
                                 .foregroundStyle(.black)
                         }
-                    }
+                    }.disabled(isHost)
                     
                     Button{
                         haptics.doHaptic(type: .button)
@@ -88,6 +89,14 @@ struct MultiplayerHubView: View {
                             .padding(20)
                     }
                 }
+            }
+        }
+    }
+    
+    private func verifyIsHost(){
+        if multiplayerVM.sessionActivityIsJoined == true {
+            if multiplayerVM.localPlayer?.isHost == true{
+                isHost = true
             }
         }
     }

@@ -270,17 +270,23 @@ final class SharePlayViewModel{
 
     private func handle(_ model: SendHindrances) {
         print("SendHindrances: \(model)")
-        self.newHidrance = model
+        DispatchQueue.main.async {
+            self.newHidrance = model
+        }
     }
 
     private func handle(_ model: StatusUsers) {
         print("StatusUsers: \(model)")
-        self.newStatus = model
+        DispatchQueue.main.async {
+            self.newStatus = model
+        }
     }
 
     private func handle(_ model: UserPoints) {
         print("UserPoints: \(model)")
-        self.newPoint = model
+        DispatchQueue.main.async {
+            self.newPoint = model
+        }
     }
 
     private func handle(_ model: MatchConfig) {
@@ -292,12 +298,16 @@ final class SharePlayViewModel{
     
     private func handle(_ model: SpecialObject){
         print("EspcialObject: \(model)")
-        self.newEspecialObj = model
+        DispatchQueue.main.async {
+            self.newEspecialObj = model
+        }
     }
     
     private func handle(_ model: FinishGame){
         print("FinishGame: \(model)")
-        self.newFinishGame = model
+        DispatchQueue.main.async {
+            self.newFinishGame = model
+        }
     }
 }
 

@@ -31,15 +31,11 @@ class FinalViewModel {
             var data:[Player] = []
             
             if self.data.count <= 3{
-                
                 data = Array(self.data.prefix(self.data.count))
                 return data
-                
             }else {
-                
                 data = Array(self.data.prefix(3))
                 return data
-                
             }
         }
         
@@ -47,7 +43,7 @@ class FinalViewModel {
     
     private var newFinishGame: FinishGame?{
         didSet{
-            if newFinishGame != nil{
+            if newFinishGame?.status == true{
                 backToHome()
                 newFinishGame = nil
             }
@@ -120,8 +116,10 @@ class FinalViewModel {
     
     //Nao host volta a lobby
     public func backToHome(){
-        self.view?.multiVM.countReadyGame = false
-        self.view?.multiVM.newFinishGame = nil
+        DispatchQueue.main.async {
+            self.view?.multiVM.countReadyGame = false
+            self.view?.multiVM.newFinishGame = nil
+        }
 //        self.view?.multiVM.sendHostFinish()
         DispatchQueue.main.async {
             self.view?.multiVM.newGame()
