@@ -13,7 +13,7 @@ class AlertPowerView: UIImageView {
         let label = UILabel()
         guard let customFont = UIFont(name: "FafoSans-Bold", size: 16) else {fatalError()}
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "VOCÊ FOI\n     ATINGIDO\n          POR UM"
+        label.text = String(localized: "VOCÊ FOI\n     ATINGIDO\n          POR UM")
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .white

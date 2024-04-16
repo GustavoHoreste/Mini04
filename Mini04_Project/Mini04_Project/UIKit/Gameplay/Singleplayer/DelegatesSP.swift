@@ -51,7 +51,7 @@ extension SingleViewModel: PhotoButtonDelegate {
                 let returnedTargetColor = try await model.verifyColor(image: cameraImage.image!)
                 print(returnedTargetObject)
                 print(returnedTargetColor)
-                if returnedTargetObject == items.toFindObject || returnedTargetColor == items.toFindObject{
+                if returnedTargetObject == items.toFindObject.findKey() || returnedTargetColor == items.toFindObject.findKey(){
                     DispatchQueue.main.async{
                         self.haptics.doHaptic(type: .rightObject)
                         self.items.findedObject()

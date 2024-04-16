@@ -51,7 +51,7 @@ class ReadyButton: UIButton {
     public func witchLabel(_ value: Bool){
         if !value{
             self.setBackgroundImage(UIImage(resource: .isReadyButton), for: .normal)
-            labelTime.text = "Está preparado?"
+            labelTime.text = String(localized: "Está preparado?")
             return
         }
         self.setBackgroundImage(UIImage(resource: .startGame), for: .normal)

@@ -45,6 +45,6 @@ class SingleViewModel: NSObject {
         super.init()
         setupDelegate()
         
-        round.text = "Tempo"
+        round.text = String(localized: "Tempo")
     }
 }

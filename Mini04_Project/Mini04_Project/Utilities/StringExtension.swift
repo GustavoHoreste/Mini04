@@ -14,4 +14,22 @@ extension String {
         return String(characters)
     }
     
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
+    
+    func localized(_ arguments: CVarArg...) -> String {
+        return String(format: self.localized, arguments: arguments)
+    }
+    
+    func findKey(inTable table: String = "Localizable") -> String? {
+        guard let path = Bundle.main.path(forResource: table, ofType: "strings"),
+              let dict = NSDictionary(contentsOfFile: path) as? [String: String] else {
+            return nil
+        }
+        
+        // Buscando a chave para a string atual
+        return dict.first { $0.value == self }?.key
+    }
+    
 }

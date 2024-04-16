@@ -63,7 +63,7 @@ extension GameplayViewModel: PhotoButtonDelegate {
                 print(returnedTargetObject)
                 print(returnedTargetColor)
                 //MARK: - QUANDO A PESSOA ACERTA UM OBJETO HAPTICS AQUI
-                if returnedTargetObject == items.toFindObject || returnedTargetColor == items.toFindObject{
+                if returnedTargetObject == items.toFindObject.findKey() || returnedTargetColor == items.toFindObject.findKey(){
                     DispatchQueue.main.async{
                         self.haptics.doHaptic(type: .rightObject)
                         self.items.findedObject()
@@ -73,7 +73,7 @@ extension GameplayViewModel: PhotoButtonDelegate {
                     }
                 }
                 //MARK: - QUANDO A PESSOA ACERTA O OBJETO ESPECIAL HAPTICS AQUI
-                if items.specialObject == returnedTargetObject && multiVM?.configMatch.powerUps == true{
+                if items.specialObject.findKey() == returnedTargetObject && multiVM?.configMatch.powerUps == true{
                     items.specialObject = ""
                     let specialObject = SpecialObject(objectName: items.specialObject, isHit: true)
                     await self.feedback.animateAppear(type: .green)
@@ -227,24 +227,24 @@ extension GameplayViewModel: PowersButtonDelegate {
         switch powerType{
         case .freeze:
             //Função de congelar a câmera
-            self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
-//                        self.reciveHidrance(powerType: .freeze)
+//            self.multiVM?.sendHidrancesForRandonPlayer(.freeze)
+                        self.reciveHidrance(powerType: .freeze)
         case .switchWord:
             //Função de trocar objeto
-            self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
-//                        self.reciveHidrance(powerType: .switchWord)
+//            self.multiVM?.sendHidrancesForRandonPlayer(.switchWord)
+                        self.reciveHidrance(powerType: .switchWord)
         case .subtrac:
             //Função de subtrair os pontos
-            self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
-//                        self.reciveHidrance(powerType: .subtrac)
+//            self.multiVM?.sendHidrancesForRandonPlayer(.subtrac)
+                        self.reciveHidrance(powerType: .subtrac)
         case .changeCamera:
             //Função que troca a câmera
-            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
-//                        self.reciveHidrance(powerType: .changeCamera)
+//            self.multiVM?.sendHidrancesForRandonPlayer(.changeCamera)
+                        self.reciveHidrance(powerType: .changeCamera)
         case .shuffleWord:
             //Função que embaralha o nome do objeto
-            self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
-//                        self.reciveHidrance(powerType: .shuffleWord)
+//            self.multiVM?.sendHidrancesForRandonPlayer(.shuffleWord)
+                        self.reciveHidrance(powerType: .shuffleWord)
         }
     }
     

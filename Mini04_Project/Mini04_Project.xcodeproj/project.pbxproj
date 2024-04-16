@@ -55,6 +55,7 @@
 		C03D095B2BC468E700D63BA5 /* OldHomeObjects.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = C03D095A2BC468E700D63BA5 /* OldHomeObjects.mlmodel */; };
 		C03D095D2BC747EB00D63BA5 /* IntExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D095C2BC747EB00D63BA5 /* IntExtension.swift */; };
 		C03D095F2BC9A8B700D63BA5 /* FeedbackGreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03D095E2BC9A8B700D63BA5 /* FeedbackGreen.swift */; };
+		C03D09612BCDD02900D63BA5 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C03D09602BCDD02900D63BA5 /* Localizable.xcstrings */; };
 		C060E4052BBB32A4009F1250 /* TimerStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4042BBB32A4009F1250 /* TimerStart.swift */; };
 		C060E4072BBB3795009F1250 /* BackgroundFade.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4062BBB3795009F1250 /* BackgroundFade.swift */; };
 		C060E4092BBB55B7009F1250 /* AlertPowerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C060E4082BBB55B7009F1250 /* AlertPowerView.swift */; };
@@ -190,6 +191,7 @@
 		C03D095A2BC468E700D63BA5 /* OldHomeObjects.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = OldHomeObjects.mlmodel; sourceTree = "<group>"; };
 		C03D095C2BC747EB00D63BA5 /* IntExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtension.swift; sourceTree = "<group>"; };
 		C03D095E2BC9A8B700D63BA5 /* FeedbackGreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackGreen.swift; sourceTree = "<group>"; };
+		C03D09602BCDD02900D63BA5 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		C060E4042BBB32A4009F1250 /* TimerStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStart.swift; sourceTree = "<group>"; };
 		C060E4062BBB3795009F1250 /* BackgroundFade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundFade.swift; sourceTree = "<group>"; };
 		C060E4082BBB55B7009F1250 /* AlertPowerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPowerView.swift; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 				D92885B72B9668D200C73B6E /* Assets.xcassets */,
 				D92885B92B9668D200C73B6E /* Mini04_Project.entitlements */,
 				D92885BA2B9668D200C73B6E /* Preview Content */,
+				C03D09602BCDD02900D63BA5 /* Localizable.xcstrings */,
 			);
 			path = Mini04_Project;
 			sourceTree = "<group>";
@@ -881,6 +884,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = D92885A72B9668D100C73B6E;
 			productRefGroup = D92885B12B9668D100C73B6E /* Products */;
@@ -898,6 +902,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9D573472BBDDAF300CF46A6 /* FafoSansRegular.ttf in Resources */,
+				C03D09612BCDD02900D63BA5 /* Localizable.xcstrings in Resources */,
 				D92885BC2B9668D200C73B6E /* Preview Assets.xcassets in Resources */,
 				D92885B82B9668D200C73B6E /* Assets.xcassets in Resources */,
 				D9D573462BBDDAF300CF46A6 /* FafoSansBold.ttf in Resources */,
@@ -1172,7 +1177,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = 335BRL9A43;
+				DEVELOPMENT_TEAM = SJYF62B3PZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1194,7 +1199,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Cade--Cade-";
+				PRODUCT_BUNDLE_IDENTIFIER = "Cade--Cade-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1215,7 +1220,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Mini04_Project/Preview Content\"";
-				DEVELOPMENT_TEAM = 335BRL9A43;
+				DEVELOPMENT_TEAM = SJYF62B3PZ;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1237,7 +1242,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.2;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Cade--Cade-";
+				PRODUCT_BUNDLE_IDENTIFIER = "Cade--Cade-2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
