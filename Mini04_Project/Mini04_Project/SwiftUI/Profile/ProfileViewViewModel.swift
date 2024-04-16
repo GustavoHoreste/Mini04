@@ -25,8 +25,7 @@ class ProfileViewViewModel: ObservableObject {
         textField = userDefault.string(forKey: UserDefaultKey.userName.rawValue) ?? nomesPadrao.randomElement()!
         addUserName()
         verifyExistemUser()
-        imageTapped("ImagePicker")
-        
+        imageTapped()
     }
     
     public func addUserName() {
@@ -47,8 +46,11 @@ class ProfileViewViewModel: ObservableObject {
         userDefault.setValue(id.uuidString, forKey:  UserDefaultKey.userID.rawValue)
     }
     
-    func imageTapped(_ imageName: String) {
-        print("Imagem tocada: \(imageName)")
-        userDefault.setValue(imageName, forKey: UserDefaultKey.indexImage.rawValue)
+    func imageTapped() -> String {
+        if let image = userDefault.string(forKey: UserDefaultKey.indexImage.rawValue){
+            return image
+        }
+        userDefault.setValue("ImagePicker", forKey: UserDefaultKey.indexImage.rawValue)
+        return "ImagePicker"
     }
 }

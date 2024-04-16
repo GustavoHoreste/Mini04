@@ -21,7 +21,7 @@ struct CharPicker: View {
                         .scaleEffect(imageName == selectedImage ? 1.3 : 1.0)
                         .onTapGesture {
                             selectedImage = imageName
-                            vm.imageTapped(imageName)
+                            vm.imageTapped()
                         }
                 }
                 

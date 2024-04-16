@@ -83,7 +83,7 @@ struct ProfileView: View {
             }
         }
         .onAppear{
-            selectedImage = UserDefaults.standard.string(forKey: UserDefaultKey.indexImage.rawValue)!
+            selectedImage = vm.imageTapped()
         }
         .navigationBarBackButtonHidden()
         .toolbar {
