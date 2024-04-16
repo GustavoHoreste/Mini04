@@ -23,8 +23,8 @@ struct ProfileView: View {
             VStack {
                 Spacer()
                 
-                if selectedImage != String("ImagePicker") {
-                    Text(selectedImage)
+                if vm.newImage != String("ImagePicker") {
+                    Text(vm.newImage)
                         .font(.custom("FafoSans-Bold", size: 20))
                         .foregroundStyle(.black)
                 } else {
@@ -32,8 +32,7 @@ struct ProfileView: View {
                         .font(.custom("FafoSans-Bold", size: 20))
                         .foregroundStyle(.black)
                 }
-                
-                Image(selectedImage)
+                Image(vm.newImage)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 256, height: 256)
