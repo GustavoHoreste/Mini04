@@ -49,7 +49,6 @@ class ProfileViewViewModel: ObservableObject {
     
     func imageTapped(_ imageName: String) {
         print("Imagem tocada: \(imageName)")
-        
         userDefault.setValue(imageName, forKey: UserDefaultKey.indexImage.rawValue)
     }
 }

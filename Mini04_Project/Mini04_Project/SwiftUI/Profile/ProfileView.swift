@@ -82,6 +82,9 @@ struct ProfileView: View {
                 Spacer()
             }
         }
+        .onAppear{
+            selectedImage = UserDefaults.standard.string(forKey: UserDefaultKey.indexImage.rawValue)!
+        }
         .navigationBarBackButtonHidden()
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
