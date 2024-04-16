@@ -26,8 +26,8 @@ struct PopUpConfigMatch: View {
             
             Image("BackgroundConfigMatch")
                 .resizable()
-                .scaledToFit()
-                .frame(width: 371, height: 504)
+
+                .frame(width: 371, height: 564)
             
             VStack {
                 HStack() {

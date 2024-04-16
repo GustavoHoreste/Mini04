@@ -107,15 +107,27 @@ struct MatchConfigView: View {
                 }
             
             
-            Toggle("Bônus de habilidade", isOn: $matchConfigVM.selectPowerUps)
-                .font(.custom("FafoSans-Bold", size: 20))
-                .foregroundStyle(.black)
-                .tint(.green)
+            VStack {
+                Toggle("Bônus de habilidade", isOn: $matchConfigVM.selectPowerUps)
+                    .font(.custom("FafoSans-Bold", size: 20))
+                    .foregroundStyle(.black)
+                    .tint(.green)
+                
+                Text("Os bônus são habilidades que você pode conseguir ao decorrer da partida.")
+                    .font(.custom("FafoSans-Bold", size: 13))
+                    .foregroundStyle(.black)
+            }
             
-            Toggle("Cores", isOn: $matchConfigVM.coresIsChoise)
-                .font(.custom("FafoSans-Bold", size: 20))
-                .foregroundStyle(.black)
-                .tint(.green)
+            VStack {
+                Toggle("Cores", isOn: $matchConfigVM.coresIsChoise)
+                    .font(.custom("FafoSans-Bold", size: 20))
+                    .foregroundStyle(.black)
+                    .tint(.green)
+                
+                Text("Além de objetos, procure por cores!")
+                    .font(.custom("FafoSans-Bold", size: 13))
+                    .foregroundStyle(.black)
+            }
             
         }.padding()
             .onAppear{
