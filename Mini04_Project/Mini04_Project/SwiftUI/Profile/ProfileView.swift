@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ProfileView: View {
-    
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var vm: ProfileViewViewModel
+    @State var selectedImage: String = "ImagePicker"
+    
     var haptics = Haptics()
     
     var body: some View {
@@ -23,9 +24,10 @@ struct ProfileView: View {
             VStack {
                 Spacer()
                 
-                Image(.imagePicker)
+                Image(selectedImage)
                     .resizable()
-                    .frame(width: 128, height: 128)
+                    .scaledToFit()
+                    .frame(width: 256, height: 256)
                 
                 ZStack {
                     Image(.textFieldClean)
@@ -75,27 +77,32 @@ struct ProfileView: View {
                     }
                 }
                 
-                Button {
-                    haptics.doHaptic(type: .button)
-                    navigationCoordinator.dismissFullScreenCover()
-                } label: {
-                    ZStack {
-                        Image("SingleBackgroundButton")
-                            .resizable()
-                            .frame(width: 246, height: 80)
-                        
-                        Text("Fechar")
-                            .font(.custom("FafoSans-Bold", size: 30))
-                            .foregroundStyle(.black)
-                    }
-                }
+                CharPicker(selectedImage: $selectedImage)
                 
                 Spacer()
             }
         }
         .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                withAnimation() {
+                    Button {
+                        haptics.doHaptic(type: .button)
+                        navigationCoordinator.push(.menu)
+                    } label: {
+                        Image(.xPopUp)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: screenWidth * 0.114, height: screenHeight * 0.05284334763)
+                    }
+                }
+            }
+        }
     }
+    
 }
+
+
 
 #Preview {
     ProfileView()
