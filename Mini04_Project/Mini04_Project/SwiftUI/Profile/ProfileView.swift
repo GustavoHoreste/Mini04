@@ -77,21 +77,6 @@ struct ProfileView: View {
                     }
                 }
                 
-                Button {
-                    haptics.doHaptic(type: .button)
-                    navigationCoordinator.push(.lobby)
-                } label: {
-                    ZStack {
-                        Image("SingleBackgroundButton")
-                            .resizable()
-                            .frame(width: 246, height: 80)
-                        
-                        Text("Fechar")
-                            .font(.custom("FafoSans-Bold", size: 30))
-                            .foregroundStyle(.black)
-                    }
-                }
-                
                 CharPicker(selectedImage: $selectedImage)
                 
                 Spacer()
