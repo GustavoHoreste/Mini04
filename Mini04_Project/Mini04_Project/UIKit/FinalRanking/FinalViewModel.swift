@@ -82,21 +82,31 @@ class FinalViewModel {
         case 3:
             userFirst.nameUser.text = topPlayers[0].userName
             userFirst.pointsUser.text = String(topPlayers[0].points)
+            userFirst.image = UIImage(named: topPlayers[0].playerImage)
             
             userSecond.nameUser.text = topPlayers[1].userName
             userSecond.pointsUser.text = String(topPlayers[1].points)
+            userSecond.image = UIImage(named: topPlayers[1].playerImage)
             
             userThird.nameUser.text = topPlayers[2].userName
             userThird.pointsUser.text = String(topPlayers[2].points)
+            userThird.image = UIImage(named: topPlayers[2].playerImage)
+            
         case 2:
             userFirst.nameUser.text = topPlayers[0].userName
             userFirst.pointsUser.text = String(topPlayers[0].points)
+            userFirst.image = UIImage(named: topPlayers[0].playerImage)
+            
             userSecond.nameUser.text = topPlayers[1].userName
             userSecond.pointsUser.text = String(topPlayers[1].points)
-            self.userThird.isHiden()
+            userSecond.image = UIImage(named: topPlayers[1].playerImage)
+            
+            self.userThird.isHidden = false
         case 1:
             userFirst.nameUser.text = topPlayers[0].userName
             userFirst.pointsUser.text = String(topPlayers[0].points)
+            userFirst.image = UIImage(named: topPlayers[0].playerImage)
+            
             self.userSecond.isHiden()
             self.userThird.isHiden()
         default:

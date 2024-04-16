@@ -10,7 +10,6 @@ import SwiftUI
 struct ProfileView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var vm: ProfileViewViewModel
-    @State var selectedImage: String = "ImagePicker"
     
     var haptics = Haptics()
     
@@ -24,8 +23,8 @@ struct ProfileView: View {
             VStack {
                 Spacer()
                 
-                if selectedImage != String("ImagePicker") {
-                    Text(selectedImage)
+                if vm.newImage != String("ImagePicker") {
+                    Text(vm.newImage)
                         .font(.custom("FafoSans-Bold", size: 20))
                         .foregroundStyle(.black)
                 } else {
@@ -33,8 +32,7 @@ struct ProfileView: View {
                         .font(.custom("FafoSans-Bold", size: 20))
                         .foregroundStyle(.black)
                 }
-                
-                Image(selectedImage)
+                Image(vm.newImage)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 256, height: 256)
@@ -51,13 +49,13 @@ struct ProfileView: View {
                         .multilineTextAlignment(.center)
                 }
                 
-                CharPicker(selectedImage: $selectedImage)
+                CharPicker()
                 
                 Spacer()
             }
         }
         .onAppear{
-            selectedImage = UserDefaults.standard.string(forKey: UserDefaultKey.indexImage.rawValue)!
+//            vm.newImage = vm.returnValueImage()
         }
         .navigationBarBackButtonHidden()
         .toolbar {

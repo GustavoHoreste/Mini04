@@ -88,7 +88,7 @@ class NormalListCell: UICollectionViewCell {
         ])
     }
     
-    public func changePositionBG(_ position: Int){
+    public func changePositionBG(_ position: Int, _ name: String){
         switch position{
         case 0:
             rankingBg.image = UIImage(resource: .bkouro)
@@ -100,7 +100,7 @@ class NormalListCell: UICollectionViewCell {
             rankingBg.image = UIImage(resource: .bkbronze)
             self.position.text = "\(position+1)"
         default:
-            rankingBg.image = UIImage(resource: .bkroxo)
+            rankingBg.image = UIImage(named: name)
             self.position.text = "\(position+1)"
         }
     }
@@ -115,8 +115,8 @@ class NormalListCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             rankingBg.bottomAnchor.constraint(equalTo: background.centerYAnchor),
             rankingBg.leadingAnchor.constraint(equalTo: background.leadingAnchor),
-            rankingBg.widthAnchor.constraint(equalToConstant: self.frame.width * 0.3),
-            rankingBg.widthAnchor.constraint(equalToConstant: self.frame.height * 0.3),
+            rankingBg.widthAnchor.constraint(equalToConstant: self.frame.width * 0.03),
+            rankingBg.widthAnchor.constraint(equalToConstant: self.frame.height * 0.03),
             
             position.centerXAnchor.constraint(equalTo: rankingBg.centerXAnchor, constant: -5),
             position.centerYAnchor.constraint(equalTo: rankingBg.centerYAnchor),
