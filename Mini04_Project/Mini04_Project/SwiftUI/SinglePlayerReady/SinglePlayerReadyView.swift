@@ -14,7 +14,7 @@ struct SinglePlayerReadyView: View {
     
     var body: some View {
         ZStack{
-            Image(.lobbyBackground)
+            Image("fundoGeral")
                 .resizable()
                 .scaledToFill()
                 .ignoresSafeArea()

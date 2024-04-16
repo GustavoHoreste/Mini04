@@ -15,7 +15,48 @@ class ItemsToFindModel {
     
     weak var delegate: ItemsDelegate?
     
-    var objects: [String] = ["Armario", "Bicicleta", "Bone", "Cadeira", "Calçados", "Cama", "Camisa", "Caneca", "Caneta", "Chave de fenda", "Chuveiro", "Clipe de papel", "Cola Bastao", "Colher", "Cortina","Espatula", "Flauta", "Frigideira", "Geladeira", "Impressora", "Livro", "Lixeira", "Martelo", "Mesa", "Mochila", "Oculos", "Papel higienico", "Parafusadeira", "Pente", "Pilha", "Porta", "Regua", "Shorts", "Sofa", "TV", "Teclado", "Tesoura", "Toalha", "Vaso sanitario", "Ventilador"]
+    var objects: [String] = [
+        String(localized: "Armario"),
+        String(localized: "Bicicleta"),
+        String(localized: "Bone"),
+        String(localized: "Cadeira"),
+        String(localized: "Calçados"),
+        String(localized: "Cama"),
+        String(localized: "Camisa"),
+        String(localized: "Caneca"),
+        String(localized: "Caneta"),
+        String(localized: "Chave de fenda"),
+        String(localized: "Chuveiro"),
+        String(localized: "Clipe de papel"),
+        String(localized: "Cola Bastao"),
+        String(localized: "Colher"),
+        String(localized: "Cortina"),
+        String(localized: "Espatula"),
+        String(localized: "Flauta"),
+        String(localized: "Frigideira"),
+        String(localized: "Geladeira"),
+        String(localized: "Impressora"),
+        String(localized: "Livro"),
+        String(localized: "Lixeira"),
+        String(localized: "Martelo"),
+        String(localized: "Mesa"),
+        String(localized: "Mochila"),
+        String(localized: "Oculos"),
+        String(localized: "Papel higienico"),
+        String(localized: "Parafusadeira"),
+        String(localized: "Pente"),
+        String(localized: "Pilha"),
+        String(localized: "Porta"),
+        String(localized: "Regua"),
+        String(localized: "Shorts"),
+        String(localized: "Sofa"),
+        String(localized: "TV"),
+        String(localized: "Teclado"),
+        String(localized: "Tesoura"),
+        String(localized: "Toalha"),
+        String(localized: "Vaso sanitario"),
+        String(localized: "Ventilador")
+    ]
     
     var toFindObject: String = ""
     var toFindShuffled: String = ""
@@ -31,7 +72,15 @@ class ItemsToFindModel {
     
     func setColors() {
         if withColors {
-            let colors: [String] = ["Azul", "Verde", "Rosa", "Roxo", "Vermelho", "Branco", "Amarelo"]
+            let colors: [String] = [
+                String(localized: "Azul"),
+                String(localized: "Verde"),
+                String(localized: "Rosa"),
+                String(localized: "Roxo"),
+                String(localized: "Vermelho"),
+                String(localized: "Branco"),
+                String(localized: "Amarelo")
+            ]
             for color in colors {
                 objects.append(color)
             }

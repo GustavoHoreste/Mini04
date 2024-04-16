@@ -38,7 +38,7 @@ class EndGameButton: UIButton {
         self.translatesAutoresizingMaskIntoConstraints = false
         self.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         self.setBackgroundImage(UIImage(resource: .endGameButton), for: .normal)
-        self.setTitle("Termianar partida", for: .normal)
+        self.setTitle(String(localized: "Terminar partida"), for: .normal)
         self.setTitleColor(.black, for: .normal)
         self.titleLabel?.font = UIFont(name: "FafoSans-Bold", size: 22)
         isHidden = true

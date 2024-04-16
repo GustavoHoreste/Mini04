@@ -59,7 +59,7 @@ extension PartialResultViewModel: ReadyButtonDelegate {
             self.haptics.doHaptic(type: .button)
             sendUserStatus()
         }else{
-            let alertController = UIAlertController(title: "Você já deu ready", message: "Você já realizou esta ação anteriormente.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: String(localized: "Você já deu ready"), message: String(localized: "Você já realizou esta ação anteriormente."), preferredStyle: .alert)
 
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(okAction)
@@ -72,7 +72,7 @@ extension PartialResultViewModel: ReadyButtonDelegate {
         if view.multiVM.localPlayer?.isHost == false{
             self.view.multiVM.sendLocalUserStatus()
             self.readyButton.setBackgroundImage(UIImage(resource: .didReadyButton), for: .normal)
-            self.readyButton.labelTime.text = "Preparado!"
+            self.readyButton.labelTime.text = String(localized: "Preparado!")
         } else if view.multiVM.validateAllUsersStarted() && view.multiVM.localPlayer?.isHost == true{
             self.view.multiVM.sendLocalUserStatus()
             self.view.gameplayVM.fadeBackground.isHidden = false
@@ -80,7 +80,7 @@ extension PartialResultViewModel: ReadyButtonDelegate {
             self.view.gameplayVM.timerStart.sizeIncrease()
             self.view.navigationController?.popViewController(animated: true)
         }else{
-            let alertController = UIAlertController(title: "Jogadores não preparados", message: "Para começar o jogo, todos devem estar prontos.", preferredStyle: .alert)
+            let alertController = UIAlertController(title: String(localized: "Jogadores não preparados"), message: String(localized: "Para começar o jogo, todos devem estar prontos."), preferredStyle: .alert)
 
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
             alertController.addAction(okAction)

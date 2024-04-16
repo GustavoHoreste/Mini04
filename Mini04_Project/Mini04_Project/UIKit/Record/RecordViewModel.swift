@@ -19,7 +19,7 @@ class RecordViewModel {
     lazy var logo = LogoImage(isIncreased: true, altura: controller?.view.frame.height)
 //    var restart = SingleRecButton()
     
-    var background = AnyImageView(imagem: UIImage(named: "SingleBackground"))
+    var background = AnyImageView(imagem: UIImage(resource: .backgroundClaro))
     var scoreMold = AnyImageView(imagem: UIImage(named: "SingleScoreMold"))
     
     init() {

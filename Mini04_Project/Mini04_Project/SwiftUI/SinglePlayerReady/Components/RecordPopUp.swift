@@ -45,7 +45,7 @@ struct RecordPopUp: View {
                     .padding(.trailing,70)
                 }
                 
-                PopUpLabel(text: "Sua Melhor\n Pontuação")
+                PopUpLabel(text: String(localized: "Sua Melhor\n Pontuação"))
                     .frame(width: 190, height: 80)
                     .padding(.trailing)
                     .foregroundStyle(.black)

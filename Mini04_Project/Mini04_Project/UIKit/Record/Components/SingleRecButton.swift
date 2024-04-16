@@ -21,7 +21,7 @@ class SingleRecButton: UIButton {
         self.translatesAutoresizingMaskIntoConstraints = false
         addTarget(self, action: #selector(recAction), for: .touchUpInside)
         setBackgroundImage(UIImage(resource: .buttonBack), for: .normal)
-        self.setTitle("Recomeçar", for: .normal)
+        self.setTitle(String(localized: "Recomeçar"), for: .normal)
         self.setTitleColor(.black, for: .normal)
         self.titleLabel?.font = UIFontMetrics(forTextStyle: .headline).scaledFont(for: customFont)
     }

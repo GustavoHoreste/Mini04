@@ -24,7 +24,7 @@ class PopUpExitGame: UIViewController {
         button.setBackgroundImage(UIImage(resource: .buttonPopUpExit), for: .normal)
         button.addTarget(self, action: #selector(actionButton), for: .touchUpInside)
         button.titleLabel?.font = UIFont(name: "FafoSans-Bold", size: 22)
-        button.setTitle("Sair da partida", for: .normal)
+        button.setTitle(String(localized: "Sair da partida"), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.tag = 0
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +37,7 @@ class PopUpExitGame: UIViewController {
         button.setBackgroundImage(UIImage(resource: .buttonPopUpExit), for: .normal)
         button.addTarget(self, action: #selector(actionButton), for: .touchUpInside)
         button.titleLabel?.font = UIFont(name: "FafoSans-Bold", size: 22)
-        button.setTitle("Cancelar", for: .normal)
+        button.setTitle(String(localized: "Cancelar"), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.tag = 1
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -56,7 +56,7 @@ class PopUpExitGame: UIViewController {
     
     private lazy var label: UILabel = {
         let label = UILabel()
-        label.text = "Tem certeza que\ndeseja sair da partida?"
+        label.text = String(localized: "Tem certeza que\ndeseja sair da partida?")
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .black

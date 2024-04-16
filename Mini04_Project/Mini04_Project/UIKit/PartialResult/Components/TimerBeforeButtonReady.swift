@@ -14,7 +14,7 @@ class TimerBeforeButtonReady: UIView {
     
     private lazy var labelTime: UILabel = {
         let label = UILabel()
-        label.text = "Próxima rodada em:"
+        label.text = String(localized: "Próxima rodada em:")
         label.numberOfLines = 0
         label.textAlignment = .center
         label.textColor = .black

@@ -31,8 +31,12 @@ class GameplayViewController: UIViewController {
         gameplayVM.powers.addPowers()
     }
     
+    var test = String(localized: "testando")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print(test.findKey()!)
         
         view.isUserInteractionEnabled = false
         
