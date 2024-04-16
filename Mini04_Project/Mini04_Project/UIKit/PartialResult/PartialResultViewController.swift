@@ -69,6 +69,12 @@ class PartialResultViewController: UIViewController {
         setupView()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.gameplayVM.starCombine()
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         partialResultVM.logo.isHidden = false

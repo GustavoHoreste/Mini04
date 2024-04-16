@@ -42,6 +42,7 @@ class FinalRakingViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         finalVM.setupTopRanks()
         self.applySnapshot(players: finalVM.dataForCollection)
+        configureCollectionViewDataSource()
     }
     
     required init?(coder: NSCoder) {
@@ -60,7 +61,9 @@ class FinalRakingViewController: UIViewController {
         finalVM.view = self
         
         setupView()
-        configureCollectionViewDataSource()
+        
+        print(finalVM.dataForCollection)
+        
         applySnapshot(players: finalVM.dataForCollection)
         finalVM.setupTopRanks()
         print("THIRD ISHIDDEN \(finalVM.userThird.isHidden.description)")
@@ -81,17 +84,21 @@ class FinalRakingViewController: UIViewController {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NormalListCell.identifier, for: indexPath) as! NormalListCell
             cell.playerName.text = player.userName
             cell.playerScore.text = String(player.points)
-            cell.changePositionBG(indexPath.row + 4)
+            cell.changePositionBG(indexPath.row + 3)
             return cell
         })
     }
     
     func applySnapshot(players: [Player]) {
+        if dataSource == nil{
+            configureCollectionViewDataSource()
+        }
+        
         if !players.isEmpty{
             snapshot = DataSourceSnapshot()
             snapshot.appendSections([Section.main])
             snapshot.appendItems(players)
-            dataSource.apply(snapshot,animatingDifferences: true)
+            dataSource.apply(snapshot, animatingDifferences: true)
         }
     }
 }

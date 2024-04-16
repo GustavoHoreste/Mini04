@@ -13,7 +13,7 @@ struct MocaData{
     static let config = MatchConfig(roundTime: 5, amoutRound: 1, powerUps: true, coresIsChoise: false)
     static let playerForPreview = Player(id: UUID(),
                                          userName: "Gustavo",
-                                         playerImage: 1,
+                                         playerImage: "ImagePicker",
                                          isHost: false,
                                          participantType: .player,
                                          points: 0,
@@ -135,12 +135,13 @@ class MultiplayerManagerViewModel: ObservableObject{
     public func creatLocalUser(){
         guard let name = userDefults.string(forKey: UserDefaultKey.userName.rawValue) else {return}
         guard let idString = userDefults.string(forKey: UserDefaultKey.userID.rawValue) else {return}
+        guard let imageName = userDefults.string(forKey: UserDefaultKey.indexImage.rawValue) else {return}
         guard let id = UUID(uuidString: idString) else {return}
         
         if localPlayer == nil{
             let localUser = Player(id: id,
                                    userName: name,
-                                   playerImage: 1,
+                                   playerImage: imageName,
                                    isHost: false,
                                    participantType: .player,
                                    points: 0,
@@ -149,6 +150,7 @@ class MultiplayerManagerViewModel: ObservableObject{
             print("Crei novo user")
         }else {
             localPlayer?.userName = name
+            localPlayer?.playerImage = imageName
             print("Fiz update")
         }
     }
@@ -304,10 +306,8 @@ class MultiplayerManagerViewModel: ObservableObject{
             adversaryPlayers[index].statusUser = false
         }
         self.localPlayer?.statusUser = false
-        DispatchQueue.main.async {
-            self.starActionHidrance = nil
-            self.hostIsStarter = false
-        }
+        self.starActionHidrance = nil
+        self.hostIsStarter = false
         self.newStatus = nil
     }
     

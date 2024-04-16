@@ -55,7 +55,7 @@ extension PartialResultViewController {
             partialResultVM.timerBeforeButtonReady.bottomAnchor.constraint(equalTo: partialResultVM.endGameButton.topAnchor, constant: -100),
             
             collection.topAnchor.constraint(equalTo: partialResultVM.partialResultsTitle.bottomAnchor),
-            collection.bottomAnchor.constraint(equalTo: partialResultVM.readyButton.topAnchor, constant: -10),
+            collection.bottomAnchor.constraint(equalTo: partialResultVM.readyButton.topAnchor, constant: -15),
             collection.leftAnchor.constraint(equalTo: view.leftAnchor),
             collection.rightAnchor.constraint(equalTo: view.rightAnchor),
         ])

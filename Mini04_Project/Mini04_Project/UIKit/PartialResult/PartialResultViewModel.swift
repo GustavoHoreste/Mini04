@@ -68,6 +68,7 @@ class PartialResultViewModel {
         setupDelegates()
     }
     
+    
     private func nextRound(){
         self.haptics.doHaptic(type: .button)
         self.view.gameplayVM.fadeBackground.isHidden = false
@@ -98,6 +99,8 @@ class PartialResultViewModel {
     }
     
     public func backLobby(){
+        cancellables.removeAll()
+        
         DispatchQueue.main.async {
             self.view?.multiVM.countReadyGame = false
             self.view?.multiVM.newFinishGame = nil

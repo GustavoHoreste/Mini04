@@ -16,13 +16,14 @@ class FinalViewModel {
     var dataForCollection:[Player]{
         get{
             var data = self.data
-            if self.data.count >= 3{
+            if self.data.count > 3{
                 data.removeFirst(3)
                 return data
             }
             return []
         }
     }
+    
     var topPlayers: [Player]{
         get{
             var data: [Player] = []
@@ -57,7 +58,7 @@ class FinalViewModel {
     var userSecond = UserImageView(distancia: 125)
     var userThird = UserImageView(distancia: 80)
     var recomecar = SingleRecButton()
-    var background = AnyImageView(imagem: UIImage(named: "FinalBackground"))
+    var background = AnyImageView(imagem: UIImage(named: "fundoGeral"))
     lazy var leave = ExitButton()
     
     lazy var popUp: PopUpExitGame = {
@@ -107,12 +108,10 @@ class FinalViewModel {
     //Nao host volta a lobby
     public func backToHome(){
         cancellables.removeAll()
-        self.view?.multiVM.countReadyGame = false
-        self.view?.multiVM.newFinishGame = nil
-        self.view?.multiVM.newGame()
-        
-//        self.view?.multiVM.sendHostFinish()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+            self.view?.multiVM.countReadyGame = false
+            self.view?.multiVM.newFinishGame = nil
+            self.view?.multiVM.newGame()
             self.view?.navigationCoordinator.push(.lobby)
         }
     }

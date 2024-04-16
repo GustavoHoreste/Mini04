@@ -12,7 +12,7 @@ struct PlayerListCell: View {
     
     var body: some View {
         HStack(spacing: -20){
-            Image(.lobbyIcon)
+            Image(player.playerImage)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 80,height: 80)
