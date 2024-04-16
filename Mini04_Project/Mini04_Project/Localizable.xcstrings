@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "  " : {
+
+    },
     "#1" : {
       "localizations" : {
         "pt-BR" : {
@@ -82,6 +85,9 @@
 
     },
     "Aguarde o convite do anfitrião via mensagem ou FaceTime." : {
+
+    },
+    "Além de objetos, procure por cores!" : {
 
     },
     "Amarelo" : {
@@ -813,6 +819,9 @@
           }
         }
       }
+    },
+    "Os bônus são habilidades que você pode conseguir ao decorrer da partida." : {
+
     },
     "Papel higienico" : {
       "localizations" : {

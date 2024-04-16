@@ -23,24 +23,31 @@ struct ProfileView: View {
             VStack {
                 Spacer()
                 
+                if vm.newImage != String("ImagePicker") {
+                    Text(vm.newImage)
+                        .font(.custom("FafoSans-Bold", size: 20))
+                        .foregroundStyle(.black)
+                } else {
+                    Text("  ")
+                        .font(.custom("FafoSans-Bold", size: 20))
+                        .foregroundStyle(.black)
+                }
                 Image(vm.newImage)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 256, height: 256)
                 
                 ZStack {
-                    Image(.textFieldClean)
+                    Image(.textFieldProfile)
                         .resizable()
-                        .frame(width: 245, height: 43)
+                        .frame(width: 245, height: 60)
                     
                     TextField(vm.textField, text: $vm.textField)
-                        .font(.custom("FafoSans-Bold", size: 20))
+                        .font(.custom("FafoSans-Bold", size: 30))
                         .padding()
                         .foregroundStyle(.black)
                         .multilineTextAlignment(.center)
                 }
-                
-                Spacer()
                 
                 CharPicker()
                 
@@ -56,7 +63,7 @@ struct ProfileView: View {
                 withAnimation() {
                     Button {
                         haptics.doHaptic(type: .button)
-                        navigationCoordinator.push(.menu)
+                        navigationCoordinator.pop()
                     } label: {
                         Image(.xPopUp)
                             .resizable()
