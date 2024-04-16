@@ -41,6 +41,7 @@ class FinalRakingViewController: UIViewController {
         print(finalVM.topPlayers)
         super.init(nibName: nil, bundle: nil)
         finalVM.setupTopRanks()
+        self.applySnapshot(players: finalVM.dataForCollection)
     }
     
     required init?(coder: NSCoder) {
@@ -55,7 +56,7 @@ class FinalRakingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         finalVM.view = self
         
         setupView()

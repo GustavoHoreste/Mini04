@@ -18,10 +18,9 @@ class FinalViewModel {
             if self.data.count > 3{
                 data.removeFirst(3)
             }
-            return data
+            return []
         }
     }
-    
     var topPlayers: [Player]{
         get{
             var data: [Player] = []
@@ -86,29 +85,22 @@ class FinalViewModel {
             
             userThird.nameUser.text = topPlayers[2].userName
             userThird.pointsUser.text = String(topPlayers[2].points)
-            self.isHidenColletion()
         case 2:
             userFirst.nameUser.text = topPlayers[0].userName
             userFirst.pointsUser.text = String(topPlayers[0].points)
             userSecond.nameUser.text = topPlayers[1].userName
             userSecond.pointsUser.text = String(topPlayers[1].points)
             self.userThird.isHiden()
-            self.isHidenColletion()
         case 1:
             userFirst.nameUser.text = topPlayers[0].userName
             userFirst.pointsUser.text = String(topPlayers[0].points)
             self.userSecond.isHiden()
             self.userThird.isHiden()
-            self.isHidenColletion()
         default:
             print("Erros nos tops finais da partida")
-            self.view?.collection.isHidden = false
         }
     }
     
-    public func isHidenColletion(){
-        self.view?.collection.isHidden.toggle()
-    }
     
     //Nao host volta a lobby
     public func backToHome(){
