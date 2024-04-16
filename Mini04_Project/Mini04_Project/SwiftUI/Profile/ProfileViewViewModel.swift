@@ -15,6 +15,7 @@ enum UserDefaultKey: String{
 
 class ProfileViewViewModel: ObservableObject {
     @Published var textField: String = "ApplyUserName"
+    @Published var newImage: String = UserDefaults.standard.string(forKey: UserDefaultKey.indexImage.rawValue) ?? "ImagePicker"
     let userDefault = UserDefaults.standard
     let nomesPadrao = ["Spectra", "Aether", "Nimbus", "Phoenix", "Astra"]
     let imageNames: [String] = ["conito", "bolito", "xicarita", "camerita"]
@@ -24,7 +25,7 @@ class ProfileViewViewModel: ObservableObject {
         textField = userDefault.string(forKey: UserDefaultKey.userName.rawValue) ?? nomesPadrao.randomElement()!
         addUserName()
         verifyExistemUser()
-        imageTapped()
+//        imageTapped()
     }
     
     public func addUserName() {
@@ -45,11 +46,11 @@ class ProfileViewViewModel: ObservableObject {
         userDefault.setValue(id.uuidString, forKey:  UserDefaultKey.userID.rawValue)
     }
     
-    func imageTapped() -> String {
-        if let image = userDefault.string(forKey: UserDefaultKey.indexImage.rawValue){
-            return image
-        }
-        userDefault.setValue("ImagePicker", forKey: UserDefaultKey.indexImage.rawValue)
-        return "ImagePicker"
+    public func imageTapped() {
+        userDefault.setValue(newImage, forKey: UserDefaultKey.indexImage.rawValue)
     }
+//    
+//    public func returnValueImage() -> String{
+//        return userDefault.string(forKey: UserDefaultKey.indexImage.rawValue) ?? "ImagePicker"
+//    }
 }
