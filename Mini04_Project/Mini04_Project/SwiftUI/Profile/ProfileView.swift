@@ -35,7 +35,6 @@ struct ProfileView: View {
                         .frame(width: 245, height: 43)
                     
                     TextField(vm.textField, text: $vm.textField)
-                        .disabled(vm.canEdit)
                         .font(.custom("FafoSans-Bold", size: 20))
                         .padding()
                         .foregroundStyle(.black)
@@ -43,39 +42,6 @@ struct ProfileView: View {
                 }
                 
                 Spacer()
-                
-                Button{
-                    if !vm.canEdit {
-                        haptics.doHaptic(type: .button)
-                        vm.addUserName()
-                        vm.canEdit.toggle()
-                    } else if vm.canEdit{
-                        haptics.doHaptic(type: .button)
-                        vm.canEdit.toggle()
-                    }
-                }label: {
-                    if vm.canEdit {
-                        ZStack {
-                            Image("SingleBackgroundButton")
-                                .resizable()
-                                .frame(width: 246, height: 80)
-                            
-                            Text("Editar")
-                                .font(.custom("FafoSans-Bold", size: 30))
-                                .foregroundStyle(.black)
-                        }
-                    } else if !vm.canEdit {
-                        ZStack {
-                            Image("SingleBackgroundButton")
-                                .resizable()
-                                .frame(width: 246, height: 80)
-                            
-                            Text("Salvar")
-                                .font(.custom("FafoSans-Bold", size: 30))
-                                .foregroundStyle(.black)
-                        }
-                    }
-                }
                 
                 CharPicker(selectedImage: $selectedImage)
                 

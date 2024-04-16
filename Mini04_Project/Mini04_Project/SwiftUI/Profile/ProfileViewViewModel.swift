@@ -14,7 +14,6 @@ enum UserDefaultKey: String{
 }
 
 class ProfileViewViewModel: ObservableObject {
-    @Published var canEdit: Bool = true
     @Published var textField: String = "ApplyUserName"
     let userDefault = UserDefaults.standard
     let nomesPadrao = ["Spectra", "Aether", "Nimbus", "Phoenix", "Astra"]
