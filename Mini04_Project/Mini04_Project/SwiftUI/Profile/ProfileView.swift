@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var vm: ProfileViewViewModel
-    @State var selectedImage: String = "bolito"
+    @State var selectedImage: String = "ImagePicker"
     
     var haptics = Haptics()
     
@@ -24,9 +24,10 @@ struct ProfileView: View {
             VStack {
                 Spacer()
                 
-                Image(.imagePicker)
+                Image(selectedImage)
                     .resizable()
-                    .frame(width: 128, height: 128)
+                    .scaledToFit()
+                    .frame(width: 256, height: 256)
                 
                 ZStack {
                     Image(.textFieldClean)
@@ -78,7 +79,7 @@ struct ProfileView: View {
                 
                 Button {
                     haptics.doHaptic(type: .button)
-                    navigationCoordinator.dismissFullScreenCover()
+                    navigationCoordinator.push(.lobby)
                 } label: {
                     ZStack {
                         Image("SingleBackgroundButton")
@@ -91,43 +92,27 @@ struct ProfileView: View {
                     }
                 }
                 
-                Image(selectedImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 250, height: 250)
-                
-                HStack {
-                    CharPicker(selectedImage: $selectedImage)
-                }
-                
-                //                ScrollView(.horizontal) {
-                //                    HStack {
-                //                        ForEach(imageNames, id: \.self) { imageName in
-                //                            Image(imageName)
-                //                                .resizable()
-                //                                .scaledToFit()
-                //                                .frame(width: 250, height: 250)
-                //                                .scrollTransition { content, phase in
-                //                                    content
-                //                                        .opacity(phase.isIdentity ? 1.0 : 0.5)
-                //                                        .scaleEffect(x: phase.isIdentity ? 1.0 : 0.3,
-                //                                                     y: phase.isIdentity ? 1.0 : 0.3)
-                //                                        .offset(y: phase.isIdentity ? 0 : 50)
-                //                                    
-                //                                }
-                //                                .onTapGesture {
-                //                                    self.vm.imageTapped(imageName)
-                //                                }
-                //                        }
-                //                    }
-                //                    .contentMargins(10, for: .scrollContent)
-                // .scrollTargetBehavior(.viewAligned)
-                //                }
+                CharPicker(selectedImage: $selectedImage)
                 
                 Spacer()
             }
         }
         .navigationBarBackButtonHidden()
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                withAnimation() {
+                    Button {
+                        haptics.doHaptic(type: .button)
+                        navigationCoordinator.push(.menu)
+                    } label: {
+                        Image(.xPopUp)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: screenWidth * 0.114, height: screenHeight * 0.05284334763)
+                    }
+                }
+            }
+        }
     }
     
 }

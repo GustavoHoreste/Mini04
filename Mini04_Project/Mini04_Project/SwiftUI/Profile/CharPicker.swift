@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct CharPicker: View {
+    @EnvironmentObject private var vm: ProfileViewViewModel
     @Binding var selectedImage: String
-    
-    let imageNames: [String] = ["conito", "bolito", "xicarita", "camerita"]
     
     var body: some View {
             HStack {
-                ForEach(imageNames, id: \.self) { imageName in
+                ForEach(vm.imageNames, id: \.self) { imageName in
                     Image(imageName)
                         .resizable()
                         .frame(width: 60, height: 60)

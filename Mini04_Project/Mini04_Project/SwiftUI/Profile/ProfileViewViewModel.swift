@@ -9,7 +9,7 @@ import Foundation
 
 enum UserDefaultKey: String{
     case userName = "UserName"
-    case indexImage = "IndexImage"
+    case indexImage = "conito"
     case userID = "userID"
 }
 
@@ -18,12 +18,15 @@ class ProfileViewViewModel: ObservableObject {
     @Published var textField: String = "ApplyUserName"
     let userDefault = UserDefaults.standard
     let nomesPadrao = ["Spectra", "Aether", "Nimbus", "Phoenix", "Astra"]
+    let imageNames: [String] = ["conito", "bolito", "xicarita", "camerita"]
 
     
     init() {
         textField = userDefault.string(forKey: UserDefaultKey.userName.rawValue) ?? nomesPadrao.randomElement()!
         addUserName()
         verifyExistemUser()
+        imageTapped("ImagePicker")
+        
     }
     
     public func addUserName() {
@@ -46,6 +49,7 @@ class ProfileViewViewModel: ObservableObject {
     
     func imageTapped(_ imageName: String) {
         print("Imagem tocada: \(imageName)")
-        // Coloque aqui a lógica que você deseja executar quando uma imagem for tocada
+        
+        userDefault.setValue(imageName, forKey: UserDefaultKey.indexImage.rawValue)
     }
 }

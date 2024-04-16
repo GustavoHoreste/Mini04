@@ -14,7 +14,7 @@ struct ProfileButtonPopUp: View {
     var body: some View {
         Button(action: {
             haptic.doHaptic(type: .button)
-            navigationCoordinator.present(fullScreenCover: .profile)
+            navigationCoordinator.push(.profile)
         }, label: {
             ZStack {
                 Image("MultiBackground")
