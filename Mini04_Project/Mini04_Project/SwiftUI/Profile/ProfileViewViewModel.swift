@@ -43,4 +43,9 @@ class ProfileViewViewModel: ObservableObject {
         print("id dp user defult e: \(id)")
         userDefault.setValue(id.uuidString, forKey:  UserDefaultKey.userID.rawValue)
     }
+    
+    func imageTapped(_ imageName: String) {
+        print("Imagem tocada: \(imageName)")
+        // Coloque aqui a lógica que você deseja executar quando uma imagem for tocada
+    }
 }
