@@ -40,6 +40,7 @@ class GameplayViewModel: NSObject {
     var alert = AlertPowerView(icon: UIImage(), name: "")
     var feedback = FeedbackGreen()
 
+    lazy var userAvatar = AnyImageView(imagem: UIImage(named: multiVM!.localPlayer!.playerImage))
     var pointsMold = AnyImageView(imagem: UIImage(named: "PntsMold"))
     var roundMold = AnyImageView(imagem: UIImage(named: "PntsMold"))
     var timerObjMold = AnyImageView(imagem: UIImage(named: "TimerObjMold"))
