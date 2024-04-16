@@ -70,6 +70,9 @@ struct MenuView: View {
                 default:
                     print("permission denied")
                 }
+                if UserDefaults.standard.string(forKey: UserDefaultKey.indexImage.rawValue) == "" {
+                    UserDefaults.setValue("ImagePicker", forKey: UserDefaultKey.indexImage.rawValue)
+                }
             }
             
             if isActive {

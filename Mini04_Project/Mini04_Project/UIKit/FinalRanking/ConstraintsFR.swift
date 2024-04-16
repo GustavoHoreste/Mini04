@@ -27,6 +27,10 @@ extension FinalRakingViewController {
         NSLayoutConstraint.activate([
             finalVM.background.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             finalVM.background.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            finalVM.background.topAnchor.constraint(equalTo: view.topAnchor),
+            finalVM.background.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            finalVM.background.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            finalVM.background.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             finalVM.podio.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             finalVM.podio.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -80),

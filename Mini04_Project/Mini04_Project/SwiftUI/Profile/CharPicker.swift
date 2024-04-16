@@ -9,7 +9,6 @@ import SwiftUI
 
 struct CharPicker: View {
     @EnvironmentObject private var vm: ProfileViewViewModel
-    @Binding var selectedImage: String
     
     var body: some View {
             HStack {
@@ -17,10 +16,10 @@ struct CharPicker: View {
                     Image(imageName)
                         .resizable()
                         .frame(width: 60, height: 60)
-                        .opacity(imageName == selectedImage ? 0.5 : 1.0)
-                        .scaleEffect(imageName == selectedImage ? 1.3 : 1.0)
+                        .opacity(imageName == vm.newImage ? 0.5 : 1.0)
+                        .scaleEffect(imageName == vm.newImage ? 1.3 : 1.0)
                         .onTapGesture {
-                            selectedImage = imageName
+                            vm.newImage = imageName
                             vm.imageTapped()
                         }
                 }

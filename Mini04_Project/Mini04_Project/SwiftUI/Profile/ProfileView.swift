@@ -10,7 +10,6 @@ import SwiftUI
 struct ProfileView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var vm: ProfileViewViewModel
-    @State var selectedImage: String = "ImagePicker"
     
     var haptics = Haptics()
     
@@ -24,7 +23,7 @@ struct ProfileView: View {
             VStack {
                 Spacer()
                 
-                Image(selectedImage)
+                Image(vm.newImage)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 256, height: 256)
@@ -43,13 +42,13 @@ struct ProfileView: View {
                 
                 Spacer()
                 
-                CharPicker(selectedImage: $selectedImage)
+                CharPicker()
                 
                 Spacer()
             }
         }
         .onAppear{
-            selectedImage = vm.imageTapped()
+//            vm.newImage = vm.returnValueImage()
         }
         .navigationBarBackButtonHidden()
         .toolbar {
