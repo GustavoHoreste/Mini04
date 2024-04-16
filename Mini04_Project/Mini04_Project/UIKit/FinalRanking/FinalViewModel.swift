@@ -12,11 +12,13 @@ import Combine
 class FinalViewModel {
     
     var data: [Player] = []
+    
     var dataForCollection:[Player]{
         get{
             var data = self.data
-            if self.data.count > 3{
+            if self.data.count >= 3{
                 data.removeFirst(3)
+                return data
             }
             return []
         }

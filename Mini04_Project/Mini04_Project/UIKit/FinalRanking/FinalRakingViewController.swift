@@ -87,9 +87,11 @@ class FinalRakingViewController: UIViewController {
     }
     
     func applySnapshot(players: [Player]) {
-        snapshot = DataSourceSnapshot()
-        snapshot.appendSections([Section.main])
-        snapshot.appendItems(players)
-        dataSource.apply(snapshot,animatingDifferences: true)
+        if !players.isEmpty{
+            snapshot = DataSourceSnapshot()
+            snapshot.appendSections([Section.main])
+            snapshot.appendItems(players)
+            dataSource.apply(snapshot,animatingDifferences: true)
+        }
     }
 }
