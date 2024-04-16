@@ -14,7 +14,7 @@ import Foundation
 struct Player: Codable,Hashable {
     let id: UUID
     var userName: String
-    let playerImage: Int
+    let playerImage: String
     var isHost: Bool
     let participantType: ParticipantType
     var points: Int

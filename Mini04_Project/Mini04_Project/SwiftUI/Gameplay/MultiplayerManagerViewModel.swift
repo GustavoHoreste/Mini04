@@ -13,7 +13,7 @@ struct MocaData{
     static let config = MatchConfig(roundTime: 5, amoutRound: 1, powerUps: true, coresIsChoise: false)
     static let playerForPreview = Player(id: UUID(),
                                          userName: "Gustavo",
-                                         playerImage: 1,
+                                         playerImage: "ImagePicker",
                                          isHost: false,
                                          participantType: .player,
                                          points: 0,
@@ -140,7 +140,7 @@ class MultiplayerManagerViewModel: ObservableObject{
         if localPlayer == nil{
             let localUser = Player(id: id,
                                    userName: name,
-                                   playerImage: 1,
+                                   playerImage: "ImagePicker",
                                    isHost: false,
                                    participantType: .player,
                                    points: 0,
@@ -304,10 +304,8 @@ class MultiplayerManagerViewModel: ObservableObject{
             adversaryPlayers[index].statusUser = false
         }
         self.localPlayer?.statusUser = false
-        DispatchQueue.main.async {
-            self.starActionHidrance = nil
-            self.hostIsStarter = false
-        }
+        self.starActionHidrance = nil
+        self.hostIsStarter = false
         self.newStatus = nil
     }
     
