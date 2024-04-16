@@ -13,18 +13,19 @@ struct CharPicker: View {
     let columnsGrid = 2
     
     var body: some View {
-        LazyHGrid(rows: [GridItem(), GridItem()], spacing: 20) {
-            ForEach(vm.imageNames, id: \.self) { imageName in
-                Image(imageName)
-                    .resizable()
-                    .frame(width: 80, height: 80)
-                    .opacity(imageName == selectedImage ? 0.5 : 1.0)
-                    .scaleEffect(imageName == selectedImage ? 1.3 : 1.0)
-                    .onTapGesture {
-                        selectedImage = imageName
-                        vm.imageTapped(imageName)
-                    }
-                    .padding(.vertical, 20)
+            HStack {
+                ForEach(vm.imageNames, id: \.self) { imageName in
+                    Image(imageName)
+                        .resizable()
+                        .frame(width: 60, height: 60)
+                        .opacity(imageName == vm.newImage ? 0.5 : 1.0)
+                        .scaleEffect(imageName == vm.newImage ? 1.3 : 1.0)
+                        .onTapGesture {
+                            vm.newImage = imageName
+                            vm.imageTapped()
+                        }
+                }
+                
             }
         }
                 

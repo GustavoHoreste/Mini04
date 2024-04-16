@@ -8,7 +8,6 @@
 import UIKit
 
 class UserImageView: UIImageView {
-
     var nameUser: UILabel = {
         let label = UILabel()
         guard let customFont = UIFont(name: "FafoSans-Bold", size: 15) else {fatalError()}
@@ -42,7 +41,9 @@ class UserImageView: UIImageView {
             nameUser.centerXAnchor.constraint(equalTo: centerXAnchor),
             nameUser.bottomAnchor.constraint(equalTo: topAnchor, constant: -20),
             pointsUser.centerXAnchor.constraint(equalTo: centerXAnchor),
-            pointsUser.topAnchor.constraint(equalTo: bottomAnchor, constant: distancia)
+            pointsUser.topAnchor.constraint(equalTo: bottomAnchor, constant: distancia),
+            self.widthAnchor.constraint(equalToConstant: 93),
+            self.heightAnchor.constraint(equalToConstant: 93),
         ])
         
         self.isHidden = false
@@ -55,5 +56,4 @@ class UserImageView: UIImageView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
 }

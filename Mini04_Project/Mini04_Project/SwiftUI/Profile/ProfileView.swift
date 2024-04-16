@@ -10,7 +10,6 @@ import SwiftUI
 struct ProfileView: View {
     @EnvironmentObject private var navigationCoordinator: Coordinator
     @EnvironmentObject private var vm: ProfileViewViewModel
-    @State var selectedImage: String = "ImagePicker"
     
     var haptics = Haptics()
     
@@ -51,13 +50,13 @@ struct ProfileView: View {
                         .multilineTextAlignment(.center)
                 }
                 
-                CharPicker(selectedImage: $selectedImage)
+                CharPicker()
                 
                 Spacer()
             }
         }
         .onAppear{
-            selectedImage = UserDefaults.standard.string(forKey: UserDefaultKey.indexImage.rawValue)!
+//            vm.newImage = vm.returnValueImage()
         }
         .navigationBarBackButtonHidden()
         .toolbar {
