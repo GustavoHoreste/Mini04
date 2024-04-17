@@ -39,7 +39,7 @@ class UserImageView: UIImageView {
         
         NSLayoutConstraint.activate([
             nameUser.centerXAnchor.constraint(equalTo: centerXAnchor),
-            nameUser.bottomAnchor.constraint(equalTo: topAnchor, constant: -20),
+            nameUser.bottomAnchor.constraint(equalTo: topAnchor, constant: -10),
             pointsUser.centerXAnchor.constraint(equalTo: centerXAnchor),
             pointsUser.topAnchor.constraint(equalTo: bottomAnchor, constant: distancia),
             self.widthAnchor.constraint(equalToConstant: 93),

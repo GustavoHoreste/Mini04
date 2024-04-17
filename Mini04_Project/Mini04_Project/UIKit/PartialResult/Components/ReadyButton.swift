@@ -43,7 +43,7 @@ class ReadyButton: UIButton {
         self.addSubview(labelTime)
         
         NSLayoutConstraint.activate([
-            labelTime.bottomAnchor.constraint(equalTo: self.topAnchor, constant: 15),
+            labelTime.bottomAnchor.constraint(equalTo: self.topAnchor),
             labelTime.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }

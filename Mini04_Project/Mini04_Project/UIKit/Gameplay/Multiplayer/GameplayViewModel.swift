@@ -40,6 +40,7 @@ class GameplayViewModel: NSObject {
     var alert = AlertPowerView(icon: UIImage(), name: "")
     var feedback = FeedbackGreen()
 
+    lazy var userAvatar = AnyImageView(imagem: UIImage(named: multiVM!.localPlayer!.playerImage))
     var pointsMold = AnyImageView(imagem: UIImage(named: "PntsMold"))
     var roundMold = AnyImageView(imagem: UIImage(named: "PntsMold"))
     var timerObjMold = AnyImageView(imagem: UIImage(named: "TimerObjMold"))
@@ -112,8 +113,8 @@ class GameplayViewModel: NSObject {
         guard let valueNotOpcional = value else {return}
         DispatchQueue.main.async { [self] in
             print("acertou? \(String(describing: value))")
-            special.specialName.text = valueNotOpcional.objectName
-            items.specialObject = valueNotOpcional.objectName
+            special.specialName.text = valueNotOpcional.objectName.translate()
+            items.specialObject = valueNotOpcional.objectName.translate()
             if valueNotOpcional.isHit{
                 special.specialFinded()
             }

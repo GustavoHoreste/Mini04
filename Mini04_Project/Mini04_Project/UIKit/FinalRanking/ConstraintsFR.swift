@@ -33,7 +33,7 @@ extension FinalRakingViewController {
             finalVM.background.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             
             finalVM.podio.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            finalVM.podio.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -80),
+            finalVM.podio.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -60),
             
             finalVM.userFirst.centerXAnchor.constraint(equalTo: finalVM.podio.centerXAnchor),
             finalVM.userFirst.centerYAnchor.constraint(equalTo: finalVM.podio.centerYAnchor, constant: -130),
@@ -44,13 +44,13 @@ extension FinalRakingViewController {
             finalVM.userThird.leadingAnchor.constraint(equalTo: finalVM.userFirst.trailingAnchor),
             finalVM.userThird.centerYAnchor.constraint(equalTo: finalVM.podio.centerYAnchor, constant: -50),
 
-            finalVM.leave.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            finalVM.leave.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
             finalVM.leave.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             
             finalVM.recomecar.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             finalVM.recomecar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             
-            finalVM.tops.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            finalVM.tops.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 35),
             finalVM.tops.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             collection.widthAnchor.constraint(equalTo: view.widthAnchor),

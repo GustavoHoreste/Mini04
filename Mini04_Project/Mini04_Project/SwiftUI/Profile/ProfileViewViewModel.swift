@@ -9,7 +9,7 @@ import Foundation
 
 enum UserDefaultKey: String{
     case userName = "UserName"
-    case indexImage = "conito"
+    case indexImage = "ImagePicker"
     case userID = "userID"
 }
 

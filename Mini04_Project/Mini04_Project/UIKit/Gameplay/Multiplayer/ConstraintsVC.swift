@@ -30,6 +30,7 @@ extension GameplayViewController {
         view.addSubview(gameplayVM.crosshair)
         view.addSubview(gameplayVM.alert)
         view.addSubview(gameplayVM.photoButton)
+        view.addSubview(gameplayVM.userAvatar)
         view.addSubview(gameplayVM.special)
         view.addSubview(gameplayVM.feedback)
         view.addSubview(gameplayVM.fadeBackground)
@@ -56,6 +57,11 @@ extension GameplayViewController {
             gameplayVM.nameObjMold.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             gameplayVM.nameObjMold.topAnchor.constraint(equalTo: gameplayVM.timerObjMold.bottomAnchor, constant: 10),
             //------------Fim Molduras----------------
+            
+            gameplayVM.userAvatar.trailingAnchor.constraint(equalTo: gameplayVM.nameObjMold.leadingAnchor, constant: -5),
+            gameplayVM.userAvatar.centerYAnchor.constraint(equalTo: gameplayVM.nameObjMold.centerYAnchor),
+            gameplayVM.userAvatar.widthAnchor.constraint(equalToConstant: 50),
+            gameplayVM.userAvatar.heightAnchor.constraint(equalToConstant: 50),
             
             gameplayVM.objectName.centerXAnchor.constraint(equalTo: gameplayVM.nameObjMold.centerXAnchor),
             gameplayVM.objectName.centerYAnchor.constraint(equalTo: gameplayVM.nameObjMold.centerYAnchor),
