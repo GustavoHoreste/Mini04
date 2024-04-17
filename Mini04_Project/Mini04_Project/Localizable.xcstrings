@@ -88,7 +88,20 @@
 
     },
     "Além de objetos, procure por cores!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In addition to objects, look for colors!"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Além de objetos, procure por cores!"
+          }
+        }
+      }
     },
     "Amarelo" : {
       "localizations" : {
@@ -821,7 +834,20 @@
       }
     },
     "Os bônus são habilidades que você pode conseguir ao decorrer da partida." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The bonuses are abilities that you can acquire throughout the match."
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Os bônus são habilidades que você pode conseguir ao decorrer da partida."
+          }
+        }
+      }
     },
     "Papel higienico" : {
       "localizations" : {
@@ -1224,8 +1250,8 @@
         },
         "pt-BR" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Tem certeza que deseja sair da partida?"
+            "state" : "translated",
+            "value" : "Você tem certeza que \ndeseja sair da partida?"
           }
         }
       }

@@ -18,11 +18,11 @@ class PowersStackView: UIImageView {
     var powerMold1 = AnyImageView(imagem: UIImage(named: "PowersMold"))
     var powerMold2 = AnyImageView(imagem: UIImage(named: "PowersMold"))
 
-    lazy var freeze = PowersButton(imagem: UIImage(systemName: "1.circle.fill")!, power: .freeze)
-    lazy var switcher = PowersButton(imagem: UIImage(systemName: "2.circle.fill")!, power: .switchWord)
-    lazy var subtract = PowersButton(imagem: UIImage(systemName: "3.circle.fill")!, power: .subtrac)
-    lazy var change = PowersButton(imagem: UIImage(systemName: "4.circle.fill")!, power: .changeCamera)
-    lazy var shuffle = PowersButton(imagem: UIImage(systemName: "5.circle.fill")!, power: .shuffleWord)
+    lazy var freeze = PowersButton(imagem: UIImage(resource: .powerFreeze), power: .freeze)
+    lazy var switcher = PowersButton(imagem: UIImage(resource: .powerWord), power: .switchWord)
+    lazy var subtract = PowersButton(imagem: UIImage(resource: .powerSubtract), power: .subtrac)
+    lazy var change = PowersButton(imagem: UIImage(resource: .powerCamera), power: .changeCamera)
+    lazy var shuffle = PowersButton(imagem: UIImage(resource: .powerShuffle), power: .shuffleWord)
     
     lazy var allPowers: [PowersButton] = [freeze, change, subtract, switcher, shuffle]
     
