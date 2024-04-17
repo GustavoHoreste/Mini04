@@ -32,4 +32,22 @@ extension String {
         return dict.first { $0.value == self }?.key
     }
     
+    func translate() -> String {
+        guard let preferredLanguage = Locale.preferredLanguages.first else {return ""}
+        print(preferredLanguage)
+//        let locale = Locale(identifier: preferredLanguage)
+//        guard let languageCode = locale.language.languageCode?.identifier else {return ""}
+//        print(languageCode)
+        // Obtém o bundle para o idioma desejado
+        guard let path = Bundle.main.path(forResource: preferredLanguage, ofType: "lproj"),
+              let bundle = Bundle(path: path) else {
+            print("SAIU DO PATH TRANSLATE")
+            return self // Se o arquivo de idioma não for encontrado, retorna a string original
+        }
+        
+        // Traduz a string para o idioma especificado
+        let translatedString = bundle.localizedString(forKey: self, value: nil, table: nil)
+        return translatedString
+    }
+    
 }

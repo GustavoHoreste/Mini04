@@ -88,7 +88,7 @@ class NormalListCell: UICollectionViewCell {
         ])
     }
     
-    public func changePositionBG(_ position: Int, _ name: String){
+    public func changePositionBG(_ position: Int){
         switch position{
         case 0:
             rankingBg.image = UIImage(resource: .bkouro)
@@ -100,7 +100,7 @@ class NormalListCell: UICollectionViewCell {
             rankingBg.image = UIImage(resource: .bkbronze)
             self.position.text = "\(position+1)"
         default:
-            rankingBg.image = UIImage(named: name)
+            rankingBg.image = UIImage(resource: .bkroxo)
             self.position.text = "\(position+1)"
         }
     }

@@ -101,14 +101,14 @@ class FinalViewModel {
             userSecond.pointsUser.text = String(topPlayers[1].points)
             userSecond.image = UIImage(named: topPlayers[1].playerImage)
             
-            self.userThird.isHidden = false
+            self.userThird.isHidden = true
         case 1:
             userFirst.nameUser.text = topPlayers[0].userName
             userFirst.pointsUser.text = String(topPlayers[0].points)
             userFirst.image = UIImage(named: topPlayers[0].playerImage)
             
-            self.userSecond.isHiden()
-            self.userThird.isHiden()
+            self.userThird.isHidden = true
+            self.userSecond.isHidden = true
         default:
             print("Erros nos tops finais da partida")
         }

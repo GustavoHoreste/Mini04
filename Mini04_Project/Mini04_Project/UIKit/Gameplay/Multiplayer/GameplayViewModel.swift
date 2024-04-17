@@ -113,8 +113,8 @@ class GameplayViewModel: NSObject {
         guard let valueNotOpcional = value else {return}
         DispatchQueue.main.async { [self] in
             print("acertou? \(String(describing: value))")
-            special.specialName.text = valueNotOpcional.objectName
-            items.specialObject = valueNotOpcional.objectName
+            special.specialName.text = valueNotOpcional.objectName.translate()
+            items.specialObject = valueNotOpcional.objectName.translate()
             if valueNotOpcional.isHit{
                 special.specialFinded()
             }
