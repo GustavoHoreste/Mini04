@@ -26,9 +26,6 @@ class PowersButton: UIButton {
         
         setBackgroundImage(imagem, for: .normal)
         addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-        
-        widthAnchor.constraint(equalToConstant: 50).isActive = true
-        heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
     @objc func buttonAction() {
