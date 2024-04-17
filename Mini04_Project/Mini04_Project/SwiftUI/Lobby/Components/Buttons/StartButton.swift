@@ -72,10 +72,11 @@ struct StartButton: View {
                                 .scaledToFill()
                                 .padding()
                         } else {
-                            Image(.readyPressed)
+                            Image(.isReadyButton)
                                 .resizable()
                                 .scaledToFill()
                                 .padding()
+                                .opacity(0.5)
                         }
                     }
                 }

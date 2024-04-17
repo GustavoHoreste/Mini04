@@ -65,7 +65,7 @@ struct MenuView: View {
                     
                 case .notDetermined:
                     AVCaptureDevice.requestAccess(for: .video) { permission in
-                            print(permission)
+                        print(permission)
                     }
                 default:
                     print("permission denied")
