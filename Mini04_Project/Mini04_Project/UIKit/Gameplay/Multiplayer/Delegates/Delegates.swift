@@ -73,7 +73,8 @@ extension GameplayViewModel: PhotoButtonDelegate {
                     }
                 }
                 //MARK: - QUANDO A PESSOA ACERTA O OBJETO ESPECIAL HAPTICS AQUI
-                if items.specialObject.findKey() == returnedTargetObject && multiVM?.configMatch.powerUps == true{             self.haptics.doHaptic(type: .specialObject)
+                if items.specialObject.findKey() == returnedTargetObject && multiVM?.configMatch.powerUps == true{             
+                    self.haptics.doHaptic(type: .specialObject)
                     items.specialObject = ""
                     let specialObject = SpecialObject(objectName: items.specialObject, isHit: true)
                     await self.feedback.animateAppear(type: .green)

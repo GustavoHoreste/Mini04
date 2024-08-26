@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import CoreImage
 
-class SingleViewModel: NSObject {
+class SingleViewModel: NSObject{
     
     var controller: SingleViewController?
     
@@ -44,6 +44,7 @@ class SingleViewModel: NSObject {
     override init() {
         super.init()
         setupDelegate()
+        items.setColors()
         
         round.text = String(localized: "Tempo")
     }
